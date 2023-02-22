@@ -1,0 +1,47 @@
+/* Here are all the styles of the user menu pages */
+
+/* bootstrap classes */
+.container-fluid {
+    padding: 0;
+}
+.form-control, .btn {
+    padding: 0.375em 0.75em;
+    font-size: 1em;
+}
+.form-label {
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+/* From here on they are their own classes */
+.box-account-section {
+    min-height: 65vh;
+}
+/* User address and profile forms */
+.form-profile {
+    margin: 0;
+    padding-bottom: 1em;
+}
+.form-profile div {
+    margin-top: 1em;
+    padding: 0em 0.5em;
+}
+
+@media screen and (min-width: 992px) {
+    .box-account-section {
+        min-height: 72vh;
+        padding: 0em 1em;
+    }
+    /* User address and profile forms */
+    .form-profile {
+        padding: 0.5em 1.2em;
+        border: 0.125em solid #0008;
+        border-radius: 1em;
+    }
+    /* django classes */
+    .errorlist{
+        padding: 0em 1.3em;
+        background-color: #f00;
+        color: #fff;
+    }
+}

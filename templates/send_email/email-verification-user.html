@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <style>
+      .container {
+        width: 60%;
+        margin: 0 auto;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      
+      h1 {
+        font-size: 2.25em;
+        color: #333;
+        margin-bottom: 1.25em;
+      }
+      
+      p {
+        font-size: 1.125em;
+        color: #333;
+        margin-bottom: 1.25em;
+      }
+      
+      .logo {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 1.25em;
+      }
+      
+      .btn {
+        background-color: #3498db;
+        color: #fff;
+        padding: 0.625em 1.25em;
+        border-radius: 0.3125em;
+        text-decoration: none;
+        font-size: 1.125em;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="http://127.0.0.1:8000/static/img/logo.png" alt="Logo del sitio web" class="logo">
+      <h1>Bienvenido a KatyShop303</h1>
+      <p>Por favor, verifique su dirección de correo electrónico haciendo clic en el botón a continuación</p>
+	  <p>{{message_context}}</p>
+      <a href="http://127.0.0.1:8000{{path_url}}" class="btn">{{btn_text}}</a>
+    </div>
+  </body>
+</html>

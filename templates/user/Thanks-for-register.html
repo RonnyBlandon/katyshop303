@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} thanks-for-registering {% endblock title %}
+
+{% block css2 %} {% static 'css/thanks.css' %} {% endblock css2 %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="container-thanks">
+    <div class="box-thanks">
+        <img src="{% static 'img/thank_you.png' %}" alt="thank you">
+        <p>Gracias por registrarte en KatyShop303.<br> Para iniciar sesión debe activar su cuenta 
+            con el enlace que le hemos enviado a su correo electrónico.<br>
+            Si no encuentra el correo en su bandeja principal verifique en su bandeja de spam.
+        </p>
+        <a href="{% url 'user_app:user_resend_email' %}"><strong>Reenviar correo</strong></a>
+    </div>
+</div>
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

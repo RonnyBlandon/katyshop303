@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} user-dashboard {% endblock title %}
+
+{% block css %} {% static 'css/user-menu.css' %} {% endblock css %}
+{% block css2 %} {% static 'css/my-account.css' %} {% endblock css2 %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="box-account container-fluid d-lg-flex">
+    {% include 'includes/user-menu.html' %}
+
+    <div class="box-account-section col-lg-8 col-lg-9">
+        <form method="post" class="form-profile row g-3 needs-validation" novalidate"> {% csrf_token %}
+            <div class="col-md-5">
+                <label for="validationCustom01" class="form-label">Pais</label>
+                <input type="text" class="form-control" id="validationCustom01" value="{{user.name}}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-5">
+                <label for="validationCustom02" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="validationCustom02" value="{{user.last_name}}" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-5">
+                <label for="validationCustom05" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="validationCustom05">
+                <input type="text" class="form-control mt-3" id="validationCustom05">
+                <div class="invalid-feedback">
+                    Por favor, provea un número de teléfono válido.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="validationCustom03" class="form-label">Ciudad</label>
+                <input type="text" class="form-control" id="validationCustom03" value="{{user.email}}" disabled>
+            </div>
+            <div class="col-md-5">
+                <label for="validationCustom05" class="form-label">Código Postal</label>
+                <input type="text" class="form-control" id="validationCustom05">
+                <div class="invalid-feedback">
+                    Por favor, provea un número de teléfono válido.
+                </div>
+            </div>
+            <div class="col-12 pt-2">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'js/my-account.js' %}"></script>
+{% include 'includes/footer.html' %}
+{% endblock content %}

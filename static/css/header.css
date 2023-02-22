@@ -1,0 +1,83 @@
+/* Menu header */
+.navbar-logo {
+    width: 12%;
+}
+.cart-shopping {
+    display: block;
+    width: 1.5em;
+}
+
+/* alert messages */
+.messages {
+    width: fit-content;
+    text-align: center;
+    margin: auto;
+    padding: 0em;
+    list-style: none;
+}
+.success, .info, .error, .warning {
+    margin: 0.5em 0em;
+    padding: 0.625em 1.25em;
+    background-color: #0f0;
+    color: #070;
+    font-size: 1em;
+    font-weight: 600;
+    border: 0.125em solid #070;
+    border-radius: 0.8em;
+}
+.info {
+    background-color: #ccf;
+    color: #00f;
+    border: 0.125em solid #00f;
+}
+.error {
+    background-color: #f00;
+    color: #fff;
+    border: 0.125em solid #700;
+}
+.warning {
+    background-color: #ff0;
+    color: #f00;
+    border: 0.125em solid #f00;
+}
+
+/*MEDIA QUERY*/
+
+@media screen and (max-width: 425px) {
+    .navbar-logo {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-logo {
+        width: 30%;
+    }
+}
+@media screen and (min-width: 1440px) {
+    body {
+        font-size: 18px;
+    }
+}
+@media screen and (min-width: 1920px) {
+    body {
+        font-size: 22px;
+    }
+}
+@media screen and (min-width: 2560px) {
+    body {
+        font-size: 30px;
+    }
+    .input-search {
+        font-size: 1em;
+    }
+    .btn-search {
+        font-size: 1em;
+    }
+}
+@media screen and (min-width: 3840px) {
+    body {
+        font-size: 45px;
+    }
+}
+

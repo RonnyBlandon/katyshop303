@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} recover-password {% endblock title %}
+
+{% block css %} {% static 'css/register.css' %} {% endblock css %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<!-- Success or error messages -->
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message.message }}</li>  
+    {% endfor %}
+</ul>
+{% endif %}
+
+<!--Formulario para recuperar cuenta-->
+    
+<div class="container-form">
+    <form class="form-register" method="post"> {% csrf_token %}
+        <div class="form__container">
+            <p>Para reenviar el enlace de activación de cuenta ingresé su correo electrónico.</p>
+        </div>
+        {{ form.non_field_errors }}
+        <label class="form-register__label"><img src="{% static 'img/icono-contraseña.svg' %}" alt="icon-password">
+            {{form.email}}</label>
+
+
+        <input class="form-register__input-submit" type="submit" value="Recuperar Cuenta">
+    </form>
+</div class="container-form">
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

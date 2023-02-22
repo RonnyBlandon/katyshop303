@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} points-rules {% endblock title %}
+
+{% block css %} {% static 'css/terms.css' %} {% endblock css %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<!--Informacion de los Terminos y Condiciones de Uso*/-->
+
+<div class="terms">
+    <h2>Reglas de Puntos</h2>
+
+    <p>
+        KATY SHOP 303 cuenta con un programa de puntos que beneficia a los clientes por su fidelidad, por cada compra
+        realizada en la tienda se acumula en una determinada cantidad de puntos, puntos que pueden ser canjeados por
+        descuentos en futuras compras.
+        <br><br>
+        Lo que se establece en este programa de puntos es solo para los Estados Unidos, una excepción para los estados
+        de las Islas Vírgenes y Alaska no está disponible. Es obligación del cliente conocer y cumplir las normas,
+        actualizar e informar periódicamente en la página katyshop303.com para conocer sus derechos y puntos acumulados.
+        <br><br>
+        Los puntos se acreditarán en su cuenta una vez que el pedido haya sido pagado y enviado. Los puntos no tienen
+        fecha de vencimiento y no son transferibles de una cuenta a otra.
+        <br><br>
+        Puede usar sus puntos acumulados en compras, canjeando sus puntos en la página del carrito o en la página de
+        pago.
+        <br><br>
+        Tasas de conversión y puntos canjeables.
+        <br><br>
+        El número de puntos que puedes acumular y canjear en descuentos:
+        <br><br>
+        Tasa de conversión en acumulación de puntos en todos los productos al por mayor: $1 = 1 punto Ejemplo: Compras
+        $100 en productos y contienen 100 puntos.
+        <br><br>
+        Tasa de conversión al redimir puntos en descuentos, esto aplica para todos los productos de la tienda. 35 puntos
+        = $1 Ejemplo, puedes canjear 35 puntos y tener un descuento de $1.
+        <br><br>
+        El mínimo que puedes canjear por un descuento es de 35 puntos por pedido.
+        <br><br>
+        
+        <h3>Reserva de ley</h3>
+        
+        KATY SHOP 303 se reserva el derecho de modificar o cancelar, parcial o totalmente según sea necesario, las
+        Reglas, Términos y Condiciones, reglas, privilegios, beneficios u otras ofertas especiales del Programa de
+        Puntos, con previo aviso a los clientes con 3 semanas de anticipación. Esto significa que el programa de Puntos
+        puede realizar cambios que afectan, por ejemplo, las reglas para acreditar, redimir o cancelar Puntos, el valor
+        de los Puntos, etc.
+        <br><br>
+        En caso de terminación del Programa, todos los Puntos acumulados por los clientes serán cancelados, sin que ello
+        genere responsabilidad alguna por el Saldo acumulado o los Puntos no canjeados.<br><br>
+    </p>
+</div>
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

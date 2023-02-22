@@ -1,0 +1,55 @@
+{% load static %}
+
+<!--Main-menu-->
+
+<nav class="menu navbar navbar-expand-lg bg-body-tertiary">
+	<div class="container-fluid">
+		<a class="navbar-logo me-4" href="{% url 'home_app:home' %}"><img src="{% static 'img/logo.png' %}" alt="Logo"></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="nav nav-pills me-auto mb-2 mb-lg-0">
+				<li class="nav-item m-1">
+					<a class="menu-page1 nav-link" id="start" aria-current="page" href="{% url 'home_app:home' %}">Inicio</a>
+				</li>
+				<li class="nav-item m-1">
+					<a class="menu-page2 nav-link" id="shop" href="#">Tienda</a>
+				</li>
+				<li class="nav-item m-1">
+					<a class="menu-page3 nav-link" id="contact" href="{% url 'home_app:contact' %}">Contacto</a>
+				</li>
+
+				{% if not user.is_anonymous %}
+				<li class="nav-item m-1">
+					<a class="nav-link" id="my-account" href="{% url 'user_app:user_profile' %}">Mi cuenta</a>
+				</li>
+				{% else %}
+				<li class="nav-item m-1">
+					<a class="nav-link" id="my-account" href="{% url 'user_app:user_login' %}">Mi cuenta</a>
+				</li>
+				{% endif %}
+				
+				<li class="nav-item m-1">
+					<a class="nav-link" id="points-rules" href="{% url 'home_app:points_rules' %}">Reglas de puntos</a>
+				</li>
+				<li class="nav-item m-1">
+					<a class="nav-link position-relative" href="#">
+						<img class="cart-shopping" src="{% static 'img/cart_shopping.svg' %}" alt="cart">
+						<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+							99
+						</span>
+					</a>
+				</li>
+			</ul>
+			<form class="d-flex" role="search"> {% csrf_token %}
+				<input class="input-search form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+				<button class="btn-search btn btn-outline-success" type="submit">Buscar</button>
+			</form>
+		</div>
+	</div>
+</nav>
+
+<script src="{% static 'js/bootstrap_js/bootstrap.js' %}"></script>
+<script src="{% static 'js/header.js' %}"></script>

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} user-dashboard {% endblock title %}
+
+{% block css %} {% static 'css/user-menu.css' %} {% endblock css %}
+{% block css2 %} {% static 'css/my-account.css' %} {% endblock css2 %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="box-account container-fluid d-lg-flex">
+    {% include 'includes/user-menu.html' %}
+    
+    <div class="box-account-section col-lg-8 col-lg-9">
+        <!-- Success or error messages -->
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message.message }}</li>  
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form method="post" class="form-profile row g-3 needs-validation" novalidate"> {% csrf_token %}
+            <div class="col-md-8 col-lg-5">
+                <label for="validationCustom01" class="form-label">Nombre</label>
+                {{form.name}}
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-5">
+                <label for="validationCustom02" class="form-label">Apellidos</label>
+                {{form.last_name}}
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-5">
+                <label for="validationCustom03" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="validationCustom03" value="{{user.email}}" disabled>
+            </div>
+            <div class="col-md-8 col-lg-5">
+                <label for="validationCustom05" class="form-label">Telefono (opcional)</label>
+                {{form.phone_number}}
+                <div class="invalid-feedback">
+                    Por favor, provea un número de teléfono válido.
+                </div>
+            </div>
+            <!--Change password-->
+            <h3 class="mt-4 mb-2">Cambiar contraseña</h3>
+            <div class="col-md-8 col-lg-7">
+                {{form.current_password.errors}}
+                <label for="validationCustom05" class="form-label">Contraseña Actual</label>
+                {{form.current_password}}
+                <div class="invalid-feedback">
+                    Por favor, provea un número de teléfono válido.
+                </div>
+            </div>
+            {{form.repeat_password.errors}}
+            <div class="col-md-8 col-lg-6">
+                <label for="validationCustom05" class="form-label">Contraseña Nueva</label>
+                {{form.new_password}}
+                <div class="invalid-feedback">
+                    Por favor, provea un número de teléfono válido.
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-6">
+                <label for="validationCustom05" class="form-label">Repetir Contraseña</label>
+                {{form.repeat_password}}
+                <div class="invalid-feedback">
+                    Por favor, provea un número de teléfono válido.
+                </div>
+            </div>
+            <div class="col-12 pt-2">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'js/my-account.js' %}"></script>
+{% include 'includes/footer.html' %}
+{% endblock content %}

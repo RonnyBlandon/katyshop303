@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} home {% endblock title %}
+
+{% block css %} {% static 'css/home.css' %} {% endblock css %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="box-carousel">
+	<div id="carouselExampleInterval" class="carousel container-fluid col-lg-10 carousel-fade slide"
+		data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active"
+				aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleInterval" data-bs-slide-to="1"
+				aria-label="Slide 2"></button>
+		</div>
+		<div class="carousel-inner">
+			<div class="carousel-item active" data-bs-interval="4000">
+				<img src="{% static 'img/pretty-girl.jpg' %}" class="d-block w-100" alt="pretty-girl">
+				<div class="carousel-caption">
+					<h5>Gana puntos con KatySop303</h5>
+					<p>Canjéalos luego por descuentos en tus futuras compras.</p>
+					<a href="{% url 'home_app:points_rules' %}">Points Rules</a>
+				</div>
+			</div>
+			<div class="carousel-item" data-bs-interval="4000">
+				<img src="{% static 'img/products-publish.png' %}" class="d-block w-100" alt="products-publish">
+				<div class="carousel-caption d-md-block">
+					<h5 class="color">Mejora tu sistema inmune</h5>
+					<a href="{% url 'home_app:home' %}">Go shopping</a>
+				</div>
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+			data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+			data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+</div>
+
+<div class="box-cards">
+	<div class="card">
+		<img src="{% static 'img/padlock.png' %}" class="card-img-top" alt="padlock">
+		<div class="card-body">
+			<h5 class="card-title">Compra segura en línea</h5>
+			<p class="card-text">Sus datos y transacciones están seguros con nosotros, todo nuestro sitio web está
+				encriptado con certificado de seguridad SSL.</p>
+		</div>
+	</div>
+	<div class="card"">
+		<img src="{% static 'img/package-delivery.png' %}" class="card-img-top" alt="package-delivery">
+		<div class="card-body">
+			<h5 class="card-title">Envió gratis en todos los productos</h5>
+			<p class="card-text">En Katy Shop 303 sabemos que no te gustan los gastos de envíos, y por eso te lo
+				enviamos gratis.</p>
+		</div>
+	</div>
+	<div class="card">
+		<img src="{% static 'img/alarm.png' %}" class="card-img-top" alt="alarm">
+		<div class="card-body">
+			<h5 class="card-title">Envíos entre 3/7 días</h5>
+			<p class="card-text">Haz tu pedido y recíbelo cómodamente en tu casa en menos de una semana.</p>
+		</div>
+	</div>
+</div>
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

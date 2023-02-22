@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} contacto {% endblock title %}
+
+{% block css %} {% static 'css/contact.css' %} {% endblock css %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="box-contact">
+    <!--Alert messages-->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!--Form of contact-->
+    <form class="form" method="post"> {% csrf_token %}
+        <h3>Contacto</h3>
+        <p>Si tiene alguna consulta, llena el siguiente formulario con los siguientes datos.</p>
+
+        <div class="form__input-container">
+            {{ form.name }}
+
+            {{ form.last_name }}
+        </div>
+
+        {{ form.email }}
+
+        {{ form.affair }}
+
+        {{ form.message }}
+
+        {{ form.captcha }}
+
+        <button class="form__input--submit" type="submit">Enviar</button>
+    </form>
+</div>
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

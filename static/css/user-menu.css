@@ -1,0 +1,83 @@
+.nav-user-show {
+    display: block;
+    width: 12%;
+    margin: 0.8em 1em;
+}
+/* User menu movil*/
+.box-nav-user {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 100%;
+    height: 100%;
+    background-color: #0004;
+    transition: all 0.3s;
+}
+.nav-user {
+    background-color: #55f;
+    width: 80%;
+    height: 100%;
+}
+.nav-user li{
+    list-style: none;
+}
+.nav-user a {
+    display: block;
+    padding: 1em 1.3em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 0.1em solid #fff;
+}
+.nav-user a:hover {
+    background-color: #11f;
+}
+.nav-user a:active {
+    background-color: #00f;
+}
+.nav-user__name {
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    padding: 0.7em 1em;
+    border-bottom: 0.1em solid#fff;
+}
+.nav-user__name img {
+    width: 25%;
+}
+.nav-user__name h5 {
+    font-size: 1.25em;
+}
+/* div that hides the user menu */
+.nav-user-close {
+    display: block;
+    width: 20%;
+    text-align: center;
+}
+.nav-user-close img {
+    width: 70%;
+    margin-top: 1em;
+    background-color: #44f;
+    border-radius: 1em;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-user-show {
+        width: 8%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    /* hide the button that shows the user menu and the button that closes the user menu on small mobiles */
+    .nav-user-show, .nav-user-close {
+        display: none;
+    }
+
+    .box-nav-user {
+        position: relative;
+        right: 0;
+    }
+    .nav-user {
+        width: 100%;
+    }
+}

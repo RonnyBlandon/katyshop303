@@ -1,0 +1,33 @@
+{% load static %}
+<!--User menu-->
+
+<div class="nav-user-show">
+    <img src="{% static 'img/user-menu.svg' %}" alt="user menu">
+</div>
+
+<div class="box-nav-user col-lg-3">
+    <div class="nav-user">
+        <div class="nav-user__name">
+            <img src="{% static 'img/profile.svg' %}" alt="profile">
+            <h5>{{user.name}} {{user.last_name}}</h5>
+        </div>
+        <li>
+            <a href="#">Pedidos</a>
+        </li>
+        <li>
+            <a href="{% url 'user_app:user_profile' %}">Perfil</a>
+        </li>
+        <li>
+            <a href="{% url 'user_app:user_address' %}">Dirección</a>
+        </li>
+        <li>
+            <a href="#">Mis Puntos</a>
+        </li>
+        <li>
+            <a href="{% url 'user_app:user_logout' %}">Cerrar Sesión</a>
+        </li>
+    </div>
+    <div class="nav-user-close">
+        <img src="{% static 'img/closed-x.svg' %}" alt="close menu">
+    </div>
+</div>
