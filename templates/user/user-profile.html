@@ -42,6 +42,7 @@
                 <input type="email" class="form-control" id="validationCustom03" value="{{user.email}}" disabled>
             </div>
             <div class="col-md-8 col-lg-5">
+                {{form.phone_number.errors}}
                 <label for="validationCustom05" class="form-label">Telefono (opcional)</label>
                 {{form.phone_number}}
                 <div class="invalid-feedback">

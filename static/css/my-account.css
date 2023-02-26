@@ -7,11 +7,23 @@
 .form-control, .btn {
     padding: 0.375em 0.75em;
     font-size: 1em;
+    border: 0.05em solid #000;
+}
+.form-select {
+    border: 0.05em solid #000;
 }
 .form-label {
     margin-bottom: 0.5em;
     font-weight: 600;
 }
+
+/* django classes */
+.errorlist{
+    padding: 0em 1.3em;
+    background-color: #f00;
+    color: #fff;
+}
+
 
 /* From here on they are their own classes */
 .box-account-section {
@@ -37,11 +49,5 @@
         padding: 0.5em 1.2em;
         border: 0.125em solid #0008;
         border-radius: 1em;
-    }
-    /* django classes */
-    .errorlist{
-        padding: 0em 1.3em;
-        background-color: #f00;
-        color: #fff;
     }
 }

@@ -64,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'katyshop303.urls'
@@ -110,6 +111,12 @@ AUTH_USER_MODEL = 'user.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
+
+# Set allowed languages
+LANGUAGES = [
+    ('en', 'English'),
+    ('es', 'Español'),
+]
 
 LANGUAGE_CODE = 'es-mx'
 

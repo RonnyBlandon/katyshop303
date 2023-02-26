@@ -10,7 +10,7 @@ from .functions import code_generator, create_mail, notification_admin_by_mail
 from .models import User
 # import forms
 from .forms import (UserLoginForm, UserRegisterForm, EmailPasswordForm, ChangePasswordForm, 
-UserVerificationResendForm, UserProfileForm
+UserVerificationResendForm, UserProfileForm, UserAddressForm
 )
 # Create your views here.
 
@@ -44,12 +44,10 @@ class UserProfileView(LoginRequiredMixin, FormView):
         user = self.request.user
 
         if current_password and new_password and repeat_password:
-            print("Parece que si entra con los campos vacios")
             authenticated_user = authenticate(
-                id=user.id,
+                email=user.email,
                 password=form.cleaned_data['current_password']
             )
-
             if authenticated_user:
                 user.name = name
                 user.last_name = last_name
@@ -77,23 +75,30 @@ class UserProfileView(LoginRequiredMixin, FormView):
         user.phone_number = phone_number
         user.save()
         messages.add_message(request=self.request, level=messages.SUCCESS, message='Los datos se han guardado con éxito.')
-        print("No entra en el if de las contraseñas")
         return super(UserProfileView, self).form_valid(form)
 
 
-class UserAddressView(LoginRequiredMixin, TemplateView):
+class UserAddressView(LoginRequiredMixin, FormView):
     template_name = 'user/user-address.html'
+    form_class = UserAddressForm
     login_url = reverse_lazy('user_app:user_login')
+    success_url = reverse_lazy('user_app:user_address')
 
-    def get_context_data(self, **kwargs):
-        context = super(UserAddressView, self).get_context_data(**kwargs)
-        return context
+    def form_valid(self, form):
+
+        messages.add_message(request=self.request, level=messages.SUCCESS, message='Los datos se han guardado con éxito.')
+        return super(UserAddressView, self).form_valid(form)
+
 
 
 class UserRegisterView(FormView):
     template_name = 'user/register.html'
     form_class = UserRegisterForm
     success_url = reverse_lazy('users_app:user_login')
+
+    def form_invalid(self, form):
+        print("Esta entrando al form_invalid")
+        return super(UserAddressView, self).form_invalid(form)
 
     def form_valid(self, form):
         # We generate the email verification code for the newly registered user
@@ -106,7 +111,7 @@ class UserRegisterView(FormView):
             name,
             last_name,
             email,
-            form.cleaned_data['password1'],
+            form.cleaned_data['password'],
             validation_code=validation_code
         )
 
@@ -166,31 +171,29 @@ class CodeVerificationView(View):
                 id=self.kwargs['id'],
                 validation_code=self.kwargs['code']
             )
+
+            if not user:
+                messages.add_message(request=self.request, level=messages.ERROR, message=f'El enlace de activación de cuenta no es válido.')
+                return HttpResponseRedirect(
+                    reverse('user_app:user_login')
+                )
+
+            id_user = user[0].id
+            name = user[0].name
+            last_name = user[0].last_name
+            email = user[0].email
+            validation_code = code_generator()
+            user = user.update(is_active=True, validation_code=validation_code)
+            messages.add_message(request=self.request, level=messages.SUCCESS, message='La cuenta se ha activado con éxito, ya puede iniciar sesión.')
+
+            # We send an email notifying the administrator's email that a user account has been verified.
+            affair_admin = "SE HA VERIFICADO UNA CUENTA DE USUARIO"
+            message_admin = f"Se verificó la cuenta del usuario. \n\n ID: {id_user} \n Name: {name} {last_name} \n Email: {email}"
+            notification_admin_by_mail(affair_admin, message_admin)
+        
         except Exception as err:
             print("Error al obtener el usuario en CodeVerificationView el error es: ", err)
-            messages.add_message(request=self.request, level=messages.ERROR, message=f'El enlace de verificación de cuenta no es válido.')
-            return HttpResponseRedirect(
-                reverse('user_app:user_login')
-            )
-
-        if user[0].is_active:
-            messages.add_message(request=self.request, level=messages.ERROR, message=f'El enlace de verificación no es válido, además esta cuenta ya está verificada, ya puede iniciar sesión.')
-            return HttpResponseRedirect(
-                reverse('user_app:user_login')
-            )
-
-        id_user = user[0].id
-        name = user[0].name
-        last_name = user[0].last_name
-        email = user[0].email
-        validation_code = code_generator()
-        user = user.update(is_active=True, validation_code=validation_code)
-        messages.add_message(request=self.request, level=messages.SUCCESS, message='La cuenta se ha verificado con éxito, ya puede iniciar sesión.')
-
-        # We send an email notifying the administrator's email that a user account has been verified.
-        affair_admin = "SE HA VERIFICADO UNA CUENTA DE USUARIO"
-        message_admin = f"Se verificó la cuenta del usuario. \n\n ID: {id_user} \n Name: {name} {last_name} \n Email: {email}"
-        notification_admin_by_mail(affair_admin, message_admin)
+            messages.add_message(request=self.request, level=messages.ERROR, message=f'El enlace de activación de cuenta no es válido.')
 
         return HttpResponseRedirect(
                 reverse('user_app:user_login')
@@ -308,7 +311,7 @@ class ChangePasswordView(FormView):
         new_validation_code = code_generator()
 
         user.validation_code = new_validation_code
-        new_password = form.cleaned_data['password2']
+        new_password = form.cleaned_data['new_password']
         user.set_password(new_password)
         user.save()
         messages.add_message(request=self.request, level=messages.SUCCESS, message='Se ha cambiado la contraseña con éxito. Inicie sesión.')

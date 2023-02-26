@@ -7,17 +7,11 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from model_utils.models import TimeStampedModel
 
 class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
-    
     name = models.CharField('Nombre', max_length=20)
     last_name = models.CharField('Apellido', max_length=20)
     email = models.EmailField('Correo Electronico', max_length=60, unique=True)
     phone_number = models.CharField('Numero de Telefono', max_length=20, blank=True, null=True)
     id_customer_stripe = models.CharField('ID customer stripe', max_length=25, blank=True, null=True)
-    country = models.CharField('Pais', max_length=20, blank=True, null=True)
-    state = models.CharField('Estado', max_length=20, blank=True, null=True)
-    city = models.CharField('Ciudad', max_length=20, blank=True, null=True)
-    address = models.CharField('Dirección', max_length=70, blank=True, null=True)
-    postal_code = models.CharField('Codigo Postal', max_length=10, blank=True, null=True)
     validation_code = models.CharField('Código de Validación', max_length=6)
     # We create the column staff in model for the creation of superusers
     is_staff = models.BooleanField(default=False)
@@ -33,5 +27,34 @@ class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return str(self.id) + ' - ' + self.name + ' ' + self.last_name + ' - ' + self.email
 
-    def get_full_name(self):
-        return self.first_name + " " + self.last_name
+
+class Country(models.Model):
+    name = models.CharField('Nombre del Pais:', max_length=20, unique=True)
+    class Meta:
+        verbose_name_plural = 'Countries'
+
+    def __str__(self):
+        return str(self.id) + ' '+ self.name
+
+
+class State(models.Model):
+    name = models.CharField('Nombre del Estado:', max_length=20, unique=True)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.id) +' '+ self.name +' - '+ str(self.country)
+
+
+class Address(models.Model):
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    state = models.ForeignKey(State, on_delete=models.CASCADE, blank=True, null=True)
+    city = models.CharField('Ciudad', max_length=30)
+    address = models.CharField('Dirección', max_length=120)
+    postal_code = models.CharField('Codigo Postal', max_length=10)
+    id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = 'Addresses'
+
+    def __str__(self):
+        return str(self.id) +' '+ self.city +' '+ str(self.state) +' '+ str(self.country) +' '+ str(self.id_user)
