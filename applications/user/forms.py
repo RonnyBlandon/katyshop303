@@ -74,26 +74,24 @@ class UserProfileForm(forms.ModelForm):
 
 
 class UserAddressForm(forms.Form):
-    initial_country = Country.objects.get(name="Estados Unidos")
-    
     country = forms.ModelChoiceField(
         queryset=Country.objects.all().values_list('name', flat=True),
         widget=forms.widgets.Select(attrs={'class': ' form-select', 'id': 'select-country'}),
-        initial=initial_country,
         to_field_name='name'
     )
     state = forms.ModelChoiceField(
         queryset=State.objects.all().values_list('name', flat=True),
         widget=forms.widgets.Select(attrs={'class': 'form-select', 'id': 'select-state'}),
-        to_field_name='name'
+        to_field_name='name',
+        required=False
     )
     city = forms.CharField(
         widget=forms.TextInput(
             attrs={'class': 'form-control', 'maxlength': '30'})   
     )
-    address = forms.CharField(
+    address_1 = forms.CharField(
         widget=forms.TextInput(
-            attrs={'class': 'form-control', 'maxlength': '60', 'placeholder': 'Nombre de la calle'})   
+            attrs={'class': 'form-control', 'maxlength': '60', 'placeholder': 'Numero de Casa y nombre de la calle'})   
     )
     address_2 = forms.CharField(
         required=False,
@@ -106,18 +104,18 @@ class UserAddressForm(forms.Form):
             attrs={'class': 'form-control', 'maxlength': '10'})   
     )
 
-    # Validating passwords and generic phone numbers
+    # We validate the inputs country, state and postal code
     def clean(self):
         country = self.cleaned_data['country']
         if not Country.objects.filter(name=country):
             self.add_error('country', 'Por favor elija un país dentro de la lista.')
 
-        try:
-            state = self.cleaned_data['state']
-            if not State.objects.filter(name=state):
-                self.add_error('state', 'Por favor elija un estado dentro de la lista.')
-        except:
-            pass
+        if country == "Estados Unidos":
+            if not State.objects.filter(name=self.cleaned_data['state']):
+                self.add_error('state', f'Este campo es obligatorio para {country}.')
+        # If Puerto Rico is selected, it is saved in None
+        if country == "Puerto Rico":
+            self.cleaned_data['state'] = None
 
         postal_code = self.cleaned_data["postal_code"]
         if postal_code:

@@ -47,3 +47,18 @@ class UserManager(BaseUserManager, models.Manager):
         id_customer = user.id_customer_stripe
         if id_customer:
             return id_customer
+
+
+class AddressManager(models.Manager):
+
+    def update_address_user(self, id_user, country, state, city, address_1, address_2, postal_code):
+        address = self.filter(id_user=id_user)
+        address.update(
+            country=country,
+            state=state,
+            city=city,
+            address_1=address_1,
+            address_2=address_2,
+            postal_code=postal_code
+        )
+        return address

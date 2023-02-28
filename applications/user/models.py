@@ -1,5 +1,5 @@
 from django.db import models
-from .managers import UserManager
+from .managers import UserManager, AddressManager
 
 # Create your models here.
 # we import the libraries for user control
@@ -49,12 +49,17 @@ class Address(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     state = models.ForeignKey(State, on_delete=models.CASCADE, blank=True, null=True)
     city = models.CharField('Ciudad', max_length=30)
-    address = models.CharField('Dirección', max_length=120)
+    # This address_1 is street address
+    address_1 = models.CharField('Dirección de calle', max_length=60)
+    # This address_2 is apt, suite, unit, building, floor, etc.
+    address_2 = models.CharField('Numero de edificio, casa etc.', max_length=60, blank=True, null=True) 
     postal_code = models.CharField('Codigo Postal', max_length=10)
     id_user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = 'Addresses'
+
+    objects = AddressManager()
 
     def __str__(self):
         return str(self.id) +' '+ self.city +' '+ str(self.state) +' '+ str(self.country) +' '+ str(self.id_user)

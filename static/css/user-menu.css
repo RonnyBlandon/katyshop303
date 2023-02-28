@@ -48,6 +48,10 @@
 .nav-user__name h5 {
     font-size: 1.25em;
 }
+/* Class to give a color that highlights the button of the current page */
+.active-user-menu {
+    background-color: #FF5733;
+}
 /* div that hides the user menu */
 .nav-user-close {
     display: block;

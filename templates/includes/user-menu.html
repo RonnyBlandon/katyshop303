@@ -12,16 +12,16 @@
             <h5>{{user.name}} {{user.last_name}}</h5>
         </div>
         <li>
-            <a href="#">Pedidos</a>
+            <a href="#" id="user-orders">Pedidos</a>
         </li>
         <li>
-            <a href="{% url 'user_app:user_profile' %}">Perfil</a>
+            <a href="{% url 'user_app:user_profile' %}" id="user-profile">Perfil</a>
         </li>
         <li>
-            <a href="{% url 'user_app:user_address' %}">Dirección</a>
+            <a href="{% url 'user_app:user_address' %}" id="user-address">Dirección</a>
         </li>
         <li>
-            <a href="#">Mis Puntos</a>
+            <a href="#" id="user-points">Mis Puntos</a>
         </li>
         <li>
             <a href="{% url 'user_app:user_logout' %}">Cerrar Sesión</a>
@@ -31,3 +31,5 @@
         <img src="{% static 'img/closed-x.svg' %}" alt="close menu">
     </div>
 </div>
+
+<script src="{% static 'js/user-menu.js' %}"></script>

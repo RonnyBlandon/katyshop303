@@ -7,7 +7,7 @@ from django.views.generic import View, TemplateView, FormView
 # import of file functions
 from .functions import code_generator, create_mail, notification_admin_by_mail
 #import models
-from .models import User
+from .models import User, Address, Country, State
 # import forms
 from .forms import (UserLoginForm, UserRegisterForm, EmailPasswordForm, ChangePasswordForm, 
 UserVerificationResendForm, UserProfileForm, UserAddressForm
@@ -35,9 +35,6 @@ class UserProfileView(LoginRequiredMixin, FormView):
         return kwargs
 
     def form_valid(self, form):
-        name = form.cleaned_data['name']
-        last_name = form.cleaned_data['last_name']
-        phone_number = form.cleaned_data['phone_number']
         current_password = form.cleaned_data['current_password']
         new_password = form.cleaned_data['new_password']
         repeat_password = form.cleaned_data['repeat_password']
@@ -49,9 +46,9 @@ class UserProfileView(LoginRequiredMixin, FormView):
                 password=form.cleaned_data['current_password']
             )
             if authenticated_user:
-                user.name = name
-                user.last_name = last_name
-                user.phone_number = phone_number
+                user.name = form.cleaned_data['name']
+                user.last_name = form.cleaned_data['last_name']
+                user.phone_number = form.cleaned_data['phone_number']
                 user.set_password(new_password)
                 user.save()
 
@@ -70,9 +67,9 @@ class UserProfileView(LoginRequiredMixin, FormView):
                 logout(self.request)
                 return super(UserProfileView, self).form_valid(form)
 
-        user.name = name
-        user.last_name = last_name
-        user.phone_number = phone_number
+        user.name = form.cleaned_data['name']
+        user.last_name = form.cleaned_data['last_name']
+        user.phone_number = form.cleaned_data['phone_number']
         user.save()
         messages.add_message(request=self.request, level=messages.SUCCESS, message='Los datos se han guardado con éxito.')
         return super(UserProfileView, self).form_valid(form)
@@ -84,7 +81,27 @@ class UserAddressView(LoginRequiredMixin, FormView):
     login_url = reverse_lazy('user_app:user_login')
     success_url = reverse_lazy('user_app:user_address')
 
+    def get_initial(self):
+        initial = super().get_initial()
+        address = Address.objects.get(id_user=self.request.user.id)
+        initial['country'] = address.country.name
+        initial['state'] = address.state
+        initial['city'] = address.city
+        initial['address_1'] = address.address_1
+        initial['address_2'] = address.address_2
+        initial['postal_code'] = address.postal_code
+        return initial
+
     def form_valid(self, form):
+        country = Country.objects.get(name=form.cleaned_data['country'])
+        state = form.cleaned_data['state']
+        if form.cleaned_data['state']:
+            if not country == "Puerto Rico":
+                state = State.objects.get(name=state)
+
+        Address.objects.update_address_user(self.request.user.id, country, state, form.cleaned_data['city'], 
+            form.cleaned_data['address_1'], form.cleaned_data['address_2'], form.cleaned_data['postal_code']
+        )
 
         messages.add_message(request=self.request, level=messages.SUCCESS, message='Los datos se han guardado con éxito.')
         return super(UserAddressView, self).form_valid(form)
