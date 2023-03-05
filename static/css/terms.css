@@ -1,16 +1,16 @@
 .terms {
-    margin: 1.875em 0.625em 1.875em 0.625em;
-    padding: 5px;
+    margin: 1.875rem 0.625rem 1.875rem 0.625rem;
+    padding: 0.3125rem;
     background-color: #fff;
-    box-shadow: 0em 0em 0.625em #000;
+    box-shadow: 0rem 0rem 0.625rem #000;
     font-family: sans-serif, Arial, Helvetica;
 }
 .terms h3, .terms h2, .terms p {
-    margin-bottom: 0.625em;
+    margin-bottom: 0.625rem;
     color: #f70;
 }
 .terms p {
-    padding-bottom: 0.3125em;
+    padding-bottom: 0.3125rem;
     text-shadow: none;
     color: #000;
     word-spacing: 1.3pt;
@@ -19,33 +19,14 @@
 
 @media screen and (min-width: 768px) {
     .terms {
-        margin: 1.25em;
-        padding: 0.625em;
+        margin: 1.25rem;
+        padding: 0.625rem;
     }    
 }
 @media screen and (min-width: 1024px) {
     .terms {
-        margin: 2.5em;
-        padding: 1.25em;
+        margin: 2.5rem;
+        padding: 1.25rem;
     }
 }
-@media screen and (min-width: 1440px) {
-    .terms {
-        font-size: 17px;
-    }
-}
-@media screen and (min-width: 1920px) {
-    .terms {
-        font-size: 22px;
-    }
-}
-@media screen and (min-width: 2560px) {
-    .terms {
-        font-size: 30px;
-    }
-}
-@media screen and (min-width: 3840px) {
-    .terms {
-        font-size: 45px;
-    }
-}
+

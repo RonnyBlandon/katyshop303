@@ -1,24 +1,24 @@
 /* carousel */
 .box-carousel {
-    margin: 1.2em 0em;
+    margin: 1.2rem 0rem;
 }
 
 .carousel-item img {
-    height: 20em;
+    height: 20rem;
     filter: contrast(75%);
 }
 .carousel-item h5 {
     color: #ff0;
-    font-size: 0.9em;
+    font-size: 0.9rem;
 }
 .carousel-item p {
     color: #ff0;
-    font-size: 0.7em;
+    font-size: 0.7rem;
 }
 .carousel-item a {
-    border: 0.125em solid #ff0;
-    padding: 0.2em 0.35em;
-    border-radius: 0.4em;
+    border: 0.125rem solid #ff0;
+    padding: 0.2rem 0.35rem;
+    border-radius: 0.4rem;
     color: #ff0;
     font-weight: 600;
     text-decoration: none;
@@ -26,21 +26,21 @@
 
 /* cards */
 .box-cards {
-    margin: 1.2em 0em;
+    margin: 1.2rem 0rem;
 }
 .card {
     width: 90%;
-    margin: 0.5em auto;
-    padding: 0.4em 0em;
+    margin: 0.5rem auto;
+    padding: 0.4rem 0rem;
     background-color: #00f;
-    border: 0.2em solid #ff0;
+    border: 0.2rem solid #ff0;
 }
 .card img {
     width: 50%;
-    margin: 0em auto;
+    margin: 0rem auto;
 }
 .card-body {
-    margin: 0em;
+    margin: 0rem;
     background-color: #66f;
     text-align: center;
 }
@@ -55,67 +55,47 @@
 
 @media screen and (min-width: 425px){
     .carousel-item img {
-        height: 26em;
+        height: 26rem;
     }
 }
 @media screen and (min-width: 768px){
     .carousel-item h5 {
-        margin-bottom: 0.7em;
-        font-size: 1.2em;
+        margin-bottom: 0.7rem;
+        font-size: 1.2rem;
     }
     .carousel-item p {
-        font-size: 1em;
+        font-size: 1rem;
     }
     .carousel-item a {
-        padding: 0.4em 0.7em;
+        padding: 0.4rem 0.7rem;
     }
 
     .box-cards {
         display: flex;
-        gap: 0.7em;
+        gap: 0.7rem;
     }
     .card img {
-        height: 15em;
+        height: 15rem;
     }
 }
 @media screen and (min-width: 1024px){
     .carousel-item img {
-        height: 30em;
+        height: 30rem;
     }
     .carousel-item h5 {
-        margin-bottom: 1em;
-        font-size: 2em;
+        margin-bottom: 1rem;
+        font-size: 2rem;
     }
     .carousel-item p {
-        font-size: 1.5em;
+        font-size: 1.5rem;
     }
     .carousel-item a {
-        padding: 0.4em 0.7em;
-        font-size: 1.3em;
+        padding: 0.4em 0.7rem;
+        font-size: 1.3rem;
     }
 
     .box-cards {
         display: flex;
-        gap: 1.2em;
-    }
-}
-@media screen and (min-width: 1440px){
-    body {
-        font-size: 18px;
-    }
-}
-@media screen and (min-width: 1920px){
-    body {
-        font-size: 22px;
-    }
-}
-@media screen and (min-width: 2560px){
-    body {
-        font-size: 30px;
-    }
-}
-@media screen and (min-width: 3840px){
-    body {
-        font-size: 45px;
+        gap: 1.2rem;
     }
 }

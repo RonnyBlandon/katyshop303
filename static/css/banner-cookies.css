@@ -1,31 +1,31 @@
 .banner-cookie {
 	background: #aaf;
-	padding: 1.2em;
-	width: calc(100% - 2.5em);
+	padding: 1.2rem;
+	width: calc(100% - 2.5rem);
 	max-width: 18.75em;
 	line-height: 150%;
-	border-radius: 0.625em;
+	border-radius: 0.625rem;
 	position: fixed;
-	bottom: 1.25em;
-	left: calc(50% - 9.375em);
+	bottom: 1.25rem;
+	left: calc(50% - 9.375rem);
 	z-index: 100;
 	padding-top: 3.75em;
-	box-shadow: 0em 0.125em 1.25em 0.625em rgba(222,222,222,.25);
+	box-shadow: 0rem 0.125rem 1.25rem 0.625rem rgba(222,222,222,.25);
 	text-align: center;
 }
 
 .cookie {
-	max-width: 6.25em;
+	max-width: 6.25rem;
 	position: absolute;
-	top: -3.125em;
-	left: calc(50% - 3.125em);
+	top: -3.125rem;
+	left: calc(50% - 3.125rem);
 }
 
 .arrow-hide {
-	max-width: 2em;
+	max-width: 2rem;
 	position: absolute;
-	top: 0em;
-	left: calc(90% - 1.2em);
+	top: 0rem;
+	left: calc(90% - 1.2rem);
 }
 .arrow-hide:hover {
 	background-color: #0cf;
@@ -33,7 +33,7 @@
 }
 
 .titulo, .banner-message {
-	margin-bottom: 0.9375em;
+	margin-bottom: 0.9375rem;
 }
 
 .button-accept {
@@ -43,13 +43,13 @@
 	color: #fff;
 	font-family: 'Roboto', sans-serif;
 	text-align: center;
-	padding: 0.9375em 1.25em;
+	padding: 0.9375rem 1.25rem;
 	font-weight: 700;
 	cursor: pointer;
 	transition: .3s ease all;
-	border-radius: 0.3125em;
-	margin-bottom: 0.9375em;
-	font-size: 0.875em;
+	border-radius: 0.3125rem;
+	margin-bottom: 0.9375rem;
+	font-size: 0.875rem;
 }
 
 .button-accept:hover {
@@ -59,7 +59,7 @@
 .privacy-policies {
 	color: #000;
 	text-decoration: none;
-	font-size: 0.875em;
+	font-size: 0.875rem;
 }
 
 .privacy-policies:hover {
@@ -89,30 +89,30 @@
         font-size: 18px;
     }
     .banner-cookie {
-        left: 1.25em;
+        left: 1.25rem;
     }
 }
 
 @media screen and (min-width: 1440px) {
-    .background-cookies {
-        font-size: 19px;
+    html {
+        font-size: 22px;
     }
 }
 
 @media screen and (min-width: 1920px) {
-    .background-cookies {
-        font-size: 25px;
+    html {
+        font-size: 22px;
     }
 }
 
 @media screen and (min-width: 2560px) {
-    .background-cookies {
-        font-size: 34px;
+    html {
+        font-size: 30px;
     }
 }
 
 @media screen and (min-width: 3840px) {
-    .background-cookies {
-        font-size: 51px;
+    html {
+        font-size: 45px;
     }
 }

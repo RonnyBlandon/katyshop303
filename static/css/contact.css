@@ -16,33 +16,33 @@
 /*Form of Contact*/
 
 .form {
-    padding: 0.3125em 0.9375em;
+    padding: 0.3125rem 0.9375rem;
     display: flex;
     flex-direction: column;
     text-align: center;
-    row-gap: 0.5em;
-    margin: 2em 0em;
+    row-gap: 0.5rem;
+    margin: 2rem 0rem;
     background-color: #fffc;
-    border: 0.125em solid #090;
-    border-radius: 1em;
+    border: 0.125rem solid #090;
+    border-radius: 1rem;
 }
 .form h3 {
     text-decoration: underline;
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 .form p {
-    padding: 1em 0em;
+    padding: 1rem 0rem;
     background-color: #ddd;
 }
 .form__input, .form__input--size, .form__input--submit {
     width: 100%;
-    margin: 0.3125em 0em;
-    padding: 0.3125em 0em;
-    font-size: 1.125em;
+    margin: 0.3125rem 0rem;
+    padding: 0.3125rem 0rem;
+    font-size: 1.125rem;
     background-color: transparent;
     border: none;
     outline: none;
-    border-bottom: 0.125em solid var(--color-form);
+    border-bottom: 0.125rem solid var(--color-form);
     color: #000;
     align-self: center;
 }
@@ -51,26 +51,26 @@
 }
 .form__input:focus, .form__input--size:focus {
     background: linear-gradient(to bottom, #eee, #ddd);
-    border-bottom: 0.125em solid #44f;
+    border-bottom: 0.125rem solid #44f;
 }
 .form__input-container {
     width: 100%;
-    margin: 0em 0.625em;
+    margin: 0rem 0.625rem;
     display: flex;
-    column-gap: 0.9375em;
+    column-gap: 0.9375rem;
     align-self: center;
 }
 .form textarea {
-    height: 8.75em;
+    height: 8.75rem;
     resize: none;
 }
 .form__input--submit {
-    margin: 0.625em;
-    padding: 0.625em 0em;
+    margin: 0.625rem;
+    padding: 0.625rem 0rem;
     background-color: var(--color-form);
     border: none;
     color: #fff;
-    box-shadow: 0.125em 0.125em 0em #000;
+    box-shadow: 0.125rem 0.125rem 0rem #000;
 }
 .form__input--submit:hover {
     background-color: #00f9;
@@ -90,44 +90,13 @@
     /*Form of Contact*/
     .form {
         width: 50%;
-        padding: 0.625em 1.5625em;
+        padding: 0.625rem 1.5625rem;
     }
     .form__info p, .form p {
         border: none;
-        font-size: 1.125em;
+        font-size: 1.125rem;
     }
     .form__input, .form__input--size, .form__input--submit {
-        font-size: 1.125em;
-    }
-}
-
-@media screen and (min-width: 1440px) {
-    /*Informacion de contacto*/
-    .box-contact {
-        font-size: 17px;
-    }
-}
-
-
-@media screen and (min-width: 1920px){
-    /*Informacion de contacto*/
-    .box-contact {
-        font-size: 22px;
-    }
-}
-
-
-@media screen and (min-width: 2560px){
-    /*Informacion de contacto*/
-    .box-contact {
-        font-size: 30px;
-    }
-}
-
-
-@media screen and (min-width: 3840px){
-    /*Informacion de contacto*/
-    .box-contact {
-        font-size: 45px;
+        font-size: 1.125rem;
     }
 }

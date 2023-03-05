@@ -5,23 +5,23 @@
     min-height: 75vh;
 }
 .box-thanks {
-    margin: 2em;
-    padding: 0.8em 0.5em;
+    margin: 2rem;
+    padding: 0.8rem 0.5rem;
     background-color: #55f;
     color: #fff;
     text-align: center;
     border-radius: 0.4rem;
 }
 .box-thanks p {
-    padding: 0.4em 0em;
-    font-size: 1.1em;
+    padding: 0.4rem 0rem;
+    font-size: 1.1rem;
     font-weight: 600;
 }
 .box-thanks a {
-    padding: 0.5em 1em;
+    padding: 0.5rem 1rem;
     background-color: #3f3;
     color: #000;
-    border-radius: 0.4em;
+    border-radius: 0.4rem;
     text-decoration: none;
     font-weight: 600;
 }
@@ -32,10 +32,10 @@
         width: 80%;
     }
     .box-thanks p {
-        padding: 1em 0em;
+        padding: 1rem 0rem;
     }
     .box-thanks a {
-        font-size: 1.1em;
+        font-size: 1.1rem;
     }
 }
 @media screen and (min-width: 1024px){

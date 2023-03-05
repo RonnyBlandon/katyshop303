@@ -1,0 +1,40 @@
+/* Here are all the styles of the store sidebar pages */
+
+/* bootstrap classes */
+.dropdown-menu {
+    right: 0;
+}
+
+/* own classes */
+/* sidebar of store */
+.box-sidebar {
+    background-color: #0d0;
+    text-align: right;
+    border-top: 0.125rem solid #000;
+    border-bottom: 0.125rem solid #000;
+}
+.btn-dropdown {
+    margin: 0.3rem 0rem;
+}
+.store-sidebar {
+    display: none;
+}
+.store-sidebar li{
+    font-size: 0.875rem;
+}
+.title-sidebar {
+    font-size: 1.75rem;
+}
+
+@media screen and (min-width: 768px) {
+    /* own classes */
+    .box-sidebar {
+        border-radius: 1rem;
+    } 
+    .btn-dropdown {
+        display: none;
+    }
+    .store-sidebar {
+        display: block;
+    }
+}

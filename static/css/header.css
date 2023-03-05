@@ -4,7 +4,7 @@
 }
 .cart-shopping {
     display: block;
-    width: 1.5em;
+    width: 1.5rem;
 }
 
 /* alert messages */
@@ -12,33 +12,33 @@
     width: fit-content;
     text-align: center;
     margin: auto;
-    padding: 0em;
+    padding: 0rem;
     list-style: none;
 }
 .success, .info, .error, .warning {
-    margin: 0.5em 0em;
-    padding: 0.625em 1.25em;
+    margin: 0.5rem 0rem;
+    padding: 0.625rem 1.25rem;
     background-color: #0f0;
     color: #070;
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 600;
-    border: 0.125em solid #070;
-    border-radius: 0.8em;
+    border: 0.125rem solid #070;
+    border-radius: 0.8rem;
 }
 .info {
     background-color: #ccf;
     color: #00f;
-    border: 0.125em solid #00f;
+    border: 0.125rem solid #00f;
 }
 .error {
     background-color: #f00;
     color: #fff;
-    border: 0.125em solid #700;
+    border: 0.125rem solid #700;
 }
 .warning {
     background-color: #ff0;
     color: #f00;
-    border: 0.125em solid #f00;
+    border: 0.125rem solid #f00;
 }
 
 /*MEDIA QUERY*/
@@ -54,30 +54,5 @@
         width: 30%;
     }
 }
-@media screen and (min-width: 1440px) {
-    body {
-        font-size: 18px;
-    }
-}
-@media screen and (min-width: 1920px) {
-    body {
-        font-size: 22px;
-    }
-}
-@media screen and (min-width: 2560px) {
-    body {
-        font-size: 30px;
-    }
-    .input-search {
-        font-size: 1em;
-    }
-    .btn-search {
-        font-size: 1em;
-    }
-}
-@media screen and (min-width: 3840px) {
-    body {
-        font-size: 45px;
-    }
-}
+
 

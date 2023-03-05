@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} user-dashboard {% endblock title %}
+
+{% block css %} {% static 'css/store.css' %} {% endblock css %}
+{% block css2 %} {% static 'css/store-sidebar.css' %} {% endblock css2 %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="box-store col-lg-10 d-md-flex flex-md-row-reverse justify-content-center m-auto">
+    <!--Store Side bar-->
+    {% include 'includes/store-sidebar.html' %}
+
+    <!--Products of store-->
+    <div class="container-fluid mt-3 d-flex flex-column align-content-center row-gap-3">
+        <div class="card d-flex flex-row align-items-center border-info border-2">
+            <img src="https://katyshop303.com/wp-content/uploads/2021/03/ittK9pM0MSkLkeWX.jpg"
+                class="own-card-img card-img-top" alt="...">
+            <div class="card-body">
+                <h6 class="card-title">TRUVISION GEN2 + TruWeight & Energy 30-day supply Green only</h6>
+                <p class="card-subtitle text-success"><strong>$65.97</strong></p>
+                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+        <div class="card d-flex flex-row align-items-center border-info border-2">
+            <img src="https://katyshop303.com/wp-content/uploads/2021/04/s-l1600-5.jpg"
+                class="own-card-img card-img-top" alt="...">
+            <div class="card-body">
+                <h6 class="card-title">New Truvy TruVision Health Truvy Weight Loss Combo 1 Month (30 Day) Truvy Pack
+                </h6>
+                <p class="card-subtitle text-success"><strong>$87.93</strong></p>
+                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+        <div class="card d-flex flex-row align-items-center border-info border-2">
+            <img src="https://katyshop303.com/wp-content/uploads/2022/03/photo_2022-03-27_13-59-46.jpg"
+                class="own-card-img card-img-top" alt="...">
+            <div class="card-body">
+                <h6 class="card-title">SkinnyFit SKINNY GREENS Juice Superfood Powder Green Apple 30 Servings Fit</h6>
+                <p class="card-subtitle text-success"><strong>$32.87</strong></p>
+                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+        <div class="card d-flex flex-row align-items-center border-info border-2">
+            <img src="https://katyshop303.com/wp-content/uploads/2019/11/photo_2019-11-29_19-43-42.jpg"
+                class="own-card-img card-img-top" alt="...">
+            <div class="card-body">
+                <h6 class="card-title">Isagenix Isalean Strawberry Cream Shake - 1 Canister - Exp 1/2022 - Free Ship
+                </h6>
+                <p class="card-subtitle text-success"><strong>$39.97</strong></p>
+                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+        <div class="card d-flex flex-row align-items-center border-info border-2">
+            <img src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg"
+                class="own-card-img card-img-top" alt="...">
+            <div class="card-body">
+                <h6 class="card-title">New Truvy TruVision Health Truvy Weight Loss Combo 1 Month (30 Day) Truvy Pack
+                </h6>
+                <p class="card-subtitle text-success"><strong>$129.87</strong></p>
+                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+            </div>
+        </div>
+        
+
+        <!--Pagination of store-->
+        <nav class="mx-auto" aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                <li class="page-item"><a class="page-link" href="#">7</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+<script src="{% static 'js/store-sidebar.js' %}"></script>
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

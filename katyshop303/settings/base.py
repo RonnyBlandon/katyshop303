@@ -49,6 +49,7 @@ DJANGO_APPS = (
 LOCAL_APPS = (
     'applications.user',
     'applications.home',
+    'applications.product',
 )
 THIRD_PARTY_APPS = (
     'captcha',
