@@ -62,3 +62,16 @@ class AddressManager(models.Manager):
             postal_code=postal_code
         )
         return address
+    
+    def create_address_user(self, user, country, state, city, address_1, address_2, postal_code):
+        address = self.model(
+            country=country,
+            state=state,
+            city=city,
+            address_1=address_1,
+            address_2=address_2,
+            postal_code=postal_code,
+            id_user=user
+        )
+        address.save(using=self.db)
+        return address

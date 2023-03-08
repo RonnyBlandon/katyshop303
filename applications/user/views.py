@@ -83,25 +83,38 @@ class UserAddressView(LoginRequiredMixin, FormView):
 
     def get_initial(self):
         initial = super().get_initial()
-        address = Address.objects.get(id_user=self.request.user.id)
-        initial['country'] = address.country.name
-        initial['state'] = address.state
-        initial['city'] = address.city
-        initial['address_1'] = address.address_1
-        initial['address_2'] = address.address_2
-        initial['postal_code'] = address.postal_code
+        address = Address.objects.filter(id_user=self.request.user.id)
+        if address:
+            initial['country'] = address[0].country.name
+            initial['state'] = address[0].state
+            initial['city'] = address[0].city
+            initial['address_1'] = address[0].address_1
+            initial['address_2'] = address[0].address_2
+            initial['postal_code'] = address[0].postal_code
+        
         return initial
+
+    def form_invalid(self, form):
+        print('Entro aqui en form invalid')
+        return super().form_invalid(form)    
 
     def form_valid(self, form):
         country = Country.objects.get(name=form.cleaned_data['country'])
         state = form.cleaned_data['state']
-        if form.cleaned_data['state']:
+        if state:
             if not country == "Puerto Rico":
                 state = State.objects.get(name=state)
 
-        Address.objects.update_address_user(self.request.user.id, country, state, form.cleaned_data['city'], 
+        if not Address.objects.filter(id_user=self.request.user.id):
+            Address.objects.create_address_user(self.request.user, country, state, form.cleaned_data['city'], 
             form.cleaned_data['address_1'], form.cleaned_data['address_2'], form.cleaned_data['postal_code']
         )
+        else:
+            Address.objects.update_address_user(self.request.user.id, country, state, form.cleaned_data['city'], 
+                form.cleaned_data['address_1'], form.cleaned_data['address_2'], form.cleaned_data['postal_code']
+            )
+
+
 
         messages.add_message(request=self.request, level=messages.SUCCESS, message='Los datos se han guardado con éxito.')
         return super(UserAddressView, self).form_valid(form)
