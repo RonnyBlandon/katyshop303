@@ -92,11 +92,7 @@ class UserAddressView(LoginRequiredMixin, FormView):
             initial['address_2'] = address[0].address_2
             initial['postal_code'] = address[0].postal_code
         
-        return initial
-
-    def form_invalid(self, form):
-        print('Entro aqui en form invalid')
-        return super().form_invalid(form)    
+        return initial  
 
     def form_valid(self, form):
         country = Country.objects.get(name=form.cleaned_data['country'])

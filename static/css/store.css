@@ -9,17 +9,6 @@
     font-size: 1rem;
 }
 
-/* own classes */
-.own-card-img {
-    width: 35%;
-    padding: 0rem 0rem 0rem 0.15rem;
-}
-.btn-add-cart {
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-}
-
-
 @media screen and (min-width: 1024px) {
     /* bootstrap classes */
     .card-title {

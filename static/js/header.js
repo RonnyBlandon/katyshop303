@@ -30,3 +30,28 @@ switch (true) {
         linkMenuPage.classList.add("active");
         break;
 };
+
+
+/* We show and hide the mini cart */
+const miniCart = document.querySelector('.container-cart');
+const buttonCart = document.querySelector('.cart');
+const boxCart = document.querySelector('.box-cart');
+const buttonCartClose = document.querySelector('.mini-cart-close');
+// Mobile devices
+buttonCart.addEventListener('touchend', (event) => {
+    event.preventDefault()
+    miniCart.classList.add('mini-cart-show');
+});
+buttonCartClose.addEventListener('click', () => {
+    miniCart.classList.remove('mini-cart-show');
+})
+document.addEventListener('click', (event) => {
+    const isClickInside = boxCart.contains(event.target) || buttonCart.contains(event.target);
+    if (!isClickInside) {
+      miniCart.classList.remove('mini-cart-show');
+    }
+});
+// Desktops and laptops
+buttonCart.addEventListener('mouseover', () => {
+    miniCart.classList.add('mini-cart-show');
+});

@@ -36,14 +36,3 @@ function showHideInputState() {
 if (selectedCountry) {
 	selectedCountry.addEventListener('change', showHideInputState);
 }
-
-
-const re = /^(\/my-account\/)([\s\S]*\/)$/;
-const text = "/my-account/profile/";
-
-if (re.test(text)) {
-   console.log("Es correcto");
-}
-else {
-   console.log("Es incorrecto");
-}

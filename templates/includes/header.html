@@ -4,7 +4,8 @@
 
 <nav class="menu navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container-fluid">
-		<a class="navbar-logo me-4" href="{% url 'home_app:home' %}"><img src="{% static 'img/logo.png' %}" alt="Logo"></a>
+		<a class="navbar-logo me-4" href="{% url 'home_app:home' %}"><img src="{% static 'img/logo.png' %}"
+				alt="Logo"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -12,7 +13,8 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="nav nav-pills me-auto mb-2 mb-lg-0">
 				<li class="nav-item m-1">
-					<a class="menu-page1 nav-link" id="start" aria-current="page" href="{% url 'home_app:home' %}">Inicio</a>
+					<a class="menu-page1 nav-link" id="start" aria-current="page"
+						href="{% url 'home_app:home' %}">Inicio</a>
 				</li>
 				<li class="nav-item m-1">
 					<a class="menu-page2 nav-link" id="store" href="{% url 'product_app:store' %}">Tienda</a>
@@ -30,12 +32,12 @@
 					<a class="nav-link" id="my-account" href="{% url 'user_app:user_login' %}">Mi cuenta</a>
 				</li>
 				{% endif %}
-				
+
 				<li class="nav-item m-1">
 					<a class="nav-link" id="points-rules" href="{% url 'home_app:points_rules' %}">Reglas de puntos</a>
 				</li>
 				<li class="nav-item m-1">
-					<a class="nav-link position-relative" href="#">
+					<a class="cart nav-link position-relative" href="">
 						<img class="cart-shopping" src="{% static 'img/cart_shopping.svg' %}" alt="cart">
 						<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 							99
@@ -50,6 +52,69 @@
 		</div>
 	</div>
 </nav>
+
+<!--List Cart-->
+<div class="container-cart">
+	<div class="box-cart">
+		<div class="d-flex justify-content-center">
+			<h2>Carrito</h2>
+			<img class="mini-cart-close position-absolute" src="{% static 'img/x-close2.svg' %}" alt="close cart">
+		</div>
+		<ul>
+			<li
+				class="box-cart__li d-flex border-bottom my-1 justify-content-center align-items-center">
+				<a href="#"><img class="img-product-cart"
+						src="https://katyshop303.com/wp-content/uploads/2021/04/s-l1600-5.jpg"
+						alt="product"></a>
+				<div class="box-cart__div">
+					<a class="d-block" href="#">New Truvy TruVision Health Truvy Weight Loss
+						Combo 1 Month (30 Day)
+						Truvy</a>
+					<span class="text-success">1 x $87.93</span>
+				</div>
+				<img class="product-remove" src="{% static 'img/x-circle.svg' %}"
+					alt="product_remove">
+			</li>
+			<li
+				class="box-cart__li d-flex border-bottom my-1 justify-content-center align-items-center">
+				<a href="#"><img class="img-product-cart"
+						src="https://katyshop303.com/wp-content/uploads/2021/03/ittK9pM0MSkLkeWX.jpg"
+						alt="product"></a>
+				<div class="box-cart__div">
+					<a class="d-block" href="#">TRUVISION GEN2 + TruWeight & Energy 30-day
+						supply Green only</a>
+					<span class="text-success">1 x $87.93</span>
+				</div>
+				<img class="product-remove" src="{% static 'img/x-circle.svg' %}"
+					alt="product_remove">
+			</li>
+			<li
+				class="box-cart__li d-flex border-bottom my-1 justify-content-center align-items-center">
+				<a href="#"><img class="img-product-cart"
+						src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg"
+						alt="product"></a>
+				<div class="box-cart__div">
+					<a class="d-block" href="#">New Truvy TruVision Health Truvy Weight Loss
+						Combo 1 Month (30 Day)
+						Truvy Pack</a>
+					<span class="text-success">1 x $87.93</span>
+				</div>
+				<img class="product-remove" src="{% static 'img/x-circle.svg' %}"
+					alt="product_remove">
+			</li>
+		</ul>
+		<p
+			class="subtotal-preview-cart p-3 d-flex justify-content-between align-items-center bg-body-secondary m-0 border-top border-bottom">
+			<strong>SUBTOTAL:</strong>
+			<strong class="text-success">$ 1257.98</strong>
+		</p>
+		<div class="btn-cart-or-checkout py-3 d-flex justify-content-around">
+			<a class="view-cart" href=""><strong>VER CARRO</strong></a>
+			<a class="checkout-mini-cart" href=""><strong>PAGAR</strong></a>
+		</div>
+	</div>
+</div>
+
 
 <script src="{% static 'js/bootstrap_js/bootstrap.js' %}"></script>
 <script src="{% static 'js/header.js' %}"></script>
