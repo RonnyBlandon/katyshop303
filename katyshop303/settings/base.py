@@ -50,6 +50,7 @@ LOCAL_APPS = (
     'applications.user',
     'applications.home',
     'applications.product',
+    'applications.checkout',
 )
 THIRD_PARTY_APPS = (
     'captcha',

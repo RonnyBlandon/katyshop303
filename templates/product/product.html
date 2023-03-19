@@ -1,40 +1,33 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} user-dashboard {% endblock title %}
+{% block title %} product {% endblock title %}
 
-{% block css %} {% static 'css/user-menu.css' %} {% endblock css %}
-{% block css2 %} {% static 'css/my-account.css' %} {% endblock css2 %}
+{% block css %} {% static 'css/product.css' %} {% endblock css %}
 
 {% block content %}
 {% include 'includes/header.html' %}
 
-<div id="carouselExampleIndicators" class="carousel slide">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+<div class="box-product container-fluid">
+	<div class="box-carousel"></div>
+		<div class="carousel">
+			<img class="img-main" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg" alt="image main">
+			<div class="btn-prev-next">
+				<img class="btn-prev" src="{% static 'img/arrow-left-solid.svg' %}" alt="button previous">
+				<img class="btn-next" src="{% static 'img/arrow-right-solid.svg' %}" alt="button next">
+			</div>
+		</div>
+		<div class="list-img-product">
+			<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg" alt="image main">
+			<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2021/09/photo_2021-09-19_21-38-34.jpg" alt="image secondary 1">
+			<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2021/04/Truvision.jpg" alt="image secondary 2">
+			<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-1.jpg" alt="image secondary 3">
+			<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2020/06/71Ep4OUzTDL._AC_SX425_.jpg" alt="image secondary 4">
+		</div>
+	</div>
+</div>
+
+<script src="{% static 'js/product.js' %}"></script>
 
 {% include 'includes/footer.html' %}
 {% endblock content %}

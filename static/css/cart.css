@@ -1,0 +1,207 @@
+/* own classes */
+/* box process to payment page */
+.container-cart {
+    min-height: 72vh;
+}
+/* information on points to be earned */
+.info-earn-points {
+    height: fit-content;
+    margin-bottom: 1rem;
+    background-color: #00f3;
+}
+.info-earn-points img {
+    width: 1rem;
+    margin-right: 0.3rem;
+}
+.info-earn-points p {
+    margin: 0;
+    padding: 0.3rem;
+    font-size: 0.8125rem;
+    font-family: Verdana;
+}
+/* box pay */
+.proceed-to-pay {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #ff09;
+    border: 0.1rem solid #0006;
+    border-radius: 1rem;
+    text-align: center;
+}
+.proceed-to-pay p {
+    font-size: 1.1rem;
+}
+.proceed-to-pay span {
+    color: #080;
+    font-weight: 600;
+}
+.proceed-to-pay a {
+    padding: 0.375rem 1.8rem;
+    font-size: 1.1rem;
+}
+/* Form Coupon */
+#form-coupon {
+    margin-bottom: 1rem;
+    background-color: #1DDDFF;
+    border-radius: 0.7rem;
+}
+.input-coupon {
+    display: inline;
+    width: 13.5rem;
+}
+/* list products in cart */
+.list-cart {
+    display: flex;
+    column-gap: 0.2rem;
+    margin: 0.5rem 0rem;
+    padding: 0.3rem;
+    background-color: #eee;
+}
+.link-img-product {
+    width: fit-content;
+}
+.img-product-cart {
+    min-width: 6rem;
+    max-width: 6rem;
+    height: 6rem;
+}
+.img-product-cart:active {
+    outline: 0.1rem solid #00f;
+}
+.content-product-cart p {
+    margin: 0rem;
+}
+.link-product {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* ensures that text is broken into vertical lines */
+    -webkit-line-clamp: 2;
+    height: 2.5rem;
+    line-height: 1.25rem;
+    font-size: 0.9375rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-image: none;
+    color: #000;
+    text-decoration: none;
+}
+.link-product:active {
+    color: #00f;
+}
+.stock-cart {
+    font-size: 0.81rem;
+}
+.product-quantity {
+    height: fit-content;
+    padding: 0rem 0rem 0rem 0.4rem;
+}
+.amount-product {
+    width: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+.increase-product,
+.decrease-product {
+    padding: 0rem 0.5rem;
+    font-size: 1.3rem;
+    border: 0.03rem solid #000;
+    border-radius: 0.5rem;
+    box-shadow: 0.05rem 0.05rem 0.15rem #000;
+    cursor: pointer;
+}
+.increase-product:active,
+.decrease-product:active {
+    box-shadow: none;
+}
+.delete-product-cart {
+    display: block;
+    height: fit-content;
+    margin-top: 0.8rem;
+    margin-left: 0.4rem;
+    padding: 0.3rem 1rem;
+    background-image: linear-gradient(to bottom right, #ccc, #eee);
+    text-decoration: none;
+    color: #000;
+    box-shadow: 0.05rem 0.05rem 0.2rem #000;
+    border-radius: 0.7rem;
+    cursor: pointer;
+}
+.delete-product-cart:active {
+    box-shadow: none;
+}
+
+@media screen and (min-width: 360px) {
+    /* own classes */
+    /* Form Coupon */
+    .input-coupon {
+        margin-right: 1rem;
+    }
+    /* list products in cart */
+    .delete-product-cart {
+        margin-top: 0rem;
+        margin-left: 1.5rem;
+        padding: 0.4rem 0.5rem;
+    }
+}
+
+@media screen and (min-width: 425px) {
+    /* own classes */
+    /* list products in cart */
+    .img-product-cart {
+        min-width: 8rem;
+        max-width: 8rem;
+        height: 8rem;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    /* own classes */
+    /* list products in cart */
+    .link-product {
+        display: inline;
+        height: fit-content;
+        line-height: normal;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        white-space: normal;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    /* own classes */
+    /* information on points to be earned */
+    .info-earn-points {
+        margin-bottom: 1rem;
+    }
+    .info-earn-points p {
+        font-size: 0.75rem;
+    }
+    /* box pay */
+    .box-proceed-to-pay {
+        position: sticky;
+        top: 3rem;
+    }
+    .proceed-to-pay {
+        position: absolute;
+        top: -3rem;
+        right: -0.4rem;
+    }
+    /* list products in cart */
+    .container-cart {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    /* own classes */
+    /* list products in cart */
+    .img-product-cart {
+        width: 9.5rem;
+        height: 8rem;
+    }
+    /* box pay */
+    .proceed-to-pay {
+        right: 0;
+    }
+}

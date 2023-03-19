@@ -33,25 +33,38 @@ switch (true) {
 
 
 /* We show and hide the mini cart */
-const miniCart = document.querySelector('.container-cart');
+const miniCart = document.querySelector('.container-mini-cart');
 const buttonCart = document.querySelector('.cart');
 const boxCart = document.querySelector('.box-cart');
 const buttonCartClose = document.querySelector('.mini-cart-close');
 // Mobile devices
 buttonCart.addEventListener('touchend', (event) => {
-    event.preventDefault()
-    miniCart.classList.add('mini-cart-show');
+    if (window.location.pathname != '/cart/') {
+        event.preventDefault()
+        miniCart.classList.add('mini-cart-show');
+    };
 });
 buttonCartClose.addEventListener('click', () => {
     miniCart.classList.remove('mini-cart-show');
-})
-document.addEventListener('click', (event) => {
-    const isClickInside = boxCart.contains(event.target) || buttonCart.contains(event.target);
-    if (!isClickInside) {
-      miniCart.classList.remove('mini-cart-show');
+});
+/* desktops and laptops */
+buttonCart.addEventListener('mouseover', () => {
+    // We check if the mobile close button of the mini cart is present with offsetParent to know if we are 
+    // on a desktop screen
+    if (!buttonCartClose.offsetParent && window.location.pathname != '/cart/') {
+        miniCart.classList.add('mini-cart-show');
     }
 });
-// Desktops and laptops
-buttonCart.addEventListener('mouseover', () => {
-    miniCart.classList.add('mini-cart-show');
+miniCart.addEventListener('mouseover', () => {
+    // We check if the mobile close button of the mini cart is present with offsetParent to know if we are 
+    // on a desktop screen
+    if (!miniCart.offsetParent && window.location.pathname != '/cart/') {
+        miniCart.classList.add('mini-cart-show');
+    }
+});
+buttonCart.addEventListener('mouseout', () => {
+    miniCart.classList.remove('mini-cart-show');
+});
+miniCart.addEventListener('mouseout', () => {
+    miniCart.classList.remove('mini-cart-show');
 });

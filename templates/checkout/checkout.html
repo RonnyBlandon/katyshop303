@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} cart {% endblock title %}
+
+{% block css %} {% static 'css/cart.css' %} {% endblock css %}
+{% block css2 %} {% static 'css/checkout.css' %} {% endblock css2 %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="container-checkout container-fluid mt-2 col-md-10 col-lg-12">
+    <!-- Section information earn points-->
+    <div class="info-earn-points col-lg-7">
+        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">COMPLETA TU PEDIDO Y GANA
+            <strong>430</strong>
+            PUNTOS PARA UN DESCUENTO EN UNA FUTURA COMPRA.
+        </p>
+    </div>
+    <!-- Section points discount-->
+    <div class="info-earn-points col-lg-7 d-flex align-items-center flex-wrap">
+        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">USE <strong>333</strong> PUNTOS
+            PARA UN <strong class="text-success">$9.49</strong> DE DESCUENTO EN ESTE PEDIDO!</p>
+        <button class="btn btn-primary ms-1" id="btn-discount-points">Aplicar</button>
+    </div>
+    <!-- Section coupon-->
+    <form class="col-md-7 p-2 d-flex justify-content-center" id="form-coupon" method="post" action=""> {% csrf_token %}
+        <input class="input-coupon form-control" type="text" placeholder="Cupon">
+        <button class="btn btn-primary ms-sm-3" type="submit">Aplicar</button>
+    </form>
+    <!-- Section shipping address -->
+
+    <div class="box-shipping p-2 col-lg-7">
+        <h4 class="text-center">Dirección de envío</h4>
+        <div class="shipping p-md-2 d-flex flex-wrap gap-3">
+            <div class="col-12 col-lg-5">
+                {{form.country.erros}}
+                <label class="form-label">Pais:</label>
+                {{ form.country }}
+            </div>
+            <div class="div-select-state col-12 col-lg-5">
+                {{form.state.errors}}
+                <label class="form-label">Estado:</label>
+                {{ form.state }}
+            </div>
+            <div class="col-12 col-lg-5">
+                <label id="label-city" class="form-label">Ciudad:</label>
+                {{form.city}}
+            </div>
+            <div class="col-12 col-lg-8">
+                <label class="form-label">Dirección:</label>
+                {{form.address_1}}
+                {{form.address_2}}
+            </div>
+            <div class="col-12 col-lg-5">
+                {{form.postal_code.errors}}
+                <label class="form-label">Código Postal:</label>
+                {{form.postal_code}}
+            </div>
+        </div>
+    </div>
+    <!--Section Additional Information-->
+    <div class="box-additional-info p-2 col-lg-7">
+        <h4 class="text-center">Información Adicional</h4>
+        <label class="form-label">Notas de pedido: (opcional)</label>
+        {{ form.additional_info }}
+    </div>
+    <!--Section Payment-->
+    <div class="payment-method col-lg-4">
+        <div class="details-payment me-0">
+            <p class="d-flex align-items-center justify-content-between m-0">
+                <strong>Subtotal(productos 929)</strong><span>$430.00</span>
+            </p>
+            <p class="d-flex align-items-center justify-content-between m-0"><strong>Total</strong><span
+                    class="fw-bold">$430.00</span></p>
+        </div>
+
+        <form id="form-payment" action="" method="post"> {% csrf_token %}
+            <h3 class="text-center">Metodos de pago</h3>
+            <input type="hidden" name="type" value="first-payment">
+            <label class="label-radio-payment">
+                {{ form.payment_method }}
+            </label>
+            <label class="input-checkbox">
+                <h6>
+                    <input type="checkbox" name="terms-and-conditions" value="True" required>
+                    He leído y estoy de acuerdo con los <a href="{% url 'home_app:terms' %}">términos y condiciones</a>
+                    de Katyshop303.
+                </h6>
+            </label>
+            <button class="button-payment" type="submit">Realizar pago</button>
+        </form>
+    </div>
+</div>
+
+<script type="module" src="{% static 'js/checkout.js' %}"></script>
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

@@ -1,0 +1,110 @@
+/* bootstrap classes */
+.container-fluid {
+    padding: 0rem 0.55rem;
+}
+.form-control, .form-select {
+    border: 0.07rem solid #000;
+}
+
+/* own classes */
+/* Section Address */
+.box-shipping {
+    margin-bottom: 1.3rem;
+    box-shadow: 0rem 0rem 0.4rem #000;
+}
+
+/* Section Additiona Information */
+.box-additional-info {
+    margin-bottom: 1.3rem;
+    box-shadow: 0rem 0rem 0.4rem #000;
+}
+.input-additional-info {
+    width: 100%;
+    height: 7rem;
+    resize: none;
+}
+
+/* Section Payment */
+/* Details Payment */
+.details-payment {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #0eeeff;
+    border-radius: 1rem;
+}
+.details-payment strong {
+    width: 70%;
+    padding: 0.4rem 0.7rem;
+    background-color: #eee;
+    font-weight: 600;
+}
+.details-payment span {
+    color: #0b0;
+}
+/* Form Payment */
+#form-payment {
+    margin: 0.7rem 0rem 1rem 0rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #fff;
+    box-shadow: 0rem 0rem 0.4rem #044;
+}
+.label-radio-payment {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 0rem;
+    background-color: #eee;
+    color: #05f;
+    font-weight: 600;
+}
+.label-radio-payment input[type="radio"] {
+    display: inline;
+    width: 1rem;
+    height: 1rem;
+    margin: 0rem 0.7rem;
+    background-color: #00f;
+}
+.input-radio-checked {
+    background-color: #ddd;
+}
+.input-checkbox{
+    display: block;
+    margin: 1rem 0rem 0rem 0rem;
+    text-align: center;
+}
+.input-checkbox input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0rem 0.5rem 0rem 0rem;
+}
+.button-payment {
+    display: block;
+    width: fit-content;
+    margin: 0.9rem auto 0.6rem auto;
+    padding: 0.4rem 1.5rem;
+    background-color: #08f;
+    border: 0.125rem solid #00f;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+.button-payment:hover {
+    cursor: pointer;
+    background-color: #04f;
+}
+.button-payment:active {
+    background-color: #0007;
+    text-decoration: underline;
+}
+
+
+@media screen and (min-width: 1024px) {
+    /* Own classes */
+    /* Section Paymente */
+    .payment-method {
+        position: absolute;
+        top: 6.83rem;
+        right: 2.5rem;
+    }
+}

@@ -8,7 +8,7 @@ class Category(TimeStampedModel, models.Model):
         return str(self.id)+' '+self.name
 
 
-class Product(models.Model):
+class Product(TimeStampedModel,models.Model):
     name = models.CharField('Titulo', max_length=50)
     description = models.TextField('Description', blank=True)
     price = models.DecimalField('Precio', max_digits=7, decimal_places=2)

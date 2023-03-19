@@ -2,25 +2,81 @@
 
 /* bootstrap classes */
 .card-subtitle {
-    font-size: 1.13rem;
+    display: inline;
+    font-size: 1.25rem;
 }
 .page-link {
     padding: 0.5rem 0.75rem;
     font-size: 1rem;
 }
 
+/* own classes */
+.own-card-img {
+    min-width: 6.375rem;
+    height: 6.375rem;
+}
+.own-card-img:active {
+    outline: 0.08rem solid #00f;
+}
+.link-title-product {
+    display: block;
+    color: #000;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.link-title-product:active {
+    color: #00f;
+}
+.stock-store {
+    display: inline;
+    margin-left: 0.2rem;
+    font-size: 0.8125rem;
+    color: #0b0;
+}
+.btn-add-cart {
+    padding: 0.2rem 0.4rem;
+}
+
+
+@media screen and (min-width: 576px) {
+    /* own classes */
+    .btn-add-cart {
+        display: block;
+        margin-right: 70%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    /* own classes */
+    .own-card-img {
+        min-width: 8rem;
+        height: 8rem;
+    }
+    .btn-add-cart {
+        margin-right: 55%;
+    }
+}
+
 @media screen and (min-width: 1024px) {
     /* bootstrap classes */
-    .card-title {
-        font-size: 1.25rem;
-    }
     .card-subtitle {
         font-size: 1.5rem;
     }
 
     /* own classes */
     .own-card-img {
-        width: 12.5rem;
-        height: 12.5rem;
+        width: 10rem;
+        height: 10rem;
+    }
+    .link-title-product {
+        font-size: 1.2rem;
+    }
+    .stock-store {
+        font-size: 1rem;
+    }
+    .btn-add-cart {
+        margin-top: 0.2rem;
+        margin-right: 68%;
     }
 }

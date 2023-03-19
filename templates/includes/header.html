@@ -37,7 +37,7 @@
 					<a class="nav-link" id="points-rules" href="{% url 'home_app:points_rules' %}">Reglas de puntos</a>
 				</li>
 				<li class="nav-item m-1">
-					<a class="cart nav-link position-relative" href="">
+					<a class="cart nav-link position-relative" href="{% url 'checkout_app:cart' %}">
 						<img class="cart-shopping" src="{% static 'img/cart_shopping.svg' %}" alt="cart">
 						<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 							99
@@ -54,7 +54,7 @@
 </nav>
 
 <!--List Cart-->
-<div class="container-cart">
+<div class="container-mini-cart">
 	<div class="box-cart">
 		<div class="d-flex justify-content-center">
 			<h2>Carrito</h2>
@@ -63,7 +63,7 @@
 		<ul>
 			<li
 				class="box-cart__li d-flex border-bottom my-1 justify-content-center align-items-center">
-				<a href="#"><img class="img-product-cart"
+				<a href="#"><img class="img-product-mini-cart"
 						src="https://katyshop303.com/wp-content/uploads/2021/04/s-l1600-5.jpg"
 						alt="product"></a>
 				<div class="box-cart__div">
@@ -77,7 +77,7 @@
 			</li>
 			<li
 				class="box-cart__li d-flex border-bottom my-1 justify-content-center align-items-center">
-				<a href="#"><img class="img-product-cart"
+				<a href="#"><img class="img-product-mini-cart"
 						src="https://katyshop303.com/wp-content/uploads/2021/03/ittK9pM0MSkLkeWX.jpg"
 						alt="product"></a>
 				<div class="box-cart__div">
@@ -90,7 +90,7 @@
 			</li>
 			<li
 				class="box-cart__li d-flex border-bottom my-1 justify-content-center align-items-center">
-				<a href="#"><img class="img-product-cart"
+				<a href="#"><img class="img-product-mini-cart"
 						src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg"
 						alt="product"></a>
 				<div class="box-cart__div">
@@ -109,8 +109,8 @@
 			<strong class="text-success">$ 1257.98</strong>
 		</p>
 		<div class="btn-cart-or-checkout py-3 d-flex justify-content-around">
-			<a class="view-cart" href=""><strong>VER CARRO</strong></a>
-			<a class="checkout-mini-cart" href=""><strong>PAGAR</strong></a>
+			<a class="view-cart" href="{% url 'checkout_app:cart' %}"><strong>VER CARRO</strong></a>
+			<a class="checkout-mini-cart" href="{% url 'checkout_app:checkout' %}"><strong>PAGAR</strong></a>
 		</div>
 	</div>
 </div>

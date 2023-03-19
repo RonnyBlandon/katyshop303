@@ -13,3 +13,4 @@ class ProductView(DetailView):
     model = Product
     context_object_name = 'product'
 
+
