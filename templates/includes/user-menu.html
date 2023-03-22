@@ -2,14 +2,15 @@
 <!--User menu-->
 
 <div class="nav-user-show">
-    <img src="{% static 'img/user-menu.svg' %}" alt="user menu">
+    <img class="user-menu-show" src="{% static 'img/user-menu.svg' %}" alt="user menu">
+    <h4 class="title-page m-0 text-white">Pedidos</h4>
 </div>
 
 <div class="box-nav-user col-lg-3">
     <div class="nav-user">
         <div class="nav-user__name">
             <img src="{% static 'img/profile.svg' %}" alt="profile">
-            <h5>{{user.name}} {{user.last_name}}</h5>
+            <h5 class="text-white">{{user.name}} {{user.last_name}}</h5>
         </div>
         <li>
             <a class="nav-user__a" href="#" id="user-orders">Pedidos</a>
@@ -32,4 +33,4 @@
     </div>
 </div>
 
-<script src="{% static 'js/user-menu.js' %}"></script>
+<script type="module" src="{% static 'js/user-menu.js' %}"></script>

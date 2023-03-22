@@ -8,25 +8,58 @@
 {% block content %}
 {% include 'includes/header.html' %}
 
-<div class="box-product container-fluid">
-	<div class="box-carousel"></div>
-		<div class="carousel">
-			<img class="img-main" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg" alt="image main">
-			<div class="btn-prev-next">
+<div class="box-product container-fluid d-md-flex flex-column align-items-center justify-content-center">
+	<div class="product p-md-2 d-md-flex justify-content-center">
+		<!--Section Product Image Carousel -->
+		<div class="box-carousel col-lg-5">
+			<div class="carousel mx-auto col-md-11 col-lg-12">
+				<img class="img-main" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg" alt="image main">
 				<img class="btn-prev" src="{% static 'img/arrow-left-solid.svg' %}" alt="button previous">
 				<img class="btn-next" src="{% static 'img/arrow-right-solid.svg' %}" alt="button next">
 			</div>
+			<div class="list-img-product">
+				<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg" alt="image main">
+				<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2021/09/photo_2021-09-19_21-38-34.jpg" alt="image secondary 1">
+				<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2021/04/Truvision.jpg" alt="image secondary 2">
+				<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-1.jpg" alt="image secondary 3">
+				<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2020/06/71Ep4OUzTDL._AC_SX425_.jpg" alt="image secondary 4">
+			</div>
+			<div class="indicator-carousel" id="points"></div>
+			<div class="modal" id="modal">
+				<span class="close">&times;</span>
+				<img class="modal-content" id="img01">
+				<div class="thumbnails">
+					<img class="thumbnail" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg" alt="image main">
+					<img class="thumbnail" src="https://katyshop303.com/wp-content/uploads/2021/09/photo_2021-09-19_21-38-34.jpg" alt="image secondary 1">
+					<img class="thumbnail" src="https://katyshop303.com/wp-content/uploads/2021/04/Truvision.jpg" alt="image secondary 2">
+					<img class="thumbnail" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-1.jpg" alt="image secondary 3">
+					<img class="thumbnail" src="https://katyshop303.com/wp-content/uploads/2020/06/71Ep4OUzTDL._AC_SX425_.jpg" alt="image secondary 4">
+				</div>
+			</div>		  
 		</div>
-		<div class="list-img-product">
-			<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg" alt="image main">
-			<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2021/09/photo_2021-09-19_21-38-34.jpg" alt="image secondary 1">
-			<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2021/04/Truvision.jpg" alt="image secondary 2">
-			<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-1.jpg" alt="image secondary 3">
-			<img class="img-secondary" src="https://katyshop303.com/wp-content/uploads/2020/06/71Ep4OUzTDL._AC_SX425_.jpg" alt="image secondary 4">
+		<!-- Product Body -->
+		<div class="col-md-6 p-md-1">
+			<h3 class="title-product">TRUVISION GEN2 + TruWeight & Energy 30-day supply Green only</h3>
+			<h3 class="base-price"><strong>$65.97</strong></h3>
+			<p class="info-points">¡Cada vez que compres este artículo, recibirá <strong>58</strong> puntos como recompensa!</p>
+			<div class="product-quantity">
+				<button class="decrease-product">-</button>
+				<input type="number" class="amount-product" value="1" min="1" max="10">
+				<button class="increase-product">+</button>
+			</div>
+			<p class="stock-store">Quedan 14 Disponibles</p>
+			<a href="#" class="btn-add-cart mt-4 mb-2 btn btn-primary">Agregar al carrito</a>
+			<h6>Categoria: <strong>Herbalife</strong></h6>
 		</div>
+	</div>
+	<!--Description-->
+	<div class="description my-auto">
+		<h4>Descripción</h4>
+		<textarea name="" id="" cols="30" rows="10"></textarea>
 	</div>
 </div>
 
+<script src="{% static 'js/cart.js' %}"></script>
 <script src="{% static 'js/product.js' %}"></script>
 
 {% include 'includes/footer.html' %}

@@ -1,7 +1,18 @@
+/* own classes */
 .nav-user-show {
-    display: block;
-    width: 12%;
-    margin: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.3rem 0.9rem;
+    background-color: #FF5733;
+    border-top: 0.1rem solid #000;
+    border-bottom: 0.1rem solid #000;
+}
+.user-menu-show {
+    width: 13%;
+    background-color: #fff;
+    border-radius: 0.39rem;
 }
 /* User menu movil*/
 .box-nav-user {
@@ -65,13 +76,21 @@
     border-radius: 1rem;
 }
 
-@media screen and (min-width: 768px) {
-    .nav-user-show {
-        width: 8%;
+@media screen and (min-width: 576px) {
+    /* own classes */
+    .user-menu-show {
+        width: 9%;
+        border-radius: 0.6rem;
     }
 }
-
+@media screen and (min-width: 768px) {
+    /* own classes */
+    .title-page {
+        font-size: 1.7rem;
+    }
+}
 @media screen and (min-width: 992px) {
+    /* own classes */
     /* hide the button that shows the user menu and the button that closes the user menu on small mobiles */
     .nav-user-show, .nav-user-close {
         display: none;
