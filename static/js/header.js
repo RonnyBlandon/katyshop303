@@ -2,6 +2,8 @@
 // We use regular expressions to compare the pathnames
 const start = /^\/$/;
 const store = /^\/store\/$/;
+const category = /^(\/category\/)([\s\S]*\/)$/;
+const product = /^(\/product\/)([\s\S]*\/)$/;
 const contact = /^\/contact\/$/;
 const myAccount = /^(\/my-account\/)([\s\S]*\/)$/;
 const pointsRules = /^\/points-rules\/$/;
@@ -14,6 +16,8 @@ switch (true) {
         linkMenuPage.classList.add("active");
         break;
     case store.test(pathname):
+    case category.test(pathname):
+    case product.test(pathname):
         linkMenuPage = document.getElementById("store")
         linkMenuPage.classList.add("active");
         break;

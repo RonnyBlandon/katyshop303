@@ -10,8 +10,13 @@ urlpatterns = [
         name='store'
         ),
     path(
-        'product/<pk>/', 
+        'product/<slug>/', 
         views.ProductView.as_view(), 
         name='product'
+        ),
+    path(
+        'category/<slug>/', 
+        views.CategoryView.as_view(), 
+        name='category'
         ),
 ]

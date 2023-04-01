@@ -14,6 +14,7 @@ class User_Admin(admin.ModelAdmin):
         'modified',
     )
 
+    exclude = ('groups', 'user_permissions',)
     readonly_fields = ('password', 'created', 'modified')
     # We added a search engine by name, surname and email
     search_fields = ['name', 'last_name', 'email']

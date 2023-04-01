@@ -15,8 +15,4 @@ class CheckoutView(FormView):
 class CartView(ListView):
     template_name = 'checkout/cart.html'
     model = Cart
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print(context)
-        return context
+    

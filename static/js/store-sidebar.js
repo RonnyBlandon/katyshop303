@@ -12,3 +12,24 @@ window.addEventListener('click', (event) => {
 		dropdownMenu.classList.remove('show');
 	}
 });
+
+/* search engine by category */
+const searchInputs = document.querySelectorAll('.search-category-movil, .search-category-desktop');
+const categoryLists = document.querySelectorAll('.dropdown-categories li, .list-category li');
+
+searchInputs.forEach(function (searchInput) {
+	searchInput.addEventListener('keyup', function (event) {
+		const searchTerm = event.target.value.toLowerCase();
+
+		categoryLists.forEach(function (category) {
+			const categoryName = category.textContent.toLowerCase();
+
+			if (categoryName.includes(searchTerm)) {
+				category.style.display = 'block';
+			} else {
+				category.style.display = 'none';
+			}
+		});
+	});
+});
+

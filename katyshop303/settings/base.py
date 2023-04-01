@@ -45,6 +45,7 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
 )
 LOCAL_APPS = (
     'applications.user',
@@ -54,6 +55,7 @@ LOCAL_APPS = (
 )
 THIRD_PARTY_APPS = (
     'captcha',
+    'ckeditor',
 )
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 

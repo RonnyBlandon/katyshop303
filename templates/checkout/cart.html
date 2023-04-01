@@ -22,11 +22,6 @@
             <a class="btn btn-primary" href="{% url 'checkout_app:checkout' %}">Proceder a pagar</a>
         </div>
     </div>
-    <!-- Section coupon-->
-    <form class="col-md-8 p-2 d-flex justify-content-center" id="form-coupon" method="post" action=""> {% csrf_token %}
-        <input class="input-coupon form-control" type="text" placeholder="Cupon">
-        <button class="btn btn-primary ms-sm-3" type="submit">Aplicar</button>
-    </form>
     <!-- Section cart product list-->
     <div class="list-cart col-md-8">
         <a class="link-img-product" href=""><img class="img-product-cart"

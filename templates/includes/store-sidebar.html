@@ -6,26 +6,25 @@
     <div class="btn-dropdown dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button">Categorias</button>
         <ul class="dropdown-categories dropdown-menu">
-            <li><a class="dropdown-item" href="#">Salud</a></li>
-            <li><a class="dropdown-item" href="#">SkinnyFit</a></li>
-            <li><a class="dropdown-item" href="#">TRUVISION-Vitamin-Supplements</a></li>
+            <form class="d-flex px-2" role="search"> {% csrf_token %}
+				<input class="search-category-movil form-control" type="search" placeholder="Buscar por Categoria" aria-label="Search">
+			</form>
+            {% for category in categories %}
+            <li><a class="dropdown-item" href="{% url 'product_app:category' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
         </ul>
     </div>
 
     <!--Sidebar in tablets and desktop-->
     <nav class="store-sidebar overflow-auto">
         <h3 class="title-sidebar text-center">Categorias</h3>
-        <ul class="list-group text-start">
-            <li><a class="list-group-item" href="#">Sin Categorizar</a></li>
-            <li><a class="list-group-item active" href="#">Salud</a></li>
-            <li><a class="list-group-item" href="#">SkinnyFit</a></li>
-            <li><a class="list-group-item" href="#">TRUVISION-Vitamin-Supplements</a></li>
-            <li><a class="list-group-item" href="#">TRUVISION-Vitamin-Supplements</a></li>
-            <li><a class="list-group-item" href="#">TRUVISION-Vitamin-Supplements</a></li>
-            <li><a class="list-group-item" href="#">TRUVISION-Vitamin-Supplements</a></li>
-            <li><a class="list-group-item" href="#">TRUVISION-Vitamin-Supplements</a></li>
-            <li><a class="list-group-item" href="#">TRUVISION-Vitamin-Supplements</a></li>
-            <li><a class="list-group-item" href="#">TRUVISION-Vitamin-Supplements</a></li>
+        <ul class="list-category list-group mb-2 text-start">
+            <form class="d-flex px-2" role="search"> {% csrf_token %}
+				<input class="search-category-desktop form-control mb-3" type="search" placeholder="Buscar por Categoria" aria-label="Search">
+			</form>
+            {% for category in categories %}
+            <li><a class="list-group-item" href="{% url 'product_app:category' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
         </ul>
     </nav>
 </div>  

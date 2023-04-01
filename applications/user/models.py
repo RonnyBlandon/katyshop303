@@ -7,8 +7,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from model_utils.models import TimeStampedModel
 
 class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
-    name = models.CharField('Nombre', max_length=20)
-    last_name = models.CharField('Apellido', max_length=20)
+    name = models.CharField('Nombre', max_length=40)
+    last_name = models.CharField('Apellido', max_length=40)
     email = models.EmailField('Correo Electronico', max_length=60, unique=True)
     phone_number = models.CharField('Numero de Telefono', max_length=20, blank=True, null=True)
     id_customer_stripe = models.CharField('ID customer stripe', max_length=25, blank=True, null=True)

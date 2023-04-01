@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ category.name }} category {% endblock title %}
+
+{% block css %} {% static 'css/store.css' %} {% endblock css %}
+{% block css2 %} {% static 'css/store-sidebar.css' %} {% endblock css2 %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="box-store col-lg-10 d-md-flex flex-md-row-reverse justify-content-center m-auto">
+    <!--Store Side bar-->
+    {% include 'includes/store-sidebar.html' %}
+    <!-- Title Category -->
+    <!--Products of store-->
+    <div class="container-fluid mt-3 d-flex flex-column align-content-center row-gap-3">
+        <h2 class="title-category">Categoria: {{ category.name }}</h2>
+        {% for product in products %}
+        {% if product.active %}
+        <div class="card d-flex flex-row align-items-center border-info border-2">
+            {% if product.product_image.all %}
+            <a class="link-card-img" href="{% url 'product_app:product' product.slug %}"><img src="{{ product.product_image.all.first.image.url }}"
+                class="own-card-img card-img-top" alt="image main of product"></a>
+            {% else %}
+            <a class="link-card-img" href="{% url 'product_app:product' product.slug %}"><img class="own-card-img" 
+                src="{% static 'img/empty-product.svg' %}" alt="podruct without image"></a>
+            {% endif %}
+            <div class="card-body p-2">
+                <a class="link-title-product" href="{% url 'product_app:product' product.slug %}">{{ product.name }}</a>
+                <p class="card-subtitle"><strong>${{ product.price }}</strong></p>
+                {% if product.stock == True and product.amount_stock > 0 %}
+                <p class="stock-store">Quedan {{ product.amount_stock }} Disponibles</p>
+                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+                {% elif product.stock == True %}
+                <p class="stock-store">Disponibles</p>
+                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+                {% else %}
+                <p class="out-of-stock">No Disponible</p>
+                <a href="#" class="btn-add-cart btn btn-secondary disabled">No disponible</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <!--Pagination of store-->
+        <div class="d-flex justify-content-center mb-3">
+            <span class="step-links">
+                {% if products.has_previous and products.number > 0 %}
+                    <a class="link-page" href="?page=1">1</a>
+                    <a class="link-page" href="?page={{ products.previous_page_number }}">&laquo;</a>
+                {% endif %}
+                
+                {% if products.number > 0 %}
+                <span class="current-pages">
+                    Página {{ products.number }} de {{ products.paginator.num_pages }}
+                </span>
+                {% else %}
+                <span class="current-pages">
+                    Página 1 de 1
+                </span>
+                {% endif %}
+        
+                {% if products.has_next and products.number > 0 %}
+                    <a class="link-page" href="?page={{ products.next_page_number }}">&raquo;</a>
+                    <a class="link-page" href="?page={{ products.paginator.num_pages }}">{{ products.paginator.num_pages }}</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+</div>
+
+<script src="{% static 'js/store-sidebar.js' %}"></script>
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

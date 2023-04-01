@@ -45,8 +45,8 @@
 					</a>
 				</li>
 			</ul>
-			<form class="d-flex" role="search"> {% csrf_token %}
-				<input class="input-search form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+			<form class="d-flex" method="get" action="{% url 'product_app:store' %}" role="search"> {% csrf_token %}
+				<input class="input-search form-control me-2" id="kword" name="kword" type="search" placeholder="Buscar producto" aria-label="Search">
 				<button class="btn-search btn btn-outline-success" type="submit">Buscar</button>
 			</form>
 		</div>

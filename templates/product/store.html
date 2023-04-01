@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} user-dashboard {% endblock title %}
+{% block title %} store {% endblock title %}
 
 {% block css %} {% static 'css/store.css' %} {% endblock css %}
 {% block css2 %} {% static 'css/store-sidebar.css' %} {% endblock css2 %}
@@ -15,85 +15,61 @@
 
     <!--Products of store-->
     <div class="container-fluid mt-3 d-flex flex-column align-content-center row-gap-3">
+        {% for product in products %}
+        {% if product.active %}
         <div class="card d-flex flex-row align-items-center border-info border-2">
-            <a class="link-card-img" href="#"><img src="https://katyshop303.com/wp-content/uploads/2021/03/ittK9pM0MSkLkeWX.jpg"
-                class="own-card-img card-img-top" alt="..."></a>
+            {% if product.product_image.all %}
+            <a class="link-card-img" href="{% url 'product_app:product' product.slug %}"><img src="{{ product.product_image.all.first.image.url }}"
+                class="own-card-img card-img-top" alt="image main of product"></a>
+            {% else %}
+            <a class="link-card-img" href="{% url 'product_app:product' product.slug %}"><img class="own-card-img" 
+                src="{% static 'img/empty-product.svg' %}" alt="podruct without image"></a>
+            {% endif %}
             <div class="card-body p-2">
-                <a class="link-title-product" href="#">TRUVISION GEN2 + TruWeight & Energy 30-day supply Green only</a>
-                <p class="card-subtitle text-success"><strong>$65.97</strong></p>
-                <p class="stock-store">Quedan 14 Disponibles</p>
+                <a class="link-title-product" href="{% url 'product_app:product' product.slug %}">{{ product.name }}</a>
+                <p class="card-subtitle"><strong>${{ product.price }}</strong></p>
+                {% if product.stock == True and product.amount_stock > 0 %}
+                <p class="stock-store">Quedan {{ product.amount_stock }} Disponibles</p>
                 <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+                {% elif product.stock == True %}
+                <p class="stock-store">Disponibles</p>
+                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+                {% else %}
+                <p class="out-of-stock">No Disponible</p>
+                <a href="#" class="btn-add-cart btn btn-secondary disabled">No disponible</a>
+                {% endif %}
             </div>
         </div>
-        <div class="card d-flex flex-row align-items-center border-info border-2">
-            <img src="https://katyshop303.com/wp-content/uploads/2021/04/s-l1600-5.jpg"
-                class="own-card-img card-img-top" alt="...">
-            <div class="card-body">
-                <h6 class="card-title">New Truvy TruVision Health Truvy Weight Loss Combo 1 Month (30 Day) Truvy Pack
-                </h6>
-                <p class="card-subtitle text-success"><strong>$87.93</strong></p>
-                <p class="stock-store">Disponible</p>
-                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
-            </div>
-        </div>
-        <div class="card d-flex flex-row align-items-center border-info border-2">
-            <img src="https://katyshop303.com/wp-content/uploads/2022/03/photo_2022-03-27_13-59-46.jpg"
-                class="own-card-img card-img-top" alt="...">
-            <div class="card-body">
-                <h6 class="card-title">SkinnyFit SKINNY GREENS Juice Superfood Powder Green Apple 30 Servings Fit</h6>
-                <p class="card-subtitle text-success"><strong>$32.87</strong></p>
-                <p class="stock-store">Disponible</p>
-                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
-            </div>
-        </div>
-        <div class="card d-flex flex-row align-items-center border-info border-2">
-            <img src="https://katyshop303.com/wp-content/uploads/2019/11/photo_2019-11-29_19-43-42.jpg"
-                class="own-card-img card-img-top" alt="...">
-            <div class="card-body">
-                <h6 class="card-title">Isagenix Isalean Strawberry Cream Shake - 1 Canister - Exp 1/2022 - Free Ship
-                </h6>
-                <p class="card-subtitle text-success"><strong>$39.97</strong></p>
-                <p class="stock-store">Disponible</p>
-                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
-            </div>
-        </div>
-        <div class="card d-flex flex-row align-items-center border-info border-2">
-            <img src="https://katyshop303.com/wp-content/uploads/2022/04/s-l500-4.jpg" class="own-card-img card-img-top"
-                alt="...">
-            <div class="card-body">
-                <h6 class="card-title">New Truvy TruVision Health Truvy Weight Loss Combo 1 Month (30 Day) Truvy Pack
-                </h6>
-                <p class="card-subtitle text-success"><strong>$129.87</strong></p>
-                <p class="stock-store">Disponible</p>
-                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
-            </div>
-        </div>
-
+        {% endif %}
+        {% endfor %}
 
         <!--Pagination of store-->
-        <nav class="mx-auto" aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <div class="d-flex justify-content-center mb-3">
+            <span class="step-links">
+                {% if page_obj.has_previous and page_obj.number > 0 %}
+                    <a class="link-page" href="?kword={{ request.GET.kword }}&page=1">1</a>
+                    <a class="link-page" href="?kword={{ request.GET.kword }}&page={{ page_obj.previous_page_number }}">&laquo;</a>
+                
+                {% endif %}
+                
+                {% if page_obj.number > 0 %}
+                <span class="current-pages">
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                </span>
+                {% else %}
+                <span class="current-pages">
+                    Página 1 de 1
+                </span>
+                {% endif %}
+        
+                {% if page_obj.has_next and page_obj.number > 0 %}
+                <!--  -->
+                    <a class="link-page" href="?kword={{ request.GET.kword }}&page={{ page_obj.next_page_number }}">&raquo;</a>
+                    <a class="link-page" href="?kword={{ request.GET.kword }}&page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                {% endif %}
+            </span>
+        </div>
     </div>
-
 </div>
 
 <script src="{% static 'js/store-sidebar.js' %}"></script>

@@ -23,16 +23,21 @@
             PARA UN <strong class="text-success">$9.49</strong> DE DESCUENTO EN ESTE PEDIDO!</p>
         <button class="btn btn-primary ms-1" id="btn-discount-points">Aplicar</button>
     </div>
-    <!-- Section coupon-->
-    <form class="col-md-7 p-2 d-flex justify-content-center" id="form-coupon" method="post" action=""> {% csrf_token %}
-        <input class="input-coupon form-control" type="text" placeholder="Cupon">
-        <button class="btn btn-primary ms-sm-3" type="submit">Aplicar</button>
-    </form>
     <!-- Section shipping address -->
 
     <div class="box-shipping p-2 col-lg-7">
         <h4 class="text-center">Dirección de envío</h4>
         <div class="shipping p-md-2 d-flex flex-wrap gap-3">
+            <div class="col-12 col-lg-5">
+                {{form.country.erros}}
+                <label class="form-label">Nombre:</label>
+                {{ form.name }}
+            </div>
+            <div class="col-12 col-lg-5">
+                {{form.country.erros}}
+                <label class="form-label">Apellido:</label>
+                {{ form.last_name }}
+            </div>
             <div class="col-12 col-lg-5">
                 {{form.country.erros}}
                 <label class="form-label">Pais:</label>
