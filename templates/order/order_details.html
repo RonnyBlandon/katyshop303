@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} user-dashboard {% endblock title %}
+
+{% block css %} {% static 'css/user-menu.css' %} {% endblock css %}
+{% block css2 %} {% static 'css/order-details.css' %} {% endblock css2 %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="box-account container-fluid d-lg-flex">
+    {% include 'includes/user-menu.html' %}
+    <!-- Order -->
+    <div class="box-account-section col-lg-8 col-lg-9">
+        <div class="title-order">
+            <h2>Order #{{ order.id }}</h2>
+        </div>
+        <div class="body-order">
+            <h4 class="order-sections">Status: <span class="order-status">{{ order.status }}</span></h4>
+            <!-- Order Tracking -->
+            {% if order.order_tracking.first.tracking_link %}
+            <h4 class="order-sections">Tracking Information:</h4>
+            <div class="container-tracking">
+                <strong>shipping provider:</strong>
+                <span>{{ order.order_tracking.first.shipping_company.name }}</span><br>
+                <strong>Shipping date:</strong>
+                <span>{{ order.order_tracking.first.shipping_date|date:'d F, Y' }}</span><br>
+                <strong>shipping tracking:</strong>
+                <a href="{{ order.order_tracking.first.tracking_link }}" target="_blank" rel="noopener noreferrer">{{ order.order_tracking.first.tracking }}</a>
+            </div>
+            {% endif %}
+            <!-- Order details -->
+            <h4 class="order-sections order-date">[Order #{{ order.id }}]</h4><h4 class="order-sections order-date">({{ order.created|date:'d F, Y' }})</h4>
+            <table>
+                <thead>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </thead>
+                <tbody>
+                    {% for item in order.order_items.all %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.amount }}</td>
+                        <td>${{ item.subtotal }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Subtotal:</th>
+                        <td class="td-calculation">${{ order.subtotal }}</td>
+                    </tr>
+                    {% if not order.discount == 0 or order.discount == '' %}
+                    <tr>
+                        <th>Discount:</th>
+                        <td class="td-calculation">${{ order.discount }}</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <th>Payment method:</th>
+                        {% if order.payment_method == 'Stripe' %}
+                        <td class="td-calculation">Card</td>
+                        {% else %}
+                        <td class="td-calculation">{{ order.payment_method }}</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Total:</th>
+                        <td class="td-calculation">${{ order.total }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4 class="order-sections">Address:</h4>
+            <!-- Order Address -->
+            <address>
+                <i>{{ order.order_address.first.name }}</i><br>
+                {% if order.order_address.first.state %}
+                <i>{{ order.order_address.first.city }}</i>, <i>{{ order.order_address.first.state }}</i>, <i>{{ order.order_address.first.country.name }}</i><br>
+                {% else %}
+                <i>{{ order.order_address.first.city }}</i>, <i>{{ order.order_address.first.country.name }}</i><br>
+                {% endif %}
+                <i>{{ order.order_address.first.address_1 }}</i><br>
+                {% if order.order_address.first.address_2 %}
+                <i>{{ order.order_address.first.address_2 }}</i><br>
+                {% endif %}
+                <i>postal: {{ order.order_address.first.postal_code }}</i><br>
+                <i><i>{{ order.id_user.email }}</i><br></i>
+            </address>
+        </div>
+    </div>
+</div>
+
+{% include 'includes/footer.html' %}
+{% endblock content %}

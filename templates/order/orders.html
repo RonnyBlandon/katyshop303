@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} user-dashboard {% endblock title %}
+
+{% block css %} {% static 'css/user-menu.css' %} {% endblock css %}
+{% block css2 %} {% static 'css/my-account.css' %} {% endblock css2 %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="box-account container-fluid d-lg-flex">
+    {% include 'includes/user-menu.html' %}
+
+    <div class="box-account-section col-lg-8 col-lg-9">
+        <div class="my-3 mx-md-3 mx-lg-auto">
+            {% if order_list %}
+            <div class="box-order-tables overflow-x-auto mx-auto">
+                <table class="order-table table table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Total</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    {% for order in order_list %}
+                    <tr>
+                        <td>#{{ order.id }}</td>
+                        <td>{{ order.created|date:"Y-F-d" }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>${{ order.total }}</td>
+                        <td class="actions-cell">
+                            <a class="btn-order" href="{% url 'user_app:order_details' order.id %}">VER<img
+                                    src="{% static 'img/eye-fill.svg' %}" alt="view order details"></a>
+                            {% if order.order_tracking.first.tracking_link %}
+                            <a class="link-tracking" href="{{ order.order_tracking.first.tracking_link }}"
+                                target="_blank">Track</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <h5 class="text-center">No hay historial de pedidos.</h5>
+                    {% endif %}
+                </table>
+            </div>
+            <!--Pagination of orders-->
+            <div class="d-flex justify-content-center mt-4 mb-3">
+                <span class="step-links">
+                    {% if page_obj.has_previous and page_obj.number > 0 %}
+                    <a class="link-page" href="?kword={{ request.GET.kword }}&page=1">1</a>
+                    <a class="link-page" href="?kword={{ request.GET.kword }}&page={{ page_obj.previous_page_number }}">&laquo;</a>
+                    {% endif %}
+                    {% if page_obj.number > 0 %}
+                    <span class="current-pages">
+                        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                    </span>
+                    {% else %}
+                    <span class="current-pages">
+                        Página 1 de 1
+                    </span>
+                    {% endif %}
+
+                    {% if page_obj.has_next and page_obj.number > 0 %}
+                    <a class="link-page" href="?kword={{ request.GET.kword }}&page={{ page_obj.next_page_number }}">&raquo;</a>
+                    <a class="link-page"href="?kword={{ request.GET.kword }}&page={{ page_obj.paginator.num_pages }}">{{page_obj.paginator.num_pages }}</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/my-account.js' %}"></script>
+{% include 'includes/footer.html' %}
+{% endblock content %}

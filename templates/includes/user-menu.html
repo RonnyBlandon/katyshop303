@@ -13,7 +13,7 @@
             <h5 class="text-white">{{user.name}} {{user.last_name}}</h5>
         </div>
         <li>
-            <a class="nav-user__a" href="#" id="user-orders">Pedidos</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_orders' %}" id="user-orders">Pedidos</a>
         </li>
         <li>
             <a class="nav-user__a" href="{% url 'user_app:user_profile' %}" id="user-profile">Perfil</a>
@@ -22,7 +22,7 @@
             <a class="nav-user__a" href="{% url 'user_app:user_address' %}" id="user-address">Dirección</a>
         </li>
         <li>
-            <a class="nav-user__a" href="#" id="user-points">Mis Puntos</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_points' %}" id="user-points">Mis Puntos</a>
         </li>
         <li>
             <a class="nav-user__a" href="{% url 'user_app:user_logout' %}">Cerrar Sesión</a>

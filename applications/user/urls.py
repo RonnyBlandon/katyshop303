@@ -21,6 +21,16 @@ urlpatterns = [
         name='user_logout'
         ),
     path(
+        'my-account/orders/', 
+        views.UserOrderView.as_view(), 
+        name='user_orders'
+        ),
+    path(
+        'my-account/orders/<pk>/', 
+        views.OrderDetailsView.as_view(), 
+        name='order_details'
+        ),
+    path(
         'my-account/profile/', 
         views.UserProfileView.as_view(), 
         name='user_profile'
@@ -29,6 +39,11 @@ urlpatterns = [
         'my-account/address/', 
         views.UserAddressView.as_view(), 
         name='user_address'
+        ),
+    path(
+        'my-account/points/', 
+        views.UserPointView.as_view(), 
+        name='user_points'
         ),
     path(
         'verification-code/<id>/<code>/', 

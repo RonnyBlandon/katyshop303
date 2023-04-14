@@ -2,7 +2,7 @@
 
 /* bootstrap classes */
 .container-fluid {
-    padding: 0;
+    padding: 0rem 0.3rem ;
 }
 .form-control, .btn {
     padding: 0.375rem 0.75rem;
@@ -27,7 +27,7 @@
 
 /* From here on they are their own classes */
 .box-account-section {
-    min-height: 65vh;
+    min-height: 55vh;
 }
 /* User address and profile forms */
 .form-profile {
@@ -38,7 +38,76 @@
     margin-top: 1rem;
     padding: 0rem 0.5rem;
 }
+/* User orders */
+.box-order-tables {
+    border-top: 0.1rem solid #000;
+    border-bottom: 0.1rem solid #000;
+}
+.order-table {
+    width: 37rem;
+    margin: 0rem auto;
+}
+.actions-cell {
+    display: flex;
+}
+.btn-order, .link-tracking {
+    display: flex;
+    justify-content: center;
+    column-gap: 0.3rem;
+    width: 4.2rem;
+    margin: 0rem auto;
+    padding: 0.3rem;
+    background-color: #0c0;
+    color: #fff;
+    border-radius: 0.6rem;
+    font-family: Verdana, Tahoma, sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+}
+.btn-order:hover {
+    background-color: #0a0;
+}
+.btn-order img {
+    width: 1rem;
+}
+.link-tracking {
+    background-color: #700FBB;
+}
+.link-tracking:hover {
+    background-color: #700F88;
+}
+/* Pagination of Orders */
+.link-page {
+    margin: 0rem 0.15rem;
+    padding: 0.3rem 0.5rem;
+    text-decoration: none;
+    border: 0.05rem solid #00f;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+.link-page:active {
+    background-color: #00f;
+    color: #fff;
+}
+.current-pages {
+    margin: 0rem 0.3rem;
+    padding: 0.3rem;
+    background-color: #00f;
+    color: #fff;
+    border-radius: 0.8rem;
+}
+/* User Points */
+.my-points {
+    color: #700FBB;
+    text-align: center;
+}
 
+@media screen and (min-width: 768px) {
+    /* User orders */
+    .order-table {
+        width: 42rem;
+    }
+}
 @media screen and (min-width: 992px) {
     .box-account-section {
         min-height: 72vh;
@@ -49,5 +118,11 @@
         padding: 0.5rem 1.2rem;
         border: 0.125rem solid #0008;
         border-radius: 1rem;
+    }
+}
+@media screen and (min-width: 1366px) {
+    /* User orders */
+    .box-order-tables {
+        width: 48rem;
     }
 }

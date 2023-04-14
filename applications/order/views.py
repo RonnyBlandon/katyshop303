@@ -1,0 +1,18 @@
+from django.views.generic import FormView, ListView
+from django.urls import reverse_lazy
+# import models
+from .models import Order
+# imports forms
+from .forms import CheckoutForm
+# Create your views here.
+
+class CheckoutView(FormView):
+    template_name = 'checkout/checkout.html'
+    form_class = CheckoutForm
+    success_url = reverse_lazy('user_app:user_address')
+
+
+class CartView(ListView):
+    template_name = 'checkout/cart.html'
+    model = Order
+    

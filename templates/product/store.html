@@ -63,7 +63,6 @@
                 {% endif %}
         
                 {% if page_obj.has_next and page_obj.number > 0 %}
-                <!--  -->
                     <a class="link-page" href="?kword={{ request.GET.kword }}&page={{ page_obj.next_page_number }}">&raquo;</a>
                     <a class="link-page" href="?kword={{ request.GET.kword }}&page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
                 {% endif %}

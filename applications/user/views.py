@@ -3,11 +3,12 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import View, TemplateView, FormView
+from django.views.generic import View, TemplateView, ListView, DetailView, FormView
 # import of file functions
 from .functions import code_generator, create_mail, notification_admin_by_mail
 #import models
 from .models import User, Address, Country, State
+from applications.order.models import Order
 # import forms
 from .forms import (UserLoginForm, UserRegisterForm, EmailPasswordForm, ChangePasswordForm, 
 UserVerificationResendForm, UserProfileForm, UserAddressForm
@@ -110,11 +111,33 @@ class UserAddressView(LoginRequiredMixin, FormView):
                 form.cleaned_data['address_1'], form.cleaned_data['address_2'], form.cleaned_data['postal_code']
             )
 
-
-
         messages.add_message(request=self.request, level=messages.SUCCESS, message='Los datos se han guardado con éxito.')
         return super(UserAddressView, self).form_valid(form)
 
+
+class UserOrderView(ListView):
+    template_name = 'order/orders.html'
+    model = Order
+    paginate_by = 20
+    ordering = '-created'
+
+    def get_queryset(self):
+        queryset = Order.objects.filter(id_user=self.request.user.id).order_by('-created')
+        return queryset
+
+
+class OrderDetailsView(DetailView):
+    template_name = 'order/order_details.html'
+    model = Order
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class UserPointView(ListView):
+    template_name = 'order/points.html'
+    model = Order
 
 
 class UserRegisterView(FormView):
@@ -167,7 +190,7 @@ class UserRegisterView(FormView):
 class UserLoginView(FormView):
     template_name = 'user/login.html'
     form_class = UserLoginForm
-    success_url = reverse_lazy('user_app:user_profile')
+    success_url = reverse_lazy('user_app:user_orders')
 
     def form_valid(self, form):
         user = authenticate(
@@ -271,7 +294,6 @@ class RecoverAccountView(FormView):
 
     def get_queryset(self):
         queryset = super(RecoverAccountView, self).get_queryset()
-        print(queryset)
         queryset = queryset.id
         return queryset
 

@@ -1,0 +1,103 @@
+/* bootstrap classes */
+.container-fluid {
+    padding: 0rem 0.3rem;
+}
+
+/* own classes */
+/* Order */
+.body-order {
+    margin: 1rem 0rem;
+    font-size: 0.8125rem;
+}
+.title-order {
+    padding: 1rem;
+    background-color: #700FBB;
+}
+.title-order h2 {
+    margin: 0;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.order-status {
+    padding: 0.2rem 0.4rem;
+    background-color: #700FBB;
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+}
+/* Order Tracking */
+.container-tracking {
+    padding: 0.4rem;
+    border: 0.1rem solid #e0e0e0;
+}
+.container-tracking a {
+    text-decoration: none;
+}
+.container-tracking a:hover {
+    text-decoration: underline;
+}
+.container-tracking p {
+    margin: 0;
+}
+/* Order details */
+.order-date {
+    display: inline-block;
+}
+.order-sections {
+    margin: 0.6rem 0rem 0rem 0rem;
+    padding: 0.4rem;
+    color: #700FBB;
+}
+table {
+    width: 100%;
+}
+th, td {
+    padding: 0.3rem;
+    border: 0.1rem solid #e0e0e0;
+}
+td {
+    text-align: center;
+}
+/* Order Address */
+address {
+    padding: 0.4rem;
+    border: 0.1rem solid #e0e0e0;
+    color: #505050;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* MEDIA QUERY */
+@media screen and (min-width: 576px) {
+    /* Order */
+    .box-account-section {
+        margin: 1rem;
+        border: 0.1rem solid #e0e0e0;
+    }
+    .body-order {
+        margin: 0.5rem 1rem;
+        padding: 0 1.5rem;
+        font-size: 1rem;
+    }
+}
+@media screen and (min-width: 768px) {
+    /* Order */
+    .box-account-section {
+        margin: 1.5rem;
+    }
+    .body-order {
+        margin: 0.75rem 1.5rem;
+        padding: 0 2rem;
+    }
+}
+@media screen and (min-width: 992px) {
+    /* Order */
+    .box-account-section {
+        width: 40rem;
+        margin: 1rem auto;
+    }
+    .body-order {
+        margin: 0.75rem 1.5rem;
+        padding: 0 1rem;
+    }
+}

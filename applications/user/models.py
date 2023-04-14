@@ -46,8 +46,8 @@ class State(models.Model):
 
 
 class Address(models.Model):
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    state = models.ForeignKey(State, on_delete=models.CASCADE, blank=True, null=True)
+    country = models.ForeignKey(Country, verbose_name='Pais', on_delete=models.CASCADE)
+    state = models.ForeignKey(State, verbose_name='Estado', on_delete=models.CASCADE, blank=True, null=True)
     city = models.CharField('Ciudad', max_length=30)
     # This address_1 is street address
     address_1 = models.CharField('Dirección de calle', max_length=60)

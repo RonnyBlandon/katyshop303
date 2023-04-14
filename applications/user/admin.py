@@ -3,7 +3,15 @@ from django.contrib import admin
 from .models import User, Address, Country, State
 # Register your models here.
 
+class AddressAdmin(admin.StackedInline):
+    model = Address
+    extra = 0
+    max_num = 1
+
+
 class User_Admin(admin.ModelAdmin):
+    inlines = [AddressAdmin,]
+
     list_display = (
         'id',
         'name',
@@ -21,6 +29,5 @@ class User_Admin(admin.ModelAdmin):
     list_filter = ('is_active',)
 
 admin.site.register(User, User_Admin)
-admin.site.register(Address)
 admin.site.register(Country)
 admin.site.register(State)
