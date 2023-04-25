@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} cart {% endblock title %}
+
+{% block css %} {% static 'css/cart.css' %} {% endblock css %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<!-- Success or error messages -->
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="container-cart container-fluid col-lg-11 d-md-flex flex-md-column">
+    <!-- Section information earn points-->
+    <div class="info-earn-points col-md-8">
+        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">COMPLETA TU PEDIDO Y GANA
+            <strong>430</strong>
+            PUNTOS PARA UN DESCUENTO EN UNA FUTURA COMPRA.
+        </p>
+    </div>
+    <!-- Section proceed to pay-->
+    <div class="box-proceed-to-pay">
+        <div class="proceed-to-pay col-md-4 col-lg-3 me-lg-5 me-0">
+            <div>
+                <p class="d-flex justify-content-between m-0">
+                    <strong>Productos:</strong>
+                    <strong class="proceed-to-pay-quantity">{{ quantity_items }}</strong>
+                </p>
+                <p class="d-flex justify-content-between m-0">
+                    <strong>Subtotal:</strong>
+                    <span class="proceed-to-pay-subtotal">${{ cart_subtotal }}</span>
+                </p>
+            </div>
+            <a class="btn btn-primary mt-2" href="{% url 'order_app:checkout' %}">Proceder a pagar</a>
+        </div>
+    </div>
+    <!-- Section cart product list-->
+    {% if cart_items %}
+    {% for item in cart_items %}
+    <div class="list-cart col-md-8">
+        <a class="link-img-product" href="{% url 'product_app:product' item.product.slug %}"><img class="img-product-cart"
+                src="{{ item.product.product_image.all.first.image.url }}" alt="image {{ item.product.name }}"></a>
+        <div class="content-product-cart">
+            <a class="link-product" href="{% url 'product_app:product' item.product.slug %}">{{ item.product.name }}</a>
+            <p class="h5 card-subtitle text-success"><strong class="subtotal-product">${{ item.subtotal }}</strong></p>
+            {% if item.product.stock == True and item.product.amount_stock > 0 %}
+            <p class="stock-cart text-success">Quedad {{ item.product.amount_stock }} disponibles</p>
+            <div class="d-flex flex-wrap">
+                <div class="product-quantity">
+                    <button class="decrease-product" data-url-decrease="{% url 'order_app:subtract_cart' item.product.id %}">-</button>
+                    <input type="number" class="amount-product" value="{{ item.amount }}" min="1" max="{{ item.product.amount_stock }}" readonly>
+                    <button class="increase-product" data-url-increase="{% url 'order_app:add_cart' item.product.id %}">+</button>
+                </div>
+                <a class="delete-product-cart" href="{% url 'order_app:delete_cart' item.product.id %}">Eliminar</a>
+            </div>
+            {% elif item.product.stock == True %}
+            <p class="stock-cart text-success">Disponibles</p>
+            <div class="d-flex flex-wrap">
+                <div class="product-quantity">
+                    <button class="decrease-product" data-url-decrease="{% url 'order_app:subtract_cart' item.product.id %}">-</button>
+                    <input type="number" class="amount-product" value="{{ item.amount }}" min="1" max="10" readonly>
+                    <button class="increase-product" data-url-increase="{% url 'order_app:add_cart' item.product.id %}">+</button>
+                </div>
+                <a class="delete-product-cart" href="{% url 'order_app:delete_cart' item.product.id %}">Eliminar</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h3 class="col-md-8 text-center">Agrega productos a tu carrito.</h3>
+    {% endif %}
+</div>
+    <script src="{% static 'js/cart.js' %}"></script>
+
+    {% include 'includes/footer.html' %}
+    {% endblock content %}

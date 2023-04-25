@@ -39,16 +39,10 @@
     padding: 0.375rem 1.8rem;
     font-size: 1.1rem;
 }
-/* Form Coupon */
-#form-coupon {
-    margin-bottom: 1rem;
-    background-color: #1DDDFF;
-    border-radius: 0.7rem;
-}
-.input-coupon {
+.proceed-to-pay-quantity {
     display: inline;
-    width: 13.5rem;
 }
+
 /* list products in cart */
 .list-cart {
     display: flex;
@@ -64,6 +58,7 @@
     min-width: 6rem;
     max-width: 6rem;
     height: 6rem;
+    object-fit: contain;
 }
 .img-product-cart:active {
     outline: 0.1rem solid #00f;

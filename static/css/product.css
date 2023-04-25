@@ -138,12 +138,13 @@
 }
 .increase-product,
 .decrease-product {
-    padding: 0rem 0.5rem;
+    padding: 0.2rem 0.5rem;
     font-size: 1.3rem;
     border: 0.03rem solid #000;
     border-radius: 0.5rem;
     box-shadow: 0.05rem 0.05rem 0.15rem #000;
     cursor: pointer;
+    user-select: none;
 }
 .increase-product:active,
 .decrease-product:active {
@@ -191,5 +192,11 @@
     .open-modal {
         display: flex;
         align-items: center;
+    }
+
+    /* Product Body */
+    .increase-product,
+    .decrease-product {
+        padding: 0rem 0.5rem;
     }
 }

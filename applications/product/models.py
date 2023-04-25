@@ -17,15 +17,8 @@ class Category(TimeStampedModel, models.Model):
     
     # Added unique slugs to categories
     def save(self, *args, **kwargs):
-        # we calculate the total number of seconds the current time
-        now = datetime.now()
-        total_time = timedelta(
-            hours=now.hour,
-            minutes=now.minute,
-            seconds=now.second
-        )
-        seconds = int(total_time.total_seconds())
-        slug_unique = f"{self.name} {seconds}"
+        #We join the product name with the id to create the unique slug
+        slug_unique = f"{self.name} {self.id}"
         self.slug = slugify(slug_unique)
         super(Category, self).save(*args, **kwargs)
 
@@ -47,16 +40,8 @@ class Product(TimeStampedModel,models.Model):
     
     # Added unique slugs to products
     def save(self, *args, **kwargs):
-        # we calculate the total number of seconds the current time
-        now = datetime.now()
-        total_time = timedelta(
-            days=now.day,
-            hours=now.hour,
-            minutes=now.minute,
-            seconds=now.second
-        )
-        seconds = int(total_time.total_seconds())
-        slug_unique = f"{self.name} {seconds}"
+        #We join the product name with the id to create the unique slug
+        slug_unique = f"{self.name} {self.id}"
         self.slug = slugify(slug_unique)
         super(Product, self).save(*args, **kwargs)
 

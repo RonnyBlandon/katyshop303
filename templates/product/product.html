@@ -8,6 +8,15 @@
 {% block content %}
 {% include 'includes/header.html' %}
 
+<!-- Success or error messages -->
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <div class="box-product container-fluid d-md-flex flex-column align-items-center justify-content-center">
 	<div class="product p-md-2 d-md-flex justify-content-center">
 		<!--Section Product Image Carousel -->
@@ -48,22 +57,22 @@
 			</div>
 		</div>
 		<!-- Product Body -->
-		<div class="col-md-6 p-md-1 ps-lg-3">
+		<form class="col-md-6 p-md-1 ps-lg-3" method="post" action="{% url 'order_app:add_cart_product' product.id %}"> {% csrf_token %}
 			<h1 class="title-product">{{ product.name }}</h1>
 			<h3 class="base-price"><strong>${{ product.price }}</strong></h3>
 			<p class="info-points">¡Cada vez que compres este artículo, recibirá <strong>58</strong> puntos como
 				recompensa!</p>
 			<div class="product-quantity">
-				<button class="decrease-product">-</button>
-				<input type="number" class="amount-product" value="1" min="1" max="{{product.amount_stock}}">
-				<button class="increase-product">+</button>
+				<strong class="decrease-product">-</strong>
+				<input name="quantity-product" type="number" class="amount-product" value="1" min="1" max="{{product.amount_stock}}" readonly>
+				<strong class="increase-product">+</strong>
 			</div>
 			{% if product.stock == True and product.amount_stock > 0 %}
 			<p class="stock-store">Quedan {{ product.amount_stock }} Disponibles</p>
-			<a href="#" class="btn-add-cart mt-4 mb-2 btn btn-primary">Agregar al carrito</a>
+			<button type="submit" class="btn-add-cart mt-4 mb-2 btn btn-primary">Agregar al carrito</button>
 			{% elif product.stock == True %}
 			<p class="stock-store">Disponibles</p>
-			<a href="#" class="btn-add-cart mt-4 mb-2 btn btn-primary">Agregar al carrito</a>
+			<button type="submit" class="btn-add-cart mt-4 mb-2 btn btn-primary">Agregar al carrito</button>
 			{% else %}
 			<p class="out-of-stock">No Disponible</p>
 			<a href="#" class="btn-add-cart mt-4 mb-2 btn btn-secondary disabled">No disponible</a>
@@ -73,7 +82,7 @@
 				<strong>{{ category.name }},</strong>
 				{% endfor %}
 			</h6>
-		</div>
+		</form>
 	</div>
 	<!--Description-->
 	<div class="description col-md-11 py-4 p-md-0 px-lg-3 my-auto">
@@ -82,7 +91,6 @@
 	</div>
 </div>
 
-<script src="{% static 'js/cart.js' %}"></script>
 <script src="{% static 'js/product.js' %}"></script>
 
 {% include 'includes/footer.html' %}

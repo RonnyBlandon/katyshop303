@@ -72,3 +72,21 @@ buttonCart.addEventListener('mouseout', () => {
 miniCart.addEventListener('mouseout', () => {
     miniCart.classList.remove('mini-cart-show');
 });
+
+/* Logic to remove product from cart */
+const productsId = document.querySelectorAll(".product-remove");
+productsId.forEach(function (element, index) {
+    element.addEventListener("click", ()=> {
+        const url = element.dataset.productId;
+        fetch(url).then(response => response.json()).then(function (data) {
+            if (data.delete_product) {
+                element.parentNode.remove();
+                const subtotalPreviewCart = document.querySelector(".cart-preview-subtotal");
+                const quantityItems = document.querySelector(".quantity-items");
+                subtotalPreviewCart.innerHTML = data.cart_subtotal;
+                quantityItems.innerHTML = data.quantity_items;
+            };
+        });
+    });
+});
+

@@ -3,6 +3,8 @@ from model_utils.models import TimeStampedModel
 # import models
 from applications.product.models import Product
 from applications.user.models import User, Country, State
+# import managers
+from applications.order.managers import CartManager
 #import signals
 
 # Create your models here.
@@ -75,16 +77,18 @@ class Tracking(models.Model):
 
 # Cart models
 class Cart(models.Model):
+    subtotal = models.DecimalField('Subtotal', max_digits=8, decimal_places=2, default=0.00)
+    total = models.DecimalField('Total', max_digits=8, decimal_places=2, default=0.00)
     id_user = models.ForeignKey(User, verbose_name='ID del usuario', on_delete=models.CASCADE)
-    subtotal = models.DecimalField('Subtotal', max_digits=8, decimal_places=2)
-    total = models.DecimalField('Total', max_digits=8, decimal_places=2)
+
+    objects = CartManager()
 
     def __str__(self):
         return str(self.id)+' '+str(self.id_user)
 
 
 class CartItem(models.Model):
-    id_cart = models.ForeignKey(Order, verbose_name='ID del pedido', on_delete=models.CASCADE, related_name='cart_items')
+    id_cart = models.ForeignKey(Cart, verbose_name='ID del pedido', on_delete=models.CASCADE, related_name='cart_items')
     product = models.ForeignKey(Product, verbose_name='Producto', on_delete=models.CASCADE)
     amount = models.IntegerField('Cantidad')
     subtotal = models.DecimalField('Subtotal', max_digits=8, decimal_places=2)

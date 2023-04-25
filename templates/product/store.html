@@ -9,6 +9,15 @@
 {% block content %}
 {% include 'includes/header.html' %}
 
+<!-- Success or error messages -->
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <div class="box-store col-lg-10 d-md-flex flex-md-row-reverse justify-content-center m-auto">
     <!--Store Side bar-->
     {% include 'includes/store-sidebar.html' %}
@@ -17,7 +26,7 @@
     <div class="container-fluid mt-3 d-flex flex-column align-content-center row-gap-3">
         {% for product in products %}
         {% if product.active %}
-        <div class="card d-flex flex-row align-items-center border-info border-2">
+        <div class="store-product card d-flex flex-row align-items-center border-info border-2">
             {% if product.product_image.all %}
             <a class="link-card-img" href="{% url 'product_app:product' product.slug %}"><img src="{{ product.product_image.all.first.image.url }}"
                 class="own-card-img card-img-top" alt="image main of product"></a>
@@ -30,14 +39,17 @@
                 <p class="card-subtitle"><strong>${{ product.price }}</strong></p>
                 {% if product.stock == True and product.amount_stock > 0 %}
                 <p class="stock-store">Quedan {{ product.amount_stock }} Disponibles</p>
-                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+                <a href="{% url 'order_app:add_cart_store' product.id %}" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
                 {% elif product.stock == True %}
                 <p class="stock-store">Disponibles</p>
-                <a href="#" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+                <a href="{% url 'order_app:add_cart_store' product.id %}" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
                 {% else %}
                 <p class="out-of-stock">No Disponible</p>
-                <a href="#" class="btn-add-cart btn btn-secondary disabled">No disponible</a>
+                <button class="btn-add-cart btn btn-secondary disabled">No disponible</button>
                 {% endif %}
+            </div>
+            <div class="loader-add-to-cart">
+                <img src="{% static 'img/load-cart.gif' %}" alt="load-cart">
             </div>
         </div>
         {% endif %}
@@ -71,6 +83,7 @@
     </div>
 </div>
 
+<script src="{% static 'js/store.js' %}"></script>
 <script src="{% static 'js/store-sidebar.js' %}"></script>
 
 {% include 'includes/footer.html' %}

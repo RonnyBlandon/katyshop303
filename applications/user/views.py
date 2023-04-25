@@ -8,7 +8,7 @@ from django.views.generic import View, TemplateView, ListView, DetailView, FormV
 from .functions import code_generator, create_mail, notification_admin_by_mail
 #import models
 from .models import User, Address, Country, State
-from applications.order.models import Order
+from applications.order.models import Order, Cart
 # import forms
 from .forms import (UserLoginForm, UserRegisterForm, EmailPasswordForm, ChangePasswordForm, 
 UserVerificationResendForm, UserProfileForm, UserAddressForm
@@ -145,10 +145,6 @@ class UserRegisterView(FormView):
     form_class = UserRegisterForm
     success_url = reverse_lazy('users_app:user_login')
 
-    def form_invalid(self, form):
-        print("Esta entrando al form_invalid")
-        return super(UserAddressView, self).form_invalid(form)
-
     def form_valid(self, form):
         # We generate the email verification code for the newly registered user
         validation_code = code_generator()
@@ -163,6 +159,7 @@ class UserRegisterView(FormView):
             form.cleaned_data['password'],
             validation_code=validation_code
         )
+        Cart.objects.create_cart(subtotal=0.00, total=0.00, id_user=user)
 
         # We send the account verification code to the user's email
         mail = create_mail(
