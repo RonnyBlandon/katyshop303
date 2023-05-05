@@ -106,3 +106,10 @@ if (messageSuccessAddCart) {
         messageSuccessAddCart.remove()
     }, 2700);
 };
+/* After 2.7 seconds we remove the alert product message */
+const messageAlertAddCart = document.querySelector(".alert-add-cart");
+if (messageAlertAddCart) {
+    setTimeout(function(){
+        messageAlertAddCart.remove()
+    }, 2700);
+};

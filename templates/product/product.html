@@ -57,7 +57,7 @@
 			</div>
 		</div>
 		<!-- Product Body -->
-		<form class="col-md-6 p-md-1 ps-lg-3" method="post" action="{% url 'order_app:add_cart_product' product.id %}"> {% csrf_token %}
+		<form class="col-md-6 p-md-1 ps-lg-3" method="post" action="{% url 'cart_app:add_cart_product' product.id %}"> {% csrf_token %}
 			<h1 class="title-product">{{ product.name }}</h1>
 			<h3 class="base-price"><strong>${{ product.price }}</strong></h3>
 			<p class="info-points">¡Cada vez que compres este artículo, recibirá <strong>58</strong> puntos como

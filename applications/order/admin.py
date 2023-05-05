@@ -1,7 +1,7 @@
 from django.contrib import admin
 from applications.user.functions import create_mail
 # imports models
-from .models import Order, OrderAddress, OrderItem, ShippingCompany, Tracking, Cart, CartItem
+from .models import Order, OrderAddress, OrderItem, ShippingCompany, Tracking
 # Register your models here.
 
 class OrderAddresAdmin(admin.StackedInline):
@@ -86,5 +86,3 @@ class ShippingCompanyAdmin(admin.ModelAdmin):
 
 admin.site.register(Order, OrderAdmin)
 admin.site.register(ShippingCompany, ShippingCompanyAdmin)
-admin.site.register(Cart)
-admin.site.register(CartItem)

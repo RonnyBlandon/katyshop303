@@ -1,3 +1,4 @@
+import json
 from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
@@ -6,9 +7,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, TemplateView, ListView, DetailView, FormView
 # import of file functions
 from .functions import code_generator, create_mail, notification_admin_by_mail
+from applications.cart.shopping_cart import ShoppingCartCookies
 #import models
 from .models import User, Address, Country, State
-from applications.order.models import Order, Cart
+from applications.order.models import Order
+from applications.cart.models import Cart
 # import forms
 from .forms import (UserLoginForm, UserRegisterForm, EmailPasswordForm, ChangePasswordForm, 
 UserVerificationResendForm, UserProfileForm, UserAddressForm
@@ -159,7 +162,9 @@ class UserRegisterView(FormView):
             form.cleaned_data['password'],
             validation_code=validation_code
         )
-        Cart.objects.create_cart(subtotal=0.00, total=0.00, id_user=user)
+        
+        # user cart is created
+        Cart.objects.create_cart(subtotal=0.00, total=0.00, user=user)
 
         # We send the account verification code to the user's email
         mail = create_mail(
@@ -194,9 +199,15 @@ class UserLoginView(FormView):
             email=form.cleaned_data['email'],
             password=form.cleaned_data['password']
         )
-        login(self.request, user)
 
-        return super(UserLoginView, self).form_valid(form)
+        # we check and update the cart
+        cart = ShoppingCartCookies(self.request)
+        cart.cookie_cart_to_database(user.id)
+            
+        login(self.request, user)
+        response = super(UserLoginView, self).form_valid(form)
+        response.delete_cookie("cart")
+        return response
 
 
 class LogoutView(View):

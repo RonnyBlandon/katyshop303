@@ -37,7 +37,7 @@
 					<a class="nav-link" id="points-rules" href="{% url 'home_app:points_rules' %}">Reglas de puntos</a>
 				</li>
 				<li class="nav-item m-1">
-					<a class="cart nav-link position-relative" href="{% url 'order_app:cart' %}">
+					<a class="cart nav-link position-relative" href="{% url 'cart_app:cart' %}">
 						<img class="cart-shopping" src="{% static 'img/cart_shopping.svg' %}" alt="cart">
 						<span class="quantity-items position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 							{% if quantity_items > 0 %}
@@ -65,6 +65,7 @@
 			<img class="mini-cart-close position-absolute" src="{% static 'img/x-close2.svg' %}" alt="close cart">
 		</div>
 		<ul>
+			{% if request.user.is_authenticated %}
 			{% for item in cart_items %}
 			<li class="box-cart__li d-flex border-bottom my-1 justify-content-center align-items-center">
 				<a class="link-item" href="{% url 'product_app:product' item.product.slug %}"><img class="img-product-mini-cart"
@@ -73,16 +74,29 @@
 					<a class="link-item d-block" href="{% url 'product_app:product' item.product.slug %}">{{ item.product.name }}</a>
 					<span class="text-success">{{ item.amount }} x ${{ item.product.price }}</span>
 				</div>
-				<img class="product-remove" src="{% static 'img/x-circle.svg' %}" data-product-id="{% url 'order_app:delete_mini_cart' item.product.id %}" alt="product_remove">
+				<img class="product-remove" src="{% static 'img/x-circle.svg' %}" data-product-id="{% url 'cart_app:delete_mini_cart' item.product.id %}" alt="product_remove">
 			</li>
 			{% endfor %}
+			{% else %}
+			{% for item in cart_items %}
+			<li class="box-cart__li d-flex border-bottom my-1 justify-content-center align-items-center">
+				<a class="link-item" href="{% url 'product_app:product' item.slug %}"><img class="img-product-mini-cart"
+					src="{{ item.product_image.all.first.image.url }}" alt="product"></a>
+				<div class="box-cart__div">
+					<a class="link-item d-block" href="{% url 'product_app:product' item.slug %}">{{ item.name }}</a>
+					<span class="text-success">{{ item.amount }} x ${{ item.price }}</span>
+				</div>
+				<img class="product-remove" src="{% static 'img/x-circle.svg' %}" data-product-id="{% url 'cart_app:delete_mini_cart' item.id %}" alt="product_remove">
+			</li>
+			{% endfor %}
+			{% endif %}
 		</ul>
 		<p class="subtotal-preview-cart p-3 d-flex justify-content-between align-items-center bg-body-secondary m-0 border-top border-bottom">
 			<strong>SUBTOTAL:</strong>
 			<strong class="cart-preview-subtotal text-success">$ {{ cart_subtotal }}</strong>
 		</p>
 		<div class="btn-cart-or-checkout py-3 d-flex justify-content-around">
-			<a class="view-cart" href="{% url 'order_app:cart' %}"><strong>VER CARRO</strong></a>
+			<a class="view-cart" href="{% url 'cart_app:cart' %}"><strong>VER CARRO</strong></a>
 			<a class="checkout-mini-cart" href="{% url 'order_app:checkout' %}"><strong>PAGAR</strong></a>
 		</div>
 	</div>

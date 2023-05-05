@@ -39,10 +39,10 @@
                 <p class="card-subtitle"><strong>${{ product.price }}</strong></p>
                 {% if product.stock == True and product.amount_stock > 0 %}
                 <p class="stock-store">Quedan {{ product.amount_stock }} Disponibles</p>
-                <a href="{% url 'order_app:add_cart_store' product.id %}" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+                <a href="{% url 'cart_app:add_cart_store' product.id %}" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
                 {% elif product.stock == True %}
                 <p class="stock-store">Disponibles</p>
-                <a href="{% url 'order_app:add_cart_store' product.id %}" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+                <a href="{% url 'cart_app:add_cart_store' product.id %}" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
                 {% else %}
                 <p class="out-of-stock">No Disponible</p>
                 <button class="btn-add-cart btn btn-secondary disabled">No disponible</button>

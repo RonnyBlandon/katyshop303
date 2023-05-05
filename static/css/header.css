@@ -40,7 +40,7 @@
     color: #f00;
     border: 0.125rem solid #f00;
 }
-.success-add-cart {
+.success-add-cart, .alert-add-cart {
     position: absolute;
     left: 10%;
     width: fit-content;
@@ -53,6 +53,9 @@
     border: 0.08rem solid #090;
     border-radius: 0.4rem;
     z-index: 100;
+}
+.alert-add-cart {
+    background-color: #F5FCB2;
 }
 
 /* own classes */

@@ -10,8 +10,14 @@ products.forEach(function (element, index) {
 });
 // After 2.7 seconds we remove the added product message
 const messageSuccessAddCart = document.querySelector(".success-add-cart");
+const messageAlertAddCart = document.querySelector(".alert-add-cart");
 if (messageSuccessAddCart) {
     setTimeout(function(){
         messageSuccessAddCart.remove()
+    }, 2700);
+};
+if (messageAlertAddCart) {
+    setTimeout(function(){
+        messageAlertAddCart.remove()
     }, 2700);
 };
