@@ -36,7 +36,7 @@ class CategoryView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        list_product = Product.objects.prdoucts_by_category(self.kwargs['slug']).order_by('-modified')
+        list_product = Product.objects.products_by_category(self.kwargs['slug']).order_by('-modified')
         paginator = Paginator(list_product, 15)
         page = self.request.GET.get('page')
         context['products'] = paginator.get_page(page)

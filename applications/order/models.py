@@ -2,11 +2,12 @@ from django.db import models
 # import models
 from applications.product.models import Product
 from applications.user.models import User, Country, State
-#import signals
+#import managers
+from .managers import OrderManager, OrderAddressManager, OrderItemManager
 
 # Create your models here.
 
-ORDER_STATUS = (('On hold', 'On hold'), ('Shipped', 'Shipped'), ('Cancelled', 'Cancelled'), ('Refunded', 'Refunded'))
+ORDER_STATUS = (('On hold', 'On hold'), ('Shipped', 'Shipped'), ('Cancelled', 'Cancelled'), ('Refunded', 'Refunded'), ('Failed', 'Failed'))
 PAYMENT_METHODS = (('Paypal', 'Paypal'), ('Stripe', 'Stripe'))
 
 # Order Models
@@ -19,6 +20,9 @@ class Order(models.Model):
     total = models.DecimalField('Total', max_digits=8, decimal_places=2)
     payment_method = models.CharField('Metodo de Pago', max_length=20, blank=True, null=True, choices=PAYMENT_METHODS)
     transaction_id = models.CharField('ID Transacción', max_length=50, blank=True, null=True)
+    
+    objects = OrderManager()
+
     def __str__(self):
         return str(self.id) +' '+ str(self.id_user)
 
@@ -35,6 +39,8 @@ class OrderAddress(models.Model):
     postal_code = models.CharField('Codigo Postal', max_length=10)
     id_order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_address')
 
+    objects = OrderAddressManager()
+
     class Meta:
         verbose_name_plural = 'Addresses'
 
@@ -48,6 +54,8 @@ class OrderItem(models.Model):
     amount = models.IntegerField('Cantidad')
     unit_price = models.DecimalField('Precio unitario', max_digits=8, decimal_places=2)
     subtotal = models.DecimalField('Subtotal', max_digits=8, decimal_places=2)
+
+    objects = OrderItemManager()
 
     def __str__(self):
         return str(self.id) +' '+ str(self.product)

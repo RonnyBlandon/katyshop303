@@ -177,8 +177,9 @@ class ShoppingCartCookies():
     def cookie_cart_to_database(self, id_user):
         database_cart = Cart.objects.filter(id_user=id_user).first()
         database_cart_items = database_cart.cart_items.all().order_by("-id")
-        if self.cart_items and not database_cart_items:
-            for id_item in self.cart_items:
+        for id_item in self.cart_items:
+            # Cart products in cookies that are not in the cart database are copied
+            if not database_cart_items.filter(product=id_item):
                 product = Product.objects.filter(id=id_item).first()
                 quantity_product = self.cart_items[id_item]["amount"]
                 database_cart.cart_items.create(product=product, amount=quantity_product, subtotal=product.price * quantity_product)

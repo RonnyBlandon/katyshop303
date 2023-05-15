@@ -9,7 +9,7 @@
 {% block content %}
 {% include 'includes/header.html' %}
 
-<div class="container-checkout container-fluid mt-2 col-md-10 col-lg-12">
+<form class="container-checkout container-fluid mt-2 col-md-10 col-lg-12" method="post"> {% csrf_token %}
     <!-- Section information earn points-->
     <div class="info-earn-points col-lg-7">
         <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">COMPLETA TU PEDIDO Y GANA
@@ -29,12 +29,10 @@
         <h4 class="text-center">Dirección de envío</h4>
         <div class="shipping p-md-2 d-flex flex-wrap gap-3">
             <div class="col-12 col-lg-5">
-                {{form.country.erros}}
                 <label class="form-label">Nombre:</label>
                 {{ form.name }}
             </div>
             <div class="col-12 col-lg-5">
-                {{form.country.erros}}
                 <label class="form-label">Apellido:</label>
                 {{ form.last_name }}
             </div>
@@ -74,15 +72,14 @@
     <div class="payment-method col-lg-4">
         <div class="details-payment me-0">
             <p class="d-flex align-items-center justify-content-between m-0">
-                <strong>Subtotal(productos 929)</strong><span>$430.00</span>
+                <strong>Subtotal(productos {{ quantity_items }})</strong><span>${{ cart_subtotal }}</span>
             </p>
             <p class="d-flex align-items-center justify-content-between m-0"><strong>Total</strong><span
-                    class="fw-bold">$430.00</span></p>
+                    class="fw-bold">${{ cart_subtotal }}</span></p>
         </div>
 
-        <form id="form-payment" action="" method="post"> {% csrf_token %}
+        <div class="div-payment">
             <h3 class="text-center">Metodos de pago</h3>
-            <input type="hidden" name="type" value="first-payment">
             <label class="label-radio-payment">
                 {{ form.payment_method }}
             </label>
@@ -94,9 +91,9 @@
                 </h6>
             </label>
             <button class="button-payment" type="submit">Realizar pago</button>
-        </form>
+        </div>
     </div>
-</div>
+</form>
 
 <script type="module" src="{% static 'js/checkout.js' %}"></script>
 

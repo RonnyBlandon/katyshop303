@@ -39,7 +39,7 @@ class Country(models.Model):
 
 class State(models.Model):
     name = models.CharField('Nombre del Estado:', max_length=20, unique=True)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name="state")
 
     def __str__(self):
         return str(self.id) +' '+ self.name +' - '+ str(self.country)

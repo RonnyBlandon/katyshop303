@@ -106,6 +106,7 @@
 .img-product-mini-cart {
     width: 5rem;
     height: 5rem;
+    object-fit: contain;
 }
 .box-cart__div {
     width: 12rem;
@@ -199,13 +200,11 @@
     /* classes cart */
     .container-mini-cart {
         position: fixed;
-        width: fit-content;
-        top: 3.7rem;
-    }
-    .container-mini-cart {
         left: 0;
         display: none;
-        
+        width: fit-content;
+        top: 3.7rem;
+        box-shadow: 0rem 0rem 0.1rem #044;
     }
     /* classes for show mini-cart */
     .mini-cart-show {

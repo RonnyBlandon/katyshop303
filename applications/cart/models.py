@@ -9,6 +9,7 @@ from applications.product.models import Product
 # Cart models
 class Cart(models.Model):
     subtotal = models.DecimalField('Subtotal', max_digits=8, decimal_places=2, default=0.00)
+    discount = models.DecimalField('Descuento por puntos', max_digits=8, decimal_places=2, default=0.00)
     total = models.DecimalField('Total', max_digits=8, decimal_places=2, default=0.00)
     id_user = models.ForeignKey(User, verbose_name='ID del usuario', on_delete=models.CASCADE)
 

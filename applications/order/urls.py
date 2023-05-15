@@ -9,4 +9,9 @@ urlpatterns = [
         views.CheckoutView.as_view(), 
         name='checkout'
         ),
+    path(
+        'paypal-payment/',
+        views.CapturePaypalPayment,
+        name='capture_paypal_payment'
+        ),
 ]

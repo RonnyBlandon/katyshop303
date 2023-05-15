@@ -1,6 +1,7 @@
-import json
+from typing import Any
 from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -87,14 +88,14 @@ class UserAddressView(LoginRequiredMixin, FormView):
 
     def get_initial(self):
         initial = super().get_initial()
-        address = Address.objects.filter(id_user=self.request.user.id)
+        address = Address.objects.filter(id_user=self.request.user.id).first()
         if address:
-            initial['country'] = address[0].country.name
-            initial['state'] = address[0].state
-            initial['city'] = address[0].city
-            initial['address_1'] = address[0].address_1
-            initial['address_2'] = address[0].address_2
-            initial['postal_code'] = address[0].postal_code
+            initial['country'] = address.country.name
+            initial['state'] = address.state
+            initial['city'] = address.city
+            initial['address_1'] = address.address_1
+            initial['address_2'] = address.address_2
+            initial['postal_code'] = address.postal_code
         
         return initial  
 
@@ -194,6 +195,13 @@ class UserLoginView(FormView):
     form_class = UserLoginForm
     success_url = reverse_lazy('user_app:user_orders')
 
+    def get(self, request, *args, **kwargs):
+        if "page" in self.kwargs:
+            if self.kwargs["page"] == "checkout":
+                messages.add_message(request, messages.SUCCESS, message="Por favor, inicie sesión.")
+        return super().get(request, *args, **kwargs)
+    
+
     def form_valid(self, form):
         user = authenticate(
             email=form.cleaned_data['email'],
@@ -203,6 +211,13 @@ class UserLoginView(FormView):
         # we check and update the cart
         cart = ShoppingCartCookies(self.request)
         cart.cookie_cart_to_database(user.id)
+
+        if "page" in self.kwargs:
+            if self.kwargs["page"] == "checkout":
+                login(self.request, user)
+                response = redirect("order_app:checkout")
+                response.delete_cookie("cart")
+                return response
             
         login(self.request, user)
         response = super(UserLoginView, self).form_valid(form)

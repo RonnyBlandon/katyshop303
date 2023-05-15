@@ -13,6 +13,15 @@
     {% include 'includes/user-menu.html' %}
 
     <div class="box-account-section col-lg-8 col-lg-9">
+        <!-- Success or error messages -->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
         <div class="my-3 mx-md-3 mx-lg-auto">
             {% if order_list %}
             <div class="box-order-tables overflow-x-auto mx-auto">

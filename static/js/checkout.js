@@ -19,5 +19,6 @@ function showHideInputState() {
 }
 
 if (selectedCountry) {
+	showHideInputState();
 	selectedCountry.addEventListener('change', showHideInputState);
-}
+};

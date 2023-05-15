@@ -2,7 +2,7 @@ from django.db import models
 
 class ProductManager(models.Manager):
     """ procedures for category """
-    def prdoucts_by_category(self, slug_category: int):
+    def products_by_category(self, slug_category: int):
         products = self.filter(category__slug=slug_category)
         return products
     
@@ -18,3 +18,4 @@ class ProductManager(models.Manager):
                 return result2
         
         return None
+

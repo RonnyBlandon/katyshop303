@@ -38,7 +38,9 @@
                     <span class="proceed-to-pay-subtotal">${{ cart_subtotal }}</span>
                 </p>
             </div>
+            {% if cart_items %}
             <a class="btn btn-primary mt-2" href="{% url 'order_app:checkout' %}">Proceder a pagar</a>
+            {% endif %}
         </div>
     </div>
     <!-- Section cart product list-->
@@ -55,21 +57,21 @@
             <p class="stock-cart text-success">Quedad {{ item.product.amount_stock }} disponibles</p>
             <div class="d-flex flex-wrap">
                 <div class="product-quantity">
-                    <button class="decrease-product" data-url-decrease="{% url 'order_app:subtract_cart' item.product.id %}">-</button>
+                    <button class="decrease-product" data-url-decrease="{% url 'cart_app:subtract_cart' item.product.id %}">-</button>
                     <input type="number" class="amount-product" value="{{ item.amount }}" min="1" max="{{ item.product.amount_stock }}" readonly>
-                    <button class="increase-product" data-url-increase="{% url 'order_app:add_cart' item.product.id %}">+</button>
+                    <button class="increase-product" data-url-increase="{% url 'cart_app:add_cart' item.product.id %}">+</button>
                 </div>
-                <a class="delete-product-cart" href="{% url 'order_app:delete_cart' item.product.id %}">Eliminar</a>
+                <a class="delete-product-cart" href="{% url 'cart_app:delete_cart' item.product.id %}">Eliminar</a>
             </div>
             {% elif item.product.stock == True %}
             <p class="stock-cart text-success">Disponibles</p>
             <div class="d-flex flex-wrap">
                 <div class="product-quantity">
-                    <button class="decrease-product" data-url-decrease="{% url 'order_app:subtract_cart' item.product.id %}">-</button>
+                    <button class="decrease-product" data-url-decrease="{% url 'cart_app:subtract_cart' item.product.id %}">-</button>
                     <input type="number" class="amount-product" value="{{ item.amount }}" min="1" max="10" readonly>
-                    <button class="increase-product" data-url-increase="{% url 'order_app:add_cart' item.product.id %}">+</button>
+                    <button class="increase-product" data-url-increase="{% url 'cart_app:add_cart' item.product.id %}">+</button>
                 </div>
-                <a class="delete-product-cart" href="{% url 'order_app:delete_cart' item.product.id %}">Eliminar</a>
+                <a class="delete-product-cart" href="{% url 'cart_app:delete_cart' item.product.id %}">Eliminar</a>
             </div>
         {% endif %}
         </div>

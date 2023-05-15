@@ -12,8 +12,14 @@ urlpatterns = [
         ),
     path(
         'user-login/', 
-        views.UserLoginView.as_view(), 
+        views.UserLoginView.as_view(),
         name='user_login'
+        ),
+    path(
+        'user-login-checkout/', 
+        views.UserLoginView.as_view(), 
+        {"page": "checkout"},
+        name='user_login_checkout'
         ),
     path(
         'logout/', 

@@ -91,14 +91,22 @@
 			{% endfor %}
 			{% endif %}
 		</ul>
+		{% if cart_items %}
 		<p class="subtotal-preview-cart p-3 d-flex justify-content-between align-items-center bg-body-secondary m-0 border-top border-bottom">
 			<strong>SUBTOTAL:</strong>
 			<strong class="cart-preview-subtotal text-success">$ {{ cart_subtotal }}</strong>
 		</p>
 		<div class="btn-cart-or-checkout py-3 d-flex justify-content-around">
 			<a class="view-cart" href="{% url 'cart_app:cart' %}"><strong>VER CARRO</strong></a>
+			{% if request.user.is_authenticated %}
 			<a class="checkout-mini-cart" href="{% url 'order_app:checkout' %}"><strong>PAGAR</strong></a>
+			{% else %}
+			<a class="checkout-mini-cart" href="{% url 'user_app:user_login_checkout' %}"><strong>PAGAR</strong></a>
+			{% endif %}
 		</div>
+		{% else %}
+		<p class="p-3">No hay productos en el carrito.</p>
+		{% endif %}
 	</div>
 </div>
 
