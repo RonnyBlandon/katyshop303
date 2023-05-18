@@ -10,6 +10,6 @@ def tracking_presave(sender, instance, **kwargs):
         instance.tracking_link =  link.tracking_link + instance.tracking
         # We change the status to Sent
         order_instance = instance.id_order
-        order_instance.status = 'Enviado'
+        order_instance.status = 'Shipped'
         order_instance.save()
 

@@ -144,12 +144,3 @@ def DeleteProductCartView(request, product_id, page):
     else:
         cart = ShoppingCartCookies(request)
         return cart.delete(product, page)
-
-
-def CleanCartView(request, product_id):
-    cart = Cart.objects.get(id_user=request.user.id)
-    # we clean the cart leaving the default fields
-    cart.subtotal = 0.00
-    cart.total = 0.00
-    cart.cart_items.delete()
-    cart.save()

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from applications.user.functions import create_mail
+from applications.user.functions import create_html_mail
 # imports models
 from .models import Order, OrderAddress, OrderItem, ShippingCompany, Tracking
 # Register your models here.
@@ -26,6 +26,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     list_display = ('id', 'user', 'created', 'status', 'total')
     list_filter = ('status', 'payment_method')
+    readonly_fields = ('transaction_id',)
 
     def user(self, obj):
         return obj.id_user.name +' '+ obj.id_user.last_name
@@ -33,7 +34,7 @@ class OrderAdmin(admin.ModelAdmin):
     def send_order_tracking_email(self, request, queryset):
         for order in queryset:
             # Send the email
-            mail = create_mail(
+            mail = create_html_mail(
                 user_email=order.id_user.email,
                 subject=f"Your Katy Shop 303 order is now complete",
                 template_name='send_email/customer-order-tracking.html',
@@ -47,7 +48,7 @@ class OrderAdmin(admin.ModelAdmin):
                     'state': order.order_address.first().state, 'country': order.order_address.first().country,
                     'city': order.order_address.first().city, 'address_1': order.order_address.first().address_1,
                     'address_2': order.order_address.first().address_2, 'postal_code': order.order_address.first().postal_code,
-                    'user_email': order.id_user.email
+                    'user_email': order.id_user.email, 'user_name': order.id_user.name+" "+order.id_user.last_name
                 }
             )
             mail.send(fail_silently=False)
@@ -57,7 +58,7 @@ class OrderAdmin(admin.ModelAdmin):
     def resend_order_email(self, request, queryset):
         for order in queryset:
             # Send the email
-            mail = create_mail(
+            mail = create_html_mail(
                 user_email=order.id_user.email,
                 subject=f"Order #{order.id} on Katy Shop 303",
                 template_name='send_email/customer-order.html',
@@ -69,7 +70,7 @@ class OrderAdmin(admin.ModelAdmin):
                     'state': order.order_address.first().state, 'country': order.order_address.first().country,
                     'city': order.order_address.first().city, 'address_1': order.order_address.first().address_1,
                     'address_2': order.order_address.first().address_2, 'postal_code': order.order_address.first().postal_code,
-                    'user_email': order.id_user.email
+                    'user_email': order.id_user.email, 'user_name': order.id_user.name+" "+order.id_user.last_name
                 }
             )
             mail.send(fail_silently=False)

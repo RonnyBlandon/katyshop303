@@ -12,10 +12,10 @@ class Paypal():
         self.cancel_url = "http://127.0.0.1:8000/paypal-payment/"
 
 
-    def create_order(self, cart):
+    def create_order(self, order):
         # We prepare the list of cart items to create the paypal order
         items = []
-        for product in cart.cart_items.all():
+        for product in order.order_items.all():
             item = {
                 "name": product.product.name,
                 "quantity": product.amount,
@@ -31,10 +31,11 @@ class Paypal():
                 {
                     'amount': {
                         'currency_code': 'USD', 
-                        'value': str(cart.subtotal),
-                        'breakdown': {'item_total': {"currency_code": "USD", "value": str(cart.subtotal)}}
+                        'value': str(order.total),
+                        'breakdown': {'item_total': {"currency_code": "USD", "value": str(order.total)}}
                     },
                     'items': items,
+                    'invoice_id': '#'+str(order.id)
                 }
             ],
             'payment_source': {
@@ -59,6 +60,7 @@ class Paypal():
                     return link['href']
         else:
             print('Sorry, there was a connection failure. The reason:', resp.content)
+
 
     def capture_order(self, token):
         # We prepare the request to capture the order

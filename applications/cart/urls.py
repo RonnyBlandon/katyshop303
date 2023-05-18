@@ -15,5 +15,4 @@ urlpatterns = [
     path('subtract-cart/<int:product_id>/', views.SubtractProductCartView, name='subtract_cart'),
     path('delete-mini-cart/<int:product_id>/', views.DeleteProductCartView, {'page':'mini-cart' }, name='delete_mini_cart'),
     path('delete-cart/<int:product_id>/', views.DeleteProductCartView, {'page': 'cart'}, name='delete_cart'),
-    path('clean-cart/<int:product_id>/', views.CleanCartView, name='clean_cart'),
 ]

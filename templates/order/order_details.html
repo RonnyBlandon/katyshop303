@@ -79,7 +79,7 @@
             <address>
                 <i>{{ order.order_address.first.name }}</i><br>
                 {% if order.order_address.first.state %}
-                <i>{{ order.order_address.first.city }}</i>, <i>{{ order.order_address.first.state }}</i>, <i>{{ order.order_address.first.country.name }}</i><br>
+                <i>{{ order.order_address.first.city }}</i>, <i>{{ order.order_address.first.state.name }}</i>, <i>{{ order.order_address.first.country.name }}</i><br>
                 {% else %}
                 <i>{{ order.order_address.first.city }}</i>, <i>{{ order.order_address.first.country.name }}</i><br>
                 {% endif %}

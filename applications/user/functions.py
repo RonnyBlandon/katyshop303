@@ -19,7 +19,7 @@ def notification_admin_by_mail(affair: str, message: str):
 
 
 #Funtion to send the emails with html format to the user
-def create_mail(user_email, subject, template_name, context):
+def create_html_mail(user_email, subject, template_name, context):
     template = get_template(template_name)
     content = template.render(context)
 

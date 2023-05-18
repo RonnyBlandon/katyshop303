@@ -30,24 +30,6 @@
             border-radius: 0.5rem;
         }
 
-        /* Order Tracking */
-        .container-tracking {
-            padding: 0.4rem;
-            border: 0.1rem solid #e0e0e0;
-        }
-
-        .container-tracking a {
-            text-decoration: none;
-        }
-
-        .container-tracking a:hover {
-            text-decoration: underline;
-        }
-
-        .container-tracking p {
-            margin: 0;
-        }
-
         /* Order details */
         .order-date {
             display: inline-block;
@@ -61,6 +43,7 @@
 
         table {
             width: 100%;
+            border-collapse: collapse;
         }
 
         th,
@@ -85,23 +68,10 @@
 <!-- Order -->
 <div class="box-account-section">
     <div class="title-order">
-        <h1>Thanks for shopping with us</h1>
+        <h1>New Order: #{{ id }}</h1>
     </div>
     <div class="body-order">
-        <p>We have finished processing your order.</p>
-        <h3 class="order-sections">Status: <span class="order-status">{{ status }}</span></h3>
-        <!-- Order Tracking -->
-        {% if tracking_link %}
-        <h3 class="order-sections">Tracking Information:</h3>
-        <div class="container-tracking">
-            <strong>shipping provider:</strong>
-            <span>{{ shipping_company.name }}</span><br>
-            <strong>Shipping date:</strong>
-            <span>{{ shipping_date|date:'d F, Y' }}</span><br>
-            <strong>shipping tracking:</strong>
-            <a href="{{ tracking_link }}" target="_blank" rel="noopener noreferrer">{{ tracking }}</a>
-        </div>
-        {% endif %}
+        <p>You’ve received the following order from {{ user_name }}:</p>
         <!-- Order details -->
         <h3 class="order-sections order-date">[Order #{{ id }}]</h3><h3 class="order-sections order-date">({{ created|date:'d F, Y' }})</h3>
         <table>

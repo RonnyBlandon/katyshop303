@@ -196,6 +196,7 @@ def calculate_cart(cart):
         cart.subtotal += item.subtotal
         # Calculate the number of items in the cart to update the template.
         quantity_items += item.amount
+    cart.total = cart.subtotal - cart.discount
     cart.save()
     return quantity_items
 

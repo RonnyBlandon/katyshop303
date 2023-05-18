@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View, TemplateView, ListView, DetailView, FormView
 # import of file functions
-from .functions import code_generator, create_mail, notification_admin_by_mail
+from .functions import code_generator, create_html_mail, notification_admin_by_mail
 from applications.cart.shopping_cart import ShoppingCartCookies
 #import models
 from .models import User, Address, Country, State
@@ -168,7 +168,7 @@ class UserRegisterView(FormView):
         Cart.objects.create_cart(subtotal=0.00, total=0.00, user=user)
 
         # We send the account verification code to the user's email
-        mail = create_mail(
+        mail = create_html_mail(
             user_email=user.email, 
             subject="CÓDIGO DE VERIFICACIÓN", 
             template_name="send_email/email-verification-user.html", 
@@ -293,7 +293,7 @@ class UserVerificationResendView(FormView):
         user.update(validation_code=validation_code)
 
         # We send the account verification code to the user's email
-        mail = create_mail(
+        mail = create_html_mail(
             user_email=email_user, 
             subject="CÓDIGO DE VERIFICACIÓN", 
             template_name="send_email/email-verification-user.html", 
@@ -332,7 +332,7 @@ class RecoverAccountView(FormView):
         user.update(validation_code=validation_code)
 
         # We send the verification code to change the password to the user
-        mail = create_mail(
+        mail = create_html_mail(
             user_email=email_user, 
             subject="RECUPERACIÓN DE CUENTA", 
             template_name="send_email/email-verification-user.html", 

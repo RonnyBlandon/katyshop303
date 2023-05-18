@@ -43,6 +43,7 @@
 
         table {
             width: 100%;
+            border-collapse: collapse;
         }
 
         th,
@@ -70,7 +71,7 @@
         <h1>Order #{{ id }}</h1>
     </div>
     <div class="body-order">
-        <p>Hi Ronny,</p>
+        <p>Hi {{ user_name }},</p>
         <p>Here are the details of your order placed on {{ created|date:'d F, Y' }}:</p>
         <!-- Order details -->
         <h3 class="order-sections order-date">[Order #{{ id }}]</h3><h3 class="order-sections order-date">({{ created|date:'d F, Y' }})</h3>
@@ -121,9 +122,9 @@
         <address>
             <i>{{ name }}</i><br>
             {% if state %}
-            <i>{{ city }}</i>, <i>{{ state }}</i>, <i>{{ country }}</i><br>
+            <i>{{ city }}</i>, <i>{{ state.name }}</i>, <i>{{ country.name }}</i><br>
             {% else %}
-            <i>{{ city }}</i>, <i>{{ country }}</i><br>
+            <i>{{ city }}</i>, <i>{{ country.name }}</i><br>
             {% endif %}
             <i>{{ address_1 }}</i><br>
             {% if address_2 %}

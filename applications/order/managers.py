@@ -12,7 +12,7 @@ class OrderManager(models.Manager):
             id_user = cart.id_user,
             subtotal = cart.subtotal,
             discount = cart.discount,
-            total = cart.subtotal,
+            total = cart.total,
             payment_method = payment_method,
             transaction_id = '',
         )
@@ -26,7 +26,7 @@ class OrderAddressManager(models.Manager):
         state = country.state.filter(name=shipment_info["state"]).first()
         
         order_address = self.create(
-            name = shipment_info["name"],
+            name = shipment_info["name"] +" "+shipment_info["last_name"],
             country = country,
             state = state,
             city = shipment_info["city"],
@@ -50,5 +50,5 @@ class OrderItemManager(models.Manager):
                 unit_price = item.product.price,
                 subtotal = item.subtotal
             )
-            order_items.append(order_items)
+            order_items.append(order_item)
         return order_items

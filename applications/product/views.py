@@ -16,7 +16,7 @@ class StoreView(ListView):
         kword = self.request.GET.get("kword")
         products = Product.objects.search_product_trgm(kword)
         if not products:
-            return Product.objects.all().order_by('-modified')
+            return Product.objects.all().order_by('-created')
         return products
 
     def get_context_data(self, **kwargs):
