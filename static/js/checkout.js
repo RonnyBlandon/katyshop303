@@ -22,3 +22,9 @@ if (selectedCountry) {
 	showHideInputState();
 	selectedCountry.addEventListener('change', showHideInputState);
 };
+
+
+/* POINTS FORM LOGIC */
+const btnApplyPoints = document.getElementById("btn-apply-points");
+console.log("Esto tiene btnApplyPoints: ", btnApplyPoints);
+//btnApplyPoints.addEventListener('click', )

@@ -9,6 +9,11 @@
 {% block content %}
 {% include 'includes/header.html' %}
 
+<!-- POINTS FORM -->
+<form action="" method="post"> {% csrf_token %}
+    
+</form>
+
 <form class="container-checkout container-fluid mt-2 col-md-10 col-lg-12" method="post"> {% csrf_token %}
     <!-- Section information earn points-->
     <div class="info-earn-points col-lg-7">
@@ -21,7 +26,7 @@
     <div class="info-earn-points col-lg-7 d-flex align-items-center flex-wrap">
         <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">USE <strong>333</strong> PUNTOS
             PARA UN <strong class="text-success">$9.49</strong> DE DESCUENTO EN ESTE PEDIDO!</p>
-        <button class="btn btn-primary ms-1" id="btn-discount-points">Aplicar</button>
+        <button type="button" class="btn btn-primary ms-1" id="btn-apply-points">Aplicar</button>
     </div>
     <!-- Section shipping address -->
 
