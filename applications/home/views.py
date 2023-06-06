@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+# import models
+from applications.points.models import PointsSetting
 # imports form
 from .forms import ContactForm
 #
@@ -30,11 +32,11 @@ class ContactView(FormView):
             email_remitente = get_secret('EMAIL')
             send_mail(affair, mensaje, email_remitente, [email_remitente,])
 
-            messages.add_message(request=self.request, level=messages.WARNING, message='Su mensaje fue enviado con exito. Muy pronto recibira una respuesta en su correo.')
+            messages.add_message(request=self.request, level=messages.WARNING, message='Your message was sent successfully. You will receive a response in your email very soon.')
         except Exception as err:
             print("Error on the contact page the error is: ", err)
-            messages.add_message(request=self.request, level=messages.ERROR, message='Error en el envío, inténtelo más tarde.')
-        # Redirigimos a la misma pagina de contacto
+            messages.add_message(request=self.request, level=messages.ERROR, message='Sending failed, please try again later.')
+        # We redirect to the same contact page
         
         return HttpResponseRedirect(
             reverse('home_app:contact')
@@ -43,6 +45,15 @@ class ContactView(FormView):
 
 class PointsRulesView(TemplateView):
     template_name = 'home/points-rules.html'
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(PointsRulesView, self).get_context_data(**kwargs)
+        points_setting = PointsSetting.objects.get_point_setting()
+        context['example_value'] = 100
+        context['points_to_win'] = context['example_value'] * points_setting.earning_points_rate
+        return context
+    
 
 
 class TermsView(TemplateView):

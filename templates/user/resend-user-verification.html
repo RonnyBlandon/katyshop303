@@ -18,19 +18,19 @@
 </ul>
 {% endif %}
 
-<!--Formulario para recuperar cuenta-->
+<!--Form to recover account-->
     
 <div class="container-form">
     <form class="form-register" method="post"> {% csrf_token %}
         <div class="form__container">
-            <p>Para reenviar el enlace de activación de cuenta ingresé su correo electrónico.</p>
+            <p>To resend the account activation link, enter your email.</p>
         </div>
         {{ form.non_field_errors }}
         <label class="form-register__label"><img src="{% static 'img/icono-contraseña.svg' %}" alt="icon-password">
             {{form.email}}</label>
 
 
-        <input class="form-register__input-submit" type="submit" value="Recuperar Cuenta">
+        <input class="form-register__input-submit" type="submit" value="Recover account">
     </form>
 </div class="container-form">
 

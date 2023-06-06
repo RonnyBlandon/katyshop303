@@ -11,42 +11,42 @@
 <div class="container-form">
     <form class="form-register" method="post"> {% csrf_token %}
         <div class="form__container">
-            <h2>Registrate</h2>
-            <p>Por favor complete el formulario para crear una cuenta.</p>
+            <h2>Sign in</h2>
+            <p>Please complete the form to create an account.</p>
         </div>
         {{form.error}}
         <label class="form-register__label">
-            <img src="{% static 'img/icono-user.svg' %}" alt="icono-user">
+            <img src="{% static 'img/icono-user.svg' %}" alt="icon-user">
             {{form.name}}
         </label>
 
         <label class="form-register__label">
-            <img src=" {% static 'img/icono-user.svg' %}" alt="icono-user">
+            <img src=" {% static 'img/icono-user.svg' %}" alt="icon-user">
             {{form.last_name}}
         </label>
 
             {{form.email.errors}}
         <label class="form-register__label">
-            <img src="{% static 'img/icono-correo.svg' %}" alt="icono-correo">
+            <img src="{% static 'img/icono-correo.svg' %}" alt="icon-email">
             {{form.email}}
         </label>
         
             {{form.repeat_password.errors}}
         <label class="form-register__label">
-            <img src="{% static 'img/icono-contraseña.svg' %}" alt="icono-contraseñá">
+            <img src="{% static 'img/icono-contraseña.svg' %}" alt="icon-password">
             {{form.password}}
         </label>
 
         <label class="form-register__label">
-            <img src="{% static 'img/icono-contraseña.svg' %}" alt="icono-contraseña">
+            <img src="{% static 'img/icono-contraseña.svg' %}" alt="icon-password">
             {{form.repeat_password}}
         </label>
         <!--{{form.captcha}}-->
 
-        <input class="form-register__input-submit" type="submit" value="Registrar">
+        <input class="form-register__input-submit" type="submit" value="Create Account">
 
         <div class="form__container-2">
-            <p>¿Ya tienes una cuenta? <a href="{% url 'user_app:user_login' %}">Inicia Sesión</a></p>
+            <p>Do you already have an account? <a href="{% url 'user_app:user_login' %}">Log in</a></p>
         </div>
     </form>
 </div>

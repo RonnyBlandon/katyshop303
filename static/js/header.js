@@ -43,7 +43,8 @@ const boxCart = document.querySelector('.box-cart');
 const buttonCartClose = document.querySelector('.mini-cart-close');
 // Mobile devices
 buttonCart.addEventListener('touchend', (event) => {
-    if (window.location.pathname != '/cart/') {
+    console.log("Esto tiene pathname: ", window.location.pathname);
+    if (window.location.pathname != '/cart/' && window.location.pathname != '/checkout/') {
         event.preventDefault()
         miniCart.classList.add('mini-cart-show');
     };
@@ -55,7 +56,7 @@ buttonCartClose.addEventListener('click', () => {
 buttonCart.addEventListener('mouseover', () => {
     // We check if the mobile close button of the mini cart is present with offsetParent to know if we are 
     // on a desktop screen
-    if (!buttonCartClose.offsetParent && window.location.pathname != '/cart/') {
+    if (!buttonCartClose.offsetParent && window.location.pathname != '/cart/' && window.location.pathname != '/checkout/') {
         miniCart.classList.add('mini-cart-show');
     }
 });

@@ -13,38 +13,34 @@
 	{% include 'includes/user-menu.html' %}
 
 	<div class="box-account-section col-lg-8 col-lg-9">
-		<h4 class="my-points">Hola Ronny, tienes 339 puntos</h4>
+		<h4 class="my-points">Hi Ronny, you have {{ user_points }} points</h4>
 		<div class="my-3 mx-md-3 mx-lg-auto">
 			<div class="box-order-tables overflow-x-auto mx-auto">
 				<table class="order-table table table-striped table-info text-center">
 					<thead class="bg-black">
 						<tr>
-							<th>Evento</th>
+							<th>Event</th>
 							<th>ID Order</th>
-							<th>Fecha</th>
-							<th>Puntos</th>
+							<th>Date</th>
+							<th>Points</th>
 						</tr>
 					</thead>
-					{% for order in order_list %}
+					{% for register in pointshistory_list %}
 					<tr>
-						<td>Puntos Canjeados Para La Compra</td>
-						<td>#1245612337</td>
-						<td>12 September, 2023</td>
-						<td>+42356</td>
+						<td>{{ register.event }}</td>
+						{% if register.id_order %}
+						<td>#{{ register.id_order.id  }}</td>
+						{% else %}
+						<td><strong>-------</strong></td>
+						{% endif %}
+						<td>{{ register.date|date:"d M, Y" }}</td>
+						{% if register.points > 0 %}
+						<td>+{{ register.points }}</td>
+						{% else %}
+						<td>{{ register.points }}</td>
+						{% endif %}
 					</tr>
 					{% endfor %}
-					<tr>
-						<td>Puntos Ganados Por La Compra</td>
-						<td>#1245612337</td>
-						<td>12 September, 2023</td>
-						<td>+42356</td>
-					</tr>
-					<tr>
-						<td>Puntos Ajustados Por "Admin"</td>
-						<td>#1245612337</td>
-						<td>12 September, 2023</td>
-						<td>+42356</td>
-					</tr>
 				</table>
 			</div>
 			<!--Pagination of orders-->
@@ -56,11 +52,11 @@
                     {% endif %}
                     {% if page_obj.number > 0 %}
                     <span class="current-pages">
-                        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                     </span>
                     {% else %}
                     <span class="current-pages">
-                        Página 1 de 1
+                        Page 1 of 1
                     </span>
                     {% endif %}
 

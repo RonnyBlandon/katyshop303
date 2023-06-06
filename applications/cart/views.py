@@ -101,7 +101,9 @@ def AddCartStoreView(request, product_id, page):
         if page == "store":
             return redirect(request.META.get('HTTP_REFERER'))
         elif page == "cart":
-            return JsonResponse({"success": True, "item_amount": item.amount, "item_subtotal": item.subtotal, "cart_subtotal": cart.subtotal, "quantity_items": quantity_items})
+            return JsonResponse({"success": True, "item_amount": item.amount, "item_subtotal": item.subtotal, 
+                "cart_subtotal": cart.subtotal, "cart_total": cart.total, "cart_discount": cart.discount, 
+                "quantity_items": quantity_items})
     # Otherwise the user is not authenticated, the data will be saved in the browser's cookies
     else:
         cart = ShoppingCartCookies(request)
@@ -120,7 +122,9 @@ def SubtractProductCartView(request, product_id):
             item.save()
 
         quantity_items = calculate_cart(cart)
-        return JsonResponse({"success": True, "item_amount": item.amount, "item_subtotal": item.subtotal, "cart_subtotal": cart.subtotal, "quantity_items": quantity_items})
+        return JsonResponse({"success": True, "item_amount": item.amount, "item_subtotal": item.subtotal, 
+            "cart_subtotal": cart.subtotal, "cart_total": cart.total, "cart_discount": cart.discount,
+            "quantity_items": quantity_items})
     else:
         cart = ShoppingCartCookies(request)
         return cart.subtract(product)

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} cart {% endblock title %}
+{% block title %} checkout {% endblock title %}
 
 {% block css %} {% static 'css/cart.css' %} {% endblock css %}
 {% block css2 %} {% static 'css/checkout.css' %} {% endblock css2 %}
@@ -10,92 +10,114 @@
 {% include 'includes/header.html' %}
 
 <!-- POINTS FORM -->
-<form action="" method="post"> {% csrf_token %}
-    
-</form>
+<div class="box-form-points mx-2 mx-md-auto mx-lg-2 col-md-8 col-lg-7">
+    <form id="form-points" class="px-3 col-12 col-md-10 col-lg-7">
+        <p>¿Cuántos puntos le gustaría aplicar?</p>
+        <input id="redemption-points" type="number" data-user_points="{{ user_points }}" data-point_redemption_rate="{{ point_redemption_rate }}">
+        <div class="form-points-buttons">
+            <button type="button" class="btn-make-discount btn btn-primary">Aceptar</button>
+            <button type="button" class="btn-cancel-points">Cancelar</button>
+        </div>
+    </form>
+</div>
+<div class="loader-discount">
+    <img src="{% static 'img/load-cart.gif' %}" alt="load-cart">
+</div>
 
 <form class="container-checkout container-fluid mt-2 col-md-10 col-lg-12" method="post"> {% csrf_token %}
     <!-- Section information earn points-->
     <div class="info-earn-points col-lg-7">
-        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">COMPLETA TU PEDIDO Y GANA
-            <strong>430</strong>
-            PUNTOS PARA UN DESCUENTO EN UNA FUTURA COMPRA.
+        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">COMPLETE YOUR ORDER AND EARN
+            <strong class="order-points" data-earning_points_rate="{{ earning_points_rate }}">{{ order_points }}</strong>
+            POINTS FOR A DISCOUNT ON A FUTURE PURCHASE.
         </p>
     </div>
     <!-- Section points discount-->
-    <div class="info-earn-points col-lg-7 d-flex align-items-center flex-wrap">
-        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">USE <strong>333</strong> PUNTOS
-            PARA UN <strong class="text-success">$9.49</strong> DE DESCUENTO EN ESTE PEDIDO!</p>
-        <button type="button" class="btn btn-primary ms-1" id="btn-apply-points">Aplicar</button>
+    <div class="info-earn-points apply-points col-lg-7">
+        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">
+            YOU HAVE <strong id="user-points">{{ user_points }}</strong> POINTS FOR A <strong class="text-success">${{ max_discount }}</strong> 
+            DISCOUNT ON THIS ORDER!</p>
+        <button type="button" class="btn btn-primary ms-1" id="btn-apply-points">Apply</button>
     </div>
     <!-- Section shipping address -->
 
     <div class="box-shipping p-2 col-lg-7">
-        <h4 class="text-center">Dirección de envío</h4>
+        <h4 class="text-center">Shipping Address</h4>
         <div class="shipping p-md-2 d-flex flex-wrap gap-3">
             <div class="col-12 col-lg-5">
-                <label class="form-label">Nombre:</label>
+                <label class="form-label">Name:</label>
                 {{ form.name }}
             </div>
             <div class="col-12 col-lg-5">
-                <label class="form-label">Apellido:</label>
+                <label class="form-label">Last name:</label>
                 {{ form.last_name }}
             </div>
             <div class="col-12 col-lg-5">
                 {{form.country.erros}}
-                <label class="form-label">Pais:</label>
+                <label class="form-label">Country:</label>
                 {{ form.country }}
             </div>
             <div class="div-select-state col-12 col-lg-5">
                 {{form.state.errors}}
-                <label class="form-label">Estado:</label>
+                <label class="form-label">State:</label>
                 {{ form.state }}
             </div>
             <div class="col-12 col-lg-5">
-                <label id="label-city" class="form-label">Ciudad:</label>
+                <label id="label-city" class="form-label">City:</label>
                 {{form.city}}
             </div>
             <div class="col-12 col-lg-8">
-                <label class="form-label">Dirección:</label>
+                <label class="form-label">Address:</label>
                 {{form.address_1}}
                 {{form.address_2}}
             </div>
             <div class="col-12 col-lg-5">
                 {{form.postal_code.errors}}
-                <label class="form-label">Código Postal:</label>
+                <label class="form-label">Postal Code:</label>
                 {{form.postal_code}}
             </div>
         </div>
     </div>
     <!--Section Additional Information-->
     <div class="box-additional-info p-2 col-lg-7">
-        <h4 class="text-center">Información Adicional</h4>
-        <label class="form-label">Notas de pedido: (opcional)</label>
+        <h4 class="text-center">Additional Information</h4>
+        <label class="form-label">Order notes: (optional)</label>
         {{ form.additional_info }}
     </div>
     <!--Section Payment-->
     <div class="payment-method col-lg-4">
         <div class="details-payment me-0">
+            {% for item in cart_items %}
+            <div class="products d-flex align-items-center justify-content-between">
+                <p class="product-name m-0">{{ item.product.name }} x {{ item.amount }}</p>
+                <span>${{ item.subtotal }}</span>
+            </div>
+            {% endfor %}
             <p class="d-flex align-items-center justify-content-between m-0">
                 <strong>Subtotal(productos {{ quantity_items }})</strong><span>${{ cart_subtotal }}</span>
             </p>
+            <p class="box-discount m-0">
+                <strong>Discount <span id="remove-discount">[Remove]</span></strong>
+                <span class="discount fw-bold">${{ cart_discount }}</span>
+            </p>
             <p class="d-flex align-items-center justify-content-between m-0"><strong>Total</strong><span
-                    class="fw-bold">${{ cart_subtotal }}</span></p>
+                class="total fw-bold">${{ cart_total }}</span>
+            </p>
         </div>
 
         <div class="div-payment">
-            <h3 class="text-center">Metodos de pago</h3>
+            <h3 class="text-center">Payment methods</h3>
             <label class="label-radio-payment">
                 {{ form.payment_method }}
             </label>
             <label class="input-checkbox">
                 <h6>
                     <input type="checkbox" name="terms-and-conditions" value="True" required>
-                    He leído y estoy de acuerdo con los <a href="{% url 'home_app:terms' %}">términos y condiciones</a>
-                    de Katyshop303.
+                    I have read and agree to the <a href="{% url 'home_app:terms' %}">terms and conditions</a>
+                    of Katyshop303.
                 </h6>
             </label>
-            <button class="button-payment" type="submit">Realizar pago</button>
+            <button class="button-payment" type="submit">Pay now</button>
         </div>
     </div>
 </form>

@@ -56,7 +56,7 @@ class UserProfileForm(forms.ModelForm):
         phone_number = self.cleaned_data['phone_number']
         if phone_number:
             if not validate_phone_number(phone_number):
-                self.add_error('phone_number', 'El numero de telefono no puede contener caracteres.')
+                self.add_error('phone_number', 'The phone number cannot contain characters.')
 
         # we recover the old password of the user and we verify his old password is correct
         current_password = self.cleaned_data['current_password']
@@ -65,11 +65,11 @@ class UserProfileForm(forms.ModelForm):
         if current_password:
             user = User.objects.get(id=self.id_user)
             if not check_password(current_password, user.password):
-                self.add_error('current_password', 'La contraseña actual no es correcta.')
+                self.add_error('current_password', 'The current password is not correct.')
             UserRegisterForm.validate_password(self, new_password, repeat_password)
         else:
             if new_password or repeat_password:
-                self.add_error('current_password', 'Debe agregar la contraseña actual.')
+                self.add_error('current_password', 'You must add the current password.')
 
 
 class UserAddressForm(forms.Form):
@@ -90,13 +90,13 @@ class UserAddressForm(forms.Form):
     )
     address_1 = forms.CharField(
         widget=forms.TextInput(
-            attrs={'class': 'form-control', 'maxlength': '60', 'placeholder': 'Numero de Casa y nombre de la calle'})   
+            attrs={'class': 'form-control', 'maxlength': '60', 'placeholder': 'House number and street name'})   
     )
     address_2 = forms.CharField(
         required=False,
         widget=forms.TextInput(
             attrs={'class': 'form-control mt-3', 'maxlength': '60', 
-                   'placeholder': 'Depto, unidad, edificio, piso, etc.'})   
+                   'placeholder': 'Apt, suite, unit, building, floor, etc.'})   
     )
     postal_code = forms.CharField(
         widget=forms.TextInput(
@@ -107,11 +107,11 @@ class UserAddressForm(forms.Form):
     def clean(self):
         country = self.cleaned_data['country']
         if not Country.objects.filter(name=country):
-            self.add_error('country', 'Por favor elija un país dentro de la lista.')
+            self.add_error('country', 'Please choose a country from the list.')
 
-        if country == "Estados Unidos":
+        if country == "United States":
             if not State.objects.filter(name=self.cleaned_data['state']):
-                self.add_error('state', f'Este campo es obligatorio para {country}.')
+                self.add_error('state', f'This field is required for {country}.')
         # If Puerto Rico is selected, it is saved in None
         if country == "Puerto Rico":
             self.cleaned_data['state'] = None
@@ -119,24 +119,24 @@ class UserAddressForm(forms.Form):
         postal_code = self.cleaned_data["postal_code"]
         if postal_code:
             if not validate_postal_code(postal_code):
-                self.add_error('postal_code', 'Por favor ingrese un código postal válido.')
+                self.add_error('postal_code', 'Please enter a valid postcode.')
 
 
 # Register Form of User
 class UserRegisterForm(forms.ModelForm):
-    # Campos de las contraseña para el formulario de registro de usuario
+    # Password fields for the user registration form
     password = forms.CharField(required = True,
     	widget = forms.PasswordInput(
             attrs= {
                 'class': 'form-register__input', 
-                'placeholder': 'Contraseña'})
+                'placeholder': 'Password'})
     )
 
     repeat_password = forms.CharField(required = True,
     	widget = forms.PasswordInput(
             attrs= {
                 'class': 'form-register__input', 
-                'placeholder': 'Repetir Contraseña'})
+                'placeholder': 'Repeat Password'})
     )
     #captcha = ReCaptchaField(widget=ReCaptchaV3)
 
@@ -149,45 +149,45 @@ class UserRegisterForm(forms.ModelForm):
             'email',
         ]
         widgets = {'name': forms.TextInput(
-            attrs = {'class': 'form-register__input', 'placeholder': 'Nombre'}
+            attrs = {'class': 'form-register__input', 'placeholder': 'Name'}
         ),
         'last_name': forms.TextInput(
-            attrs = {'class': 'form-register__input', 'placeholder': 'Apellido'}
+            attrs = {'class': 'form-register__input', 'placeholder': 'Last name'}
         ),
         'email': forms.EmailInput(
-            attrs = {'class': 'form-register__input', 'placeholder': 'Correo Electronico'}
+            attrs = {'class': 'form-register__input', 'placeholder': 'Email'}
         )}
     
     # Validation of passwords when creating user
     def validate_password(self, new_password: str, repeat_password: str):
 
-        espacio = False
-        minuscula = False
-        mayuscula = False
-        numeros = False
+        space = False
+        lower_case = False
+        upper_case = False
+        numbers = False
 
         for c in new_password:
             if c.isspace():
-                espacio = True
+                space = True
             if c.islower():
-                minuscula = True
+                lower_case = True
             if c.isupper():
-                mayuscula = True
+                upper_case = True
             if c.isnumeric():
-                numeros = True
+                numbers = True
 
         if new_password != repeat_password:
-            self.add_error('repeat_password', 'Las contraseñas no coinciden.')
+            self.add_error('repeat_password', 'Passwords do not match.')
         if len(new_password) < 8:
-            self.add_error('repeat_password', 'La contraseña debe contener al menos 8 caracteres.')
-        if espacio == True:
-            self.add_error('repeat_password', 'La contraseña no debe contener espacios.')
-        if minuscula == False:
-            self.add_error('repeat_password', 'La contraseña debe contener al menos una letra minúscula.')
-        if mayuscula == False:
-            self.add_error('repeat_password', 'La contraseña debe contener al menos una letra mayúscula.')
-        if numeros == False:
-            self.add_error('repeat_password', 'La contraseña debe contener al menos un numero.')
+            self.add_error('repeat_password', 'The password must contain at least 8 characters.')
+        if space == True:
+            self.add_error('repeat_password', 'The password must not contain spaces.')
+        if lower_case == False:
+            self.add_error('repeat_password', 'The password must contain at least one lowercase letter.')
+        if upper_case == False:
+            self.add_error('repeat_password', 'The password must contain at least one upper case.')
+        if numbers == False:
+            self.add_error('repeat_password', 'The password must contain at least one number.')
     
     def clean(self):
         # Validating if the email already exists in the database
@@ -196,7 +196,7 @@ class UserRegisterForm(forms.ModelForm):
         repeat_password = self.cleaned_data['repeat_password']
         email_exists = User.objects.email_exists(email)
         if email_exists:
-            self.add_error('email', 'Ya existe una cuenta con este correo electrónico.')
+            self.add_error('email', 'An account with this email already exists.')
 
         UserRegisterForm.validate_password(self, password, repeat_password)
 
@@ -208,14 +208,14 @@ class UserLoginForm(forms.Form):
         widget = forms.EmailInput(
             attrs= {
                 'class': 'form-register__input', 
-                'placeholder': 'Correo Electronico'})
+                'placeholder': 'Email'})
     )
 
     password = forms.CharField(required = True,
         widget = forms.PasswordInput(
             attrs= {
                 'class': 'form-register__input', 
-                'placeholder': 'Contraseña'})
+                'placeholder': 'Password'})
     )
 
 
@@ -230,10 +230,10 @@ class UserLoginForm(forms.Form):
             email = cleaned_data['email']
             password = cleaned_data['password']
         except:
-            raise forms.ValidationError('Los datos de ususario no son correctos.')
+            raise forms.ValidationError('The user data is not correct.')
 
         if not authenticate(email=email, password=password):
-            raise forms.ValidationError('Los datos de ususario no son correctos.')
+            raise forms.ValidationError('The user data is not correct.')
 
         return self.cleaned_data
 
@@ -241,7 +241,7 @@ class UserLoginForm(forms.Form):
 class UserVerificationResendForm(forms.Form):
     email = forms.CharField( required=True,
         widget= forms.EmailInput(
-            attrs={'class': 'form-register__input', 'placeholder': 'Correo Electrónico'})
+            attrs={'class': 'form-register__input', 'placeholder': 'Email'})
     )
 
     def clean(self):
@@ -249,13 +249,13 @@ class UserVerificationResendForm(forms.Form):
         user = User.objects.email_exists(email)
 
         if not user:
-            raise forms.ValidationError('Ningún usuario está ligado a este correo.')
+            raise forms.ValidationError('No user is linked to this email.')
 
 
 class EmailPasswordForm(forms.Form):
     email = forms.CharField( required=True,
         widget= forms.EmailInput(
-            attrs={'class': 'form-register__input', 'placeholder': 'Correo Electrónico'})
+            attrs={'class': 'form-register__input', 'placeholder': 'Email'})
     )
 
     def clean(self):
@@ -263,18 +263,18 @@ class EmailPasswordForm(forms.Form):
         user = User.objects.email_exists(email)
 
         if not user:
-            raise forms.ValidationError('Ningún usuario está ligado a este correo.')
+            raise forms.ValidationError('No user is linked to this email.')
 
 
 class ChangePasswordForm(forms.Form):
     new_password = forms.CharField( required=True,
         widget= forms.PasswordInput(
-            attrs={'class': 'form-register__input', 'placeholder': 'Contraseña nueva'}
+            attrs={'class': 'form-register__input', 'placeholder': 'New password'}
         )
     )
     repeat_password = forms.CharField( required=True,
         widget= forms.PasswordInput(
-            attrs={'class': 'form-register__input', 'placeholder': 'Repetir nueva contraseña'}
+            attrs={'class': 'form-register__input', 'placeholder': 'Repeat new password'}
         )
     )
 

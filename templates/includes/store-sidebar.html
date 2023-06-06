@@ -4,10 +4,10 @@
 <div class="box-sidebar bg-info container-fluid col-md-4 col-lg-3 my-md-3">
     <!--Sidebar in mobile-->
     <div class="btn-dropdown dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button">Categorias</button>
+        <button class="btn btn-primary dropdown-toggle" type="button">Categories</button>
         <ul class="dropdown-categories dropdown-menu">
             <form class="d-flex px-2" role="search"> {% csrf_token %}
-				<input class="search-category-movil form-control" type="search" placeholder="Buscar por Categoria" aria-label="Search">
+				<input class="search-category-movil form-control" type="search" placeholder="Search by category" aria-label="Search">
 			</form>
             {% for category in categories %}
             <li><a class="dropdown-item" href="{% url 'product_app:category' category.slug %}">{{ category.name }}</a></li>
@@ -17,10 +17,10 @@
 
     <!--Sidebar in tablets and desktop-->
     <nav class="store-sidebar overflow-auto">
-        <h3 class="title-sidebar text-center">Categorias</h3>
+        <h3 class="title-sidebar text-center">Categories</h3>
         <ul class="list-category list-group mb-2 text-start">
             <form class="d-flex px-2" role="search"> {% csrf_token %}
-				<input class="search-category-desktop form-control mb-3" type="search" placeholder="Buscar por Categoria" aria-label="Search">
+				<input class="search-category-desktop form-control mb-3" type="search" placeholder="Search by category" aria-label="Search">
 			</form>
             {% for category in categories %}
             <li><a class="list-group-item" href="{% url 'product_app:category' category.slug %}">{{ category.name }}</a></li>

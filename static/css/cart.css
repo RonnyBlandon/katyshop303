@@ -28,8 +28,16 @@
     border-radius: 1rem;
     text-align: center;
 }
+.proceed-to-pay-content {
+    width: 90%;
+    margin: 0rem auto;
+}
 .proceed-to-pay p {
     font-size: 1.1rem;
+}
+.proceed-to-pay strong {
+    display: flex;
+    justify-content: space-between;
 }
 .proceed-to-pay span {
     color: #080;
@@ -41,6 +49,43 @@
 }
 .proceed-to-pay-quantity {
     display: inline;
+}
+.box-discount {
+    display: flex;
+    justify-content: space-between;
+}
+#remove-discount {
+    padding: 0;
+    color: #f00;
+    cursor: pointer;
+    text-decoration: none;
+}
+#remove-discount:hover {
+    color: #00f;
+    text-decoration: underline;
+}
+#remove-discount:active {
+    color: #00c;
+}
+
+/* loading to discount */
+.loader-discount {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #0009;
+    z-index: 10;
+}
+.loader-discount img {
+    display: block;
+    width: 33%;
 }
 
 /* list products in cart */

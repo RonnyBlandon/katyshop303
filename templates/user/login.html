@@ -24,24 +24,24 @@
     <form class="form-register" method="post"> {% csrf_token %}
         {{ form.non_field_errors }}
         <div class="form__container">
-            <h2>Iniciar Sesión</h2>
-            <p>Llene los datos para iniciar sesión.</p>
+            <h2>Login</h2>
+            <p>Fill in the details to login.</p>
         </div>
     
-        <label class="form-register__label"><img src="{% static 'img/icono-user.svg' %}" alt="icono-user">
+        <label class="form-register__label"><img src="{% static 'img/icono-user.svg' %}" alt="icon-user">
         {{form.email}}</label>
 
-        <label class="form-register__label"><img src="{% static 'img/icono-contraseña.svg' %}" alt="icono-contraseña">
+        <label class="form-register__label"><img src="{% static 'img/icono-contraseña.svg' %}" alt="icon-password">
         {{form.password}}</label>
     
         <input class="form-register__input-submit" type="submit">
     
         <div class="form__container-2">
-            <p>No tienes una cuenta? <a href="{% url 'user_app:user_register' %}">Registrate</a></p>
+            <p>You do not have an account? <a href="{% url 'user_app:user_register' %}">Sign in</a></p>
         </div>
 
         <div class="form__container-2">
-            <p><a href="{% url 'user_app:recover_password' %}">¿Olvidaste tu Contraseña?</a></p>
+            <p><a href="{% url 'user_app:recover_password' %}">Did you forget your password?</a></p>
         </div>
     </form>
 </div class="container-form">

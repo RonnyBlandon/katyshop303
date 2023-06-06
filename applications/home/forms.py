@@ -4,13 +4,13 @@ from captcha.widgets import ReCaptchaV3
 
 
 class ContactForm(forms.Form):
-    # Campos de las contraseña para el formulario de registro de usuario
+    # Password fields for the user registration form
     name = forms.CharField(
         required = True,
     	widget = forms.TextInput(
             attrs= {
                 'class': 'form__input--size', 
-                'placeholder': 'Nombre'
+                'placeholder': 'Name'
             }
         )
     )
@@ -19,7 +19,7 @@ class ContactForm(forms.Form):
     	widget = forms.TextInput(
             attrs= {
                 'class': 'form__input--size', 
-                'placeholder': 'Apellido'
+                'placeholder': 'Last name'
             }
         )
     )
@@ -28,7 +28,7 @@ class ContactForm(forms.Form):
     	widget = forms.EmailInput(
             attrs= {
                 'class': 'form__input', 
-                'placeholder': 'Correo Electrónico'
+                'placeholder': 'Email'
             }
         )
     )
@@ -37,7 +37,7 @@ class ContactForm(forms.Form):
     	widget = forms.TextInput(
             attrs= {
                 'class': 'form__input', 
-                'placeholder': 'Asunto'
+                'placeholder': 'affair'
             }
         )
     )
@@ -46,7 +46,7 @@ class ContactForm(forms.Form):
     	widget = forms.Textarea(
             attrs= {
                 'class': 'form__input', 
-                'placeholder': 'Mensaje'
+                'placeholder': 'Message'
             }
         )
     )

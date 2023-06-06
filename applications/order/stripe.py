@@ -9,7 +9,6 @@ class Stripe():
         self.id_user = id_user
         self.success_url = "http://127.0.0.1:8000/webhook-stripe/?id_user="+str(self.id_user)
         self.cancel_url = "http://127.0.0.1:8000/webhook-stripe/?id_user="+str(self.id_user)
-        print("Esto tiene self.success_url: ", self.success_url)
 
     def create_customer_stripe(self):
         user = User.objects.filter(id=self.id_user).first()
@@ -81,7 +80,27 @@ class Stripe():
 
         # We get the id_customer
         id_customer = self.verify_id_customer_stripe()
-
+        # We create the coupon so that the discount of points in stripe is applied
+        if order.discount > 0:
+            discount = stripe.Coupon.create(
+                amount_off=int(order.discount * 100),
+                currency="USD",
+                duration="once",
+                name="Points Discount"
+            )
+            # create the payment session for the user
+            session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items= items,
+            mode='payment',
+            customer=id_customer,
+            metadata={'id_user': order.id_user.id},
+            success_url=self.success_url,
+            cancel_url=self.cancel_url,
+            discounts=[{'coupon': discount['id']}]
+            )
+            return session.url
+        
         # create the payment session for the user
         session = stripe.checkout.Session.create(
         payment_method_types=['card'],
@@ -93,3 +112,4 @@ class Stripe():
         cancel_url=self.cancel_url
         )
         return session.url
+

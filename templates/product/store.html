@@ -61,7 +61,6 @@
                 {% if page_obj.has_previous and page_obj.number > 0 %}
                     <a class="link-page" href="?kword={{ request.GET.kword }}&page=1">1</a>
                     <a class="link-page" href="?kword={{ request.GET.kword }}&page={{ page_obj.previous_page_number }}">&laquo;</a>
-                
                 {% endif %}
                 
                 {% if page_obj.number > 0 %}

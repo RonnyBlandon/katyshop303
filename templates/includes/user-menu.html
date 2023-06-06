@@ -3,7 +3,7 @@
 
 <div class="nav-user-show">
     <img class="user-menu-show" src="{% static 'img/user-menu.svg' %}" alt="user menu">
-    <h4 class="title-page m-0 text-white">Pedidos</h4>
+    <h4 class="title-page m-0 text-white">Orders</h4>
 </div>
 
 <div class="box-nav-user col-lg-3">
@@ -13,19 +13,19 @@
             <h5 class="text-white">{{user.name}} {{user.last_name}}</h5>
         </div>
         <li>
-            <a class="nav-user__a" href="{% url 'user_app:user_orders' %}" id="user-orders">Pedidos</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_orders' %}" id="user-orders">Orders</a>
         </li>
         <li>
-            <a class="nav-user__a" href="{% url 'user_app:user_profile' %}" id="user-profile">Perfil</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_profile' %}" id="user-profile">Profile</a>
         </li>
         <li>
-            <a class="nav-user__a" href="{% url 'user_app:user_address' %}" id="user-address">Dirección</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_address' %}" id="user-address">Address</a>
         </li>
         <li>
-            <a class="nav-user__a" href="{% url 'user_app:user_points' %}" id="user-points">Mis Puntos</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_points' %}" id="user-points">My points</a>
         </li>
         <li>
-            <a class="nav-user__a" href="{% url 'user_app:user_logout' %}">Cerrar Sesión</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_logout' %}">Logout</a>
         </li>
     </div>
     <div class="nav-user-close">

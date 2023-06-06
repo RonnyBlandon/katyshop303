@@ -32,7 +32,9 @@ class Paypal():
                     'amount': {
                         'currency_code': 'USD', 
                         'value': str(order.total),
-                        'breakdown': {'item_total': {"currency_code": "USD", "value": str(order.total)}}
+                        'breakdown': {'item_total': {"currency_code": "USD", "value": str(order.subtotal)},
+                            'discount': {"currency_code": "USD", "value": str(order.discount)}
+                            }
                     },
                     'items': items,
                     'invoice_id': '#'+str(order.id)

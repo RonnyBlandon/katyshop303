@@ -7,6 +7,7 @@ from django.contrib import messages
 # import models
 from .models import Cart
 from applications.product.models import Product
+from applications.points.models import PointsSetting, UserPoint
 
 # This ShoppingCartCookies class is for users who are not authenticated on the website.
 class ShoppingCartCookies():
@@ -196,7 +197,24 @@ def calculate_cart(cart):
         cart.subtotal += item.subtotal
         # Calculate the number of items in the cart to update the template.
         quantity_items += item.amount
-    cart.total = cart.subtotal - cart.discount
+
+    # We verify that the total order is a minimum of 5 dollars in case there is any discount
+    if cart.discount > 0:
+        total = cart.subtotal - cart.discount
+        # If the subtotal is 0, the discount in points is returned to the user.
+        if cart.subtotal == 0:
+            cart.discount = 0.00 # In case the result is negative
+            cart.total = 0.00
+        else:
+            if total < 5.00:
+                cart.total = Decimal(5.00)
+                max_discount = cart.subtotal - cart.total # recalculate the maximum discount that can be redeemed.
+                cart.discount = max_discount
+            else:
+                cart.total = total
+    else:
+        cart.total = cart.subtotal
+
     cart.save()
     return quantity_items
 

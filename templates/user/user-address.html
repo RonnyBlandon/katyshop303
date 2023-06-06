@@ -23,45 +23,45 @@
         </ul>
         {% endif %}
 
-        <form method="post" class="form-profile row g-3 needs-validation" novalidate"> {% csrf_token %}
+        <form method="post" class="form-profile row g-3 needs-validation"> {% csrf_token %}
             <div class="col-md-5">
                 {{form.country.erros}}
-                <label class="form-label">Pais</label>
+                <label class="form-label">Country</label>
                 {{form.country}}
             </div>
             {% if form.country.initial == "Puerto Rico"%}
             <div class="div-select-state col-md-5" hidden>
                 {{form.state.errors}}
-                <label class="form-label">Estado</label>
+                <label class="form-label">State</label>
                 {{form.state}}
             </div>
             <div class="col-md-5">
-                <label id="label-city" class="form-label">Municipalidad</label>
+                <label id="label-city" class="form-label">Municipality</label>
                 {{form.city}}
             </div>
             {% else %}
             <div class="div-select-state col-md-5">
                 {{form.state.errors}}
-                <label class="form-label">Estado</label>
+                <label class="form-label">State</label>
                 {{form.state}}
             </div>
             <div class="col-md-5">
-                <label id="label-city" class="form-label">Ciudad</label>
+                <label id="label-city" class="form-label">City</label>
                 {{form.city}}
             </div>
             {% endif %}
             <div class="col-md-8">
-                <label class="form-label">Dirección</label>
+                <label class="form-label">Address</label>
                 {{form.address_1}}
                 {{form.address_2}}
             </div>
             <div class="col-md-5">
                 {{form.postal_code.errors}}
-                <label class="form-label">Código Postal</label>
+                <label class="form-label">Postal code</label>
                 {{form.postal_code}}
             </div>
             <div class="col-12">
-                <button class="btn btn-primary" type="submit">Guardar</button>
+                <button class="btn btn-primary" type="submit">Save</button>
             </div>
         </form>
     </div>

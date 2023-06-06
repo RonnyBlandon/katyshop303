@@ -9,11 +9,17 @@ function updateCart(url, subtotal_product) {
 		if (data.success) {
 			const quantityItemsMiniCart = document.querySelector(".quantity-items");
 			const quantityItemsCart = document.querySelector(".proceed-to-pay-quantity");
-			const subtotal = document.querySelector(".proceed-to-pay-subtotal");
+			const subtotal = document.getElementById("subtotal");
+			const discount = document.querySelector(".discount");
+			const total = document.getElementById("total");
 			quantityItemsMiniCart.innerHTML = data.quantity_items;
 			quantityItemsCart.innerHTML = data.quantity_items;
 			subtotal.innerHTML = "$" + data.cart_subtotal;
+			total.innerHTML = "$" + data.cart_total;
 			subtotal_product.innerHTML = "$" + data.item_subtotal;
+			if (discount) {
+				discount.innerHTML = "$" + data.cart_discount;
+			};
 		};
 	});
 };
@@ -27,7 +33,6 @@ function increase(amount_product, url) {
 		const subtotal_product = amount_product.parentNode.parentNode.parentNode.querySelector(".subtotal-product");
 		//We add the value of the input to the url as a parameter
 		full_url = url+"?quantity="+amount_product.value;
-		console.log("Esto contiene value: ", amount_product.value);
 		//We make the request and update the data
 		updateCart(full_url, subtotal_product);
 		amount_product.value = parseInt(amount_product.value) + 1;
@@ -57,7 +62,6 @@ increaseProduct.forEach((element) => {
 	});
   });
 
-  
 /* After 2.7 seconds we remove the added product message */
 const messageSuccessAddCart = document.querySelector(".success-add-cart");
 if (messageSuccessAddCart) {

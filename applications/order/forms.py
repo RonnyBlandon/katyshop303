@@ -16,10 +16,10 @@ class CheckoutForm(UserAddressForm):
     additional_info = forms.CharField(
         required=False,
         widget=forms.Textarea(
-            attrs={'class': 'input-additional-info', 'placeholder': 'Notas sobre su pedido, por ejemplo, notas especiales para la entrega.'})
+            attrs={'class': 'input-additional-info', 'placeholder': 'Notes about your order, for example, special notes for delivery.'})
         )
 
-    PAYMENT_METHODS = [('Paypal', 'Paypal'), ('Stripe', 'Tarjeta de Crédito o Débito')]
+    PAYMENT_METHODS = [('Paypal', 'Paypal'), ('Stripe', 'Credit or debit card')]
     payment_method = forms.ChoiceField(
         required=True,
         choices=PAYMENT_METHODS,

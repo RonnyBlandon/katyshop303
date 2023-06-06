@@ -20,8 +20,8 @@
 
     <!--Form of contact-->
     <form class="form" method="post"> {% csrf_token %}
-        <h3>Contacto</h3>
-        <p>Si tiene alguna consulta, llena el siguiente formulario con los siguientes datos.</p>
+        <h3>Contact</h3>
+        <p>If you have any questions, fill out the following form with the following information.</p>
 
         <div class="form__input-container">
             {{ form.name }}
@@ -37,7 +37,7 @@
 
         {{ form.captcha }}
 
-        <button class="form__input--submit" type="submit">Enviar</button>
+        <button class="form__input--submit" type="submit">Send</button>
     </form>
 </div>
 

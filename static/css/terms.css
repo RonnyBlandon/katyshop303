@@ -25,7 +25,7 @@
 }
 @media screen and (min-width: 1024px) {
     .terms {
-        margin: 2.5rem;
+        margin: 2.5rem 5rem;
         padding: 1.25rem;
     }
 }

@@ -21,7 +21,8 @@
             {% endfor %}
         </ul>
         {% endif %}
-        
+
+        <h4 class="my-orders">Order history</h4>
         <div class="my-3 mx-md-3 mx-lg-auto">
             {% if order_list %}
             <div class="box-order-tables overflow-x-auto mx-auto">
@@ -29,10 +30,10 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Fecha</th>
-                            <th>Estado</th>
+                            <th>Date</th>
+                            <th>State</th>
                             <th>Total</th>
-                            <th>Acción</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     {% for order in order_list %}
@@ -42,7 +43,7 @@
                         <td>{{ order.status }}</td>
                         <td>${{ order.total }}</td>
                         <td class="actions-cell">
-                            <a class="btn-order" href="{% url 'user_app:order_details' order.id %}">VER<img
+                            <a class="btn-order" href="{% url 'user_app:order_details' order.id %}">See<img
                                     src="{% static 'img/eye-fill.svg' %}" alt="view order details"></a>
                             {% if order.order_tracking.first.tracking_link %}
                             <a class="link-tracking" href="{{ order.order_tracking.first.tracking_link }}"
@@ -52,7 +53,7 @@
                     </tr>
                     {% endfor %}
                     {% else %}
-                    <h5 class="text-center">No hay historial de pedidos.</h5>
+                    <h5 class="text-center">There is no order history.</h5>
                     {% endif %}
                 </table>
             </div>
@@ -65,11 +66,11 @@
                     {% endif %}
                     {% if page_obj.number > 0 %}
                     <span class="current-pages">
-                        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                     </span>
                     {% else %}
                     <span class="current-pages">
-                        Página 1 de 1
+                        Page 1 of 1
                     </span>
                     {% endif %}
 

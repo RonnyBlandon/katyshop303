@@ -1,3 +1,4 @@
+from typing import Any, Dict
 import stripe
 from django.views.generic import FormView
 from django.contrib import messages
@@ -7,6 +8,7 @@ from django.urls import reverse_lazy, reverse
 from applications.cart.models import Cart
 from applications.user.models import Address
 from applications.order.models import Order, OrderAddress, OrderItem
+from applications.points.models import UserPoint, PointsHistory, PointsSetting
 # imports forms
 from .forms import CheckoutForm
 # import functions
@@ -110,7 +112,18 @@ def CapturePaypalPayment(request):
                                 cart_item.amount = item.product.amount_stock
                                 cart_item.subtotal = item.product.price * item.product.amount_stock
                                 cart_item.save()
-                                calculate_cart(cart) 
+                                calculate_cart(cart)
+                # If there is a discount applied, deduct the points corresponding to the user.
+                points_setting = PointsSetting.objects.get_point_setting()
+                if order.discount > 0.00:
+                    user_points = UserPoint.objects.deduct_points_to_user(order.discount, points_setting.redemption_rate, request.user.id)
+                    PointsHistory.objects.points_deducted(order.discount, points_setting.redemption_rate, 
+                                                'Redeemed Points', order, user_points)
+                # We add the points earned to the user
+                user_points = UserPoint.objects.add_points_to_user(order.total, points_setting.earning_points_rate, request.user.id)
+                PointsHistory.objects.points_added(order.total, points_setting.earning_points_rate, 
+                                                'Points Earned For Purchase', order, user_points)
+                
                 messages.add_message(request=request, level=messages.SUCCESS, message="El pago se ha completado exitosamente.")
                 # We mail the order to the user and notify the administrators of the new order.
                 send_order_to_user(order)
@@ -175,6 +188,17 @@ def WebhookStripeView(request):
                         cart_item.subtotal = item.product.price * item.product.amount_stock
                         cart_item.save()
                         calculate_cart(cart) 
+            # If there is a discount applied, deduct the points corresponding to the user.
+            points_setting = PointsSetting.objects.get_point_setting()
+            if order.discount > 0.00:
+                user_points = UserPoint.objects.deduct_points_to_user(order.discount, points_setting.redemption_rate, order.id_user.id)
+                PointsHistory.objects.points_deducted(order.discount, points_setting.redemption_rate, 
+                                            'Redeemed Points', order, user_points)
+            # We add the points earned to the user
+            user_points = UserPoint.objects.add_points_to_user(order.total, points_setting.earning_points_rate, order.id_user.id)
+            PointsHistory.objects.points_added(order.total, points_setting.earning_points_rate, 
+                                            'Points Earned For Purchase', order, user_points)
+        
             # We mail the order to the user and notify the administrators of the new order.
             send_order_to_user(order)
 

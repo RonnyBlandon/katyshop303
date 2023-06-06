@@ -1,5 +1,6 @@
 from typing import Any
 from django.contrib.auth import login, logout, authenticate
+from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
@@ -13,6 +14,7 @@ from applications.cart.shopping_cart import ShoppingCartCookies
 from .models import User, Address, Country, State
 from applications.order.models import Order
 from applications.cart.models import Cart
+from applications.points.models import PointsHistory
 # import forms
 from .forms import (UserLoginForm, UserRegisterForm, EmailPasswordForm, ChangePasswordForm, 
 UserVerificationResendForm, UserProfileForm, UserAddressForm
@@ -134,14 +136,16 @@ class OrderDetailsView(DetailView):
     template_name = 'order/order_details.html'
     model = Order
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-
 
 class UserPointView(ListView):
-    template_name = 'order/points.html'
-    model = Order
+    template_name = 'points/points.html'
+    model = PointsHistory
+    paginate_by = 20
+    ordering = '-date'
+
+    def get_queryset(self):
+        queryset = PointsHistory.objects.filter(user_points__id_user=self.request.user.id).order_by('-date')
+        return queryset
 
 
 class UserRegisterView(FormView):

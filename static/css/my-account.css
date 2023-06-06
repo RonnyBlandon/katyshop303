@@ -39,6 +39,11 @@
     padding: 0rem 0.5rem;
 }
 /* User orders */
+.my-orders {
+    display: none;
+    color: #700FBB;
+    text-align: center;
+}
 .box-order-tables {
     border-top: 0.1rem solid #000;
     border-bottom: 0.1rem solid #000;
@@ -118,6 +123,10 @@
         padding: 0.5rem 1.2rem;
         border: 0.125rem solid #0008;
         border-radius: 1rem;
+    }
+    /* User Orders */
+    .my-orders {
+        display: block;
     }
 }
 @media screen and (min-width: 1366px) {

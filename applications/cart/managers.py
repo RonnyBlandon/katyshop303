@@ -10,7 +10,7 @@ class CartManager(models.Manager):
         )
         cart.save(using=self.db)
         return cart
-    
+
     def clean_cart(self, id_user):
         cart = self.filter(id_user=id_user).first()
         cart.subtotal = 0.00
