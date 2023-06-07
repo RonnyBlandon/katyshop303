@@ -30,14 +30,14 @@
                 <a class="link-title-product" href="{% url 'product_app:product' product.slug %}">{{ product.name }}</a>
                 <p class="card-subtitle"><strong>${{ product.price }}</strong></p>
                 {% if product.stock == True and product.amount_stock > 0 %}
-                <p class="stock-store">Quedan {{ product.amount_stock }} Disponibles</p>
-                <a href="{% url 'cart_app:add_cart' product.id %}" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+                <p class="stock-store">{{ product.amount_stock }} left in stock</p>
+                <a href="{% url 'cart_app:add_cart' product.id %}" class="btn-add-cart btn btn-primary">Add to cart</a>
                 {% elif product.stock == True %}
-                <p class="stock-store">Disponibles</p>
-                <a href="{% url 'cart_app:add_cart' product.id %}" class="btn-add-cart btn btn-primary">Agregar al carrito</a>
+                <p class="stock-store">In stock</p>
+                <a href="{% url 'cart_app:add_cart' product.id %}" class="btn-add-cart btn btn-primary">Add to cart</a>
                 {% else %}
-                <p class="out-of-stock">No Disponible</p>
-                <a href="#" class="btn-add-cart btn btn-secondary disabled">No disponible</a>
+                <p class="out-of-stock">Out of stock</p>
+                <a href="#" class="btn-add-cart btn btn-secondary disabled">Out of stock</a>
                 {% endif %}
             </div>
         </div>
@@ -54,11 +54,11 @@
                 
                 {% if products.number > 0 %}
                 <span class="current-pages">
-                    Página {{ products.number }} de {{ products.paginator.num_pages }}
+                    Page {{ products.number }} of {{ products.paginator.num_pages }}
                 </span>
                 {% else %}
                 <span class="current-pages">
-                    Página 1 de 1
+                    Page 1 of 1
                 </span>
                 {% endif %}
         

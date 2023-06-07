@@ -1,8 +1,8 @@
 from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator
-from django.shortcuts import redirect
 # import models
 from .models import Product, Category
+from applications.points.models import PointsSetting
 # Create your views here.
 class StoreView(ListView):
     template_name = 'product/store.html'
@@ -28,6 +28,14 @@ class StoreView(ListView):
 class ProductView(DetailView):
     template_name = 'product/product.html'
     model = Product
+
+    def get_context_data(self, **kwargs):
+        # We add to the context the points that can be earned if you buy the product
+        points_setting = PointsSetting.objects.get_point_setting()
+        context = super(ProductView, self).get_context_data(**kwargs)
+        context['product_points'] = round(kwargs['object'].price * points_setting.earning_points_rate)
+        return context
+    
 
 
 class CategoryView(DetailView):
