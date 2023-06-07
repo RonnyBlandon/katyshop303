@@ -78,7 +78,7 @@ class Paypal():
 
             return data
         else:
-            print('Lo sentimos, hubo un fallo en la conexión. La razón:', resp.content)
+            print('Sorry, there was a connection failure. The reason:', resp.content)
             return {'status': 'CANCELLED'}
 
 

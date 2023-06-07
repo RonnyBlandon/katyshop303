@@ -34,7 +34,7 @@ class ShoppingCartCookies():
                 "accumulated": product.price * quantity_product
             }
             # We add the message that it was added successfully
-            messages.add_message(request=self.request, level=messages.SUCCESS, message="Producto agregado al carrito exitosamente.", extra_tags="success-add-cart")
+            messages.add_message(request=self.request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
         else:
             # we convert the string in decimal
             self.cart_items[id]["accumulated"] = Decimal(self.cart_items[id]["accumulated"])
@@ -44,22 +44,22 @@ class ShoppingCartCookies():
                 if quantity > product.amount_stock:
                     self.cart_items[id]["amount"] = product.amount_stock
                     self.cart_items[id]["accumulated"] = product.price * product.amount_stock
-                    messages.add_message(request=self.request, level=messages.SUCCESS, message="No puede agregar más de las unidades que hay disponibles.", extra_tags="alert-add-cart")        
+                    messages.add_message(request=self.request, level=messages.SUCCESS, message="You cannot add more than the units that are available.", extra_tags="alert-add-cart")        
                 else:
                     self.cart_items[id]["amount"] += quantity_product
                     self.cart_items[id]["accumulated"] += product.price * quantity_product
-                    messages.add_message(request=self.request, level=messages.SUCCESS, message="Producto agregado al carrito exitosamente.", extra_tags="success-add-cart")
+                    messages.add_message(request=self.request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
             else:
                 #If you have not defined the quantity of stock, add a limit of a maximum of 10 units of the product
                 if quantity > 10:
                     self.cart_items[id]["amount"] = 10
                     self.cart_items[id]["accumulated"] = product.price * 10
                     #We added the message of the amount that you can add as a maximum per product
-                    messages.add_message(request=self.request, level=messages.SUCCESS, message="Solo puede agregar 10 como máximo para este producto.", extra_tags="alert-add-cart")  
+                    messages.add_message(request=self.request, level=messages.SUCCESS, message="You can only add 10 maximum for this product.", extra_tags="alert-add-cart")  
                 else:
                     self.cart_items[id]["amount"] += quantity_product
                     self.cart_items[id]["accumulated"] += product.price * quantity_product
-                    messages.add_message(request=self.request, level=messages.SUCCESS, message="Producto agregado al carrito exitosamente.", extra_tags="success-add-cart")
+                    messages.add_message(request=self.request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
 
         self.calculate_cart()
         # Encode the data to JSON
@@ -81,7 +81,7 @@ class ShoppingCartCookies():
                 "accumulated": product.price
             }
             # We add the message that it was added successfully
-            messages.add_message(request=self.request, level=messages.SUCCESS, message="Producto agregado al carrito exitosamente.", extra_tags="success-add-cart")
+            messages.add_message(request=self.request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
         else:
             # we convert the string in decimal
             self.cart_items[id]["accumulated"] = Decimal(self.cart_items[id]["accumulated"])
@@ -90,19 +90,19 @@ class ShoppingCartCookies():
                     self.cart_items[id]["amount"] += 1
                     self.cart_items[id]["accumulated"] += product.price
                     if page == "store":
-                        messages.add_message(request=self.request, level=messages.SUCCESS, message="Producto agregado al carrito exitosamente.", extra_tags="success-add-cart")
+                        messages.add_message(request=self.request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
                 else:
                     #We added the message of the amount that you can add as a maximum per product
-                    messages.add_message(request=self.request, level=messages.SUCCESS, message="No puede agregar más de las unidades que hay disponibles.", extra_tags="alert-add-cart")
+                    messages.add_message(request=self.request, level=messages.SUCCESS, message="You cannot add more than the units that are available.", extra_tags="alert-add-cart")
             else:
                 if self.cart_items[id]["amount"] < 10:
                     self.cart_items[id]["amount"] += 1
                     self.cart_items[id]["accumulated"] += product.price
                     if page == "store":
-                        messages.add_message(request=self.request, level=messages.SUCCESS, message="Producto agregado al carrito exitosamente.", extra_tags="success-add-cart")
+                        messages.add_message(request=self.request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
                 else:
                     #We added the message of the amount that you can add as a maximum per product
-                    messages.add_message(request=self.request, level=messages.SUCCESS, message="Solo puede agregar 10 como máximo para este producto.", extra_tags="alert-add-cart")
+                    messages.add_message(request=self.request, level=messages.SUCCESS, message="You can only add 10 maximum for this product.", extra_tags="alert-add-cart")
     
         quantity_items = self.calculate_cart()
         # Encode the data to JSON
@@ -145,7 +145,7 @@ class ShoppingCartCookies():
         data_json = json.dumps(self.cart)
 
         if page == "cart":
-            messages.add_message(self.request, level=messages.SUCCESS, message="Producto eliminado con éxito.", extra_tags="success-add-cart")
+            messages.add_message(self.request, level=messages.SUCCESS, message="Product successfully removed.", extra_tags="success-add-cart")
             response = HttpResponseRedirect(reverse("cart_app:cart"))
             response.set_cookie("cart", data_json, max_age=2592000)
             return response

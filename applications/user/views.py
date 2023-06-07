@@ -1,6 +1,4 @@
-from typing import Any
 from django.contrib.auth import login, logout, authenticate
-from django.db.models.query import QuerySet
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
@@ -59,8 +57,8 @@ class UserProfileView(LoginRequiredMixin, FormView):
                 user.set_password(new_password)
                 user.save()
 
-                messages.add_message(request=self.request, level=messages.SUCCESS, message='Los datos se han guardado con éxito.')
-                messages.add_message(request=self.request, level=messages.SUCCESS, message='Se ha cambiado la contraseña, inicie sesión.')
+                messages.add_message(request=self.request, level=messages.SUCCESS, message='The data has been saved successfully.')
+                messages.add_message(request=self.request, level=messages.SUCCESS, message='Password has been changed, please log in.')
 
                 # Enviamos un correo notificando al email del administrador que se ha creado una cuenta de usuario.
                 affair_admin = "USUARIO HA CAMBIADO SU CONTRASEÑA."
@@ -70,7 +68,7 @@ class UserProfileView(LoginRequiredMixin, FormView):
                 logout(self.request)
                 return super(UserProfileView, self).form_valid(form)
             else:
-                messages.add_message(request=self.request, level=messages.ERROR, message='Error en la autenticación de la contraseña. Vuelva a iniciar sesión.')
+                messages.add_message(request=self.request, level=messages.ERROR, message='Password authentication failed. Sign in again.')
                 logout(self.request)
                 return super(UserProfileView, self).form_valid(form)
 
@@ -78,7 +76,7 @@ class UserProfileView(LoginRequiredMixin, FormView):
         user.last_name = form.cleaned_data['last_name']
         user.phone_number = form.cleaned_data['phone_number']
         user.save()
-        messages.add_message(request=self.request, level=messages.SUCCESS, message='Los datos se han guardado con éxito.')
+        messages.add_message(request=self.request, level=messages.SUCCESS, message='The data has been saved successfully.')
         return super(UserProfileView, self).form_valid(form)
 
 
@@ -117,7 +115,7 @@ class UserAddressView(LoginRequiredMixin, FormView):
                 form.cleaned_data['address_1'], form.cleaned_data['address_2'], form.cleaned_data['postal_code']
             )
 
-        messages.add_message(request=self.request, level=messages.SUCCESS, message='Los datos se han guardado con éxito.')
+        messages.add_message(request=self.request, level=messages.SUCCESS, message='The data has been saved successfully.')
         return super(UserAddressView, self).form_valid(form)
 
 
@@ -174,12 +172,12 @@ class UserRegisterView(FormView):
         # We send the account verification code to the user's email
         mail = create_html_mail(
             user_email=user.email, 
-            subject="CÓDIGO DE VERIFICACIÓN", 
+            subject="VERIFICATION CODE", 
             template_name="send_email/email-verification-user.html", 
             context={
                 "path_url": f"/verification-code/{user.id}/{validation_code}/",
-                "message_context": "Necesitas confirmar tu correo para poder iniciar sesión.", 
-                "btn_text": "Verificar Correo electrónico"
+                "message_context": "You need to confirm your email to be able to log in.", 
+                "btn_text": "Verify Email"
             }
         )
         mail.send(fail_silently=False)
@@ -202,7 +200,7 @@ class UserLoginView(FormView):
     def get(self, request, *args, **kwargs):
         if "page" in self.kwargs:
             if self.kwargs["page"] == "checkout":
-                messages.add_message(request, messages.SUCCESS, message="Por favor, inicie sesión.")
+                messages.add_message(request, messages.SUCCESS, message="Please sign in.")
         return super().get(request, *args, **kwargs)
     
 
@@ -249,7 +247,7 @@ class CodeVerificationView(View):
             )
 
             if not user:
-                messages.add_message(request=self.request, level=messages.ERROR, message=f'El enlace de activación de cuenta no es válido.')
+                messages.add_message(request=self.request, level=messages.ERROR, message=f'The account activation link is invalid.')
                 return HttpResponseRedirect(
                     reverse('user_app:user_login')
                 )
@@ -260,7 +258,7 @@ class CodeVerificationView(View):
             email = user[0].email
             validation_code = code_generator()
             user = user.update(is_active=True, validation_code=validation_code)
-            messages.add_message(request=self.request, level=messages.SUCCESS, message='La cuenta se ha activado con éxito, ya puede iniciar sesión.')
+            messages.add_message(request=self.request, level=messages.SUCCESS, message='The account has been activated successfully, you can now login.')
 
             # We send an email notifying the administrator's email that a user account has been verified.
             affair_admin = "SE HA VERIFICADO UNA CUENTA DE USUARIO"
@@ -268,8 +266,8 @@ class CodeVerificationView(View):
             notification_admin_by_mail(affair_admin, message_admin)
         
         except Exception as err:
-            print("Error al obtener el usuario en CodeVerificationView el error es: ", err)
-            messages.add_message(request=self.request, level=messages.ERROR, message=f'El enlace de activación de cuenta no es válido.')
+            print("Failed to get user in CodeVerificationView the error is: ", err)
+            messages.add_message(request=self.request, level=messages.ERROR, message=f'The account activation link is invalid.')
 
         return HttpResponseRedirect(
                 reverse('user_app:user_login')
@@ -299,16 +297,16 @@ class UserVerificationResendView(FormView):
         # We send the account verification code to the user's email
         mail = create_html_mail(
             user_email=email_user, 
-            subject="CÓDIGO DE VERIFICACIÓN", 
+            subject="VERIFICATION CODE", 
             template_name="send_email/email-verification-user.html", 
             context={
                 "path_url": f"/verification-code/{id_user}/{validation_code}/",
-                "message_context": "Necesitas confirmar tu correo para poder iniciar sesión.", 
-                "btn_text": "Verificar Correo electrónico"
+                "message_context": "You need to confirm your email to be able to log in.", 
+                "btn_text": "Verify Email"
             }
         )
         mail.send(fail_silently=False)
-        messages.add_message(request=self.request, level=messages.SUCCESS, message=f'Se ha enviado un nuevo enlace para la activación de cuenta al correo "{email_user}".')
+        messages.add_message(request=self.request, level=messages.SUCCESS, message=f'A new account activation link has been sent to the email "{email_user}".')
 
         # We redirect the user to the verification screen to change the password
         return HttpResponseRedirect(self.get_success_url())
@@ -338,16 +336,16 @@ class RecoverAccountView(FormView):
         # We send the verification code to change the password to the user
         mail = create_html_mail(
             user_email=email_user, 
-            subject="RECUPERACIÓN DE CUENTA", 
+            subject="ACCOUNT RECOVERY", 
             template_name="send_email/email-verification-user.html", 
             context={
                 "path_url": f"/change-password/{id_user}/{validation_code}/",
-                "message_context": "Necesitas este enlace para cambiar la contraseña.",
-                "btn_text": "Cambiar Contraseña"
+                "message_context": "You need this link to change your password.",
+                "btn_text": "Change Password"
             }
         )
         mail.send(fail_silently=False)
-        messages.add_message(request=self.request, level=messages.SUCCESS, message=f'Se ha enviado el enlace para cambiar la contraseña al correo "{email_user}".')
+        messages.add_message(request=self.request, level=messages.SUCCESS, message=f'The link to change the password has been sent to the email "{email_user}".')
 
         # We redirect the user to the verification screen to change the password
         return HttpResponseRedirect(
@@ -367,14 +365,14 @@ class ChangePasswordView(FormView):
             validation_code = self.kwargs['code']
 
         except:
-            messages.add_message(request=self.request, level=messages.ERROR, message='El enlace es inválido.')
+            messages.add_message(request=self.request, level=messages.ERROR, message='The link is invalid.')
             return HttpResponseRedirect(
                 reverse('user_app:user_login')
             )
 
         user = User.objects.cod_validation(id_user=id, validation_code=validation_code)
         if not user:
-            messages.add_message(request=self.request, level=messages.ERROR, message='El enlace es inválido.')
+            messages.add_message(request=self.request, level=messages.ERROR, message='The link is invalid.')
             return HttpResponseRedirect(
                 reverse('user_app:user_login')
             )
@@ -389,7 +387,7 @@ class ChangePasswordView(FormView):
         new_password = form.cleaned_data['new_password']
         user.set_password(new_password)
         user.save()
-        messages.add_message(request=self.request, level=messages.SUCCESS, message='Se ha cambiado la contraseña con éxito. Inicie sesión.')
+        messages.add_message(request=self.request, level=messages.SUCCESS, message='The password has been changed successfully. Sign in.')
 
         # We send an email notifying the administrator's email that a user account has been created.
         affair_admin = "USUARIO HA CAMBIADO SU CONTRASEÑA."

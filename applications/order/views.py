@@ -60,7 +60,7 @@ class CheckoutView(FormView):
                     return HttpResponseRedirect(link_payment)
                 else:
                     order.delete()
-                    messages.add_message(request=self.request, level=messages.ERROR, message="Ocurrió un error al procesar tu pago.")
+                    messages.add_message(request=self.request, level=messages.ERROR, message="An error occurred while processing your payment.")
                     return HttpResponseRedirect(reverse('order_app:checkout'))
             if payment_method == "Stripe":
                 checkout = Stripe(id_user=self.request.user.id)
@@ -69,20 +69,20 @@ class CheckoutView(FormView):
                     return HttpResponseRedirect(link_payment)
                 else:
                     order.delete()
-                    messages.add_message(request=self.request, level=messages.ERROR, message="Ocurrió un error al procesar tu pago.")
+                    messages.add_message(request=self.request, level=messages.ERROR, message="An error occurred while processing your payment.")
                     return HttpResponseRedirect(reverse('order_app:checkout'))
         else:
             try:
                 order.delete()
-                messages.add_message(request=self.request, level=messages.ERROR, message="Ocurrió un error al procesar tu pago.")
+                messages.add_message(request=self.request, level=messages.ERROR, message="An error occurred while processing your payment.")
             except Exception as err:
-                messages.add_message(request=self.request, level=messages.ERROR, message="Ocurrió un error al procesar tu pago.")
+                messages.add_message(request=self.request, level=messages.ERROR, message="An error occurred while processing your payment.")
 
         return super(CheckoutView, self).form_valid(form)
 
 
 def CapturePaypalPayment(request):
-    # Recogemos las variables de la url que nos devuelve paypal al cancelar o aprobar el pago
+    # We collect the variables of the url that paypal returns to us when canceling or approving the payment
     token = request.GET.get('token')
     order = Order.objects.filter(id_user=request.user.id).last()
     if token:
@@ -124,13 +124,13 @@ def CapturePaypalPayment(request):
                 PointsHistory.objects.points_added(order.total, points_setting.earning_points_rate, 
                                                 'Points Earned For Purchase', order, user_points)
                 
-                messages.add_message(request=request, level=messages.SUCCESS, message="El pago se ha completado exitosamente.")
+                messages.add_message(request=request, level=messages.SUCCESS, message="The payment has been completed successfully.")
                 # We mail the order to the user and notify the administrators of the new order.
                 send_order_to_user(order)
 
             else:
                 order.delete()
-                messages.add_message(request=request, level=messages.ERROR, message="Ocurrió un error al procesar tu pago.")
+                messages.add_message(request=request, level=messages.ERROR, message="An error occurred while processing your payment.")
     return HttpResponseRedirect(reverse("user_app:user_orders"))
 
 
@@ -209,8 +209,8 @@ def WebhookStripeView(request):
         order = Order.objects.filter(id_user=id_user).last()
         # If the order already has the transaction_id, a success message is added. Otherwise, an error message is added.
         if order.transaction_id:
-            messages.add_message(request=request, level=messages.SUCCESS, message="El pago se ha completado exitosamente.")
+            messages.add_message(request=request, level=messages.SUCCESS, message="The payment has been completed successfully.")
         else:
-            messages.add_message(request=request, level=messages.ERROR, message="Ocurrió un error al procesar tu pago.")
+            messages.add_message(request=request, level=messages.ERROR, message="An error occurred while processing your payment.")
 
     return HttpResponseRedirect(reverse("user_app:user_orders"))
