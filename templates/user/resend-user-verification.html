@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} recover-password {% endblock title %}
 
@@ -23,7 +24,7 @@
 <div class="container-form">
     <form class="form-register" method="post"> {% csrf_token %}
         <div class="form__container">
-            <p>To resend the account activation link, enter your email.</p>
+            <p>{% trans 'To resend the account activation link, enter your email.' %}</p>
         </div>
         {{ form.non_field_errors }}
         <label class="form-register__label"><img src="{% static 'img/icono-contraseña.svg' %}" alt="icon-password">

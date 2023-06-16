@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} thanks-for-registering {% endblock title %}
 
@@ -11,11 +12,14 @@
 <div class="container-thanks">
     <div class="box-thanks">
         <img src="{% static 'img/thank_you.png' %}" alt="thank you">
-        <p>Thank you for registering on KatyShop303.<br> To log in you must activate your account
+        <p>
+            {% blocktrans %}
+            Thank you for registering on KatyShop303.<br> To log in you must activate your account
             with the link that we have sent to your email.<br>
             If you can't find the email in your main inbox, check your spam folder.
-        </p>
-        <a href="{% url 'user_app:user_resend_email' %}"><strong>Resend email</strong></a>
+            {% endblocktrans %}
+        </p>        
+        <a href="{% url 'user_app:user_resend_email' %}"><strong>{% trans 'Resend email' %}</strong></a>
     </div>
 </div>
 

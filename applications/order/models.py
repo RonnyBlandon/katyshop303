@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 # import models
 from applications.product.models import Product
 from applications.user.models import User, Country, State
@@ -7,7 +8,7 @@ from .managers import OrderManager, OrderAddressManager, OrderItemManager
 
 # Create your models here.
 
-ORDER_STATUS = (('On hold', 'On hold'), ('Shipped', 'Shipped'), ('Cancelled', 'Cancelled'), ('Refunded', 'Refunded'), ('Failed', 'Failed'))
+ORDER_STATUS = (('On hold', _('On hold')), ('Shipped', _('Shipped')), ('Cancelled', _('Cancelled')), ('Refunded', _('Refunded')), ('Failed', _('Failed')))
 PAYMENT_METHODS = (('Paypal', 'Paypal'), ('Stripe', 'Stripe'))
 
 # Order Models

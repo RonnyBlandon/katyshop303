@@ -10,9 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import json
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
-import json
+from django.utils.translation import gettext_lazy as _
+from django.conf.locale.es import formats
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -65,12 +67,12 @@ INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'katyshop303.urls'
@@ -119,20 +121,32 @@ AUTH_USER_MODEL = 'user.User'
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-# Set allowed languages
-LANGUAGES = [
-    ('en', 'English'),
-    ('es', 'Español'),
-]
-
-LANGUAGE_CODE = 'es-mx'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
+# Set allowed languages
+LANGUAGES = [
+    ('en', _('English')),
+    ('es', _('Español')),
+]
+#Set the decimal separator to period (.) instead of comma (,)
+formats.DECIMAL_SEPARATOR = '.'
+
+LOCALE_PATHS = [
+    BASE_DIR / 'applications/cart/locale',
+    BASE_DIR / 'applications/home/locale',
+    BASE_DIR / 'applications/user/locale',
+    BASE_DIR / 'applications/order/locale',
+    BASE_DIR / 'applications/product/locale',
+    BASE_DIR / 'applications/points/locale',
+]
 
 # EMAIL SETTINGS
 EMAIL_USE_TLS = True

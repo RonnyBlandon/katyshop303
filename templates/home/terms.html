@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} terms-and-Conditions {% endblock title %}
 
@@ -11,14 +12,14 @@
 <!--Informacion de los Terminos y Condiciones de Uso*/-->
 
 <div class="terms">
-    <h2>TERMS AND CONDITIONS</h2>
+    <h2>{% trans 'TERMS AND CONDITIONS' %}</h2>
 
     —
 
-    <h2>GENERAL INFORMATION</h2>
+    <h2>{% trans 'GENERAL INFORMATION' %}</h2>
 
     <p>
-        This website is operated by Katy Shop 303. Throughout the site, the terms "we", "us" and "our" affect
+        {% trans 'This website is operated by Katy Shop 303. Throughout the site, the terms "we", "us" and "our" affect
         Katy Shop 303. Katy Shop 303 offers this website, including all information, tools and Services
         available to you on this site, the user, is conditioned on your acceptance of all terms,
         conditions, policies and notifications established here.<br><br>
@@ -39,13 +40,13 @@
         We reserve the right to update, change or replace any part of the Terms of Service by
         posting updates and/or changes to our website. It is your responsibility to review this page for
         verify the changes. Your continued use of or access to the Website following the posting of any changes
-        constitutes acceptance of such changes.<br>
+        constitutes acceptance of such changes.' %}<br>
     </p>
 
-    <h3>SECTION 1 - ONLINE STORE TERMS</h3>
+    <h3>{% trans 'SECTION 1 - ONLINE STORE TERMS' %}</h3>
 
     <p>
-        By using this site, you represent that you are the age of majority in your state or province of residence, or that you are over
+        {% trans 'By using this site, you represent that you are the age of majority in your state or province of residence, or that you are over
         age in your state or province of residence and that you have given us your consent to allow any of your
         dependent minors use this site.<br><br>
 
@@ -54,13 +55,13 @@
 
         You must not transmit worms, viruses or any code of a destructive nature.<br><br>
 
-        A breach or violation of any of these Terms will result in immediate termination of your Services.<br>
+        A breach or violation of any of these Terms will result in immediate termination of your Services.' %}<br>
     </p>
 
-    <h3>SECTION 2 - GENERAL CONDITIONS</h3>
+    <h3>{% trans 'SECTION 2 - GENERAL CONDITIONS' %}</h3>
 
     <p>
-        We reserve the right to refuse service to anyone, for any reason, at any time.<br><br>
+        {% trans 'We reserve the right to refuse service to anyone, for any reason, at any time.<br><br>
 
         Credit card information is always encrypted during transfer over networks.<br><br>
 
@@ -68,32 +69,32 @@
         Service or access to the Service or any contact on the website through which the service is provided, without
         express written permission. Of us.<br><br>
 
-        Headings used in this agreement are included for convenience only and do not limit or affect these Terms.<br>
+        Headings used in this agreement are included for convenience only and do not limit or affect these Terms.' %}<br>
     </p>
 
-    <h3>SECTION 3 - CHANGES TO THE SERVICE AND PRICES</h3>
+    <h3>{% trans 'SECTION 3 - CHANGES TO THE SERVICE AND PRICES' %}</h3>
 
     <p>
-        The prices of our products are subject to change without prior notice.<br><br>
+        {% trans 'The prices of our products are subject to change without prior notice.<br><br>
 
         We reserve the right to modify or discontinue the Service (or any part of the content) at any
         time without notice.<br><br>
 
         We will not be liable to you or any third party for any modification, price change, suspension or
-        discontinuity of the Service.<br>
+        discontinuity of the Service.' %}<br>
     </p>
 
-    <h3>SECTION 4 - REFUNDS AND RETURNS</h3>
+    <h3>{% trans 'SECTION 4 - REFUNDS AND RETURNS' %}</h3>
 
     <p>
-        Due to the fact that in previous stores many consumers made orders and returned them very often for pleasure or for
-        For any other reason, Katy Shop 303 will not accept refunds or returns of any kind.<br>
+        {% trans 'Due to the fact that in previous stores many consumers made orders and returned them very often for pleasure or for
+        For any other reason, Katy Shop 303 will not accept refunds or returns of any kind.' %}<br>
     </p>
 
-    <h3>SECTION 5 - PRODUCTS OR SERVICES (if applicable)</h3>
+    <h3>{% trans 'SECTION 5 - PRODUCTS OR SERVICES (if applicable)' %}</h3>
 
     <p>
-        Certain products or services may be available exclusively online through the Website. These
+        {% trans 'Certain products or services may be available exclusively online through the Website. These
         products or services may have limited quantities.
 
         We have made an effort to display the colors and images of our products, in the store, as accurately as possible.
@@ -107,13 +108,13 @@
         moment. Any product or service offer made on this site is void where prohibited.
 
         We do not warrant that the quality of any products, services, information or other material purchased or obtained by
-        you meet your expectations.
+        you meet your expectations.' %}
     </p>
 
-    <h3>SECTION 6: ACCURACY OF BILLING AND ACCOUNT INFORMATION</h3>
+    <h3>{% trans 'SECTION 6: ACCURACY OF BILLING AND ACCOUNT INFORMATION' %}</h3>
 
     <p>
-        We reserve the right to refuse any order you place with us. We may, at our discretion,
+        {% trans 'We reserve the right to refuse any order you place with us. We may, at our discretion,
         limit or cancel the quantities purchased per person, per household or per order. These restrictions may include
         orders placed by or under the same customer account, the same credit card and/or orders using the
         same billing and/or shipping address.<br><br>
@@ -126,13 +127,13 @@
         You agree to provide current, complete, and accurate information about the purchase and the account used for all
         purchases made in our store. You agree to promptly update your account and other information, including your
         email address and credit card numbers and expiration dates, so that we can complete
-        your transactions and communicate with you when necessary.<br>
+        your transactions and communicate with you when necessary.' %}<br>
     </p>
 
-    <h3>SECTION 7 - OPTIONAL TOOLS</h3>
+    <h3>{% trans 'SECTION 7 - OPTIONAL TOOLS' %}</h3>
 
     <p>
-        We may provide you with access to third-party tools that we do not monitor and over which we have no control or
+        {% trans 'We may provide you with access to third-party tools that we do not monitor and over which we have no control or
         entrance.<br><br>
 
         You acknowledge and agree that we provide access to such tools "as is" and "as available" without
@@ -145,31 +146,31 @@
 
         We may also offer you new services and/or features through the Website in the future (including
         the release of new tools and resources). These new features and/or services will also be
-        subject to these Terms of Service.<br>
+        subject to these Terms of Service.' %}<br>
     </p>
 
-    <h3>SECTION 8 - PERSONAL INFORMATION</h3>
+    <h3>{% trans 'SECTION 8 - PERSONAL INFORMATION' %}</h3>
 
     <p>
-        Your submission of personal information through the site is governed by our Privacy Policy. To see
-        our Privacy Policy.<br>
+        {% trans 'Your submission of personal information through the site is governed by our Privacy Policy. To see
+        our Privacy Policy.' %}<br>
     </p>
 
-    <h3>SECTION 9 - ERRORS, INACCURACIES AND OMISSIONS</h3>
+    <h3>{% trans 'SECTION 9 - ERRORS, INACCURACIES AND OMISSIONS' %}</h3>
 
     <p>
-        From time to time there may be information on our site or in the Service that contains typographical errors,
+        {% trans 'From time to time there may be information on our site or in the Service that contains typographical errors,
         inaccuracies or omissions that may relate to product descriptions, prices, promotions,
         offers, product shipping costs, transit time and availability. We reserve the right to correct
         errors, inaccuracies or omissions and to change or update information or cancel orders if any information in
         the Service or any related website is inaccurate at any time, without notice (including after
-        of having sent your order).<br>
+        of having sent your order)' %}.<br>
     </p>
 
-    <h3>SECTION 10 - PROHIBITED USES</h3>
+    <h3>{% trans 'SECTION 10 - PROHIBITED USES' %}</h3>
 
     <p>
-        In addition to other prohibitions set forth in the Terms of Service, use of the Site or its content is
+        {% trans 'In addition to other prohibitions set forth in the Terms of Service, use of the Site or its content is
         prohibited: (a) for any unlawful purpose; (b) solicit others to perform or participate in illegal acts; (c)
         to violate any international, federal, provincial or state regulations, rules, laws, or ordinances
         local; (d) to infringe or violate the intellectual property right of us or of third parties; (e) harass,
@@ -181,13 +182,13 @@
         spam, phish, pharm, pretext, spider, crawl or scrape; (j) for any obscene or immoral purpose; or (k) for
         interfere with or circumvent the security features of the Service or any related website, other sites or
         Internet. We reserve the right to terminate your use of the Service or any related website for violating
-        any of the items prohibited use.<br>
+        any of the items prohibited use.' %}<br>
     </p>
 
-    <h3>ARTICLE 11 - EXCLUSION OF WARRANTIES; LIMITATION OF LIABILITY</h3>
+    <h3>{% trans 'ARTICLE 11 - EXCLUSION OF WARRANTIES; LIMITATION OF LIABILITY' %}</h3>
 
     <p>
-        We do not warrant or warrant that use of our service will be uninterrupted, timely, secure, or free of
+        {% trans 'We do not warrant or warrant that use of our service will be uninterrupted, timely, secure, or free of
         mistakes.<br><br>
 
         We do not warrant that the results that may be obtained from the use of the service will be accurate or reliable.<br><br>
@@ -205,13 +206,13 @@
         (or product) published, transmitted or made available through the service, even if notice of its
         possibility. Because some states or jurisdictions do not allow the exclusion or limitation of liability
         for consequential or incidental damages, in such states or jurisdictions, our liability shall be limited to the
-        maximum allowed by law.<br>
+        maximum allowed by law.' %}<br>
     </p>
 
-    <h3>SECTION 12 - TERMINATION</h3>
+    <h3>{% trans 'SECTION 12 - TERMINATION' %}</h3>
 
     <p>
-        Obligations and liabilities of the parties incurred prior to the termination date will survive
+        {% trans 'Obligations and liabilities of the parties incurred prior to the termination date will survive
         upon termination of this agreement for all purposes.<br><br>
 
         These Terms of Service are effective unless and until terminated by either you or us. You can terminate these
@@ -221,25 +222,25 @@
         If, in our judgment, you do not comply, or are suspected of not complying, with any term or provision of these
         Terms of Service, we may also terminate this agreement at any time, without notice, and you will continue to
         being responsible for all amounts owed. To include the completion date; and/or accordingly we can
-        deny access to our services (or any part thereof).<br>
+        deny access to our services (or any part thereof).' %}<br>
     </p>
 
-    <h3>SECTION 13 - CHANGES TO THE TERMS OF SERVICE</h3>
+    <h3>{% trans 'SECTION 13 - CHANGES TO THE TERMS OF SERVICE' %}</h3>
 
     <p>
-        You can review the most recent version of the Terms of Service at any time on this page.<br><br>
+        {% trans 'You can review the most recent version of the Terms of Service at any time on this page.<br><br>
 
         We reserve the right, at our sole discretion, to update, modify or replace any part of
         these Terms of Service by posting updates and changes to our website. Is his
         responsibility to check our website periodically to verify changes. Your continued use of or access to
         our website or the Service after the posting of any changes to these Terms of Service implies
-        acceptance of such changes.<br>
+        acceptance of such changes.' %}<br>
     </p>
 
-    <h3>SECTION 14 - CONTACT INFORMATION</h3>
+    <h3>{% trans 'SECTION 14 - CONTACT INFORMATION' %}</h3>
 
     <p>
-        Questions about the Terms of Service should be sent to katyshop303@gmail.com.<br>
+        {% trans 'Questions about the Terms of Service should be sent to katyshop303@gmail.com.' %}<br>
     </p>
 </div>
 

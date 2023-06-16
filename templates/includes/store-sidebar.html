@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 <!--Store Side Bar-->
 
 <div class="box-sidebar bg-info container-fluid col-md-4 col-lg-3 my-md-3">
     <!--Sidebar in mobile-->
     <div class="btn-dropdown dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button">Categories</button>
+        <button class="btn btn-primary dropdown-toggle" type="button">{% trans 'Categories' %}</button>
         <ul class="dropdown-categories dropdown-menu">
             <form class="d-flex px-2" role="search"> {% csrf_token %}
 				<input class="search-category-movil form-control" type="search" placeholder="Search by category" aria-label="Search">
@@ -17,7 +18,7 @@
 
     <!--Sidebar in tablets and desktop-->
     <nav class="store-sidebar overflow-auto">
-        <h3 class="title-sidebar text-center">Categories</h3>
+        <h3 class="title-sidebar text-center">{% trans 'Categories' %}</h3>
         <ul class="list-category list-group mb-2 text-start">
             <form class="d-flex px-2" role="search"> {% csrf_token %}
 				<input class="search-category-desktop form-control mb-3" type="search" placeholder="Search by category" aria-label="Search">

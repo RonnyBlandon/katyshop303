@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} user-dashboard {% endblock title %}
 
@@ -13,16 +14,16 @@
 	{% include 'includes/user-menu.html' %}
 
 	<div class="box-account-section col-lg-8 col-lg-9">
-		<h4 class="my-points">Hi Ronny, you have {{ user_points }} points</h4>
+		<h4 class="my-points">{% blocktrans %}Hi {{request.user.name}}, you have {{ user_points }} points{% endblocktrans %}</h4>
 		<div class="my-3 mx-md-3 mx-lg-auto">
 			<div class="box-order-tables overflow-x-auto mx-auto">
 				<table class="order-table table table-striped table-info text-center">
 					<thead class="bg-black">
 						<tr>
-							<th>Event</th>
-							<th>ID Order</th>
-							<th>Date</th>
-							<th>Points</th>
+							<th>{% trans 'Event' %}</th>
+							<th>{% trans 'ID Order' %}</th>
+							<th>{% trans 'Date' %}</th>
+							<th>{% trans 'Points' %}</th>
 						</tr>
 					</thead>
 					{% for register in pointshistory_list %}
@@ -52,11 +53,13 @@
                     {% endif %}
                     {% if page_obj.number > 0 %}
                     <span class="current-pages">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+						{% blocktrans %}
+						Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+						{% endblocktrans %}
                     </span>
                     {% else %}
                     <span class="current-pages">
-                        Page 1 of 1
+                        {% trans 'Page 1 of 1' %}
                     </span>
                     {% endif %}
 

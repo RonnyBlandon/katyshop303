@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} user-dashboard {% endblock title %}
 
@@ -24,58 +25,40 @@
         {% endif %}
         <form method="post" class="form-profile row g-3 needs-validation"> {% csrf_token %}
             <div class="col-md-8 col-lg-5">
-                <label for="validationCustom01" class="form-label">Name</label>
+                <label for="validationCustom01" class="form-label">{% trans 'Name' %}</label>
                 {{form.name}}
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-8 col-lg-5">
-                <label for="validationCustom02" class="form-label">Last name</label>
+                <label for="validationCustom02" class="form-label">{% trans 'Last name' %}</label>
                 {{form.last_name}}
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
             </div>
             <div class="col-md-8 col-lg-5">
-                <label for="validationCustom03" class="form-label">Email</label>
+                <label for="validationCustom03" class="form-label">{% trans 'Email' %}</label>
                 <input type="email" class="form-control" id="validationCustom03" value="{{user.email}}" disabled>
             </div>
             <div class="col-md-8 col-lg-5">
                 {{form.phone_number.errors}}
-                <label for="validationCustom05" class="form-label">Telephone number (optional)</label>
+                <label for="validationCustom05" class="form-label">{% trans 'Telephone number (optional)' %}</label>
                 {{form.phone_number}}
-                <div class="invalid-feedback">
-                    Please provide a valid phone number.
-                </div>
             </div>
             <!--Change password-->
-            <h3 class="mt-4 mb-2">Change Password</h3>
+            <h3 class="mt-4 mb-2">{% trans 'Change Password' %}</h3>
             <div class="col-md-8 col-lg-7">
                 {{form.current_password.errors}}
-                <label for="validationCustom05" class="form-label">Current password</label>
+                <label for="validationCustom05" class="form-label">{% trans 'Current password' %}</label>
                 {{form.current_password}}
-                <div class="invalid-feedback">
-                    Please provide a valid phone number.
-                </div>
             </div>
             {{form.repeat_password.errors}}
             <div class="col-md-8 col-lg-6">
-                <label for="validationCustom05" class="form-label">New password</label>
+                <label for="validationCustom05" class="form-label">{% trans 'New password' %}</label>
                 {{form.new_password}}
-                <div class="invalid-feedback">
-                    Please provide a valid phone number.
-                </div>
             </div>
             <div class="col-md-8 col-lg-6">
-                <label for="validationCustom05" class="form-label">Repeat password</label>
+                <label for="validationCustom05" class="form-label">{% trans 'Repeat password' %}</label>
                 {{form.repeat_password}}
-                <div class="invalid-feedback">
-                    Please provide a valid phone number.
-                </div>
             </div>
             <div class="col-12 pt-2">
-                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn btn-primary" type="submit">{% trans 'Save' %}</button>
             </div>
         </form>
     </div>

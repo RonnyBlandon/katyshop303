@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} cart {% endblock title %}
 
@@ -34,7 +35,7 @@
         <div class="proceed-to-pay col-md-4 col-lg-4 me-lg-5 me-0">
             <div class="proceed-to-pay-content">
                 <p class="d-flex justify-content-between m-0">
-                    <strong>Products:</strong>
+                    <strong>{% trans 'Products:' %}</strong>
                     <strong class="proceed-to-pay-quantity">{{ quantity_items }}</strong>
                 </p>
                 <p class="d-flex justify-content-between m-0">
@@ -43,7 +44,7 @@
                 </p>
                 {% if cart_discount > 0 %}
                 <p class="box-discount m-0">
-                    <strong>Discount <a id="remove-discount" href="{% url 'points_app:remove_discount_cart' %}">[Remove]</a>:</strong>
+                    <strong>{% trans 'Discount' %} <a id="remove-discount" href="{% url 'points_app:remove_discount_cart' %}">{% trans '[Remove]' %}</a>:</strong>
                     <span class="proceed-to-pay-subtotal discount">${{ cart_discount }}</span>
                 </p>
                 {% endif %}
@@ -53,7 +54,7 @@
                 </p>
             </div>
             {% if cart_items %}
-            <a class="btn btn-primary mt-2" href="{% url 'order_app:checkout' %}">Proceed to pay</a>
+            <a class="btn btn-primary mt-2" href="{% url 'order_app:checkout' %}">{% trans 'Proceed to pay' %}</a>
             {% endif %}
         </div>
     </div>
@@ -68,24 +69,24 @@
             <a class="link-product" href="{% url 'product_app:product' item.product.slug %}">{{ item.product.name }}</a>
             <p class="h5 card-subtitle text-success"><strong class="subtotal-product">${{ item.subtotal }}</strong></p>
             {% if item.product.stock == True and item.product.amount_stock > 0 %}
-            <p class="stock-cart text-success">{{ item.product.amount_stock }} left in stock</p>
+            <p class="stock-cart text-success">{% blocktrans %}{{ product.amount_stock }} left in stock{% endblocktrans %}</p>
             <div class="d-flex flex-wrap">
                 <div class="product-quantity">
                     <button class="decrease-product" data-url-decrease="{% url 'cart_app:subtract_cart' item.product.id %}">-</button>
                     <input type="number" class="amount-product" value="{{ item.amount }}" min="1" max="{{ item.product.amount_stock }}" readonly>
                     <button class="increase-product" data-url-increase="{% url 'cart_app:add_cart' item.product.id %}">+</button>
                 </div>
-                <a class="delete-product-cart" href="{% url 'cart_app:delete_cart' item.product.id %}">Delete</a>
+                <a class="delete-product-cart" href="{% url 'cart_app:delete_cart' item.product.id %}">{% trans 'Delete' %}</a>
             </div>
             {% elif item.product.stock == True %}
-            <p class="stock-cart text-success">In stock</p>
+            <p class="stock-cart text-success">{% trans 'In stock' %}</p>
             <div class="d-flex flex-wrap">
                 <div class="product-quantity">
                     <button class="decrease-product" data-url-decrease="{% url 'cart_app:subtract_cart' item.product.id %}">-</button>
                     <input type="number" class="amount-product" value="{{ item.amount }}" min="1" max="10" readonly>
                     <button class="increase-product" data-url-increase="{% url 'cart_app:add_cart' item.product.id %}">+</button>
                 </div>
-                <a class="delete-product-cart" href="{% url 'cart_app:delete_cart' item.product.id %}">Delete</a>
+                <a class="delete-product-cart" href="{% url 'cart_app:delete_cart' item.product.id %}">{% trans 'Delete' %}</a>
             </div>
         {% endif %}
         </div>
@@ -100,24 +101,24 @@
             <a class="link-product" href="{% url 'product_app:product' item.slug %}">{{ item.name }}</a>
             <p class="h5 card-subtitle text-success"><strong class="subtotal-product">${{ item.accumulated }}</strong></p>
             {% if item.stock == True and item.amount_stock > 0 %}
-            <p class="stock-cart text-success">{{ item.amount_stock }} left in stock</p>
+            <p class="stock-cart text-success">{% blocktrans %}{{ product.amount_stock }} left in stock{% endblocktrans %}</p>
             <div class="d-flex flex-wrap">
                 <div class="product-quantity">
                     <button class="decrease-product" data-url-decrease="{% url 'cart_app:subtract_cart' item.id %}">-</button>
                     <input type="number" class="amount-product" value="{{ item.amount }}" min="1" max="{{ item.amount_stock }}" readonly>
                     <button class="increase-product" data-url-increase="{% url 'cart_app:add_cart' item.id %}">+</button>
                 </div>
-                <a class="delete-product-cart" href="{% url 'cart_app:delete_cart' item.id %}">Remove</a>
+                <a class="delete-product-cart" href="{% url 'cart_app:delete_cart' item.id %}">{% trans 'Delete' %}</a>
             </div>
             {% elif item.stock == True %}
-            <p class="stock-cart text-success">In stock</p>
+            <p class="stock-cart text-success">{% trans 'In stock' %}</p>
             <div class="d-flex flex-wrap">
                 <div class="product-quantity">
                     <button class="decrease-product" data-url-decrease="{% url 'cart_app:subtract_cart' item.id %}">-</button>
                     <input type="number" class="amount-product" value="{{ item.amount }}" min="1" max="10" readonly>
                     <button class="increase-product" data-url-increase="{% url 'cart_app:add_cart' item.id %}">+</button>
                 </div>
-                <a class="delete-product-cart" href="{% url 'cart_app:delete_cart' item.id %}">Remove</a>
+                <a class="delete-product-cart" href="{% url 'cart_app:delete_cart' item.id %}">{% trans 'Remove' %}</a>
             </div>
             {% endif %}
         </div>
@@ -125,7 +126,7 @@
     {% endfor %}
     {% endif %}
 {% else %}
-    <h3 class="col-md-8 text-center text-lg-start">Add products to your cart.</h3>
+    <h3 class="col-md-8 text-center text-lg-start">{% trans 'Add products to your cart.' %}</h3>
 {% endif %}
 </div>
     <script src="{% static 'js/cart.js' %}"></script>

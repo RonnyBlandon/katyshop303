@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} Login {% endblock title %}
 
@@ -24,8 +25,8 @@
     <form class="form-register" method="post"> {% csrf_token %}
         {{ form.non_field_errors }}
         <div class="form__container">
-            <h2>Login</h2>
-            <p>Fill in the details to login.</p>
+            <h2>{% trans 'Login.' %}</h2>
+            <p>{% trans 'Fill in the details to login.' %}</p>
         </div>
     
         <label class="form-register__label"><img src="{% static 'img/icono-user.svg' %}" alt="icon-user">
@@ -37,11 +38,11 @@
         <input class="form-register__input-submit" type="submit">
     
         <div class="form__container-2">
-            <p>You do not have an account? <a href="{% url 'user_app:user_register' %}">Sign in</a></p>
+            <p>{% trans 'You do not have an account?' %} <a href="{% url 'user_app:user_register' %}">{% trans 'Sign in' %}</a></p>
         </div>
 
         <div class="form__container-2">
-            <p><a href="{% url 'user_app:recover_password' %}">Did you forget your password?</a></p>
+            <p><a href="{% url 'user_app:recover_password' %}">{% trans 'Did you forget your password?' %}</a></p>
         </div>
     </form>
 </div class="container-form">

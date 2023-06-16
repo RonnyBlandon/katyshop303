@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} contacto {% endblock title %}
 
@@ -20,8 +21,8 @@
 
     <!--Form of contact-->
     <form class="form" method="post"> {% csrf_token %}
-        <h3>Contact</h3>
-        <p>If you have any questions, fill out the following form with the following information.</p>
+        <h3>{% trans 'Contact' %}</h3>
+        <p>{% trans 'If you have any questions, fill out the following form with the following information.' %}</p>
 
         <div class="form__input-container">
             {{ form.name }}
@@ -37,7 +38,7 @@
 
         {{ form.captcha }}
 
-        <button class="form__input--submit" type="submit">Send</button>
+        <button class="form__input--submit" type="submit">{% trans 'Send' %}</button>
     </form>
 </div>
 

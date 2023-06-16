@@ -1,10 +1,11 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import check_password
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV3
 # Import models
-from .models import User, Address, Country, State
+from .models import User, Country, State
 # Import funtions
 from .functions import validate_phone_number, validate_postal_code
 

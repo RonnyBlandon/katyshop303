@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} {{product.name}} {% endblock title %}
 
@@ -60,23 +61,23 @@
 		<form class="col-md-6 p-md-1 ps-lg-3" method="post" action="{% url 'cart_app:add_cart_product' product.id %}"> {% csrf_token %}
 			<h1 class="title-product">{{ product.name }}</h1>
 			<h3 class="base-price"><strong>${{ product.price }}</strong></h3>
-			<p class="info-points">Every time you buy this item, you will receive <strong>{{ product_points }}</strong> reward points!</p>
+			<p class="info-points">{% trans 'Every time you buy this item, you will receive' %} <strong>{{ product_points }}</strong> {% trans 'reward points!' %}</p>
 			<div class="product-quantity">
 				<strong class="decrease-product">-</strong>
 				<input name="quantity-product" type="number" class="amount-product" value="1" min="1" max="{{product.amount_stock}}" readonly>
 				<strong class="increase-product">+</strong>
 			</div>
 			{% if product.stock == True and product.amount_stock > 0 %}
-			<p class="stock-store">{{ product.amount_stock }} left in stock</p>
-			<button type="submit" class="btn-add-cart mt-4 mb-2 btn btn-primary">Add to cart</button>
+			<p class="stock-store">{% blocktrans %}{{ product.amount_stock }} left in stock{% endblocktrans %}</p>
+			<button type="submit" class="btn-add-cart mt-4 mb-2 btn btn-primary">{% trans 'Add to cart' %}</button>
 			{% elif product.stock == True %}
-			<p class="stock-store">In stock</p>
-			<button type="submit" class="btn-add-cart mt-4 mb-2 btn btn-primary">Add to cart</button>
+			<p class="stock-store">{% trans 'In stock' %}</p>
+			<button type="submit" class="btn-add-cart mt-4 mb-2 btn btn-primary">{% trans 'Add to cart' %}</button>
 			{% else %}
-			<p class="out-of-stock">Out of stock</p>
-			<a href="#" class="btn-add-cart mt-4 mb-2 btn btn-secondary disabled">Out of stock</a>
+			<p class="out-of-stock">{% trans 'Out of stock' %}</p>
+			<a href="#" class="btn-add-cart mt-4 mb-2 btn btn-secondary disabled">{% trans 'Out of stock' %}</a>
 			{% endif %}
-			<h6>Category:
+			<h6>{% trans 'Category:' %}
 				{% for category in product.category.all %}
 				<strong>{{ category.name }},</strong>
 				{% endfor %}
@@ -85,7 +86,7 @@
 	</div>
 	<!--Description-->
 	<div class="description col-md-11 py-4 p-md-0 px-lg-3 my-auto">
-		<h4 class="title-description text-center">Description</h4>
+		<h4 class="title-description text-center">{% trans 'Description' %}</h4>
 		{{ product.description|safe }}
 	</div>
 </div>

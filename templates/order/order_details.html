@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} user-dashboard {% endblock title %}
 
@@ -14,29 +15,29 @@
     <!-- Order -->
     <div class="box-account-section col-lg-8 col-lg-9">
         <div class="title-order">
-            <h2>Order #{{ order.id }}</h2>
+            <h2>{% trans 'Order' %} #{{ order.id }}</h2>
         </div>
         <div class="body-order">
-            <h4 class="order-sections">Status: <span class="order-status">{{ order.status }}</span></h4>
+            <h4 class="order-sections">{% trans 'Status:' %} <span class="order-status">{{ order.status }}</span></h4>
             <!-- Order Tracking -->
             {% if order.order_tracking.first.tracking_link %}
-            <h4 class="order-sections">Tracking Information:</h4>
+            <h4 class="order-sections">{% trans 'Tracking Information:' %}</h4>
             <div class="container-tracking">
-                <strong>shipping provider:</strong>
+                <strong>{% trans 'shipping provider:' %}</strong>
                 <span>{{ order.order_tracking.first.shipping_company.name }}</span><br>
-                <strong>Shipping date:</strong>
+                <strong>{% trans 'Shipping date:' %}</strong>
                 <span>{{ order.order_tracking.first.shipping_date|date:'d F, Y' }}</span><br>
-                <strong>shipping tracking:</strong>
+                <strong>{% trans 'shipping tracking:' %}</strong>
                 <a href="{{ order.order_tracking.first.tracking_link }}" target="_blank" rel="noopener noreferrer">{{ order.order_tracking.first.tracking }}</a>
             </div>
             {% endif %}
             <!-- Order details -->
-            <h4 class="order-sections order-date">[Order #{{ order.id }}]</h4><h4 class="order-sections order-date">({{ order.created|date:'d F, Y' }})</h4>
+            <h4 class="order-sections order-date">[{% trans 'Order' %} #{{ order.id }}]</h4><h4 class="order-sections order-date">({{ order.created|date:'d F, Y' }})</h4>
             <table>
                 <thead>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th>{% trans 'Product' %}</th>
+                    <th>{% trans 'Quantity' %}</th>
+                    <th>{% trans 'Price' %}</th>
                 </thead>
                 <tbody>
                     {% for item in order.order_items.all %}
@@ -56,14 +57,14 @@
                     </tr>
                     {% if not order.discount == 0 or order.discount == '' %}
                     <tr>
-                        <th>Discount:</th>
+                        <th>{% trans 'Discount:' %}</th>
                         <td class="td-calculation">${{ order.discount }}</td>
                     </tr>
                     {% endif %}
                     <tr>
-                        <th>Payment method:</th>
+                        <th>{% trans 'Payment method:' %}</th>
                         {% if order.payment_method == 'Stripe' %}
-                        <td class="td-calculation">Card</td>
+                        <td class="td-calculation">{% trans 'Card' %}</td>
                         {% else %}
                         <td class="td-calculation">{{ order.payment_method }}</td>
                         {% endif %}
@@ -74,7 +75,7 @@
                     </tr>
                 </tbody>
             </table>
-            <h4 class="order-sections">Address:</h4>
+            <h4 class="order-sections">{% trans 'Address:' %}</h4>
             <!-- Order Address -->
             <address>
                 <i>{{ order.order_address.first.name }}</i><br>

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} checkout {% endblock title %}
 
@@ -12,11 +13,11 @@
 <!-- POINTS FORM -->
 <div class="box-form-points mx-2 mx-md-auto mx-lg-2 col-md-8 col-lg-7">
     <form id="form-points" class="px-3 col-12 col-md-10 col-lg-7">
-        <p>¿Cuántos puntos le gustaría aplicar?</p>
+        <p>{% trans 'How many points would you like to apply?' %}</p>
         <input id="redemption-points" type="number" data-user_points="{{ user_points }}" data-point_redemption_rate="{{ point_redemption_rate }}">
         <div class="form-points-buttons">
-            <button type="button" class="btn-make-discount btn btn-primary">Aceptar</button>
-            <button type="button" class="btn-cancel-points">Cancelar</button>
+            <button type="button" class="btn-make-discount btn btn-primary">{% trans 'Accept' %}</button>
+            <button type="button" class="btn-cancel-points">{% trans 'Cancel' %}</button>
         </div>
     </form>
 </div>
@@ -37,51 +38,51 @@
         <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">
             YOU HAVE <strong id="user-points">{{ user_points }}</strong> POINTS FOR A <strong class="text-success">${{ max_discount }}</strong> 
             DISCOUNT ON THIS ORDER!</p>
-        <button type="button" class="btn btn-primary ms-1" id="btn-apply-points">Apply</button>
+        <button type="button" class="btn btn-primary ms-1" id="btn-apply-points">{% trans 'Apply' %}</button>
     </div>
     <!-- Section shipping address -->
 
     <div class="box-shipping p-2 col-lg-7">
-        <h4 class="text-center">Shipping Address</h4>
+        <h4 class="text-center">{% trans 'Shipping Address' %}</h4>
         <div class="shipping p-md-2 d-flex flex-wrap gap-3">
             <div class="col-12 col-lg-5">
-                <label class="form-label">Name:</label>
+                <label class="form-label">{% trans 'Name:' %}</label>
                 {{ form.name }}
             </div>
             <div class="col-12 col-lg-5">
-                <label class="form-label">Last name:</label>
+                <label class="form-label">{% trans 'Last name:' %}</label>
                 {{ form.last_name }}
             </div>
             <div class="col-12 col-lg-5">
                 {{form.country.erros}}
-                <label class="form-label">Country:</label>
+                <label class="form-label">{% trans 'Country:' %}</label>
                 {{ form.country }}
             </div>
             <div class="div-select-state col-12 col-lg-5">
                 {{form.state.errors}}
-                <label class="form-label">State:</label>
+                <label class="form-label">{% trans 'State:' %}</label>
                 {{ form.state }}
             </div>
             <div class="col-12 col-lg-5">
-                <label id="label-city" class="form-label">City:</label>
+                <label id="label-city" class="form-label">{% trans 'City:' %}</label>
                 {{form.city}}
             </div>
             <div class="col-12 col-lg-8">
-                <label class="form-label">Address:</label>
+                <label class="form-label">{% trans 'Address:' %}</label>
                 {{form.address_1}}
                 {{form.address_2}}
             </div>
             <div class="col-12 col-lg-5">
                 {{form.postal_code.errors}}
-                <label class="form-label">Postal Code:</label>
+                <label class="form-label">{% trans 'Postal Code:' %}</label>
                 {{form.postal_code}}
             </div>
         </div>
     </div>
     <!--Section Additional Information-->
     <div class="box-additional-info p-2 col-lg-7">
-        <h4 class="text-center">Additional Information</h4>
-        <label class="form-label">Order notes: (optional)</label>
+        <h4 class="text-center">{% trans 'Additional Information' %}</h4>
+        <label class="form-label">{% trans 'Order notes: (optional)' %}</label>
         {{ form.additional_info }}
     </div>
     <!--Section Payment-->
@@ -97,7 +98,7 @@
                 <strong>Subtotal(productos {{ quantity_items }})</strong><span>${{ cart_subtotal }}</span>
             </p>
             <p class="box-discount m-0">
-                <strong>Discount <span id="remove-discount">[Remove]</span></strong>
+                <strong>{% trans 'Discount' %} <span id="remove-discount">{% trans '[Remove]' %}</span></strong>
                 <span class="discount fw-bold">${{ cart_discount }}</span>
             </p>
             <p class="d-flex align-items-center justify-content-between m-0"><strong>Total</strong><span
@@ -106,18 +107,18 @@
         </div>
 
         <div class="div-payment">
-            <h3 class="text-center">Payment methods</h3>
+            <h3 class="text-center">{% trans 'Payment methods' %}</h3>
             <label class="label-radio-payment">
                 {{ form.payment_method }}
             </label>
             <label class="input-checkbox">
                 <h6>
                     <input type="checkbox" name="terms-and-conditions" value="True" required>
-                    I have read and agree to the <a href="{% url 'home_app:terms' %}">terms and conditions</a>
-                    of Katyshop303.
+                    {% trans 'I have read and agree to the' %} <a href="{% url 'home_app:terms' %}">{% trans 'terms and conditions' %}</a>
+                    {% trans 'of Katyshop303.' %}
                 </h6>
             </label>
-            <button class="button-payment" type="submit">Pay now</button>
+            <button class="button-payment" type="submit">{% trans 'Pay now' %}</button>
         </div>
     </div>
 </form>

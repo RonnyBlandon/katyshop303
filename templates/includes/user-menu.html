@@ -1,9 +1,10 @@
 {% load static %}
+{% load i18n %}
 <!--User menu-->
 
 <div class="nav-user-show">
     <img class="user-menu-show" src="{% static 'img/user-menu.svg' %}" alt="user menu">
-    <h4 class="title-page m-0 text-white">Orders</h4>
+    <h4 class="title-page m-0 text-white">{% trans 'Orders' %}</h4>
 </div>
 
 <div class="box-nav-user col-lg-3">
@@ -13,19 +14,19 @@
             <h5 class="text-white">{{user.name}} {{user.last_name}}</h5>
         </div>
         <li>
-            <a class="nav-user__a" href="{% url 'user_app:user_orders' %}" id="user-orders">Orders</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_orders' %}" id="user-orders">{% trans 'Orders' %}</a>
         </li>
         <li>
-            <a class="nav-user__a" href="{% url 'user_app:user_profile' %}" id="user-profile">Profile</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_profile' %}" id="user-profile">{% trans 'Profile' %}</a>
         </li>
         <li>
-            <a class="nav-user__a" href="{% url 'user_app:user_address' %}" id="user-address">Address</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_address' %}" id="user-address">{% trans 'Address' %}</a>
         </li>
         <li>
-            <a class="nav-user__a" href="{% url 'user_app:user_points' %}" id="user-points">My points</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_points' %}" id="user-points">{% trans 'My points' %}</a>
         </li>
         <li>
-            <a class="nav-user__a" href="{% url 'user_app:user_logout' %}">Logout</a>
+            <a class="nav-user__a" href="{% url 'user_app:user_logout' %}">{% trans 'Logout' %}</a>
         </li>
     </div>
     <div class="nav-user-close">

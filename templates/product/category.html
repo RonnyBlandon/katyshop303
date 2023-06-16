@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} {{ category.name }} category {% endblock title %}
 
@@ -15,7 +16,7 @@
     <!-- Title Category -->
     <!--Products of store-->
     <div class="container-fluid mt-3 d-flex flex-column align-content-center row-gap-3">
-        <h2 class="title-category">Categoria: {{ category.name }}</h2>
+        <h2 class="title-category">{% trans 'Categoria:' %} {{ category.name }}</h2>
         {% for product in products %}
         {% if product.active %}
         <div class="card d-flex flex-row align-items-center border-info border-2">
@@ -30,14 +31,14 @@
                 <a class="link-title-product" href="{% url 'product_app:product' product.slug %}">{{ product.name }}</a>
                 <p class="card-subtitle"><strong>${{ product.price }}</strong></p>
                 {% if product.stock == True and product.amount_stock > 0 %}
-                <p class="stock-store">{{ product.amount_stock }} left in stock</p>
-                <a href="{% url 'cart_app:add_cart' product.id %}" class="btn-add-cart btn btn-primary">Add to cart</a>
+                <p class="stock-store">{% blocktrans %}{{ product.amount_stock }} left in stock{% endblocktrans %}</p>
+                <a href="{% url 'cart_app:add_cart' product.id %}" class="btn-add-cart btn btn-primary">{% trans 'Add to cart' %}</a>
                 {% elif product.stock == True %}
-                <p class="stock-store">In stock</p>
-                <a href="{% url 'cart_app:add_cart' product.id %}" class="btn-add-cart btn btn-primary">Add to cart</a>
+                <p class="stock-store">{% trans 'In stock' %}</p>
+                <a href="{% url 'cart_app:add_cart' product.id %}" class="btn-add-cart btn btn-primary">{% trans 'Add to cart' %}</a>
                 {% else %}
-                <p class="out-of-stock">Out of stock</p>
-                <a href="#" class="btn-add-cart btn btn-secondary disabled">Out of stock</a>
+                <p class="out-of-stock">{% trans 'Out of stock' %}</p>
+                <a href="#" class="btn-add-cart btn btn-secondary disabled">{% trans 'Out of stock' %}</a>
                 {% endif %}
             </div>
         </div>
@@ -54,11 +55,13 @@
                 
                 {% if products.number > 0 %}
                 <span class="current-pages">
+                    {% blocktrans %}
                     Page {{ products.number }} of {{ products.paginator.num_pages }}
+                    {% endblocktrans %}
                 </span>
                 {% else %}
                 <span class="current-pages">
-                    Page 1 of 1
+                    {% trans 'Page 1 of 1' %}
                 </span>
                 {% endif %}
         

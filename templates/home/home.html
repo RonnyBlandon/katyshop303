@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} home {% endblock title %}
 
@@ -21,16 +22,16 @@
 			<div class="carousel-item active" data-bs-interval="4000">
 				<img src="{% static 'img/pretty-girl.jpg' %}" class="d-block w-100" alt="pretty-girl">
 				<div class="carousel-caption">
-					<h5>Earn points with KatySop303</h5>
-					<p>Redeem them later for discounts on your future purchases.</p>
-					<a href="{% url 'home_app:points_rules' %}">Points Rules</a>
+					<h5>{% trans 'Earn points with KatySop303' %}</h5>
+					<p>{% trans 'Redeem them later for discounts on your future purchases.' %}</p>
+					<a href="{% url 'home_app:points_rules' %}">{% trans 'Points Rules' %}</a>
 				</div>
 			</div>
 			<div class="carousel-item" data-bs-interval="4000">
 				<img src="{% static 'img/products-publish.png' %}" class="d-block w-100" alt="products-publish">
 				<div class="carousel-caption d-md-block">
-					<h5 class="color">Improve your immune system</h5>
-					<a href="{% url 'home_app:home' %}">Go shopping</a>
+					<h5 class="color">{% trans 'Improve your immune system' %}</h5>
+					<a href="{% url 'home_app:home' %}">{% trans 'Go shopping' %}</a>
 				</div>
 			</div>
 		</div>
@@ -51,24 +52,22 @@
 	<div class="card">
 		<img src="{% static 'img/padlock.png' %}" class="card-img-top" alt="padlock">
 		<div class="card-body">
-			<h5 class="card-title">secure online shopping</h5>
-			<p class="card-text">Your data and transactions are safe with us, our entire website is
-				encrypted with SSL security certificate.</p>
+			<h5 class="card-title">{% trans 'Secure online shopping' %}</h5>
+			<p class="card-text">{% trans 'Your data and transactions are safe with us, our entire website is encrypted with SSL security certificate.' %}</p>
 		</div>
 	</div>
 	<div class="card"">
 		<img src="{% static 'img/package-delivery.png' %}" class="card-img-top" alt="package-delivery">
 		<div class="card-body">
-			<h5 class="card-title">Free shipping on all products</h5>
-			<p class="card-text">At Katy Shop 303 we know that you don't like shipping costs, and that's why you
-				we ship free.</p>
+			<h5 class="card-title">{% trans 'Free shipping on all products' %}</h5>
+			<p class="card-text">{% trans "At Katy Shop 303 we know that you don't like shipping costs, and that's why you we ship free." %}</p>
 		</div>
 	</div>
 	<div class="card">
 		<img src="{% static 'img/alarm.png' %}" class="card-img-top" alt="alarm">
 		<div class="card-body">
-			<h5 class="card-title">Shipments between 3/7 days</h5>
-			<p class="card-text">Place your order and receive it comfortably at home in less than a week.</p>
+			<h5 class="card-title">{% trans 'Shipments between 3/7 days' %}</h5>
+			<p class="card-text">{% trans 'Place your order and receive it comfortably at home in less than a week.' %}</p>
 		</div>
 	</div>
 </div>
