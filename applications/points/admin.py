@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 # import models
 from .models import UserPoint, PointsHistory, PointsSetting
 # Register your models here.
@@ -39,7 +40,7 @@ class UserPointAdmin(admin.ModelAdmin):
                 modified_points = current_points - previous_points
                 PointsHistory.objects.create(
                     points=modified_points,
-                    event='Adjusted Points',
+                    event=_('Adjusted Points'),
                     id_order=None,
                     date=datetime.now(),
                     user_points=obj

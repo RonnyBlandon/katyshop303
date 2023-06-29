@@ -1,5 +1,3 @@
-# import python
-from datetime import datetime, timedelta
 # import django
 from django.db import models
 from model_utils.models import TimeStampedModel

@@ -1,0 +1,1813 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-29 11:41-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\applications\cart\shopping_cart.py:37
+#: .\applications\cart\shopping_cart.py:51
+#: .\applications\cart\shopping_cart.py:62
+#: .\applications\cart\shopping_cart.py:84
+#: .\applications\cart\shopping_cart.py:93
+#: .\applications\cart\shopping_cart.py:102 .\applications\cart\views.py:32
+#: .\applications\cart\views.py:47 .\applications\cart\views.py:60
+#: .\applications\cart\views.py:86 .\applications\cart\views.py:96
+msgid "Product added to cart successfully."
+msgstr "Producto añadido al carrito con éxito."
+
+#: .\applications\cart\shopping_cart.py:47
+#: .\applications\cart\shopping_cart.py:96 .\applications\cart\views.py:42
+#: .\applications\cart\views.py:89
+msgid "You cannot add more than the units that are available."
+msgstr "No puede agregar más de las unidades que están disponibles."
+
+#: .\applications\cart\shopping_cart.py:58
+#: .\applications\cart\shopping_cart.py:105 .\applications\cart\views.py:55
+#: .\applications\cart\views.py:99
+msgid "You can only add 10 maximum for this product."
+msgstr "Solo puede agregar 10 como máximo para este producto"
+
+#: .\applications\cart\shopping_cart.py:148 .\applications\cart\views.py:145
+msgid "Product successfully removed."
+msgstr "Producto eliminado con éxito."
+
+#: .\applications\home\forms.py:14 .\applications\user\forms.py:153
+#: .\templates\order\checkout.html:49 .\templates\user\user-profile.html:28
+msgid "Name"
+msgstr "Nombre"
+
+#: .\applications\home\forms.py:23 .\applications\user\forms.py:156
+#: .\templates\order\checkout.html:53 .\templates\user\user-profile.html:32
+msgid "Last name"
+msgstr "Apellidos"
+
+#: .\applications\home\forms.py:32 .\applications\user\forms.py:159
+#: .\applications\user\forms.py:212 .\applications\user\forms.py:245
+#: .\applications\user\forms.py:259 .\templates\user\user-profile.html:36
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: .\applications\home\forms.py:41
+msgid "affair"
+msgstr "Asunto"
+
+#: .\applications\home\forms.py:50
+msgid "Message"
+msgstr "Mensaje"
+
+#: .\applications\home\views.py:39
+msgid ""
+"Your message was sent successfully. You will receive a response in your "
+"email very soon."
+msgstr ""
+"Su mensaje fue enviado exitosamente. Muy pronto recibirás una respuesta en "
+"tu correo electrónico."
+
+#: .\applications\home\views.py:42
+msgid "Sending failed, please try again later."
+msgstr "El envío falló, inténtalo de nuevo más tarde."
+
+#: .\applications\order\forms.py:20
+msgid "Notes about your order, for example, special notes for delivery."
+msgstr "Notas sobre su pedido, por ejemplo, notas especiales para la entrega."
+
+#: .\applications\order\forms.py:23
+msgid "Credit or debit card"
+msgstr "Tarjeta de crédito o débito"
+
+#: .\applications\order\models.py:11
+msgid "On hold"
+msgstr "En espera"
+
+#: .\applications\order\models.py:11
+msgid "Shipped"
+msgstr "Enviado"
+
+#: .\applications\order\models.py:11
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#: .\applications\order\models.py:11
+msgid "Refunded"
+msgstr "Reembolsado"
+
+#: .\applications\order\models.py:11
+msgid "Failed"
+msgstr "Fallido"
+
+#: .\applications\order\views.py:63 .\applications\order\views.py:72
+#: .\applications\order\views.py:77 .\applications\order\views.py:79
+#: .\applications\order\views.py:133 .\applications\order\views.py:214
+msgid "An error occurred while processing your payment."
+msgstr "Ocurrió un error al procesar su pago."
+
+#: .\applications\order\views.py:121 .\applications\order\views.py:196
+msgid "Redeemed Points"
+msgstr "Puntos Canjeados"
+
+#: .\applications\order\views.py:125 .\applications\order\views.py:200
+msgid "Points Earned For Purchase"
+msgstr "Puntos ganados por la compra"
+
+#: .\applications\order\views.py:127 .\applications\order\views.py:212
+msgid "The payment has been completed successfully."
+msgstr "El pago se ha completado con éxito."
+
+#: .\applications\points\admin.py:43
+msgid "Adjusted Points"
+msgstr "Puntos Ajustados"
+
+#: .\applications\user\forms.py:60
+msgid "The phone number cannot contain characters."
+msgstr "El número de teléfono no puede contener caracteres."
+
+#: .\applications\user\forms.py:69
+msgid "The current password is not correct."
+msgstr "La contraseña actual no es correcta."
+
+#: .\applications\user\forms.py:73
+msgid "You must add the current password."
+msgstr "Debe agregar la contraseña actual."
+
+#: .\applications\user\forms.py:94
+msgid "House number and street name"
+msgstr "Número de casa y nombre de la calle"
+
+#: .\applications\user\forms.py:100
+msgid "Apt, suite, unit, building, floor, etc."
+msgstr "Apt, suite, unidad, edificio, piso, etc."
+
+#: .\applications\user\forms.py:111
+msgid "Please choose a country from the list."
+msgstr "Por favor elija un país de la lista."
+
+#: .\applications\user\forms.py:115
+#, python-format
+msgid "This field is required for %(country)s"
+msgstr "Este campo es obligatorio para %(country)s"
+
+#: .\applications\user\forms.py:123
+msgid "Please enter a valid postcode."
+msgstr "Por favor ingrese un código postal válido."
+
+#: .\applications\user\forms.py:133 .\applications\user\forms.py:219
+msgid "Password"
+msgstr "Contraseña"
+
+#: .\applications\user\forms.py:140
+msgid "Repeat Password"
+msgstr "Repita la contraseña"
+
+#: .\applications\user\forms.py:181
+msgid "Passwords do not match."
+msgstr "Las contraseñas no coinciden."
+
+#: .\applications\user\forms.py:183
+msgid "The password must contain at least 8 characters."
+msgstr "La contraseña debe contener al menos 8 caracteres."
+
+#: .\applications\user\forms.py:185
+msgid "The password must not contain spaces."
+msgstr "La contraseña no debe contener espacios."
+
+#: .\applications\user\forms.py:187
+msgid "The password must contain at least one lowercase letter."
+msgstr "La contraseña debe contener al menos una letra minúscula."
+
+#: .\applications\user\forms.py:189
+msgid "The password must contain at least one upper case."
+msgstr "La contraseña debe contener al menos una mayúscula."
+
+#: .\applications\user\forms.py:191
+msgid "The password must contain at least one number."
+msgstr "La contraseña debe contener al menos un número."
+
+#: .\applications\user\forms.py:200
+msgid "An account with this email already exists."
+msgstr "Ya existe una cuenta con este correo electrónico."
+
+#: .\applications\user\forms.py:234 .\applications\user\forms.py:237
+msgid "The user data is not correct."
+msgstr "Los datos del usuario no son correctos."
+
+#: .\applications\user\forms.py:253 .\applications\user\forms.py:267
+msgid "No user is linked to this email."
+msgstr "Ningún usuario está vinculado a este correo electrónico."
+
+#: .\applications\user\forms.py:273 .\templates\user\user-profile.html:53
+msgid "New password"
+msgstr "Nueva contraseña"
+
+#: .\applications\user\forms.py:278
+msgid "Repeat new password"
+msgstr "Repita la nueva contraseña"
+
+#: .\applications\user\views.py:61 .\applications\user\views.py:80
+#: .\applications\user\views.py:119
+msgid "The data has been saved successfully."
+msgstr "Los datos se han guardado correctamente."
+
+#: .\applications\user\views.py:62
+msgid "Password has been changed, please log in."
+msgstr "La contraseña ha sido cambiada, por favor inicie sesión."
+
+#: .\applications\user\views.py:72
+msgid "Password authentication failed. Sign in again."
+msgstr "La autenticación de la contraseña falló. Inicie sesión de nuevo."
+
+#: .\applications\user\views.py:180 .\applications\user\views.py:305
+msgid "You need to confirm your email to be able to log in."
+msgstr "Necesitas confirmar tu correo electrónico para poder iniciar sesión."
+
+#: .\applications\user\views.py:181 .\applications\user\views.py:306
+msgid "Verify Email"
+msgstr "Verificar correo electrónico"
+
+#: .\applications\user\views.py:204
+msgid "Please log in."
+msgstr "Por favor Iniciar sesión"
+
+#: .\applications\user\views.py:251 .\applications\user\views.py:271
+msgid "The account activation link is invalid."
+msgstr "El enlace de activación de la cuenta no es válido."
+
+#: .\applications\user\views.py:262
+msgid "The account has been activated successfully, you can now login."
+msgstr "La cuenta se ha activado con éxito, ahora puede iniciar sesión."
+
+#: .\applications\user\views.py:301
+msgid "VERIFICATION CODE"
+msgstr "CÓDIGO DE VERIFICACIÓN"
+
+#: .\applications\user\views.py:310
+#, python-format
+msgid ""
+"A new account activation link has been sent to the email \"%(email_user)s\"."
+msgstr ""
+"Se ha enviado un nuevo enlace de activación de cuenta al correo electrónico "
+"\"%(email_user)s\"."
+
+#: .\applications\user\views.py:344
+msgid "You need this link to change your password."
+msgstr "Necesitas este enlace para cambiar tu contraseña."
+
+#: .\applications\user\views.py:345 .\templates\user\user-profile.html:45
+msgid "Change Password"
+msgstr "Cambiar la contraseña"
+
+#: .\applications\user\views.py:349
+#, python-format
+msgid ""
+"The link to change the password has been sent to the email \"%(email_user)s"
+"\"."
+msgstr ""
+"El enlace para cambiar la contraseña ha sido enviado al correo electrónico "
+"\"%(email_user)s\"."
+
+#: .\applications\user\views.py:369 .\applications\user\views.py:376
+msgid "The link is invalid."
+msgstr "El enlace no es válido."
+
+#: .\applications\user\views.py:391
+msgid "The password has been changed successfully. Sign in."
+msgstr "La contraseña ha sido cambiada con éxito. Iniciar sesión."
+
+#: .\katyshop303\settings\base.py:137
+msgid "English"
+msgstr "Ingles"
+
+#: .\katyshop303\settings\base.py:138
+msgid "Spanish"
+msgstr "Español"
+
+#: .\templates\base.html:5
+msgid "en"
+msgstr "es"
+
+#: .\templates\cart\cart.html:24 .\templates\order\checkout.html:31
+#, python-format
+msgid ""
+"COMPLETE YOUR ORDER AND EARN\n"
+"            <strong class=\"order-points\" data-earning_points_rate="
+"\"%(earning_points_rate)s\">%(order_points)s</strong>\n"
+"            POINTS FOR A DISCOUNT ON A FUTURE PURCHASE."
+msgstr ""
+"COMPLETE SU PEDIDO Y GANE <strong class=\"order-points\" data-"
+"earning_points_rate=\"%(earning_points_rate)s\">%(order_points)s</strong> "
+"PUNTOS PARA UN DESCUENTO EN UNA COMPRA FUTURA."
+
+#: .\templates\cart\cart.html:38
+msgid "Products:"
+msgstr "Productos:"
+
+#: .\templates\cart\cart.html:47 .\templates\order\checkout.html:101
+msgid "Discount"
+msgstr "Descuento"
+
+#: .\templates\cart\cart.html:47 .\templates\order\checkout.html:101
+msgid "[Remove]"
+msgstr "[Remover]"
+
+#: .\templates\cart\cart.html:57
+msgid "Proceed to pay"
+msgstr "Proceda a pagar"
+
+#: .\templates\cart\cart.html:72 .\templates\cart\cart.html:104
+#: .\templates\product\category.html:34 .\templates\product\product.html:71
+#: .\templates\product\store.html:42
+#, python-format
+msgid "%(amount_stock)s left in stock"
+msgstr "Quedan %(amount_stock)s disponibles"
+
+#: .\templates\cart\cart.html:79 .\templates\cart\cart.html:89
+#: .\templates\cart\cart.html:111
+msgid "Delete"
+msgstr "Borrar"
+
+#: .\templates\cart\cart.html:82 .\templates\cart\cart.html:114
+#: .\templates\product\category.html:37 .\templates\product\product.html:74
+#: .\templates\product\store.html:45
+msgid "In stock"
+msgstr "Disponibles"
+
+#: .\templates\cart\cart.html:121
+msgid "Remove"
+msgstr "Remover"
+
+#: .\templates\cart\cart.html:129
+msgid "Add products to your cart."
+msgstr "Añade productos a tu carrito."
+
+#: .\templates\home\contact.html:24 .\templates\includes\header.html:24
+msgid "Contact"
+msgstr "Contacto"
+
+#: .\templates\home\contact.html:25
+msgid ""
+"If you have any questions, fill out the following form with the following "
+"information."
+msgstr ""
+"Si tiene alguna pregunta, complete el siguiente formulario con el siguiente "
+"información."
+
+#: .\templates\home\contact.html:41
+msgid "Send"
+msgstr "Enviar"
+
+#: .\templates\home\home.html:25
+msgid "Earn points with KatySop303"
+msgstr "Gana puntos con KatySop303"
+
+#: .\templates\home\home.html:26
+msgid "Redeem them later for discounts on your future purchases."
+msgstr "Canjéalos más tarde por descuentos en tus futuras compras."
+
+#: .\templates\home\home.html:27 .\templates\home\points-rules.html:15
+msgid "Points Rules"
+msgstr "Reglas de puntos"
+
+#: .\templates\home\home.html:33
+msgid "Improve your immune system"
+msgstr "Mejora tu sistema inmunológico"
+
+#: .\templates\home\home.html:34
+msgid "Go shopping"
+msgstr "Ir de compras"
+
+#: .\templates\home\home.html:55
+msgid "Secure online shopping"
+msgstr "Compras en línea seguras"
+
+#: .\templates\home\home.html:56
+msgid ""
+"Your data and transactions are safe with us, our entire website is encrypted "
+"with SSL security certificate."
+msgstr ""
+"Sus datos y transacciones están seguros con nosotros, todo nuestro sitio web "
+"está encriptado con certificado de seguridad SSL."
+
+#: .\templates\home\home.html:62
+msgid "Free shipping on all products"
+msgstr "Envío gratis en todos los productos"
+
+#: .\templates\home\home.html:63
+msgid ""
+"At Katy Shop 303 we know that you don't like shipping costs, and that's why "
+"you we ship free."
+msgstr ""
+"En Katy Shop 303 sabemos que no te gustan los gastos de envío, y por eso te "
+"enviamos gratis."
+
+#: .\templates\home\home.html:69
+msgid "Shipments between 3/7 days"
+msgstr "Envíos entre 3/7 días"
+
+#: .\templates\home\home.html:70
+msgid ""
+"Place your order and receive it comfortably at home in less than a week."
+msgstr "Haz tu pedido y recíbelo cómodamente en casa en menos de una semana."
+
+#: .\templates\home\points-rules.html:18
+msgid ""
+"KATY SHOP 303 has a points program that benefits customers for their "
+"loyalty, for each purchase\n"
+"        made in the store accumulates in a certain amount of points, points "
+"that can be exchanged for\n"
+"        discounts on future purchases."
+msgstr ""
+"KATY SHOP 303 cuenta con un programa de puntos que beneficia a los clientes "
+"por su fidelidad, por cada compra realizada en la tienda se acumula una "
+"determinada cantidad de puntos, puntos que pueden ser canjeados por "
+"descuentos en futuras compras."
+
+#: .\templates\home\points-rules.html:22
+msgid ""
+"What is established in this points program is only for the United States, "
+"with the exception of the \n"
+"        states of the Virgin Islands and Alaska is not available. It is the "
+"client's obligation to know and \n"
+"        comply with the rules, update and report periodically on the "
+"katyshop303.com page to know their \n"
+"        rights and accumulated points."
+msgstr ""
+"Lo establecido en este programa de puntos es solo para Estados Unidos, con "
+"excepción de los estados de las Islas Vírgenes y Alaska no está disponible. "
+"Es obligación del cliente conocer y cumplir las normas, actualizar e "
+"informar periódicamente en la página katyshop303.com para conocer sus "
+"derechos y puntos acumulados."
+
+#: .\templates\home\points-rules.html:27
+msgid ""
+"Points will be credited to your account once the order has been paid for and "
+"shipped. The points do not have\n"
+"        expiration date and are not transferable from one account to another."
+msgstr ""
+"Los puntos se acreditarán en su cuenta una vez que el pedido haya sido "
+"pagado y enviado. Los puntos no tienen fecha de vencimiento y no son "
+"transferibles de una cuenta a otra."
+
+#: .\templates\home\points-rules.html:30
+msgid ""
+"You can use your accumulated points on purchases, redeeming your points on "
+"the checkout page."
+msgstr ""
+"Puede usar sus puntos acumulados en compras, canjeando sus puntos en la "
+"página de pago."
+
+#: .\templates\home\points-rules.html:32
+msgid "Conversion rates and redeemable points"
+msgstr "Tasas de conversión y puntos canjeables"
+
+#: .\templates\home\points-rules.html:34
+msgid "The number of points you can accumulate and redeem in discounts:"
+msgstr "El número de puntos que puedes acumular y canjear en descuentos:"
+
+#: .\templates\home\points-rules.html:37
+#, python-format
+msgid ""
+"Conversion rate into point accumulation on all wholesale products: $1 = "
+"%(earning_points_rate)s points\n"
+"        Example: Shopping $%(example_value)s in products and you earn "
+"%(points_to_win)s points."
+msgstr ""
+"Tasa de conversión en acumulación de puntos en todos los productos al por "
+"mayor: $1 = %(earning_points_rate)s punto Ejemplo: compras $"
+"%(example_value)s en productos y ganas %(points_to_win)s puntos."
+
+#: .\templates\home\points-rules.html:40
+#, python-format
+msgid ""
+"Conversion rate into point accumulation on all wholesale products: $1 = "
+"%(earning_points_rate)s point\n"
+"        Example: Shopping $%(example_value)s in products and you earn "
+"%(points_to_win)s points."
+msgstr ""
+"Tasa de conversión en acumulación de puntos en todos los productos al por "
+"mayor: $1 = %(earning_points_rate)s puntos Ejemplo: compras $"
+"%(example_value)s en productos y ganas %(points_to_win)s puntos."
+
+#: .\templates\home\points-rules.html:44
+#, python-format
+msgid ""
+"Conversion rate when redeeming points in discounts, this applies to all "
+"products in the store. %(point_redemption_rate)s points\n"
+"        = $1 Example, you can redeem %(point_redemption_rate)s points and "
+"have a discount of $1."
+msgstr ""
+"Tasa de conversión al canjear puntos en descuentos, esto aplica para todos "
+"los productos de la tienda. %(point_redemption_rate)s puntos\n"
+" = $1 Ejemplo, puede canjear %(point_redemption_rate)s puntos y obtener un "
+"descuento de $1."
+
+#: .\templates\home\points-rules.html:47
+#, python-format
+msgid ""
+"The minimum you can redeem for a discount is %(point_redemption_rate)s "
+"points per order."
+msgstr ""
+"El mínimo que puede canjear por un descuento es %(point_redemption_rate)s "
+"puntos por pedido."
+
+#: .\templates\home\points-rules.html:49
+msgid ""
+"The maximum that you can redeem in points is determined by the minimum value "
+"of the order to pay, which\n"
+"        it's 5 dollars. This means that the maximum amount you can redeem in "
+"points will be equivalent to leaving\n"
+"        a minimum of 5 dollars to pay for the order. For example, if your "
+"total order is $100,\n"
+"        but you have points to redeem up to 120 dollars, you can redeem a "
+"maximum of 95 dollars in points,\n"
+"        since the minimum order value is 5 dollars."
+msgstr ""
+"El máximo que puedes canjear en puntos está determinado por el valor mínimo "
+"de la orden a pagar, que es de 5 dólares. Esto quiere decir que la cantidad "
+"máxima que podrás canjear en puntos equivaldrá a dejar un mínimo de 5 "
+"dólares para pagar el pedido. Por ejemplo, si tu pedido total es de $100, "
+"pero tienes puntos para canjear hasta 120 dólares, puedes canjear un máximo "
+"de 95 dólares en puntos, ya que el valor mínimo del pedido es de 5 dólares."
+
+#: .\templates\home\points-rules.html:56
+msgid "reserve of law"
+msgstr "reserva de ley"
+
+#: .\templates\home\points-rules.html:58
+msgid ""
+"KATY SHOP 303 reserves the right to modify or cancel, partially or totally "
+"as necessary, the Rules, \n"
+"        Terms and Conditions, rules, privileges, benefits or other special "
+"offers of the Points Program, \n"
+"        without prior notice when modified or eliminated the program. This "
+"means that the Points program may \n"
+"        make changes that affect, for example, the rules for crediting, "
+"redeeming or canceling Points, \n"
+"        the value of Points, etc."
+msgstr ""
+"KATY SHOP 303 se reserva el derecho de modificar o cancelar, parcial o "
+"totalmente según sea necesario, las Reglas, Términos y Condiciones, reglas, "
+"privilegios, beneficios u otras ofertas especiales del Programa de Puntos, "
+"sin previo aviso cuando se modifique o elimine el programa. Esto significa "
+"que el programa de Puntos puede realizar cambios que afectan, por ejemplo, "
+"las reglas para acreditar, redimir o cancelar Puntos, el valor de los "
+"Puntos, etc."
+
+#: .\templates\home\points-rules.html:64
+msgid ""
+"In case of termination of the Program, all the Points accumulated by the "
+"clients will be cancelled, \n"
+"        without generating any responsibility for the accumulated Balance or "
+"the Points not redeemed."
+msgstr ""
+"En caso de terminación del Programa, todos los Puntos acumulados por los "
+"clientes serán cancelados, sin generar responsabilidad alguna por el Saldo "
+"acumulado o los Puntos no canjeados."
+
+#: .\templates\home\privacy-policy.html:15
+msgid "PRIVACY POLICY"
+msgstr "POLITICA DE PRIVACIDAD"
+
+#: .\templates\home\privacy-policy.html:18
+msgid ""
+"This Privacy Policy establishes the terms in which \"Katy Shop 303\" uses "
+"and protects the information\n"
+"        what is provided by its users when using its website. This company "
+"is committed to security\n"
+"        of the data of its users. When we ask you to complete the personal "
+"information fields with which you\n"
+"        can be identified, we do so by ensuring that it will only be used in "
+"accordance with the terms of this\n"
+"        document. However, this Privacy Policy may change over time or be "
+"updated, so we\n"
+"        We recommend and emphasize that you continually review this page to "
+"ensure that you agree with such\n"
+"        changes."
+msgstr ""
+"La presente Política de Privacidad establece los términos en que \"Katy Shop "
+"303\" usa y protege la información que es proporcionada por sus usuarios al "
+"momento de utilizar su sitio web. Esta empresa está comprometida con la "
+"seguridad de los datos de sus usuarios. Cuando le solicitamos que complete "
+"los campos de información personal con los que puede identificarse, lo "
+"hacemos asegurándonos de que solo se utilizará de acuerdo con los términos "
+"de este documento. Sin embargo, esta Política de Privacidad puede cambiar "
+"con el tiempo o ser actualizada, por lo que le recomendamos y enfatizamos "
+"que revise continuamente esta página para asegurarse que está de acuerdo con "
+"dichos cambios."
+
+#: .\templates\home\privacy-policy.html:27
+msgid "Information that is collected"
+msgstr "Información que se recopila"
+
+#: .\templates\home\privacy-policy.html:30
+msgid ""
+"Our website may collect personal information such as: Name, contact "
+"information such as your address\n"
+"        email address and demographic information. Likewise, when necessary, "
+"information may be requested\n"
+"        specific to process an order or make a delivery or billing."
+msgstr ""
+"Nuestro sitio web puede recopilar información personal como: Nombre, "
+"información de contacto como su dirección de correo electrónico e "
+"información demográfica. Asimismo, cuando sea necesario, se podrá solicitar "
+"información específica para tramitar un pedido o realizar una entrega o "
+"facturación."
+
+#: .\templates\home\privacy-policy.html:35
+msgid "Use of information collected"
+msgstr "Uso de la información recopilada"
+
+#: .\templates\home\privacy-policy.html:38
+msgid ""
+"Our website uses the information to provide the best possible service, "
+"particularly to maintain\n"
+"        a user registry, of orders if applicable, and to improve our "
+"products and services. It is possible that\n"
+"        emails are sent periodically through our site with special offers, "
+"new products and\n"
+"        other advertising information that we consider relevant to you or "
+"that may provide you with some benefit, these\n"
+"        Emails will be sent to the address you provide and may be canceled "
+"at any time."
+msgstr ""
+"Nuestro sitio web utiliza la información para brindar el mejor servicio "
+"posible, particularmente para mantener un registro de usuarios, de pedidos "
+"si corresponde, y para mejorar nuestros productos y servicios. Es posible "
+"que periódicamente a través de nuestro sitio se envíen correos electrónicos "
+"con ofertas especiales, nuevos productos y otra información publicitaria que "
+"consideremos relevante para usted o que pueda brindarle algún beneficio, "
+"estos correos electrónicos serán enviados a la dirección que usted "
+"proporcione y podrán ser cancelados. en cualquier momento."
+
+#: .\templates\home\privacy-policy.html:45
+#: .\templates\home\privacy-policy.html:71
+msgid "What are cookies?"
+msgstr "¿Qué son las cookies?"
+
+#: .\templates\home\privacy-policy.html:48
+msgid ""
+"A cookie is a file that is downloaded to your computer when accessing "
+"certain web pages. The cookies\n"
+"        allow a web page, among other things, to store and retrieve "
+"information about the browsing habits of a\n"
+"        user or your computer, and depending on the information they contain "
+"and how you use your computer, they may be used to\n"
+"        recognize the user."
+msgstr ""
+"Una cookie es un fichero que se descarga en su ordenador al acceder a "
+"determinadas páginas web. Las cookies permiten que una página web, entre "
+"otras cosas, almacene y recupere información sobre los hábitos de navegación "
+"de un usuario o de su ordenador y, según la información que contengan y el "
+"uso que haga de su ordenador, podrán utilizarse para reconocer al usuario."
+
+#: .\templates\home\privacy-policy.html:54
+msgid "What types of cookies does this website use?"
+msgstr "¿Qué tipos de cookies utiliza este sitio web?"
+
+#: .\templates\home\privacy-policy.html:57
+msgid "This website uses the following types of cookies:"
+msgstr "Este sitio web utiliza los siguientes tipos de cookies:"
+
+#: .\templates\home\privacy-policy.html:58
+msgid "Analysis cookies:"
+msgstr "Cookies de análisis:"
+
+#: .\templates\home\privacy-policy.html:58
+msgid ""
+"Those that, well treated by us or by third parties, allow us to quantify the "
+"number of\n"
+"        users and thus carry out the measurement and statistical analysis of "
+"the use made by users of the service\n"
+"        offered. To do this, your browsing on our website is analyzed in "
+"order to improve the offer of products or\n"
+"        services we offer you."
+msgstr ""
+"Aquellas que bien tratadas por nosotros o por terceros, nos permiten "
+"cuantificar el número de usuarios y así realizar la medición y análisis "
+"estadístico de la utilización que hacen los usuarios del servicio ofertado. "
+"Para ello se analiza su navegación en nuestra página web con el fin de "
+"mejorar la oferta de productos o servicios que le ofrecemos."
+
+#: .\templates\home\privacy-policy.html:63
+msgid "Technical cookies:"
+msgstr "Cookies técnicas:"
+
+#: .\templates\home\privacy-policy.html:63
+msgid ""
+"They are those that allow the user to navigate through the restricted area "
+"and use its different\n"
+"        functions such as, for example, carrying out the process of "
+"purchasing an item."
+msgstr ""
+"Son aquéllas que permiten al usuario navegar por el área restringida y "
+"utilizar sus diferentes funciones como, por ejemplo, realizar el proceso de "
+"compra de un artículo."
+
+#: .\templates\home\privacy-policy.html:66
+msgid "Personalization cookies:"
+msgstr "Cookies de personalización:"
+
+#: .\templates\home\privacy-policy.html:66
+msgid ""
+"They are those that allow the user to access the service with some "
+"characteristics of\n"
+"        general character predefined based on a series of criteria in the "
+"user's terminal, such as\n"
+"        They would be the language or the type of browser through which you "
+"connect to the service. Service."
+msgstr ""
+"Son aquéllas que permiten al usuario acceder al servicio con algunas "
+"características de carácter general predefinidas en función de una serie de "
+"criterios en el terminal del usuario como serían el idioma o el tipo de "
+"navegador a través del cual se conecta al servicio. Servicio."
+
+#: .\templates\home\privacy-policy.html:74
+msgid ""
+"A cookie is a file that is downloaded to your computer when accessing "
+"certain web pages. Cookies allow\n"
+"        that a web page, among other things, stores and retrieves "
+"information about the browsing habits of a user\n"
+"        or your computer, and depending on the information they contain and "
+"how you use your computer, they may be used to\n"
+"        recognize the user."
+msgstr ""
+"Una cookie es un fichero que se descarga en su ordenador al acceder a "
+"determinadas páginas web. Las cookies permiten que una página web, entre "
+"otras cosas, almacene y recupere información sobre los hábitos de navegación "
+"de un usuario o de su ordenador y, según la información que contengan y el "
+"uso que haga de su ordenador, podrán utilizarse para reconocer al usuario."
+
+#: .\templates\home\privacy-policy.html:80
+msgid "Disable cookies"
+msgstr "Deshabilitar cookies"
+
+#: .\templates\home\privacy-policy.html:83
+msgid ""
+"You can allow, block or eliminate the cookies installed on your computer by "
+"configuring the options\n"
+"        of the browser installed on your computer.\n"
+"\n"
+"        Most web browsers offer the ability to allow, block or delete "
+"cookies.\n"
+"        installed on your computer."
+msgstr ""
+"Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo "
+"mediante la configuración de las opciones del navegador instalado en tu "
+"ordenador. La mayoría de los navegadores web ofrecen la posibilidad de "
+"permitir, bloquear o eliminar cookies. instalado en su computadora."
+
+#: .\templates\home\privacy-policy.html:90
+msgid "Third party cookies"
+msgstr "Cookies de terceros"
+
+#: .\templates\home\privacy-policy.html:93
+msgid ""
+"This website uses third-party services to collect information for "
+"statistical and site usage purposes.\n"
+"        Web. DoubleClick cookies are used to improve the advertising "
+"included on the website. Are used to\n"
+"        target advertising according to content that is relevant to a user, "
+"thus improving the quality of the\n"
+"        experience in using it.\n"
+"\n"
+"        Specifically, we use the services of Google AdSense and Google "
+"Analytics for our statistics and\n"
+"        advertising. Some cookies are essential for the operation of the "
+"site, for example, the search engine\n"
+"        integrated.\n"
+"\n"
+"        Our site includes other features provided by third parties. You can "
+"easily share the content on networks\n"
+"        social networks such as Facebook, Twitter or Google +, with the "
+"buttons that we have included for this purpose."
+msgstr ""
+"Este sitio web utiliza servicios de terceros para recopilar información con "
+"fines estadísticos y de uso del sitio. Web. Las cookies de DoubleClick se "
+"utilizan para mejorar la publicidad incluida en el sitio web. Se utilizan "
+"para orientar la publicidad de acuerdo con el contenido que es relevante "
+"para un usuario, mejorando así la calidad de la experiencia al usarlo. "
+"Específicamente, utilizamos los servicios de Google AdSense y Google "
+"Analytics para nuestras estadísticas y publicidad. Algunas cookies son "
+"esenciales para el funcionamiento del sitio, por ejemplo, el motor de "
+"búsqueda integrado. Nuestro sitio incluye otras funciones proporcionadas por "
+"terceros. Puedes compartir fácilmente el contenido en redes sociales como "
+"Facebook, Twitter o Google +, con los botones que hemos incluido para tal "
+"fin."
+
+#: .\templates\home\privacy-policy.html:106
+msgid "Warning about the deletion of cookies."
+msgstr "Advertencia sobre la eliminación de cookies."
+
+#: .\templates\home\privacy-policy.html:109
+msgid ""
+"You can delete and block all cookies on this site, but some of the site will "
+"not work or the quality of the site\n"
+"        website may be affected."
+msgstr ""
+"Puede eliminar y bloquear todas las cookies en este sitio, pero algunas del "
+"sitio no funcionarán o la calidad del sitio web del sitio puede verse "
+"afectada."
+
+#: .\templates\home\privacy-policy.html:112
+msgid ""
+"If you have any questions about our cookie policy, you can contact this "
+"website through our\n"
+"        Contact channels."
+msgstr ""
+"Si tiene alguna duda acerca de nuestra política de cookies, puede contactar "
+"con este sitio web a través de nuestros canales de Contacto."
+
+#: .\templates\home\privacy-policy.html:115
+msgid ""
+"This company will not sell, assign or distribute personal information that "
+"is collected without your consent, except\n"
+"        that is required by a judge with a court order."
+msgstr ""
+"Esta empresa no venderá, cederá ni distribuirá información personal que sea "
+"recopilada sin su consentimiento, excepto que sea requerido por un juez con "
+"una orden judicial."
+
+#: .\templates\home\privacy-policy.html:118
+msgid ""
+"“Katy Shop 303” reserves the right to change the terms of this Privacy "
+"Policy at any time."
+msgstr ""
+"“Katy Shop 303” se reserva el derecho de cambiar los términos de esta "
+"Política de Privacidad en cualquier momento."
+
+#: .\templates\home\terms.html:15
+msgid "TERMS AND CONDITIONS"
+msgstr "TÉRMINOS Y CONDICIONES"
+
+#: .\templates\home\terms.html:19
+msgid "GENERAL INFORMATION"
+msgstr "INFORMACION GENERAL"
+
+#: .\templates\home\terms.html:22
+msgid ""
+"This website is operated by Katy Shop 303. Throughout the site, the terms "
+"\"we\", \"us\" and \"our\" affect\n"
+"        Katy Shop 303. Katy Shop 303 offers this website, including all "
+"information, tools and Services\n"
+"        available to you on this site, the user, is conditioned on your "
+"acceptance of all terms,\n"
+"        conditions, policies and notifications established here.<br><br>\n"
+"\n"
+"        By visiting our site and/or buying something from us, you "
+"participate in our \"Service\" and accept the terms and\n"
+"        conditions, including all additional terms and conditions and "
+"policies referenced in this\n"
+"        document and/or available through hyperlinks. These Terms of Service "
+"are limited to all users\n"
+"        of the site, even if limited to users who are browsers, suppliers, "
+"customers, merchants and/or\n"
+"        content contributors.<br><br>\n"
+"\n"
+"        Please read these Terms of Service before accessing or using our "
+"website. By accessing or using any part\n"
+"        of the site, you agree to the Terms of Service. If you do not agree "
+"to all the terms and conditions of this\n"
+"        agreement, you must not access the website or use any of the "
+"services. If the Terms of Service are seen\n"
+"        affected by an offer, acceptance is expressly limited to these Terms "
+"of Service.<br><br>\n"
+"\n"
+"        Any new features or tools added to the current store must also be "
+"subject to the Terms of\n"
+"        service. You can review the updated version of the Terms of Service "
+"at any time on this page. Us\n"
+"        We reserve the right to update, change or replace any part of the "
+"Terms of Service by\n"
+"        posting updates and/or changes to our website. It is your "
+"responsibility to review this page for\n"
+"        verify the changes. Your continued use of or access to the Website "
+"following the posting of any changes\n"
+"        constitutes acceptance of such changes."
+msgstr ""
+"Este sitio web es operado por Katy Shop 303. En todo el sitio, los términos "
+"\"nosotros\", \"nos\" y \"nuestro\" afectan a Katy Shop 303. Katy Shop 303 "
+"ofrece este sitio web, incluida toda la información, herramientas y Los "
+"servicios disponibles para usted en este sitio, el usuario, están "
+"condicionados a su aceptación de todos los términos, condiciones, políticas "
+"y notificaciones aquí establecidos.<br><br> Al visitar nuestro sitio y/o "
+"comprar algo de nosotros, usted participa en nuestro \"Servicio\" y acepte "
+"los términos y condiciones, incluidos todos los términos y condiciones "
+"adicionales y las políticas a las que se hace referencia en este documento y/"
+"o disponibles a través de hipervínculos. Estos Términos de servicio están "
+"limitados a todos los usuarios del sitio, incluso si se limitan a usuarios "
+"que son navegadores, proveedores, clientes, comerciantes y/o contribuyentes "
+"de contenido.<br><br> Lea estos Términos de servicio antes de acceder o "
+"utilizar nuestro sitio web. Al acceder o utilizar cualquier parte del sitio, "
+"usted acepta los Términos de servicio. Si no está de acuerdo con todos los "
+"términos y condiciones de este acuerdo, no debe acceder al sitio web ni "
+"utilizar ninguno de los servicios. Si los Términos de servicio se ven "
+"afectados por una oferta, la aceptación se limita expresamente a estos "
+"Términos de servicio.<br><br> Cualquier función o herramienta nueva que se "
+"agregue a la tienda actual también debe estar sujeta a los Términos de "
+"servicio. Puede revisar la versión actualizada de los Términos de servicio "
+"en cualquier momento en esta página. Nosotros Nos reservamos el derecho de "
+"actualizar, cambiar o reemplazar cualquier parte de los Términos de servicio "
+"mediante la publicación de actualizaciones y/o cambios en nuestro sitio web. "
+"Es su responsabilidad revisar esta página para verificar los cambios. Su uso "
+"continuo o acceso al sitio web después de la publicación de cualquier cambio "
+"constituye la aceptación de dichos cambios."
+
+#: .\templates\home\terms.html:46
+msgid "SECTION 1 - ONLINE STORE TERMS"
+msgstr "SECCIÓN 1 - TÉRMINOS DE LA TIENDA EN LÍNEA"
+
+#: .\templates\home\terms.html:49
+msgid ""
+"By using this site, you represent that you are the age of majority in your "
+"state or province of residence, or that you are over\n"
+"        age in your state or province of residence and that you have given "
+"us your consent to allow any of your\n"
+"        dependent minors use this site.<br><br>\n"
+"\n"
+"        You may not use our products for any illegal or unauthorized "
+"purpose, nor may you, in the use of the Service,\n"
+"        violate any laws in your jurisdiction (including without limitation "
+"copyright laws).<br><br>\n"
+"\n"
+"        You must not transmit worms, viruses or any code of a destructive "
+"nature.<br><br>\n"
+"\n"
+"        A breach or violation of any of these Terms will result in immediate "
+"termination of your Services."
+msgstr ""
+"Al usar este sitio, usted declara que es mayor de edad en su estado o "
+"provincia de residencia, o que es mayor de edad en su estado o provincia de "
+"residencia y que nos ha dado su consentimiento para permitir que cualquiera "
+"de sus dependientes menores usar este sitio.<br><br> No puede usar nuestros "
+"productos para ningún propósito ilegal o no autorizado, ni puede, en el uso "
+"del Servicio, violar ninguna ley en su jurisdicción (incluidas, entre otras, "
+"las leyes de derechos de autor).<br><br>No debe transmitir gusanos, virus o "
+"cualquier código de naturaleza destructiva.<br><br>El incumplimiento o "
+"violación de cualquiera de estos Términos resultará en la terminación "
+"inmediata de sus Servicios."
+
+#: .\templates\home\terms.html:61
+msgid "SECTION 2 - GENERAL CONDITIONS"
+msgstr "SECCIÓN 2 - CONDICIONES GENERALES"
+
+#: .\templates\home\terms.html:64
+msgid ""
+"We reserve the right to refuse service to anyone, for any reason, at any "
+"time.<br><br>\n"
+"\n"
+"        Credit card information is always encrypted during transfer over "
+"networks.<br><br>\n"
+"\n"
+"        You agree not to reproduce, duplicate, copy, sell, resell or exploit "
+"any part of the Service, usp of the\n"
+"        Service or access to the Service or any contact on the website "
+"through which the service is provided, without\n"
+"        express written permission. Of us.<br><br>\n"
+"\n"
+"        Headings used in this agreement are included for convenience only "
+"and do not limit or affect these Terms."
+msgstr ""
+"Nos reservamos el derecho de rechazar el servicio a cualquier persona, por "
+"cualquier motivo, en cualquier momento.<br><br>La información de la tarjeta "
+"de crédito siempre se cifra durante la transferencia a través de redes."
+"<br><br>Usted acepta no reproducir, duplicar, copiar , vender, revender o "
+"explotar cualquier parte del Servicio, usp del Servicio o acceso al Servicio "
+"o cualquier contacto en el sitio web a través del cual se proporciona el "
+"servicio, sin permiso expreso por escrito. De nosotros.<br><br>Los "
+"encabezados utilizados en este acuerdo se incluyen solo por conveniencia y "
+"no limitan ni afectan estos Términos."
+
+#: .\templates\home\terms.html:75
+msgid "SECTION 3 - CHANGES TO THE SERVICE AND PRICES"
+msgstr "SECCIÓN 3 - CAMBIOS AL SERVICIO Y PRECIOS"
+
+#: .\templates\home\terms.html:78
+msgid ""
+"The prices of our products are subject to change without prior notice."
+"<br><br>\n"
+"\n"
+"        We reserve the right to modify or discontinue the Service (or any "
+"part of the content) at any\n"
+"        time without notice.<br><br>\n"
+"\n"
+"        We will not be liable to you or any third party for any "
+"modification, price change, suspension or\n"
+"        discontinuity of the Service."
+msgstr ""
+"Los precios de nuestros productos están sujetos a cambios sin previo aviso."
+"<br><br>Nos reservamos el derecho de modificar o descontinuar el Servicio (o "
+"cualquier parte del contenido) en cualquier momento sin previo aviso."
+"<br><br>Nosotros no será responsable ante usted o cualquier tercero por "
+"cualquier modificación, cambio de precio, suspensión o discontinuidad del "
+"Servicio."
+
+#: .\templates\home\terms.html:87
+msgid "SECTION 4 - REFUNDS AND RETURNS"
+msgstr "SECCIÓN 4 - REEMBOLSOS Y DEVOLUCIONES"
+
+#: .\templates\home\terms.html:90
+msgid ""
+"Due to the fact that in previous stores many consumers made orders and "
+"returned them very often for pleasure or for\n"
+"        For any other reason, Katy Shop 303 will not accept refunds or "
+"returns of any kind."
+msgstr ""
+"Debido a que en tiendas anteriores muchos consumidores hacían pedidos y los "
+"devolvían muy a menudo por placer o por cualquier otro motivo, Katy Shop 303 "
+"no aceptará reembolsos ni devoluciones de ningún tipo."
+
+#: .\templates\home\terms.html:94
+msgid "SECTION 5 - PRODUCTS OR SERVICES (if applicable)"
+msgstr "SECCIÓN 5 - PRODUCTOS O SERVICIOS (si corresponde)"
+
+#: .\templates\home\terms.html:97
+msgid ""
+"Certain products or services may be available exclusively online through the "
+"Website. These\n"
+"        products or services may have limited quantities.<br><br>\n"
+"\n"
+"        We have made an effort to display the colors and images of our "
+"products, in the store, as accurately as possible.\n"
+"        possible. We cannot guarantee that your computer monitor will "
+"display colors exactly.<br><br>\n"
+"\n"
+"        We reserve the right, but are not obligated, to limit the sales of "
+"our products or services to\n"
+"        any person, geographic region or jurisdiction. We can exercise this "
+"right on a case-by-case basis. Us\n"
+"        we reserve the right to limit the quantities of products or services "
+"we offer. all descriptions\n"
+"        of products or prices of products are subject to change, at any "
+"time, without prior notice, at\n"
+"        our sole discretion. We reserve the right to discontinue any product "
+"at any\n"
+"        moment. Any product or service offer made on this site is void where "
+"prohibited.<br><br>\n"
+"\n"
+"        We do not warrant that the quality of any products, services, "
+"information or other material purchased or obtained by\n"
+"        you meet your expectations."
+msgstr ""
+"Ciertos productos o servicios pueden estar disponibles exclusivamente en "
+"línea a través del sitio web. Estos productos o servicios pueden tener "
+"cantidades limitadas.<br><br>Nos hemos esforzado por mostrar los colores y "
+"las imágenes de nuestros productos, en la tienda, con la mayor precisión "
+"posible. No podemos garantizar que el monitor de su computadora muestre los "
+"colores exactamente.<br><br>Nos reservamos el derecho, pero no estamos "
+"obligados, a limitar las ventas de nuestros productos o servicios a "
+"cualquier persona, región geográfica o jurisdicción. Podemos ejercer este "
+"derecho caso por caso. Nosotros nos reservamos el derecho de limitar las "
+"cantidades de productos o servicios que ofrecemos. todas las descripciones "
+"de los productos o los precios de los productos están sujetos a cambios, en "
+"cualquier momento, sin previo aviso, a nuestro exclusivo criterio. Nos "
+"reservamos el derecho de descontinuar cualquier producto en cualquier "
+"momento. Cualquier oferta de producto o servicio realizada en este sitio es "
+"nula donde esté prohibida.<br><br>No garantizamos que la calidad de los "
+"productos, servicios, información u otro material comprado u obtenido por "
+"usted cumpla con sus expectativas."
+
+#: .\templates\home\terms.html:114
+msgid "SECTION 6: ACCURACY OF BILLING AND ACCOUNT INFORMATION"
+msgstr "SECCIÓN 6: EXACTITUD DE LA INFORMACIÓN DE FACTURACIÓN Y CUENTA"
+
+#: .\templates\home\terms.html:117
+msgid ""
+"We reserve the right to refuse any order you place with us. We may, at our "
+"discretion,\n"
+"        limit or cancel the quantities purchased per person, per household "
+"or per order. These restrictions may include\n"
+"        orders placed by or under the same customer account, the same credit "
+"card and/or orders using the\n"
+"        same billing and/or shipping address.<br><br>\n"
+"\n"
+"        In the event that we make a change to or cancel an order, we may "
+"attempt to notify you by contacting\n"
+"        us by email and/or billing address/phone number provided at the time "
+"you\n"
+"        the order was placed. We reserve the right to limit or prohibit "
+"orders that, in our judgment, appear\n"
+"        made by dealers, resellers or distributors.<br><br>\n"
+"\n"
+"        You agree to provide current, complete, and accurate information "
+"about the purchase and the account used for all\n"
+"        purchases made in our store. You agree to promptly update your "
+"account and other information, including your\n"
+"        email address and credit card numbers and expiration dates, so that "
+"we can complete\n"
+"        your transactions and communicate with you when necessary."
+msgstr ""
+"Nos reservamos el derecho de rechazar cualquier pedido que realice con "
+"nosotros. Podemos, a nuestra discreción, limitar o cancelar las cantidades "
+"compradas por persona, por hogar o por pedido. Estas restricciones pueden "
+"incluir pedidos realizados por o bajo la misma cuenta de cliente, la misma "
+"tarjeta de crédito y/o pedidos utilizando la misma dirección de facturación "
+"o envío.<br><br>En caso de que hagamos un cambio o cancelemos un pedido, "
+"podemos intentar notificárselo poniéndose en contacto con nosotros por "
+"correo electrónico y/o dirección de facturación/número de teléfono "
+"proporcionado en el momento en que realizó el pedido. Nos reservamos el "
+"derecho de limitar o prohibir los pedidos que, a nuestro juicio, parezcan "
+"realizados por comerciantes, revendedores o distribuidores.<br><br>Usted "
+"acepta proporcionar información actual, completa y precisa sobre la compra y "
+"la cuenta utilizada para todos compras realizadas en nuestra tienda. Usted "
+"acepta actualizar de inmediato su cuenta y otra información, incluida su "
+"dirección de correo electrónico y números de tarjeta de crédito y fechas de "
+"vencimiento, para que podamos completar sus transacciones y comunicarnos con "
+"usted cuando sea necesario."
+
+#: .\templates\home\terms.html:133
+msgid "SECTION 7 - OPTIONAL TOOLS"
+msgstr "SECCIÓN 7 - HERRAMIENTAS OPCIONALES"
+
+#: .\templates\home\terms.html:136
+msgid ""
+"We may provide you with access to third-party tools that we do not monitor "
+"and over which we have no control or\n"
+"        entrance.<br><br>\n"
+"\n"
+"        You acknowledge and agree that we provide access to such tools \"as "
+"is\" and \"as available\" without\n"
+"        warranties, representations or conditions of any kind and without "
+"support of any kind. we won't have any\n"
+"        liability arising out of or related to your use of tools provided by "
+"third parties.<br><br>\n"
+"\n"
+"        Any use you make of optional tools offered through the site is at "
+"your own risk and\n"
+"        discretion and you should ensure that you are familiar with and "
+"approve of the terms under which these tools are\n"
+"        provided by the external provider(s).<br><br>\n"
+"\n"
+"        We may also offer you new services and/or features through the "
+"Website in the future (including\n"
+"        the release of new tools and resources). These new features and/or "
+"services will also be\n"
+"        subject to these Terms of Service."
+msgstr ""
+"Podemos brindarle acceso a herramientas de terceros que no supervisamos y "
+"sobre las cuales no tenemos control ni entrada.<br><br>Usted reconoce y "
+"acepta que brindamos acceso a dichas herramientas \"tal cual\" y \"según "
+"disponibilidad\" sin garantías, representaciones o condiciones de ningún "
+"tipo y sin soporte de ningún tipo. no tendremos ninguna responsabilidad "
+"derivada o relacionada con su uso de herramientas proporcionadas por "
+"terceros.<br><br>Cualquier uso que haga de las herramientas opcionales "
+"ofrecidas a través del sitio es bajo su propio riesgo y discreción y debe "
+"asegurarse de que está familiarizado y aprueba los términos bajo los cuales "
+"el(los) proveedor(es) externo(s) proporciona(n) estas herramientas."
+"<br><br>También podemos ofrecerle nuevos servicios y/o funciones a través "
+"del sitio web en el futuro (incluido el lanzamiento de nuevas herramientas y "
+"recursos). Estas nuevas funciones y/o servicios también estarán sujetos a "
+"estos Términos de servicio."
+
+#: .\templates\home\terms.html:152
+msgid "SECTION 8 - PERSONAL INFORMATION"
+msgstr "SECCIÓN 8 - INFORMACIÓN PERSONAL"
+
+#: .\templates\home\terms.html:155
+msgid ""
+"Your submission of personal information through the site is governed by our "
+"Privacy Policy. To see\n"
+"        our Privacy Policy."
+msgstr ""
+"Su envío de información personal a través del sitio se rige por nuestra "
+"Política de Privacidad. Para ver nuestra Política de Privacidad."
+
+#: .\templates\home\terms.html:159
+msgid "SECTION 9 - ERRORS, INACCURACIES AND OMISSIONS"
+msgstr "SECCIÓN 9 - ERRORES, IMPRECISIONES Y OMISIONES"
+
+#: .\templates\home\terms.html:162
+msgid ""
+"From time to time there may be information on our site or in the Service "
+"that contains typographical errors,\n"
+"        inaccuracies or omissions that may relate to product descriptions, "
+"prices, promotions,\n"
+"        offers, product shipping costs, transit time and availability. We "
+"reserve the right to correct\n"
+"        errors, inaccuracies or omissions and to change or update "
+"information or cancel orders if any information in\n"
+"        the Service or any related website is inaccurate at any time, "
+"without notice (including after\n"
+"        of having sent your order)"
+msgstr ""
+"De vez en cuando puede haber información en nuestro sitio o en el Servicio "
+"que contiene errores tipográficos, inexactitudes u omisiones que pueden "
+"estar relacionadas con descripciones de productos, precios, promociones, "
+"ofertas, costos de envío de productos, tiempo de tránsito y disponibilidad. "
+"Nos reservamos el derecho de corregir errores, inexactitudes u omisiones y "
+"de cambiar o actualizar información o cancelar pedidos si alguna información "
+"en el Servicio o cualquier sitio web relacionado es inexacta en cualquier "
+"momento, sin previo aviso (incluso después de haber enviado su pedido)"
+
+#: .\templates\home\terms.html:170
+msgid "SECTION 10 - PROHIBITED USES"
+msgstr "SECCIÓN 10 - USOS PROHIBIDOS"
+
+#: .\templates\home\terms.html:173
+msgid ""
+"In addition to other prohibitions set forth in the Terms of Service, use of "
+"the Site or its content is\n"
+"        prohibited: (a) for any unlawful purpose; (b) solicit others to "
+"perform or participate in illegal acts; (c)\n"
+"        to violate any international, federal, provincial or state "
+"regulations, rules, laws, or ordinances\n"
+"        local; (d) to infringe or violate the intellectual property right of "
+"us or of third parties; (e) harass,\n"
+"        abuse, insult, harm, defame, slander, disparage, intimidate or "
+"discriminate based on gender,\n"
+"        sexual orientation, religion, ethnicity, race, age, national origin, "
+"or disability; (f) present false information or\n"
+"        misleading; (g) to upload or transmit viruses or any other type of "
+"malicious code that will or may be used\n"
+"        in any way that may compromise the functionality or operation of the "
+"Service or any website\n"
+"        related, other sites or the Internet; (h) to collect or track "
+"personal information about others; (i) to generate\n"
+"        spam, phish, pharm, pretext, spider, crawl or scrape; (j) for any "
+"obscene or immoral purpose; or (k) for\n"
+"        interfere with or circumvent the security features of the Service or "
+"any related website, other sites or\n"
+"        Internet. We reserve the right to terminate your use of the Service "
+"or any related website for violating\n"
+"        any of the items prohibited use."
+msgstr ""
+"Además de otras prohibiciones establecidas en los Términos de servicio, el "
+"uso del Sitio o su contenido está prohibido: (a) para cualquier propósito "
+"ilegal; (b) solicitar a otros que realicen o participen en actos ilegales; "
+"(c) para violar cualquier regulación, regla, ley u ordenanza local "
+"internacional, federal, provincial o estatal; (d) para infringir o violar el "
+"derecho de propiedad intelectual de nosotros o de terceros; (e) acosar, "
+"abusar, insultar, dañar, difamar, calumniar, menospreciar, intimidar o "
+"discriminar por motivos de género, orientación sexual, religión, etnia, "
+"raza, edad, origen nacional o discapacidad; (f) presentar información falsa "
+"o engañosa; (g) cargar o transmitir virus o cualquier otro tipo de código "
+"malicioso que se utilice o se pueda utilizar de cualquier manera que pueda "
+"comprometer la funcionalidad o el funcionamiento del Servicio o cualquier "
+"sitio web relacionado, otros sitios o Internet; (h) para recopilar o "
+"rastrear información personal sobre otros; (i) para generar spam, phish, "
+"pharm, pretext, spider, crawl o scrape; (j) para cualquier propósito obsceno "
+"o inmoral; o (k) para interferir o eludir las características de seguridad "
+"del Servicio o cualquier sitio web relacionado, otros sitios o Internet. Nos "
+"reservamos el derecho de cancelar su uso del Servicio o cualquier sitio web "
+"relacionado por violar cualquiera de los elementos de uso prohibido."
+
+#: .\templates\home\terms.html:188
+msgid "ARTICLE 11 - EXCLUSION OF WARRANTIES; LIMITATION OF LIABILITY"
+msgstr "ARTÍCULO 11 - EXCLUSIÓN DE GARANTÍAS; LIMITACIÓN DE RESPONSABILIDAD"
+
+#: .\templates\home\terms.html:191
+msgid ""
+"We do not warrant or warrant that use of our service will be uninterrupted, "
+"timely, secure, or free of\n"
+"        mistakes.<br><br>\n"
+"\n"
+"        We do not warrant that the results that may be obtained from the use "
+"of the service will be accurate or reliable.<br><br>\n"
+"\n"
+"        You agree that, from time to time, we may remove the service for "
+"indefinite periods of time or cancel the\n"
+"        service at any time without notice.<br><br>\n"
+"\n"
+"        You expressly agree that your use of, or ability to use, the Service "
+"is at your own risk. The service and\n"
+"        all products and services provided through the service are provided "
+"(except where we indicate\n"
+"        expressly) \"as is\" and \"as available\" for your use, without any "
+"representation, warranty or condition of\n"
+"        of any kind, either express or implied, including all implied "
+"warranties or conditions of merchantability,\n"
+"        merchantable quality, fitness for a particular purpose, durability, "
+"title, and non-infringement.<br><br>\n"
+"\n"
+"        or any loss or damage of any kind incurred as a result of the use of "
+"the service or any content\n"
+"        (or product) published, transmitted or made available through the "
+"service, even if notice of its\n"
+"        possibility. Because some states or jurisdictions do not allow the "
+"exclusion or limitation of liability\n"
+"        for consequential or incidental damages, in such states or "
+"jurisdictions, our liability shall be limited to the\n"
+"        maximum allowed by law."
+msgstr ""
+"No garantizamos ni garantizamos que el uso de nuestro servicio sea "
+"ininterrumpido, oportuno, seguro o libre de errores.<br><br>No garantizamos "
+"que los resultados que puedan obtenerse del uso del servicio sean precisos o "
+"confiable.<br><br>Usted acepta que, de vez en cuando, podemos eliminar el "
+"servicio por períodos de tiempo indefinidos o cancelar el servicio en "
+"cualquier momento sin previo aviso.<br><br>Usted acepta expresamente que su "
+"uso de, o la capacidad de usar, el Servicio es bajo su propio riesgo. El "
+"servicio y todos los productos y servicios proporcionados a través del "
+"servicio se proporcionan (excepto donde lo indiquemos expresamente) \"tal "
+"cual\" y \"según disponibilidad\" para su uso, sin ninguna representación, "
+"garantía o condición de ningún tipo, ya sea expresa o implícitas, incluidas "
+"todas las garantías o condiciones implícitas de comerciabilidad, calidad "
+"comercial, idoneidad para un propósito particular, durabilidad, título y no "
+"infracción.<br><br>o cualquier pérdida o daño de cualquier tipo incurrido "
+"como resultado de la el uso del servicio o cualquier contenido (o producto) "
+"publicado, transmitido o puesto a disposición a través del servicio, incluso "
+"si se avisa de su posibilidad. Debido a que algunos estados o jurisdicciones "
+"no permiten la exclusión o limitación de responsabilidad por daños "
+"consecuentes o incidentales, en dichos estados o jurisdicciones, nuestra "
+"responsabilidad se limitará al máximo permitido por la ley."
+
+#: .\templates\home\terms.html:212
+msgid "SECTION 12 - TERMINATION"
+msgstr "SECCIÓN 12 - TERMINACIÓN"
+
+#: .\templates\home\terms.html:215
+msgid ""
+"Obligations and liabilities of the parties incurred prior to the termination "
+"date will survive\n"
+"        upon termination of this agreement for all purposes.<br><br>\n"
+"\n"
+"        These Terms of Service are effective unless and until terminated by "
+"either you or us. You can terminate these\n"
+"        Terms of Service at any time by notifying us that you no longer wish "
+"to use our services, or when you cease\n"
+"        use our site.<br><br>\n"
+"\n"
+"        If, in our judgment, you do not comply, or are suspected of not "
+"complying, with any term or provision of these\n"
+"        Terms of Service, we may also terminate this agreement at any time, "
+"without notice, and you will continue to\n"
+"        being responsible for all amounts owed. To include the completion "
+"date; and/or accordingly we can\n"
+"        deny access to our services (or any part thereof)."
+msgstr ""
+"Las obligaciones y responsabilidades de las partes incurridas antes de la "
+"fecha de terminación sobrevivirán a la terminación de este acuerdo para "
+"todos los propósitos.<br><br>Estos Términos de servicio son efectivos a "
+"menos que usted o nosotros los rescindamos. Puede rescindir estos Términos "
+"de servicio en cualquier momento notificándonos que ya no desea usar "
+"nuestros servicios, o cuando deje de usar nuestro sitio.<br><br>Si, a "
+"nuestro juicio, no cumple o no sospecha de no cumplir con cualquier término "
+"o disposición de estos Términos de servicio, también podemos rescindir este "
+"acuerdo en cualquier momento, sin previo aviso, y usted seguirá siendo "
+"responsable de todos los montos adeudados. Para incluir la fecha de "
+"finalización; y/o en consecuencia podemos denegar el acceso a nuestros "
+"servicios (o cualquier parte de los mismos)."
+
+#: .\templates\home\terms.html:228
+msgid "SECTION 13 - CHANGES TO THE TERMS OF SERVICE"
+msgstr "SECCIÓN 13 - CAMBIOS A LOS TÉRMINOS DEL SERVICIO"
+
+#: .\templates\home\terms.html:231
+msgid ""
+"You can review the most recent version of the Terms of Service at any time "
+"on this page.<br><br>\n"
+"\n"
+"        We reserve the right, at our sole discretion, to update, modify or "
+"replace any part of\n"
+"        these Terms of Service by posting updates and changes to our "
+"website. Is his\n"
+"        responsibility to check our website periodically to verify changes. "
+"Your continued use of or access to\n"
+"        our website or the Service after the posting of any changes to these "
+"Terms of Service implies\n"
+"        acceptance of such changes."
+msgstr ""
+"Puede revisar la versión más reciente de los Términos de servicio en "
+"cualquier momento en esta página.<br><br>Nos reservamos el derecho, a "
+"nuestro exclusivo criterio, de actualizar, modificar o reemplazar cualquier "
+"parte de estos Términos de servicio publicando actualizaciones y cambios en "
+"nuestro sitio web. Es su responsabilidad revisar nuestro sitio web "
+"periódicamente para verificar cambios. Su uso continuo o acceso a nuestro "
+"sitio web o al Servicio después de la publicación de cualquier cambio a "
+"estos Términos de servicio implica la aceptación de dichos cambios."
+
+#: .\templates\home\terms.html:240
+msgid "SECTION 14 - CONTACT INFORMATION"
+msgstr "SECCIÓN 14 - INFORMACIÓN DE CONTACTO"
+
+#: .\templates\home\terms.html:243
+msgid ""
+"Questions about the Terms of Service should be sent to katyshop303@gmail.com."
+msgstr ""
+"Las preguntas sobre los Términos de servicio deben enviarse a "
+"katyshop303@gmail.com."
+
+#: .\templates\includes\footer.html:8
+msgid "Privacy Policy"
+msgstr "Politica de Privacidad"
+
+#: .\templates\includes\footer.html:9
+msgid "Terms and Conditions"
+msgstr "Términos y Condiciones"
+
+#: .\templates\includes\footer.html:11
+msgid "Lenguage"
+msgstr "Idioma"
+
+#: .\templates\includes\footer.html:28
+msgid "Created by"
+msgstr "Creado por"
+
+#: .\templates\includes\header.html:18
+msgid "Start"
+msgstr "Inicio"
+
+#: .\templates\includes\header.html:21
+msgid "Shop"
+msgstr "Tienda"
+
+#: .\templates\includes\header.html:29 .\templates\includes\header.html:33
+msgid "My account"
+msgstr "Mi cuenta"
+
+#: .\templates\includes\header.html:38
+msgid "Points rules"
+msgstr "Reglas de puntos"
+
+#: .\templates\includes\header.html:54
+msgid "Search product"
+msgstr "Buscar producto"
+
+#: .\templates\includes\header.html:55
+msgid "search"
+msgstr "buscar"
+
+#: .\templates\includes\header.html:65
+msgid "Cart"
+msgstr "Carrito"
+
+#: .\templates\includes\header.html:101
+msgid "VIEW CART"
+msgstr "VER CARRITO"
+
+#: .\templates\includes\header.html:103 .\templates\includes\header.html:105
+msgid "CHECKOUT"
+msgstr "PAGAR"
+
+#: .\templates\includes\header.html:109
+msgid "There are no products in the cart."
+msgstr "No hay productos en el carrito."
+
+#: .\templates\includes\store-sidebar.html:8
+#: .\templates\includes\store-sidebar.html:21
+msgid "Categories"
+msgstr "Categorías"
+
+#: .\templates\includes\store-sidebar.html:11
+#: .\templates\includes\store-sidebar.html:24
+msgid "Search by category"
+msgstr "Buscar por categoría"
+
+#: .\templates\includes\user-menu.html:7
+#: .\templates\includes\user-menu.html:17
+msgid "Orders"
+msgstr "Ordenes"
+
+#: .\templates\includes\user-menu.html:20
+msgid "Profile"
+msgstr "Perfil"
+
+#: .\templates\includes\user-menu.html:23 .\templates\order\checkout.html:71
+#: .\templates\order\order_details.html:78
+#: .\templates\user\user-address.html:55
+msgid "Address"
+msgstr "Dirección"
+
+#: .\templates\includes\user-menu.html:26
+msgid "My points"
+msgstr "Mis puntos"
+
+#: .\templates\includes\user-menu.html:29
+msgid "Logout"
+msgstr "Cerrar Sesión"
+
+#: .\templates\order\checkout.html:16
+msgid "How many points would you like to apply?"
+msgstr "¿Cuántos puntos le gustaría aplicar?"
+
+#: .\templates\order\checkout.html:19
+msgid "Accept"
+msgstr "Aceptar"
+
+#: .\templates\order\checkout.html:20
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: .\templates\order\checkout.html:39
+#, python-format
+msgid ""
+"YOU HAVE <strong id=\"user-points\">%(user_points)s</strong> POINTS FOR A "
+"<strong class=\"text-success\">$%(max_discount)s</strong> \n"
+"            DISCOUNT ON THIS ORDER!"
+msgstr ""
+"¡USTED TIENE <strong id=\"user-points\">%(user_points)s</strong> PUNTOS PARA "
+"UN DESCUENTO DE <strong class=\"text-success\">$%(max_discount)s</strong> EN "
+"ESTE PEDIDO!"
+
+#: .\templates\order\checkout.html:41
+msgid "Apply"
+msgstr "Aplicar"
+
+#: .\templates\order\checkout.html:46
+msgid "Shipping Address"
+msgstr "Dirección de Envío"
+
+#: .\templates\order\checkout.html:58 .\templates\user\user-address.html:30
+msgid "Country"
+msgstr "País"
+
+#: .\templates\order\checkout.html:63 .\templates\order\orders.html:35
+#: .\templates\user\user-address.html:36 .\templates\user\user-address.html:46
+msgid "State"
+msgstr "Estado"
+
+#: .\templates\order\checkout.html:67 .\templates\user\user-address.html:50
+msgid "City"
+msgstr "Ciudad"
+
+#: .\templates\order\checkout.html:77
+#, fuzzy
+#| msgid "Postal Code:"
+msgid "Postal Code"
+msgstr "Codigo Postal"
+
+#: .\templates\order\checkout.html:84
+msgid "Additional Information"
+msgstr "Información Adicional"
+
+#: .\templates\order\checkout.html:85
+msgid "Order notes: (optional)"
+msgstr "Notas de pedido: (opcional)"
+
+#: .\templates\order\checkout.html:110
+msgid "Payment methods"
+msgstr "Métodos de pago"
+
+#: .\templates\order\checkout.html:117
+msgid "I have read and agree to the"
+msgstr "he leído y estoy de acuerdo con los"
+
+#: .\templates\order\checkout.html:117
+msgid "terms and conditions"
+msgstr "términos y condiciones"
+
+#: .\templates\order\checkout.html:118
+msgid "of Katyshop303."
+msgstr "de Katyshop303"
+
+#: .\templates\order\checkout.html:121
+msgid "Pay now"
+msgstr "Pagar ahora"
+
+#: .\templates\order\order_details.html:18
+#: .\templates\order\order_details.html:35
+msgid "Order"
+msgstr "Orden"
+
+#: .\templates\order\order_details.html:21
+msgid "Status:"
+msgstr "Estado:"
+
+#: .\templates\order\order_details.html:24
+msgid "Tracking Information:"
+msgstr "Información de seguimiento:"
+
+#: .\templates\order\order_details.html:26
+msgid "shipping provider:"
+msgstr "Proveedor de envío:"
+
+#: .\templates\order\order_details.html:28
+msgid "Shipping date:"
+msgstr "Fecha de envío:"
+
+#: .\templates\order\order_details.html:30
+msgid "shipping tracking:"
+msgstr "Seguimiento de envío:"
+
+#: .\templates\order\order_details.html:38
+msgid "Product"
+msgstr "Producto"
+
+#: .\templates\order\order_details.html:39
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: .\templates\order\order_details.html:40
+msgid "Price"
+msgstr "Precio"
+
+#: .\templates\order\order_details.html:60
+msgid "Discount:"
+msgstr "Descuento:"
+
+#: .\templates\order\order_details.html:65
+msgid "Payment method:"
+msgstr "Metodo de pago:"
+
+#: .\templates\order\order_details.html:67
+msgid "Card"
+msgstr "Tarjeta"
+
+#: .\templates\order\orders.html:26
+msgid "Order history"
+msgstr "Historial de pedidos"
+
+#: .\templates\order\orders.html:34 .\templates\points\points.html:25
+msgid "Date"
+msgstr "Fecha"
+
+#: .\templates\order\orders.html:37
+msgid "Action"
+msgstr "Acción"
+
+#: .\templates\order\orders.html:47
+msgid "See"
+msgstr "Ver"
+
+#: .\templates\order\orders.html:57
+msgid "There is no order history."
+msgstr "No hay historial de pedidos."
+
+#: .\templates\order\orders.html:70
+#, python-format
+msgid " Page %(current_page)s of %(num_pages)s "
+msgstr "Página %(current_page)s de %(num_pages)s"
+
+#: .\templates\order\orders.html:74 .\templates\points\points.html:60
+#: .\templates\product\category.html:62 .\templates\product\store.html:73
+msgid "Page 1 of 1"
+msgstr "Página 1 de 1"
+
+#: .\templates\points\points.html:17
+#, python-format
+msgid "Hi %(name)s, you have %(user_points)s points "
+msgstr "Hola %(name)s, tienes %(user_points)s puntos"
+
+#: .\templates\points\points.html:23
+msgid "Event"
+msgstr "Evento"
+
+#: .\templates\points\points.html:24
+msgid "ID Order"
+msgstr "ID Pedido"
+
+#: .\templates\points\points.html:26
+msgid "Points"
+msgstr "Puntos"
+
+#: .\templates\points\points.html:56 .\templates\product\category.html:58
+#: .\templates\product\store.html:69
+#, python-format
+msgid "Page %(current_page)s of %(num_pages)s"
+msgstr "Página %(current_page)s de %(num_pages)s"
+
+#: .\templates\product\category.html:19
+msgid "Category"
+msgstr "Categoria"
+
+#: .\templates\product\category.html:35 .\templates\product\category.html:38
+#: .\templates\product\product.html:72 .\templates\product\product.html:75
+#: .\templates\product\store.html:43 .\templates\product\store.html:46
+msgid "Add to cart"
+msgstr "Agregar al carrito"
+
+#: .\templates\product\category.html:40 .\templates\product\category.html:41
+#: .\templates\product\product.html:77 .\templates\product\product.html:78
+#: .\templates\product\store.html:48 .\templates\product\store.html:49
+msgid "Out of stock"
+msgstr "Agotado"
+
+#: .\templates\product\product.html:64
+msgid "Every time you buy this item, you will receive"
+msgstr "Cada vez que compre este artículo, recibirá"
+
+#: .\templates\product\product.html:64
+msgid "reward points!"
+msgstr "¡Puntos de recompensa!"
+
+#: .\templates\product\product.html:80
+msgid "Category:"
+msgstr "Categoria:"
+
+#: .\templates\product\product.html:89
+msgid "Description"
+msgstr "Descripción"
+
+#: .\templates\send_email\email-verification-user.html:45
+msgid "Welcome to"
+msgstr "Bienvenido a"
+
+#: .\templates\send_email\email-verification-user.html:46
+msgid "Please verify your email address by clicking the button below."
+msgstr ""
+"Verifique su dirección de correo electrónico haciendo clic en el botón a "
+"continuación."
+
+#: .\templates\user\Thanks-for-register.html:16
+msgid ""
+"Thank you for registering on KatyShop303.<br> \n"
+"            To log in you must activate your account with the link that we "
+"have sent to your email.<br>\n"
+"            If you can't find the email in your main inbox, check your spam "
+"folder."
+msgstr ""
+"Gracias por registrarte en KatyShop303.<br> Para iniciar sesión debes "
+"activar tu cuenta con el enlace que te hemos enviado a tu correo electrónico."
+"<br> Si no encuentras el correo electrónico en tu bandeja de entrada "
+"principal, verifica tu correo no deseado"
+
+#: .\templates\user\Thanks-for-register.html:20
+msgid "Resend email"
+msgstr "Reenviar correo"
+
+#: .\templates\user\change-password.html:18
+msgid "Enter your new password."
+msgstr "Introduzca su nueva contraseña."
+
+#: .\templates\user\forgot-password.html:17
+msgid ""
+"Enter your email with which you registered your account to receive a link "
+"where you can change your password."
+msgstr ""
+"Ingresa tu correo electrónico con el que registraste tu cuenta para recibir "
+"un enlace donde podrás cambiar tu contraseña."
+
+#: .\templates\user\forgot-password.html:24
+#: .\templates\user\resend-user-verification.html:34
+msgid "Recover account"
+msgstr "Recuperar cuenta"
+
+#: .\templates\user\login.html:28
+msgid "Login."
+msgstr "Iniciar sesión"
+
+#: .\templates\user\login.html:29
+msgid "Fill in the details to login."
+msgstr "Rellene los datos para iniciar sesión."
+
+#: .\templates\user\login.html:41
+msgid "You do not have an account?"
+msgstr "¿No tienes una cuenta?"
+
+#: .\templates\user\login.html:41
+msgid "Sign up"
+msgstr "Regístrate"
+
+#: .\templates\user\login.html:45
+msgid "Did you forget your password?"
+msgstr "¿Olvidaste tu contraseña?"
+
+#: .\templates\user\register.html:15
+msgid "Sign in"
+msgstr "Iniciar sesión"
+
+#: .\templates\user\register.html:16
+msgid "Please complete the form to create an account."
+msgstr "Por favor complete el formulario para crear una cuenta."
+
+#: .\templates\user\register.html:47
+msgid "Create Account"
+msgstr "Crear cuenta"
+
+#: .\templates\user\register.html:50
+msgid "Do you already have an account?"
+msgstr "Ya tienes una cuenta?"
+
+#: .\templates\user\register.html:50
+msgid "Log in"
+msgstr "Iniciar Sesión"
+
+#: .\templates\user\resend-user-verification.html:27
+msgid "To resend the account activation link, enter your email."
+msgstr ""
+"Para reenviar el enlace de activación de la cuenta, ingrese su correo "
+"electrónico."
+
+#: .\templates\user\user-address.html:40
+msgid "Municipality"
+msgstr "Municipalidad"
+
+#: .\templates\user\user-address.html:61
+msgid "Postal code"
+msgstr "Codigo Postal"
+
+#: .\templates\user\user-address.html:65 .\templates\user\user-profile.html:61
+msgid "Save"
+msgstr "Guardar"
+
+#: .\templates\user\user-profile.html:41
+msgid "Telephone number (optional)"
+msgstr "Número de teléfono (opcional)"
+
+#: .\templates\user\user-profile.html:48
+msgid "Current password"
+msgstr "Contraseña actual"
+
+#: .\templates\user\user-profile.html:57
+msgid "Repeat password"
+msgstr "Repita la contraseña"

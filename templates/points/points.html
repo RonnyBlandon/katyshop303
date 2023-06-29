@@ -14,7 +14,7 @@
 	{% include 'includes/user-menu.html' %}
 
 	<div class="box-account-section col-lg-8 col-lg-9">
-		<h4 class="my-points">{% blocktrans %}Hi {{request.user.name}}, you have {{ user_points }} points{% endblocktrans %}</h4>
+		<h4 class="my-points">{% blocktrans with name=request.user.name user_points=user_points %}Hi {{ name }}, you have {{ user_points }} points {% endblocktrans %}</h4>
 		<div class="my-3 mx-md-3 mx-lg-auto">
 			<div class="box-order-tables overflow-x-auto mx-auto">
 				<table class="order-table table table-striped table-info text-center">
@@ -28,7 +28,7 @@
 					</thead>
 					{% for register in pointshistory_list %}
 					<tr>
-						<td>{{ register.event }}</td>
+						<td>{% trans register.event %}</td>
 						{% if register.id_order %}
 						<td>#{{ register.id_order.id  }}</td>
 						{% else %}
@@ -53,9 +53,7 @@
                     {% endif %}
                     {% if page_obj.number > 0 %}
                     <span class="current-pages">
-						{% blocktrans %}
-						Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-						{% endblocktrans %}
+						{% blocktrans with current_page=page_obj.number num_pages=page_obj.paginator.num_pages %}Page {{ current_page }} of {{ num_pages }}{% endblocktrans %}
                     </span>
                     {% else %}
                     <span class="current-pages">

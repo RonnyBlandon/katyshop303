@@ -15,17 +15,17 @@
     <h2>{% trans 'Points Rules' %}</h2>
 
     <p>
-        {% trans 'KATY SHOP 303 has a points program that benefits customers for their loyalty, for each purchase
+        {% blocktrans %}KATY SHOP 303 has a points program that benefits customers for their loyalty, for each purchase
         made in the store accumulates in a certain amount of points, points that can be exchanged for
-        discounts on future purchases.' %}
+        discounts on future purchases.{% endblocktrans %}
         <br><br>
-        {% trans 'What is established in this points program is only for the United States, with the exception of the 
+        {% blocktrans %}What is established in this points program is only for the United States, with the exception of the 
         states of the Virgin Islands and Alaska is not available. It is the client's obligation to know and 
         comply with the rules, update and report periodically on the katyshop303.com page to know their 
-        rights and accumulated points.' %}
+        rights and accumulated points.{% endblocktrans %}
         <br><br>
-        {% trans 'Points will be credited to your account once the order has been paid for and shipped. The points do not have
-        expiration date and are not transferable from one account to another.' %}
+        {% blocktrans %}Points will be credited to your account once the order has been paid for and shipped. The points do not have
+        expiration date and are not transferable from one account to another.{% endblocktrans %}
         <br><br>
         {% trans 'You can use your accumulated points on purchases, redeeming your points on the checkout page.' %}
         <br><br>
@@ -33,31 +33,36 @@
         <br><br>
         {% trans 'The number of points you can accumulate and redeem in discounts:' %}
         <br><br>
-        {% trans 'Conversion rate into point accumulation on all wholesale products: $1 = {% if earning_points_rate > 1 %}{{ earning_points_rate }} points {% else %} {{ earning_points_rate }} point {% endif %} 
-        Example: Shopping ${{ example_value }} in products and you earn {{ points_to_win }} points.' %}
+        {% if earning_points_rate > 1 %}
+        {% blocktrans %}Conversion rate into point accumulation on all wholesale products: $1 = {{ earning_points_rate }} points
+        Example: Shopping ${{ example_value }} in products and you earn {{ points_to_win }} points.{% endblocktrans %}
+        {% else %}
+        {% blocktrans %}Conversion rate into point accumulation on all wholesale products: $1 = {{ earning_points_rate }} point
+        Example: Shopping ${{ example_value }} in products and you earn {{ points_to_win }} points.{% endblocktrans %}
+        {% endif %}
         <br><br>
-        {% trans 'Conversion rate when redeeming points in discounts, this applies to all products in the store. {{ point_redemption_rate }} points
-        = $1 Example, you can redeem {{ point_redemption_rate }} points and have a discount of $1.' %}
+        {% blocktrans %}Conversion rate when redeeming points in discounts, this applies to all products in the store. {{ point_redemption_rate }} points
+        = $1 Example, you can redeem {{ point_redemption_rate }} points and have a discount of $1.{% endblocktrans %}
         <br><br>
-        {% trans 'The minimum you can redeem for a discount is {{ point_redemption_rate }} points per order.' %}
+        {% blocktrans %}The minimum you can redeem for a discount is {{ point_redemption_rate }} points per order.{% endblocktrans %}
         <br><br>
-        {% trans 'The maximum that you can redeem in points is determined by the minimum value of the order to pay, which
+        {% blocktrans%}The maximum that you can redeem in points is determined by the minimum value of the order to pay, which
         it's 5 dollars. This means that the maximum amount you can redeem in points will be equivalent to leaving
         a minimum of 5 dollars to pay for the order. For example, if your total order is $100,
         but you have points to redeem up to 120 dollars, you can redeem a maximum of 95 dollars in points,
-        since the minimum order value is 5 dollars.' %}
+        since the minimum order value is 5 dollars.{% endblocktrans %}
         <br><br>
         
         <h3>{% trans 'reserve of law' %}</h3>
         
-        {% trans 'KATY SHOP 303 reserves the right to modify or cancel, partially or totally as necessary, the Rules, 
+        {% blocktrans %}KATY SHOP 303 reserves the right to modify or cancel, partially or totally as necessary, the Rules, 
         Terms and Conditions, rules, privileges, benefits or other special offers of the Points Program, 
         without prior notice when modified or eliminated the program. This means that the Points program may 
         make changes that affect, for example, the rules for crediting, redeeming or canceling Points, 
-        the value of Points, etc.' %}
+        the value of Points, etc.{% endblocktrans %}
         <br><br>
-        {% trans 'In case of termination of the Program, all the Points accumulated by the clients will be cancelled, 
-        without generating any responsibility for the accumulated Balance or the Points not redeemed.' %}
+        {% blocktrans %}In case of termination of the Program, all the Points accumulated by the clients will be cancelled, 
+        without generating any responsibility for the accumulated Balance or the Points not redeemed.{% endblocktrans %}
         <br><br>
     </p>
 </div>

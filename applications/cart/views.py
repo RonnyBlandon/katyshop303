@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib import messages
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 # import models
 from .models import Cart
 from applications.product.models import Product
@@ -28,7 +29,7 @@ def AddCartProductView(request, product_id):
         if not item:
             cart.cart_items.create(product=product, amount=quantity_product, subtotal=product.price * quantity_product)
             # We add the message that it was added successfully
-            messages.add_message(request=request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
+            messages.add_message(request=request, level=messages.SUCCESS, message=_("Product added to cart successfully."), extra_tags="success-add-cart")
         else:
             if product.amount_stock == None or item.amount < product.amount_stock:
                 quantity = item.amount + quantity_product
@@ -38,12 +39,12 @@ def AddCartProductView(request, product_id):
                         item.amount = product.amount_stock
                         item.subtotal = product.price * product.amount_stock
                         item.save()
-                        messages.add_message(request=request, level=messages.SUCCESS, message="You cannot add more than the units that are available.", extra_tags="alert-add-cart")
+                        messages.add_message(request=request, level=messages.SUCCESS, message=_("You cannot add more than the units that are available."), extra_tags="alert-add-cart")
                     else:
                         item.amount += quantity_product
                         item.subtotal += product.price * quantity_product
                         item.save()
-                        messages.add_message(request=request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
+                        messages.add_message(request=request, level=messages.SUCCESS, message=_("Product added to cart successfully."), extra_tags="success-add-cart")
                 else:
                     #If you have not defined the quantity of stock, add a limit of a maximum of 10 units of the product
                     if quantity > 10:
@@ -51,12 +52,12 @@ def AddCartProductView(request, product_id):
                         item.subtotal = product.price * 10
                         item.save()
                         #We added the message of the amount that you can add as a maximum per product
-                        messages.add_message(request=request, level=messages.SUCCESS, message="You can only add 10 maximum for this product.", extra_tags="alert-add-cart")         
+                        messages.add_message(request=request, level=messages.SUCCESS, message=_("You can only add 10 maximum for this product."), extra_tags="alert-add-cart")         
                     else:
                         item.amount += quantity_product
                         item.subtotal += product.price * quantity_product
                         item.save()
-                        messages.add_message(request=request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
+                        messages.add_message(request=request, level=messages.SUCCESS, message=_("Product added to cart successfully."), extra_tags="success-add-cart")
 
         calculate_cart(cart)
         return redirect(request.META.get('HTTP_REFERER'))
@@ -82,20 +83,20 @@ def AddCartStoreView(request, product_id, page):
                     item.subtotal += product.price
                     item.save()
                     if page == "store":
-                        messages.add_message(request=request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
+                        messages.add_message(request=request, level=messages.SUCCESS, message=_("Product added to cart successfully."), extra_tags="success-add-cart")
                 else:
                     #We added the message of the amount that you can add as a maximum per product
-                    messages.add_message(request=request, level=messages.SUCCESS, message="You cannot add more than the units that are available.", extra_tags="alert-add-cart")
+                    messages.add_message(request=request, level=messages.SUCCESS, message=_("You cannot add more than the units that are available."), extra_tags="alert-add-cart")
             else:
                 if item.amount < 10:
                     item.amount += 1
                     item.subtotal += product.price
                     item.save()
                     if page == "store":
-                        messages.add_message(request=request, level=messages.SUCCESS, message="Product added to cart successfully.", extra_tags="success-add-cart")
+                        messages.add_message(request=request, level=messages.SUCCESS, message=_("Product added to cart successfully."), extra_tags="success-add-cart")
                 else:
                     #We added the message of the amount that you can add as a maximum per product
-                    messages.add_message(request=request, level=messages.SUCCESS, message="You can only add 10 maximum for this product.", extra_tags="alert-add-cart")
+                    messages.add_message(request=request, level=messages.SUCCESS, message=_("You can only add 10 maximum for this product."), extra_tags="alert-add-cart")
         
         quantity_items = calculate_cart(cart)
         if page == "store":
@@ -141,7 +142,7 @@ def DeleteProductCartView(request, product_id, page):
         quantity_items = calculate_cart(cart)
 
         if page == "cart":
-            messages.add_message(request, level=messages.SUCCESS, message="Product successfully removed.", extra_tags="success-add-cart")
+            messages.add_message(request, level=messages.SUCCESS, message=_("Product successfully removed."), extra_tags="success-add-cart")
             return HttpResponseRedirect(reverse("cart_app:cart"))
         elif page == "mini-cart":
             return JsonResponse({"delete_product": True, "cart_subtotal": cart.subtotal, "quantity_items": quantity_items})

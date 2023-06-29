@@ -28,16 +28,16 @@
 <form class="container-checkout container-fluid mt-2 col-md-10 col-lg-12" method="post"> {% csrf_token %}
     <!-- Section information earn points-->
     <div class="info-earn-points col-lg-7">
-        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">COMPLETE YOUR ORDER AND EARN
+        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">{% blocktrans %}COMPLETE YOUR ORDER AND EARN
             <strong class="order-points" data-earning_points_rate="{{ earning_points_rate }}">{{ order_points }}</strong>
-            POINTS FOR A DISCOUNT ON A FUTURE PURCHASE.
+            POINTS FOR A DISCOUNT ON A FUTURE PURCHASE.{% endblocktrans %}
         </p>
     </div>
     <!-- Section points discount-->
     <div class="info-earn-points apply-points col-lg-7">
         <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">
-            YOU HAVE <strong id="user-points">{{ user_points }}</strong> POINTS FOR A <strong class="text-success">${{ max_discount }}</strong> 
-            DISCOUNT ON THIS ORDER!</p>
+            {% blocktrans %}YOU HAVE <strong id="user-points">{{ user_points }}</strong> POINTS FOR A <strong class="text-success">${{ max_discount }}</strong> 
+            DISCOUNT ON THIS ORDER!{% endblocktrans %}</p>
         <button type="button" class="btn btn-primary ms-1" id="btn-apply-points">{% trans 'Apply' %}</button>
     </div>
     <!-- Section shipping address -->
@@ -46,35 +46,35 @@
         <h4 class="text-center">{% trans 'Shipping Address' %}</h4>
         <div class="shipping p-md-2 d-flex flex-wrap gap-3">
             <div class="col-12 col-lg-5">
-                <label class="form-label">{% trans 'Name:' %}</label>
+                <label class="form-label">{% trans 'Name' %}:</label>
                 {{ form.name }}
             </div>
             <div class="col-12 col-lg-5">
-                <label class="form-label">{% trans 'Last name:' %}</label>
+                <label class="form-label">{% trans 'Last name' %}:</label>
                 {{ form.last_name }}
             </div>
             <div class="col-12 col-lg-5">
                 {{form.country.erros}}
-                <label class="form-label">{% trans 'Country:' %}</label>
+                <label class="form-label">{% trans 'Country' %}:</label>
                 {{ form.country }}
             </div>
             <div class="div-select-state col-12 col-lg-5">
                 {{form.state.errors}}
-                <label class="form-label">{% trans 'State:' %}</label>
+                <label class="form-label">{% trans 'State' %}:</label>
                 {{ form.state }}
             </div>
             <div class="col-12 col-lg-5">
-                <label id="label-city" class="form-label">{% trans 'City:' %}</label>
+                <label id="label-city" class="form-label">{% trans 'City' %}:</label>
                 {{form.city}}
             </div>
             <div class="col-12 col-lg-8">
-                <label class="form-label">{% trans 'Address:' %}</label>
+                <label class="form-label">{% trans 'Address' %}:</label>
                 {{form.address_1}}
                 {{form.address_2}}
             </div>
             <div class="col-12 col-lg-5">
                 {{form.postal_code.errors}}
-                <label class="form-label">{% trans 'Postal Code:' %}</label>
+                <label class="form-label">{% trans 'Postal Code' %}:</label>
                 {{form.postal_code}}
             </div>
         </div>

@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV3
 
@@ -10,7 +11,7 @@ class ContactForm(forms.Form):
     	widget = forms.TextInput(
             attrs= {
                 'class': 'form__input--size', 
-                'placeholder': 'Name'
+                'placeholder': _('Name')
             }
         )
     )
@@ -19,7 +20,7 @@ class ContactForm(forms.Form):
     	widget = forms.TextInput(
             attrs= {
                 'class': 'form__input--size', 
-                'placeholder': 'Last name'
+                'placeholder': _('Last name')
             }
         )
     )
@@ -28,7 +29,7 @@ class ContactForm(forms.Form):
     	widget = forms.EmailInput(
             attrs= {
                 'class': 'form__input', 
-                'placeholder': 'Email'
+                'placeholder': _('Email')
             }
         )
     )
@@ -37,7 +38,7 @@ class ContactForm(forms.Form):
     	widget = forms.TextInput(
             attrs= {
                 'class': 'form__input', 
-                'placeholder': 'affair'
+                'placeholder': _('affair')
             }
         )
     )
@@ -46,8 +47,8 @@ class ContactForm(forms.Form):
     	widget = forms.Textarea(
             attrs= {
                 'class': 'form__input', 
-                'placeholder': 'Message'
+                'placeholder': _('Message')
             }
         )
     )
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    #captcha = ReCaptchaField(widget=ReCaptchaV3)

@@ -44,7 +44,7 @@
         </label>
         <!--{{form.captcha}}-->
 
-        <input class="form-register__input-submit" type="submit" value="Create Account">
+        <input class="form-register__input-submit" type="submit" value="{% trans 'Create Account' %}">
 
         <div class="form__container-2">
             <p>{% trans 'Do you already have an account?' %} <a href="{% url 'user_app:user_login' %}">{% trans 'Log in' %}</a></p>

@@ -34,7 +34,6 @@ class RemoveDiscountView(LoginRequiredMixin, View):
     login_url = reverse_lazy('user_app:user_login')
 
     def get(self, request, *args, **kwargs):
-        print("Esto tiene kwargs: ", kwargs)
         user_points = UserPoint.objects.get_user_points(request.user.id)
         cart = Cart.objects.filter(id_user=request.user.id).first()
         # we remove the discount from the cart

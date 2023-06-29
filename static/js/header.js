@@ -1,12 +1,14 @@
 /* switch For menu buttons */
 // We use regular expressions to compare the pathnames
-const start = /^\/$/;
-const store = /^\/store\/$/;
-const category = /^(\/category\/)([\s\S]*\/)$/;
-const product = /^(\/product\/)([\s\S]*\/)$/;
-const contact = /^\/contact\/$/;
-const myAccount = /^(\/my-account\/)([\s\S]*\/)$/;
-const pointsRules = /^\/points-rules\/$/;
+const start = /^(\/es)?\/$/;
+const store = /^(\/es)?\/store\/$/;
+const category = /^(\/es)?(\/category\/)([\s\S]*\/)$/;
+const product = /^(\/es)?(\/product\/)([\s\S]*\/)$/;
+const contact = /^(\/es)?\/contact\/$/;
+const myAccount = /^(\/es)?(\/my-account\/)([\s\S]*\/)$/;
+const userLogin = /^(\/es)?\/user-login\/$/;
+const userRegister = /^(\/es)?\/user-register\/$/;
+const pointsRules = /^(\/es)?\/points-rules\/$/;
 
 let pathname = window.location.pathname;
 let linkMenuPage = "";
@@ -26,6 +28,8 @@ switch (true) {
         linkMenuPage.classList.add("active");
         break;
     case myAccount.test(pathname):
+    case userLogin.test(pathname):
+    case userRegister.test(pathname):
         linkMenuPage = document.getElementById("my-account")
         linkMenuPage.classList.add("active");
         break;

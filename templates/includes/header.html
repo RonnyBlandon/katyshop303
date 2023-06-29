@@ -51,7 +51,7 @@
 				</li>
 			</ul>
 			<form class="d-flex" method="get" action="{% url 'product_app:store' %}" role="search"> {% csrf_token %}
-				<input class="input-search form-control me-2" id="kword" name="kword" type="search" placeholder="Search product" aria-label="Search">
+				<input class="input-search form-control me-2" id="kword" name="kword" type="search" placeholder="{% trans 'Search product' %}" aria-label="Search">
 				<button class="btn-search btn btn-outline-success" type="submit">{% trans 'search' %}</button>
 			</form>
 		</div>

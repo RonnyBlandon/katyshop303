@@ -1,8 +1,12 @@
+from typing import Any
 from django.views.generic import TemplateView, FormView
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.contrib import messages
+from django.utils.translation import gettext as _
+from django.utils import translation
 # import models
 from applications.points.models import PointsSetting
 # imports form
@@ -32,10 +36,10 @@ class ContactView(FormView):
             email_remitente = get_secret('EMAIL')
             send_mail(affair, mensaje, email_remitente, [email_remitente,])
 
-            messages.add_message(request=self.request, level=messages.WARNING, message='Your message was sent successfully. You will receive a response in your email very soon.')
+            messages.add_message(request=self.request, level=messages.WARNING, message=_('Your message was sent successfully. You will receive a response in your email very soon.'))
         except Exception as err:
             print("Error on the contact page the error is: ", err)
-            messages.add_message(request=self.request, level=messages.ERROR, message='Sending failed, please try again later.')
+            messages.add_message(request=self.request, level=messages.ERROR, message=_('Sending failed, please try again later.'))
         # We redirect to the same contact page
         
         return HttpResponseRedirect(

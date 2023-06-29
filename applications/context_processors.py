@@ -4,6 +4,7 @@ from applications.cart.models import Cart
 from applications.product.models import Product
 from applications.points.models import PointsSetting, UserPoint
 
+
 def user_cart(request):
     if request.user.is_authenticated:
         cart = Cart.objects.filter(id_user=request.user.id).first()

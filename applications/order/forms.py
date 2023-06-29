@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 # Imports forms
 from applications.user.forms import UserAddressForm
 
@@ -16,10 +17,10 @@ class CheckoutForm(UserAddressForm):
     additional_info = forms.CharField(
         required=False,
         widget=forms.Textarea(
-            attrs={'class': 'input-additional-info', 'placeholder': 'Notes about your order, for example, special notes for delivery.'})
+            attrs={'class': 'input-additional-info', 'placeholder': _('Notes about your order, for example, special notes for delivery.')})
         )
 
-    PAYMENT_METHODS = [('Paypal', 'Paypal'), ('Stripe', 'Credit or debit card')]
+    PAYMENT_METHODS = [('Paypal', 'Paypal'), ('Stripe', _('Credit or debit card'))]
     payment_method = forms.ChoiceField(
         required=True,
         choices=PAYMENT_METHODS,

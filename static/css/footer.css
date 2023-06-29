@@ -63,7 +63,7 @@
 @media screen and (min-width: 1024px) {
     /*Footer de la pagina*/
     .footer__link {
-        width: 40%;
+        width: 36%;
     }   
     .footer__link:hover {
         text-decoration: none;

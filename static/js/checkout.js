@@ -89,7 +89,12 @@ btnMakeDiscount.addEventListener('click', function () {
 		// Create message reporting the error
 		const message = document.createElement('p');
 		message.classList.add('message-points');
-		message.innerHTML = "The minimum you can redeem is " + point_redemption_rate + " points.";
+		const langValue = document.documentElement.lang;
+		if (langValue === "en") {
+			message.innerHTML = "The minimum you can redeem is " + point_redemption_rate + " points.";
+		} else {
+			message.innerHTML = "Lo mínimo que puedes canjear son " + point_redemption_rate + " puntos.";
+		}
 		// Insert the message after the input
 		const messagePointsClass = pointsElement.nextElementSibling.classList.contains("message-points");
 		if (messagePointsClass) {
@@ -106,7 +111,12 @@ btnMakeDiscount.addEventListener('click', function () {
 		// Create message reporting the error
 		const message = document.createElement('p');
 		message.classList.add('message-points');
-		message.innerHTML = "You cannot redeem more points than you have accumulated ";
+		const langValue = document.documentElement.lang;
+		if (langValue === "en") {
+			message.innerHTML = "You cannot redeem more points than you have accumulated. ";
+		} else {
+			message.innerHTML = "No puedes canjear más puntos de los que tienes acumulados. ";
+		}
 		// Insert the message after the input
 		const messagePointsClass = pointsElement.nextElementSibling.classList.contains("message-points");
 		if (messagePointsClass) {

@@ -33,7 +33,7 @@
                             <th>ID</th>
                             <th>{% trans 'Date' %}</th>
                             <th>{% trans 'State' %}</th>
-                            <th>{% trans 'Total' %}</th>
+                            <th>Total</th>
                             <th>{% trans 'Action' %}</th>
                         </tr>
                     </thead>
@@ -41,7 +41,7 @@
                     <tr>
                         <td>#{{ order.id }}</td>
                         <td>{{ order.created|date:"Y-F-d" }}</td>
-                        <td>{{ order.status }}</td>
+                        <td>{% trans order.status %}</td>
                         <td>${{ order.total }}</td>
                         <td class="actions-cell">
                             <a class="btn-order" href="{% url 'user_app:order_details' order.id %}">{% trans 'See' %}<img
@@ -67,9 +67,7 @@
                     {% endif %}
                     {% if page_obj.number > 0 %}
                     <span class="current-pages">
-                        {% blocktrans %}
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                        {% endblocktrans %}
+                        {% blocktrans with current_page=page_obj.number num_pages=page_obj.paginator.num_pages %} Page {{ current_page }} of {{ num_pages }} {% endblocktrans %}
                     </span>
                     {% else %}
                     <span class="current-pages">

@@ -7,9 +7,25 @@
     <footer class="footer">
         <a class="footer__link" href="{% url 'home_app:privacy_policy' %}">{% trans 'Privacy Policy' %}</a>
         <a class="footer__link" href="{% url 'home_app:terms' %}">{% trans 'Terms and Conditions' %}</a>
+        <div class="box-language">
+            <h5 class="pb-1">{% trans 'Lenguage' %}:</h5>
+            <form id="languageForm" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                <select id="languageSelect" name="language">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
         <div class="footer__container">
-            <h5>{% trans '2023 KatyShop303' %}</h5>
-            <h5>{% trans 'Created by Ronny Blandon' %}</h5>
+            <h5>2023 KatyShop303</h5>
+            <h5>{% trans 'Created by' %} Ronny Blandon</h5>
             <div class="linkedin">
                 <img src="{% static 'img/Linkedin.svg' %}" alt="Linkedin">
                 <a href="https://www.linkedin.com/in/ronnyblandon/">Linkedin</a>
@@ -17,3 +33,5 @@
         </div>
     </footer>
 </div>
+
+<script src="{% static 'js/footer.js' %}"></script>

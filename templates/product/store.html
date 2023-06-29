@@ -39,7 +39,7 @@
                 <a class="link-title-product" href="{% url 'product_app:product' product.slug %}">{{ product.name }}</a>
                 <p class="card-subtitle"><strong>${{ product.price }}</strong></p>
                 {% if product.stock == True and product.amount_stock > 0 %}
-                <p class="stock-store">{% blocktrans %}{{ product.amount_stock }} left in stock{% endblocktrans %}</p>
+                <p class="stock-store">{% blocktrans with amount_stock=product.amount_stock %}{{ amount_stock }} left in stock{% endblocktrans %}</p>
                 <a href="{% url 'cart_app:add_cart_store' product.id %}" class="btn-add-cart btn btn-primary">{% trans 'Add to cart' %}</a>
                 {% elif product.stock == True %}
                 <p class="stock-store">{% trans 'In stock' %}</p>
@@ -66,9 +66,7 @@
                 
                 {% if page_obj.number > 0 %}
                 <span class="current-pages">
-                    {% blocktrans %}
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                    {% endblocktrans %}
+                    {% blocktrans with current_page=page_obj.number num_pages=page_obj.paginator.num_pages %}Page {{ current_page }} of {{ num_pages }}{% endblocktrans %}
                 </span>
                 {% else %}
                 <span class="current-pages">

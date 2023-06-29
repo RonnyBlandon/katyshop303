@@ -1,9 +1,9 @@
-from typing import Any, Dict
 import stripe
 from django.views.generic import FormView
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
+from django.utils.translation import gettext_lazy as _
 # import models
 from applications.cart.models import Cart
 from applications.user.models import Address
@@ -60,7 +60,7 @@ class CheckoutView(FormView):
                     return HttpResponseRedirect(link_payment)
                 else:
                     order.delete()
-                    messages.add_message(request=self.request, level=messages.ERROR, message="An error occurred while processing your payment.")
+                    messages.add_message(request=self.request, level=messages.ERROR, message=_("An error occurred while processing your payment."))
                     return HttpResponseRedirect(reverse('order_app:checkout'))
             if payment_method == "Stripe":
                 checkout = Stripe(id_user=self.request.user.id)
@@ -69,14 +69,14 @@ class CheckoutView(FormView):
                     return HttpResponseRedirect(link_payment)
                 else:
                     order.delete()
-                    messages.add_message(request=self.request, level=messages.ERROR, message="An error occurred while processing your payment.")
+                    messages.add_message(request=self.request, level=messages.ERROR, message=_("An error occurred while processing your payment."))
                     return HttpResponseRedirect(reverse('order_app:checkout'))
         else:
             try:
                 order.delete()
-                messages.add_message(request=self.request, level=messages.ERROR, message="An error occurred while processing your payment.")
+                messages.add_message(request=self.request, level=messages.ERROR, message=_("An error occurred while processing your payment."))
             except Exception as err:
-                messages.add_message(request=self.request, level=messages.ERROR, message="An error occurred while processing your payment.")
+                messages.add_message(request=self.request, level=messages.ERROR, message=_("An error occurred while processing your payment."))
 
         return super(CheckoutView, self).form_valid(form)
 
@@ -118,19 +118,19 @@ def CapturePaypalPayment(request):
                 if order.discount > 0.00:
                     user_points = UserPoint.objects.deduct_points_to_user(order.discount, points_setting.redemption_rate, request.user.id)
                     PointsHistory.objects.points_deducted(order.discount, points_setting.redemption_rate, 
-                                                'Redeemed Points', order, user_points)
+                                                _('Redeemed Points'), order, user_points)
                 # We add the points earned to the user
                 user_points = UserPoint.objects.add_points_to_user(order.total, points_setting.earning_points_rate, request.user.id)
                 PointsHistory.objects.points_added(order.total, points_setting.earning_points_rate, 
-                                                'Points Earned For Purchase', order, user_points)
+                                                _('Points Earned For Purchase'), order, user_points)
                 
-                messages.add_message(request=request, level=messages.SUCCESS, message="The payment has been completed successfully.")
+                messages.add_message(request=request, level=messages.SUCCESS, message=_("The payment has been completed successfully."))
                 # We mail the order to the user and notify the administrators of the new order.
                 send_order_to_user(order)
 
             else:
                 order.delete()
-                messages.add_message(request=request, level=messages.ERROR, message="An error occurred while processing your payment.")
+                messages.add_message(request=request, level=messages.ERROR, message=_("An error occurred while processing your payment."))
     return HttpResponseRedirect(reverse("user_app:user_orders"))
 
 
@@ -193,11 +193,11 @@ def WebhookStripeView(request):
             if order.discount > 0.00:
                 user_points = UserPoint.objects.deduct_points_to_user(order.discount, points_setting.redemption_rate, order.id_user.id)
                 PointsHistory.objects.points_deducted(order.discount, points_setting.redemption_rate, 
-                                            'Redeemed Points', order, user_points)
+                                            _('Redeemed Points'), order, user_points)
             # We add the points earned to the user
             user_points = UserPoint.objects.add_points_to_user(order.total, points_setting.earning_points_rate, order.id_user.id)
             PointsHistory.objects.points_added(order.total, points_setting.earning_points_rate, 
-                                            'Points Earned For Purchase', order, user_points)
+                                            _('Points Earned For Purchase'), order, user_points)
         
             # We mail the order to the user and notify the administrators of the new order.
             send_order_to_user(order)
@@ -209,8 +209,8 @@ def WebhookStripeView(request):
         order = Order.objects.filter(id_user=id_user).last()
         # If the order already has the transaction_id, a success message is added. Otherwise, an error message is added.
         if order.transaction_id:
-            messages.add_message(request=request, level=messages.SUCCESS, message="The payment has been completed successfully.")
+            messages.add_message(request=request, level=messages.SUCCESS, message=_("The payment has been completed successfully."))
         else:
-            messages.add_message(request=request, level=messages.ERROR, message="An error occurred while processing your payment.")
+            messages.add_message(request=request, level=messages.ERROR, message=_("An error occurred while processing your payment."))
 
     return HttpResponseRedirect(reverse("user_app:user_orders"))

@@ -21,9 +21,9 @@
 <div class="container-cart container-fluid col-lg-11 d-md-flex flex-md-column">
     <!-- Section information earn points-->
     <div class="info-earn-points col-md-8 col-lg-7">
-        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">COMPLETE YOUR ORDER AND EARN
+        <p><img src="{% static 'img/circle-info-solid.svg' %}" alt="Exclamation_mark">{% blocktrans %}COMPLETE YOUR ORDER AND EARN
             <strong class="order-points" data-earning_points_rate="{{ earning_points_rate }}">{{ order_points }}</strong>
-            POINTS FOR A DISCOUNT ON A FUTURE PURCHASE.
+            POINTS FOR A DISCOUNT ON A FUTURE PURCHASE.{% endblocktrans %}
         </p>
     </div>
     <!--Loader Discount-->
@@ -69,7 +69,7 @@
             <a class="link-product" href="{% url 'product_app:product' item.product.slug %}">{{ item.product.name }}</a>
             <p class="h5 card-subtitle text-success"><strong class="subtotal-product">${{ item.subtotal }}</strong></p>
             {% if item.product.stock == True and item.product.amount_stock > 0 %}
-            <p class="stock-cart text-success">{% blocktrans %}{{ product.amount_stock }} left in stock{% endblocktrans %}</p>
+            <p class="stock-cart text-success">{% blocktrans with amount_stock=item.product.amount_stock %}{{ amount_stock }} left in stock{% endblocktrans %}</p>
             <div class="d-flex flex-wrap">
                 <div class="product-quantity">
                     <button class="decrease-product" data-url-decrease="{% url 'cart_app:subtract_cart' item.product.id %}">-</button>
@@ -101,7 +101,7 @@
             <a class="link-product" href="{% url 'product_app:product' item.slug %}">{{ item.name }}</a>
             <p class="h5 card-subtitle text-success"><strong class="subtotal-product">${{ item.accumulated }}</strong></p>
             {% if item.stock == True and item.amount_stock > 0 %}
-            <p class="stock-cart text-success">{% blocktrans %}{{ product.amount_stock }} left in stock{% endblocktrans %}</p>
+            <p class="stock-cart text-success">{% blocktrans with amount_stock=item.product.amount_stock %}{{ amount_stock }} left in stock{% endblocktrans %}</p>
             <div class="d-flex flex-wrap">
                 <div class="product-quantity">
                     <button class="decrease-product" data-url-decrease="{% url 'cart_app:subtract_cart' item.id %}">-</button>

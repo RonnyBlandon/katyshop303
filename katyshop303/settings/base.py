@@ -88,7 +88,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'applications.context_processors.user_cart'
+                'django.template.context_processors.i18n',
+                'applications.context_processors.user_cart',
             ],
         },
     },
@@ -134,18 +135,13 @@ USE_TZ = True
 # Set allowed languages
 LANGUAGES = [
     ('en', _('English')),
-    ('es', _('Español')),
+    ('es', _('Spanish')),
 ]
 #Set the decimal separator to period (.) instead of comma (,)
 formats.DECIMAL_SEPARATOR = '.'
 
 LOCALE_PATHS = [
-    BASE_DIR / 'applications/cart/locale',
-    BASE_DIR / 'applications/home/locale',
-    BASE_DIR / 'applications/user/locale',
-    BASE_DIR / 'applications/order/locale',
-    BASE_DIR / 'applications/product/locale',
-    BASE_DIR / 'applications/points/locale',
+    BASE_DIR / 'locale'
 ]
 
 # EMAIL SETTINGS

@@ -8,7 +8,7 @@
         <button class="btn btn-primary dropdown-toggle" type="button">{% trans 'Categories' %}</button>
         <ul class="dropdown-categories dropdown-menu">
             <form class="d-flex px-2" role="search"> {% csrf_token %}
-				<input class="search-category-movil form-control" type="search" placeholder="Search by category" aria-label="Search">
+				<input class="search-category-movil form-control" type="search" placeholder="{% trans 'Search by category' %}" aria-label="Search">
 			</form>
             {% for category in categories %}
             <li><a class="dropdown-item" href="{% url 'product_app:category' category.slug %}">{{ category.name }}</a></li>
@@ -21,7 +21,7 @@
         <h3 class="title-sidebar text-center">{% trans 'Categories' %}</h3>
         <ul class="list-category list-group mb-2 text-start">
             <form class="d-flex px-2" role="search"> {% csrf_token %}
-				<input class="search-category-desktop form-control mb-3" type="search" placeholder="Search by category" aria-label="Search">
+				<input class="search-category-desktop form-control mb-3" type="search" placeholder="{% trans 'Search by category' %}" aria-label="Search">
 			</form>
             {% for category in categories %}
             <li><a class="list-group-item" href="{% url 'product_app:category' category.slug %}">{{ category.name }}</a></li>
