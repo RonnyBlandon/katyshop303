@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-29 11:41-0600\n"
+"POT-Creation-Date: 2023-07-04 14:22-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgstr "Asunto"
 msgid "Message"
 msgstr "Mensaje"
 
-#: .\applications\home\views.py:39
+#: .\applications\home\views.py:37
 msgid ""
 "Your message was sent successfully. You will receive a response in your "
 "email very soon."
@@ -77,7 +77,7 @@ msgstr ""
 "Su mensaje fue enviado exitosamente. Muy pronto recibirás una respuesta en "
 "tu correo electrónico."
 
-#: .\applications\home\views.py:42
+#: .\applications\home\views.py:40
 msgid "Sending failed, please try again later."
 msgstr "El envío falló, inténtalo de nuevo más tarde."
 
@@ -261,11 +261,16 @@ msgstr ""
 "Se ha enviado un nuevo enlace de activación de cuenta al correo electrónico "
 "\"%(email_user)s\"."
 
+#: .\applications\user\views.py:340
+msgid "ACCOUNT RECOVERY"
+msgstr "RECUPERACIÓN DE CUENTA"
+
 #: .\applications\user\views.py:344
 msgid "You need this link to change your password."
 msgstr "Necesitas este enlace para cambiar tu contraseña."
 
-#: .\applications\user\views.py:345 .\templates\user\user-profile.html:45
+#: .\applications\user\views.py:345 .\templates\user\change-password.html:28
+#: .\templates\user\user-profile.html:45
 msgid "Change Password"
 msgstr "Cambiar la contraseña"
 
@@ -286,11 +291,11 @@ msgstr "El enlace no es válido."
 msgid "The password has been changed successfully. Sign in."
 msgstr "La contraseña ha sido cambiada con éxito. Iniciar sesión."
 
-#: .\katyshop303\settings\base.py:137
+#: .\katyshop303\settings\base.py:161
 msgid "English"
 msgstr "Ingles"
 
-#: .\katyshop303\settings\base.py:138
+#: .\katyshop303\settings\base.py:162
 msgid "Spanish"
 msgstr "Español"
 
@@ -364,7 +369,7 @@ msgstr ""
 "Si tiene alguna pregunta, complete el siguiente formulario con el siguiente "
 "información."
 
-#: .\templates\home\contact.html:41
+#: .\templates\home\contact.html:41 .\templates\user\login.html:39
 msgid "Send"
 msgstr "Enviar"
 
@@ -1742,23 +1747,23 @@ msgstr ""
 msgid "Recover account"
 msgstr "Recuperar cuenta"
 
-#: .\templates\user\login.html:28
+#: .\templates\user\login.html:29
 msgid "Login."
 msgstr "Iniciar sesión"
 
-#: .\templates\user\login.html:29
+#: .\templates\user\login.html:30
 msgid "Fill in the details to login."
 msgstr "Rellene los datos para iniciar sesión."
 
-#: .\templates\user\login.html:41
+#: .\templates\user\login.html:42
 msgid "You do not have an account?"
 msgstr "¿No tienes una cuenta?"
 
-#: .\templates\user\login.html:41
+#: .\templates\user\login.html:42
 msgid "Sign up"
 msgstr "Regístrate"
 
-#: .\templates\user\login.html:45
+#: .\templates\user\login.html:46
 msgid "Did you forget your password?"
 msgstr "¿Olvidaste tu contraseña?"
 

@@ -35,7 +35,7 @@
         <label class="form-register__label"><img src="{% static 'img/icono-contraseña.svg' %}" alt="icon-password">
         {{form.password}}</label>
     
-        <input class="form-register__input-submit" type="submit">
+        <input class="form-register__input-submit" type="submit" value="{% trans 'Send' %}">
     
         <div class="form__container-2">
             <p>{% trans 'You do not have an account?' %} <a href="{% url 'user_app:user_register' %}">{% trans 'Sign up' %}</a></p>

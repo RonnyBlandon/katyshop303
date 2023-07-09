@@ -9,7 +9,7 @@ def user_cart(request):
     if request.user.is_authenticated:
         cart = Cart.objects.filter(id_user=request.user.id).first()
         if not cart:
-            Cart.objects.create_cart(subtotal=0.00, total=0.00, user=request.user)
+            cart = Cart.objects.create_cart(subtotal=0.00, total=0.00, user=request.user)
         #Calculate the number of items in the cart
         cart_items = cart.cart_items.all()
         quantity_items = 0
@@ -24,7 +24,9 @@ def user_cart(request):
             max_discount = user_points.points / points_setting.redemption_rate
             max_discount = round(max_discount, 2)
         except UserPoint.DoesNotExist:
-            user_points = UserPoint.objects.create(id_user=request.user)            
+            user_points = UserPoint.objects.create(id_user=request.user)
+            max_discount = user_points.points / points_setting.redemption_rate
+            max_discount = round(max_discount, 2)       
         
         return {"cart_id": cart.id, 
             "cart_subtotal": cart.subtotal,

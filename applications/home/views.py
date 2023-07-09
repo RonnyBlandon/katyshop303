@@ -3,10 +3,8 @@ from django.views.generic import TemplateView, FormView
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect
 from django.contrib import messages
 from django.utils.translation import gettext as _
-from django.utils import translation
 # import models
 from applications.points.models import PointsSetting
 # imports form

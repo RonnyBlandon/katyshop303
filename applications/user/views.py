@@ -337,7 +337,7 @@ class RecoverAccountView(FormView):
         # We send the verification code to change the password to the user
         mail = create_html_mail(
             user_email=email_user, 
-            subject="ACCOUNT RECOVERY", 
+            subject=_("ACCOUNT RECOVERY"), 
             template_name="send_email/email-verification-user.html", 
             context={
                 "path_url": f"/change-password/{id_user}/{validation_code}/",
