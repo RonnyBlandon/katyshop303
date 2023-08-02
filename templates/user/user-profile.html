@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load socialaccount %}
 {% load i18n %}
 
 {% block title %} user-dashboard {% endblock title %}
@@ -58,6 +57,7 @@
                 <label for="validationCustom05" class="form-label">{% trans 'Repeat password' %}</label>
                 {{form.repeat_password}}
             </div>
+            {{form.captcha}}
             <div class="col-12 pt-2">
                 <button class="btn btn-primary" type="submit">{% trans 'Save' %}</button>
             </div>

@@ -19,18 +19,27 @@ const selectedCountry = document.getElementById('select-country');
 const selectedState = document.getElementById('select-state');
 const divSelectState = document.querySelector('.div-select-state');
 const labelCity = document.getElementById('label-city');
+const langValue = document.documentElement.lang;
 
 function showHideInputState() {
 	let selectedOption = selectedCountry.options[selectedCountry.selectedIndex];
 	if (selectedOption.value == "Puerto Rico") {
 		selectedState.required = false
 		divSelectState.hidden = true;
-		labelCity.innerHTML = 'Municipalidad';
+		if (langValue === "en") {
+			labelCity.innerHTML = 'Municipality';
+		} else {
+			labelCity.innerHTML = 'Municipalidad';
+		}
 	};
-	if (selectedOption.value == "Estados Unidos") {
+	if (selectedOption.value == "United States") {
 		divSelectState.hidden = false;
 		selectedState.required = true;
-		labelCity.innerHTML = 'Ciudad';
+		if (langValue === "en") {
+			labelCity.innerHTML = 'City';
+		} else {
+			labelCity.innerHTML = 'Ciudad';
+		}
 	};
 }
 if (selectedCountry) {

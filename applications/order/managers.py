@@ -45,7 +45,7 @@ class OrderItemManager(models.Manager):
         for item in cart_items:
             order_item = self.create(
                 id_order = order,
-                product = item.product,
+                product_name = item.product.name,
                 amount = item.amount,
                 unit_price = item.product.price,
                 subtotal = item.subtotal

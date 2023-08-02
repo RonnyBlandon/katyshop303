@@ -5,11 +5,11 @@ from katyshop303.settings.base import get_secret
 
 class Paypal():
     def __init__(self):
-        self.url_api = "https://api-m.sandbox.paypal.com"
-        self.url_api_order = "https://api-m.sandbox.paypal.com/v2/checkout/orders/"
+        self.url_api = "https://api-m.paypal.com/"
+        self.url_api_order = "https://api-m.paypal.com/v2/checkout/orders/"
         self.auth_user = (get_secret('PAYPAL_CLIENT_ID'), get_secret('PAYPAL_CLIENT_SECRET'))
-        self.success_url = "http://127.0.0.1:8000/paypal-payment/"
-        self.cancel_url = "http://127.0.0.1:8000/paypal-payment/"
+        self.success_url = "https://katyshop303.com/paypal-payment/"
+        self.cancel_url = "https://katyshop303.com/paypal-payment/"
 
 
     def create_order(self, order):
@@ -17,9 +17,9 @@ class Paypal():
         items = []
         for product in order.order_items.all():
             item = {
-                "name": product.product.name,
+                "name": product.product_name,
                 "quantity": product.amount,
-                "unit_amount": {"currency_code": "USD", "value": str(product.product.price)}    
+                "unit_amount": {"currency_code": "USD", "value": str(product.unit_price)}    
             }
             items.append(item)
 

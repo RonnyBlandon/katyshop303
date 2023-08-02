@@ -22,7 +22,7 @@ class Category(TimeStampedModel, models.Model):
 
 
 class Product(TimeStampedModel,models.Model):
-    name = models.CharField('Titulo', max_length=50)
+    name = models.CharField('Titulo', max_length=100)
     description = RichTextField()
     price = models.DecimalField('Precio', max_digits=7, decimal_places=2)
     stock = models.BooleanField('Disponible')

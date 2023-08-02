@@ -26,7 +26,7 @@ class UserProfileForm(forms.ModelForm):
             attrs= {
                 'class': 'form-control'})
     )
-    #captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
 
     # Form Meta classes
     class Meta:
@@ -139,7 +139,7 @@ class UserRegisterForm(forms.ModelForm):
                 'class': 'form-register__input', 
                 'placeholder': _('Repeat Password')})
     )
-    #captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
 
     # clases Meta del formulario
     class Meta:
@@ -218,6 +218,7 @@ class UserLoginForm(forms.Form):
                 'class': 'form-register__input', 
                 'placeholder': _('Password')})
     )
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
 
 
     """ the function called clean is the first validation that django does in a form, that's why each

@@ -51,7 +51,7 @@ class OrderAddress(models.Model):
 
 class OrderItem(models.Model):
     id_order = models.ForeignKey(Order, verbose_name='ID del pedido', on_delete=models.CASCADE, related_name='order_items')
-    product = models.ForeignKey(Product, verbose_name='Producto', on_delete=models.CASCADE)
+    product_name = models.CharField(verbose_name='Producto', max_length=100)
     amount = models.IntegerField('Cantidad')
     unit_price = models.DecimalField('Precio unitario', max_digits=8, decimal_places=2)
     subtotal = models.DecimalField('Subtotal', max_digits=8, decimal_places=2)
@@ -59,7 +59,7 @@ class OrderItem(models.Model):
     objects = OrderItemManager()
 
     def __str__(self):
-        return str(self.id) +' '+ str(self.product)
+        return str(self.id) +' '+ str(self.product_name)
 
 
 # Shipping Provider Models

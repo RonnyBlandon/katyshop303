@@ -7,8 +7,8 @@ class Stripe():
     def __init__(self, id_user):
         stripe.api_key = get_secret("STRIPE_PRIVATE_KEY")
         self.id_user = id_user
-        self.success_url = "http://127.0.0.1:8000/webhook-stripe/?id_user="+str(self.id_user)
-        self.cancel_url = "http://127.0.0.1:8000/webhook-stripe/?id_user="+str(self.id_user)
+        self.success_url = "https://katyshop303.com/webhook-stripe/?id_user="+str(self.id_user)
+        self.cancel_url = "https://katyshop303.com/webhook-stripe/?id_user="+str(self.id_user)
 
     def create_customer_stripe(self):
         user = User.objects.filter(id=self.id_user).first()
@@ -71,8 +71,8 @@ class Stripe():
             item = {
                 'price_data': {
                     'currency': 'usd',
-                    'product_data': {'name': product.product.name},
-                    'unit_amount': int(product.product.price * 100)
+                    'product_data': {'name': product.product_name},
+                    'unit_amount': int(product.unit_price * 100)
                 },
                 'quantity': product.amount
             }

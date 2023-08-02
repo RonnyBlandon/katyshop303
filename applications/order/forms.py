@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 # Imports forms
 from applications.user.forms import UserAddressForm
 
+# website forms
 class CheckoutForm(UserAddressForm):
     name = forms.CharField(
         widget=forms.TextInput(

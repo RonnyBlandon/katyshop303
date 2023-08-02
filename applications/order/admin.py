@@ -23,7 +23,6 @@ class TrackingAdmin(admin.TabularInline):
 
 class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderAddresAdmin, OrderItemAdmin, TrackingAdmin]
-
     list_display = ('id', 'user', 'created', 'status', 'total')
     list_filter = ('status', 'payment_method')
     readonly_fields = ('transaction_id',)

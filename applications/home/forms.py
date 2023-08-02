@@ -51,4 +51,4 @@ class ContactForm(forms.Form):
             }
         )
     )
-    #captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV3)

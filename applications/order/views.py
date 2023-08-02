@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _
 # import models
 from applications.cart.models import Cart
 from applications.user.models import Address
+from applications.product.models import Product
 from applications.order.models import Order, OrderAddress, OrderItem
 from applications.points.models import UserPoint, PointsHistory, PointsSetting
 # imports forms
@@ -97,20 +98,24 @@ def CapturePaypalPayment(request):
                 # We reset the cart
                 Cart.objects.clean_cart(id_user=request.user.id)
                 # We update the inventory
-                items = order.order_items.all().order_by('-id')
+                order_items = order.order_items.all().order_by('-id')
+                product_ids = order_items.values_list('product_name', flat=True).distinct()
+                items = Product.objects.filter(name__in=product_ids)
                 for item in items:
-                    if item.product.amount_stock:
-                        if item.amount < item.product.amount_stock:
-                            item.product.amount_stock = item.product.amount_stock - item.amount
+                    if item.amount_stock:
+                        order_item = order_items.filter(product_name=item.name).first()
+                        if order_item.amount < item.amount_stock:
+                            item.amount_stock = item.amount_stock - order_item.amount
                         else:
-                            item.product.amount_stock = 0
-                        item.product.save()
+                            item.amount_stock = 0
+                            item.stock = False
+                        item.save()
                         # We take the opportunity to update the carts of all users who have products with limited inventory.
-                        cart_list = Cart.objects.filter(cart_items__product=item.product, cart_items__amount__gt=item.product.amount_stock)
+                        cart_list = Cart.objects.filter(cart_items__product=item, cart_items__amount__gt=item.amount_stock)
                         for cart in cart_list:
-                                cart_item = cart.cart_items.filter(product=item.product.id).first()
-                                cart_item.amount = item.product.amount_stock
-                                cart_item.subtotal = item.product.price * item.product.amount_stock
+                                cart_item = cart.cart_items.filter(product=item.id).first()
+                                cart_item.amount = item.amount_stock
+                                cart_item.subtotal = item.price * item.amount_stock
                                 cart_item.save()
                                 calculate_cart(cart)
                 # If there is a discount applied, deduct the points corresponding to the user.
@@ -172,22 +177,26 @@ def WebhookStripeView(request):
             # We reset the cart
             Cart.objects.clean_cart(id_user=id_user)
             # We update the inventory
-            items = order.order_items.all().order_by('-id')
+            order_items = order.order_items.all().order_by('-id')
+            product_ids = order_items.values_list('product_name', flat=True).distinct()
+            items = Product.objects.filter(name__in=product_ids)
             for item in items:
-                if item.product.amount_stock:
-                    if item.amount < item.product.amount_stock:
-                        item.product.amount_stock = item.product.amount_stock - item.amount
+                if item.amount_stock:
+                    order_item = order_items.filter(product_name=item.name).first()
+                    if order_item.amount < item.amount_stock:
+                        item.amount_stock = item.amount_stock - order_item.amount
                     else:
-                        item.product.amount_stock = 0
-                    item.product.save()
+                        item.amount_stock = 0
+                        item.stock = False
+                    item.save()
                     # We take the opportunity to update the carts of all users who have products with limited inventory.
-                    cart_list = Cart.objects.filter(cart_items__product=item.product, cart_items__amount__gt=item.product.amount_stock)
+                    cart_list = Cart.objects.filter(cart_items__product=item, cart_items__amount__gt=item.amount_stock)
                     for cart in cart_list:
-                        cart_item = cart.cart_items.filter(product=item.product.id).first()
-                        cart_item.amount = item.product.amount_stock
-                        cart_item.subtotal = item.product.price * item.product.amount_stock
-                        cart_item.save()
-                        calculate_cart(cart) 
+                            cart_item = cart.cart_items.filter(product=item.id).first()
+                            cart_item.amount = item.amount_stock
+                            cart_item.subtotal = item.price * item.amount_stock
+                            cart_item.save()
+                            calculate_cart(cart)
             # If there is a discount applied, deduct the points corresponding to the user.
             points_setting = PointsSetting.objects.get_point_setting()
             if order.discount > 0.00:
